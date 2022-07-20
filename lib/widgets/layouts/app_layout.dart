@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/widgets/colors.dart';
 
 class AppLayout extends StatefulWidget {
   const AppLayout({
@@ -21,24 +22,33 @@ class _AppLayoutState extends State<AppLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        bottomOpacity: 0.0,
-        elevation: 0.0,
-      ),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            children: [
-              Expanded(
-                flex: widget.leftFlex,
-                child: widget.left,
-              ),
-              Expanded(
-                flex: widget.rightFlex,
-                child: widget.right,
-              ),
-            ],
+          SizedBox(
+              width: 100,
+              child: Container(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  padding: const EdgeInsets.only(bottom: 50.0),
+                  color: AppColors.primary,
+                  child: widget.left)),
+          Expanded(
+            child: Column(
+              children: [
+                AppBar(
+                  bottomOpacity: 0.0,
+                  elevation: 0.0,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: widget.rightFlex,
+                      child: widget.right,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )
         ],
       ),
