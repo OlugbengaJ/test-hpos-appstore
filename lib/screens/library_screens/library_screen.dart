@@ -2,14 +2,14 @@ import 'package:flutter/widgets.dart';
 import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:hpos_appstore/widgets/layouts/sidebar_layout.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class LibraryScreen extends StatefulWidget {
+  const LibraryScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<LibraryScreen> createState() => _LibraryScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LibraryScreenState extends State<LibraryScreen> {
   @override
   Widget build(BuildContext context) {
     return AppLayout(

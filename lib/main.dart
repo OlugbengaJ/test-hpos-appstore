@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
+import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
       title: 'HPOS App Store',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
-      initialRoute: "/",
+      initialRoute: "/home",
       routes: {
-        "/": (context) => const HomeScreen(),
+        "/home": (context) => const HomeScreen(),
+        "/library": (context) => const LibraryScreen(),
       },
     );
   }
