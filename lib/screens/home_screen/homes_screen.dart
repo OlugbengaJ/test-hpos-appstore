@@ -5,7 +5,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppLayout(
-      right: Container(),
+      Container(),
     );
   }
 }

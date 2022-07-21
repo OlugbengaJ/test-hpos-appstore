@@ -2,22 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/widgets/colors.dart';
 import 'package:hpos_appstore/widgets/layouts/sidebar_layout.dart';
 
-class AppLayout extends StatefulWidget {
-  const AppLayout({
-    Key? key,
-    this.leftFlex = 1,
-    required this.right,
-    this.rightFlex = 8,
-  }) : super(key: key);
-  final int leftFlex;
+class AppLayout extends StatelessWidget {
   final Widget right;
-  final int rightFlex;
 
-  @override
-  State<AppLayout> createState() => _AppLayoutState();
-}
+  const AppLayout(this.right, {Key? key}) : super(key: key);
 
-class _AppLayoutState extends State<AppLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +19,8 @@ class _AppLayoutState extends State<AppLayout> {
         children: [
           SizedBox(
               width: 111,
-              child: Container(
-                  color: AppColors.primary, child: const SidebarLayout())),
+              child:
+                  Container(color: AppColors.primary, child: SidebarLayout())),
           Expanded(
             child: Container(
               margin: const EdgeInsets.only(top: 16),
@@ -51,8 +40,7 @@ class _AppLayoutState extends State<AppLayout> {
                     Row(
                       children: [
                         Expanded(
-                          flex: widget.rightFlex,
-                          child: widget.right,
+                          child: right,
                         ),
                       ],
                     ),
