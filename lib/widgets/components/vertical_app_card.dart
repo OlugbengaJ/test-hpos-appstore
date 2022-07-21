@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/models/app_model.dart';
-
-class AppColors {
-  static Color greyW400 = const Color(0xff98A2B3);
-  static Color greyW900 = const Color(0xff101828);
-  static Color orange = const Color(0xffF79009);
-  static Color primaryW25 = const Color(0xffEDEEFE);
-  static Color primaryW500 = const Color(0xff4758F6);
-  static Color primaryW600 = const Color(0xff3947C9);
-}
+import 'package:hpos_appstore/widgets/colors.dart';
 
 class VerticalAppCard extends StatelessWidget {
   const VerticalAppCard({Key? key, required this.appData}) : super(key: key);
@@ -214,7 +206,7 @@ class InstallButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String installIcon = 'assets/icons/install.svg';
+    const String installIcon = 'assets/icons/install.svg';
 
     return SizedBox(
       height: 36.0,
