@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// [ButtonRound] provides a customizable button that accepts icon
+/// and color to keep the entire app consistent.
 class ButtonRound extends StatelessWidget {
-  /// [ButtonRound] provides a customizable button that accepts icon
-  /// and color to keep the entire app consistent.
   const ButtonRound({
     Key? key,
     required this.size,

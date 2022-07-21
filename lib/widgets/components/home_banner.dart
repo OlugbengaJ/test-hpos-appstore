@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/utils/constants.dart';
+import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_gradient.dart';
 import 'package:hpos_appstore/widgets/components/texts/text_gradient.dart';
@@ -23,7 +23,7 @@ class HomeBanner extends StatelessWidget {
             AppColors.greyW1000,
           ],
         ),
-        borderRadius: BorderRadius.circular(Constants.radius16),
+        borderRadius: BorderRadius.circular(Numericals.radius16),
       ),
       child: SizedBox(
         child: Padding(
