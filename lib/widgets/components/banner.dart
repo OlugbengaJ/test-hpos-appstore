@@ -1,8 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
-import 'package:hpos_appstore/widgets/colors.dart';
 
 class Banner extends StatelessWidget {
   const Banner({Key? key}) : super(key: key);
