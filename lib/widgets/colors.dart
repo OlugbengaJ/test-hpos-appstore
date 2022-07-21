@@ -12,6 +12,7 @@ class AppColors {
   static Color greyW900 = const Color(0xff101828);
   static Color orange = const Color(0xffF79009);
   static Color primaryW25 = const Color(0xffEDEEFE);
+  static Color primaryW100 = const Color(0xffC8CDFC);
   static Color primaryW500 = const Color(0xff4758F6);
   static Color primaryW400 = const Color(0xff6C79F8);
   static Color primaryW600 = const Color(0xff3947C9);

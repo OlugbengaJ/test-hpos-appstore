@@ -90,22 +90,25 @@ class ArrowForwardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const arrowAsset = 'assets/icons/arrow_forward.svg';
-    return Ink(
-      width: 40.0,
-      height: 40.0,
-      decoration: ShapeDecoration(
-        color: AppColors.primaryW400,
-        shape: const CircleBorder(),
-      ),
-      child: IconButton(
-        splashRadius: 25.0,
-        onPressed: () => {},
-        icon: SvgPicture.asset(
-          arrowAsset,
-          width: 14.0,
-          height: 14.0,
-          color: Colors.white,
-          semanticsLabel: 'Arrow forward icon',
+    return Material(
+      child: Ink(
+        width: 40.0,
+        height: 40.0,
+        decoration: ShapeDecoration(
+          color: AppColors.primaryW400,
+          shape: const CircleBorder(),
+        ),
+        child: IconButton(
+          splashRadius: 25.0,
+          splashColor: AppColors.primaryW100,
+          onPressed: () => {},
+          icon: SvgPicture.asset(
+            arrowAsset,
+            width: 14.0,
+            height: 14.0,
+            color: Colors.white,
+            semanticsLabel: 'Arrow forward icon',
+          ),
         ),
       ),
     );

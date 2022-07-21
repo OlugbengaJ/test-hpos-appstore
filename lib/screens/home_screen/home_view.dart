@@ -41,10 +41,6 @@ class HomeView extends StatelessWidget {
     var suggestedProd =
         SuggestedApps("Top Productivity apps", productivityApps);
 
-    return Scaffold(
-      body: Center(
-        child: SuggestionTag(tag: suggestedProd.tag, apps: suggestedProd.apps),
-      ),
-    );
+    return SuggestionTag(tag: suggestedProd.tag, apps: suggestedProd.apps);
   }
 }
