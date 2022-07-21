@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/assets.dart';
 
 class SidebarLayout extends StatelessWidget {
   const SidebarLayout({Key? key}) : super(key: key);
@@ -9,24 +10,24 @@ class SidebarLayout extends StatelessWidget {
       margin: const EdgeInsets.only(top: 16),
       child: Column(
         children: [
-          SizedBox(child: Image.asset("assets/images/hp_logo.png")),
+          SizedBox(child: Image.asset(AppAssets.hpLogoPng)),
           const SizedBox(
             height: 100,
           ),
           Column(
-            children: const [
+            children: [
               SizedBox(
                 child: ImageIcon(
-                  AssetImage("assets/icons/home.png"),
+                  AssetImage(AppAssets.homePng),
                   color: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
                 child: ImageIcon(
-                  AssetImage("assets/icons/laptop.png"),
+                  AssetImage(AppAssets.laptopPng),
                   color: Colors.white,
                 ),
               ),
@@ -38,8 +39,8 @@ class SidebarLayout extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
-                  child: const ImageIcon(
-                    AssetImage("assets/icons/help.png"),
+                  child: ImageIcon(
+                    AssetImage(AppAssets.helpPng),
                     color: Colors.white,
                   ),
                 ),

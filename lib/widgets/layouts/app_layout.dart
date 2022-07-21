@@ -20,8 +20,10 @@ class AppLayout extends StatelessWidget {
         children: [
           SizedBox(
               width: 111,
-              child:
-                  Container(color: AppColors.primary, child: SidebarLayout())),
+              child: Container(
+                color: AppColors.primary,
+                child: const SidebarLayout(),
+              )),
           Expanded(
             child: Container(
               margin: const EdgeInsets.only(top: 16),

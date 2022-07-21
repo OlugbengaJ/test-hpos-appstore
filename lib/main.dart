@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       initialRoute: "/home",
       routes: {
-        "/home": (context) => HomeScreen(),
-        "/library": (context) => LibraryScreen(),
+        "/home": (context) => const HomeScreen(),
+        "/library": (context) => const LibraryScreen(),
       },
     );
   }
