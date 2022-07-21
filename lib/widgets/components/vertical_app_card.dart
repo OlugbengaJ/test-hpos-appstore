@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/models/app_model.dart';
-import 'package:hpos_appstore/widgets/colors.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 
 class VerticalAppCard extends StatelessWidget {
   const VerticalAppCard({Key? key, required this.appData}) : super(key: key);

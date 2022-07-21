@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/widgets/colors.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/layouts/header_layout.dart';
 import 'package:hpos_appstore/widgets/layouts/sidebar_layout.dart';
 

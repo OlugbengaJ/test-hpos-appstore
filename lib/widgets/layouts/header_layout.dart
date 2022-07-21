@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/widgets/colors.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 
 class HeaderLayout extends StatelessWidget {
   const HeaderLayout({Key? key}) : super(key: key);

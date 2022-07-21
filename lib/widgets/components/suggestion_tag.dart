@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/models/app_model.dart';
-import 'package:hpos_appstore/widgets/colors.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/vertical_app_card.dart';
 
 class SuggestionTag extends StatelessWidget {
