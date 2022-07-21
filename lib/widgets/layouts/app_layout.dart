@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/widgets/colors.dart';
+import 'package:hpos_appstore/widgets/layouts/header_layout.dart';
 import 'package:hpos_appstore/widgets/layouts/sidebar_layout.dart';
 
 class AppLayout extends StatelessWidget {
@@ -32,11 +33,7 @@ class AppLayout extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10, left: 30, right: 10),
                 child: Column(
                   children: [
-                    AppBar(
-                      backgroundColor: AppColors.dark,
-                      bottomOpacity: 0.0,
-                      elevation: 0.0,
-                    ),
+                    const HeaderLayout(),
                     Row(
                       children: [
                         Expanded(
