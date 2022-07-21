@@ -64,6 +64,11 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/icons/star.png
+    - assets/icons/half_star.png
+    - assets/icons/logos_microsoft-teams.png
+    - assets/icons/download_icon.png
+    - assets/icons/share_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
