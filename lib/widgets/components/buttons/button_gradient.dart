@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/utils/texts.dart';
 
 class ButtonGradient extends StatelessWidget {
   const ButtonGradient({

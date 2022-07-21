@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/constants.dart';
 import 'package:hpos_appstore/utils/texts.dart';
-import 'package:hpos_appstore/widgets/components/button/button_gradient.dart';
-import 'package:hpos_appstore/widgets/components/text/text_gradient.dart';
+import 'package:hpos_appstore/widgets/components/buttons/button_gradient.dart';
+import 'package:hpos_appstore/widgets/components/texts/text_gradient.dart';
 
 class HomeBanner extends StatelessWidget {
   const HomeBanner({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.black,
+    final themeData = Theme.of(context);
+
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.black,
+            AppColors.greyW600,
+            AppColors.greyW1000,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(Constants.radius16),
+      ),
       child: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(40.0),
@@ -20,25 +34,27 @@ class HomeBanner extends StatelessWidget {
             children: [
               TextGradient(
                 text: AppTexts.homeBannerText1,
-                textStyle: Theme.of(context).textTheme.headline4?.copyWith(),
-                gradient: LinearGradient(
+                textStyle: themeData.textTheme.headline4
+                    ?.copyWith(fontWeight: FontWeight.w700),
+                gradient: RadialGradient(
+                  radius: 10,
                   colors: [
-                    AppColors.greenShader3,
                     AppColors.greenShader1,
                     AppColors.greenShader2,
+                    AppColors.secondary,
                   ],
                 ),
               ),
               TextGradient(
                 text: AppTexts.homeBannerText2,
-                textStyle: Theme.of(context).textTheme.headline4?.copyWith(),
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.bottomRight,
+                textStyle: themeData.textTheme.headline4
+                    ?.copyWith(fontWeight: FontWeight.w700),
+                gradient: RadialGradient(
+                  radius: 10,
                   colors: [
-                    AppColors.greenShader3,
-                    AppColors.greenShader1,
+                    // AppColors.greenShader1,
                     AppColors.greenShader2,
+                    AppColors.secondary,
                   ],
                 ),
               ),
@@ -49,7 +65,7 @@ class HomeBanner extends StatelessWidget {
                   ButtonGradient(
                     radius: 4.0,
                     gradient: LinearGradient(
-                      colors: [AppColors.dark, AppColors.orange],
+                      colors: [AppColors.primaryW500, AppColors.primaryW400],
                     ),
                     text: Text(
                       AppTexts.discoverMore,
@@ -58,7 +74,7 @@ class HomeBanner extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

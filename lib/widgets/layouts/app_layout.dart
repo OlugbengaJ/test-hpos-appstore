@@ -32,19 +32,21 @@ class AppLayout extends StatelessWidget {
                   color: Color(0xffffffff),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(40)),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(30),
-                  child: Column(
-                    children: [
-                      const HeaderLayout(),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: right,
-                          ),
-                        ],
-                      ),
-                    ],
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: Column(
+                      children: [
+                        const HeaderLayout(),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: right,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
