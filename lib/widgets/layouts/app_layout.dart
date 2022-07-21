@@ -11,45 +11,47 @@ class AppLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      decoration: const BoxDecoration(
-        color: Color(0xff4758F6),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SizedBox(
+      body: Container(
+        decoration: BoxDecoration(
+          color: AppColors.primaryW500,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
               width: 111,
               child: Container(
                 color: AppColors.primary,
                 child: const SidebarLayout(),
-              )),
-          Expanded(
-            child: Container(
-              margin: const EdgeInsets.only(top: 16),
-              decoration: const BoxDecoration(
-                  color: Color(0xffffffff),
-                  borderRadius:
-                      BorderRadius.only(topLeft: Radius.circular(40))),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10, left: 30, right: 10),
-                child: Column(
-                  children: [
-                    const HeaderLayout(),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: right,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
               ),
             ),
-          )
-        ],
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(top: 16),
+                decoration: const BoxDecoration(
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Column(
+                    children: [
+                      const HeaderLayout(),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: right,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

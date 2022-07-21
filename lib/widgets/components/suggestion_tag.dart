@@ -14,7 +14,7 @@ class SuggestionTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(48.0),
+      padding: const EdgeInsets.only(top: 24.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,6 @@ class SuggestionTag extends StatelessWidget {
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
