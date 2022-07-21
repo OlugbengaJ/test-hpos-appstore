@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/wrapper.dart';
+import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
+import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Wrapper()
+      title: 'HPOS App Store',
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
+      initialRoute: "/home",
+      routes: {
+        "/home": (context) => HomeScreen(),
+        "/library": (context) => LibraryScreen(),
+      },
     );
   }
 }
