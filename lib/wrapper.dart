@@ -13,22 +13,22 @@ class _WrapperState extends State<Wrapper> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xff4758F6),
         ),
         child: Row(
           children: [
-            Sidebar(),
+            const Sidebar(),
             Expanded(
               child: Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 16
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xffF2F4F7),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(40))
                 ),
-                child: Center(
+                child: const Center(
                   child: Text("Home"),
                 ),
               ),
