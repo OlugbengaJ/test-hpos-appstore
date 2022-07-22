@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/models/app_model.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/numericals.dart';
 
 class VerticalAppCard extends StatelessWidget {
   const VerticalAppCard({Key? key, required this.appData}) : super(key: key);
@@ -11,8 +12,8 @@ class VerticalAppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(Numericals.radius16)),
       ),
       child: SizedBox(
         width: 276.0,
