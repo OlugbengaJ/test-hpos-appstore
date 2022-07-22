@@ -76,7 +76,7 @@ class SuggestionTag extends StatelessWidget {
                                   create: (context) =>
                                       ProductProvider.fromModel(app),
                                   child: (cardType == 'vertical')
-                                      ? VerticalAppCard(appData: app)
+                                      ? const VerticalAppCard()
                                       : const HorizontalProductCard(),
                                 ),
                         ))

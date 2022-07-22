@@ -8,9 +8,9 @@ import 'package:hpos_appstore/widgets/components/product_card/star_rating.dart';
 import 'package:provider/provider.dart';
 
 class VerticalAppCard extends StatelessWidget {
-  const VerticalAppCard({Key? key, required this.appData}) : super(key: key);
+  const VerticalAppCard({Key? key}) : super(key: key);
 
-  final AppModel appData;
+  // final AppModel appData;
 
   @override
   Widget build(BuildContext context) {
