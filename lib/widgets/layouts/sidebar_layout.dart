@@ -16,19 +16,25 @@ class SidebarLayout extends StatelessWidget {
           ),
           Column(
             children: [
-              SizedBox(
-                child: ImageIcon(
-                  AssetImage(AppAssets.homePng),
-                  color: Colors.white,
+              InkWell(
+                onTap: () => Navigator.of(context).popUntil(ModalRoute.withName('/home')),
+                child: SizedBox(
+                  child: ImageIcon(
+                    AssetImage(AppAssets.homePng),
+                    color: Colors.white,
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                child: ImageIcon(
-                  AssetImage(AppAssets.laptopPng),
-                  color: Colors.white,
+              InkWell(
+                onTap: () => Navigator.pushNamed(context, "/library"),
+                child: SizedBox(
+                  child: ImageIcon(
+                    AssetImage(AppAssets.laptopPng),
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],

@@ -4,9 +4,9 @@ import 'package:hpos_appstore/widgets/layouts/header_layout.dart';
 import 'package:hpos_appstore/widgets/layouts/sidebar_layout.dart';
 
 class AppLayout extends StatelessWidget {
-  final Widget right;
-
-  const AppLayout(this.right, {Key? key}) : super(key: key);
+  const AppLayout({Key? key, required this.content, this.header = const HeaderLayout()}) : super(key: key);
+  final Widget content;
+  final Widget header;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +37,11 @@ class AppLayout extends StatelessWidget {
                     padding: const EdgeInsets.all(30),
                     child: Column(
                       children: [
-                        const HeaderLayout(),
+                        header,
                         Row(
                           children: [
                             Expanded(
-                              child: right,
+                              child: content,
                             ),
                           ],
                         ),
