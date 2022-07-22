@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/models/app_model.dart';
 
 class ProductProvider extends ChangeNotifier {
   final nameNotifier = ValueNotifier('Microsoft Teams');
   final categoryNotifier = ValueNotifier('Productivity');
   final ratingNotifier = ValueNotifier(3.0);
   final reviewerCountNotifier = ValueNotifier(70);
-  final priceNotifier = ValueNotifier('48.99');
+  final priceNotifier = ValueNotifier('\$48.99');
   final imageNotifier = ValueNotifier('assets/icons/logos_microsoft-teams.png');
   var minRating = 1;
   var maxRating = 5;
+
+
+  ProductProvider();
+
+  ProductProvider.fromModel(AppModel product) {
+    name = product.name;
+    category = product.category;
+    rating = product.avgRatings;
+    reviewerCount = product.numRatings;
+    price = double.tryParse(product.price) ?? 0;
+    image = product.logo;
+  }
 
   String get name => nameNotifier.value;
 
@@ -31,7 +44,7 @@ class ProductProvider extends ChangeNotifier {
 
   double get price => double.tryParse(priceNotifier.value) ?? 0;
 
-  set price(double price) => price > 0 ? '\$${priceNotifier.value}' : 'Free';
+  set price(double price) => priceNotifier.value = price > 0 ? priceNotifier.value : 'Free';
 
   String get image => imageNotifier.value;
 

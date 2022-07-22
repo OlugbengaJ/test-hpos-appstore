@@ -20,15 +20,17 @@ class StarRating extends StatelessWidget {
             children: [
               ...List.generate(
                 rating.floor(),
-                (index) => const ImageIcon(
-                  AssetImage('assets/icons/star.png'),
+                (index) => const Icon(
+                  Icons.star,
                   color: Color(0xfff79009),
+                  size: 18,
                 ),
               ),
               if (rating - rating.floor() >= 0.5)
-                const ImageIcon(
-                  AssetImage('assets/icons/half_star.png'),
+                const Icon(
+                  Icons.star_half,
                   color: Color(0xfff79009),
+                  size: 18,
                 ),
             ],
           );

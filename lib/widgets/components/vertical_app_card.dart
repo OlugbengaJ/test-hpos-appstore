@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/models/app_model.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
+import 'package:hpos_appstore/widgets/components/product_card/star_rating.dart';
+import 'package:provider/provider.dart';
 
 class VerticalAppCard extends StatelessWidget {
   const VerticalAppCard({Key? key, required this.appData}) : super(key: key);
@@ -15,26 +18,20 @@ class VerticalAppCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(Numericals.radius16)),
       ),
-      child: SizedBox(
+      child: Container(
         width: 276.0,
         height: 299.0,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: CardBanner(
-                  logo: appData.logo,
-                ),
-              ),
-              CardDetails(
-                appData: appData,
-              ),
-              const InstallButtonWidget(),
-            ],
-          ),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(bottom: 16.0),
+              child: CardBanner(),
+            ),
+            CardDetails(),
+            InstallButtonWidget(),
+          ],
         ),
       ),
     );
@@ -42,13 +39,12 @@ class VerticalAppCard extends StatelessWidget {
 }
 
 class CardBanner extends StatelessWidget {
-  const CardBanner({Key? key, required this.logo}) : super(key: key);
-
-  final String logo;
+  const CardBanner({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Radius circularEdge = const Radius.circular(16.0);
+    var productProvider = Provider.of<ProductProvider>(context);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -68,15 +64,19 @@ class CardBanner extends StatelessWidget {
         width: 244.0,
         height: 127.0,
         child: Center(
-          child: SvgPicture.network(
-            logo,
-            width: 62.13,
-            height: 58.0,
-            semanticsLabel: 'App Logo',
-            placeholderBuilder: (BuildContext context) => Container(
-                padding: const EdgeInsets.all(30.0),
-                child: const CircularProgressIndicator()),
-          ),
+          child: ValueListenableBuilder<String>(
+              valueListenable: productProvider.imageNotifier,
+              builder: (context, logo, _) {
+                return SvgPicture.network(
+                  logo,
+                  width: 62.13,
+                  height: 58.0,
+                  semanticsLabel: 'App Logo',
+                  placeholderBuilder: (BuildContext context) => Container(
+                      padding: const EdgeInsets.all(30.0),
+                      child: const CircularProgressIndicator()),
+                );
+              }),
         ),
       ),
     );
@@ -84,12 +84,12 @@ class CardBanner extends StatelessWidget {
 }
 
 class CardDetails extends StatelessWidget {
-  const CardDetails({Key? key, required this.appData}) : super(key: key);
-
-  final AppModel appData;
+  const CardDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var productProvider = Provider.of<ProductProvider>(context);
+
     return Column(
       children: [
         Row(
@@ -101,36 +101,49 @@ class CardDetails extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 4.0),
-                  child: Text(
-                    appData.name,
-                    style: TextStyle(
-                      fontFamily: 'Euclid Circular B',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w800,
-                      color: AppColors.greyW900,
-                    ),
-                  ),
+                  child: ValueListenableBuilder<String>(
+                      valueListenable: productProvider.nameNotifier,
+                      builder: (context, name, _) {
+                        return Text(
+                          name,
+                          style: TextStyle(
+                            fontFamily: 'Euclid Circular B',
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.greyW900,
+                          ),
+                        );
+                      }),
                 ),
-                Text(
-                  appData.category,
-                  style: TextStyle(
-                    fontFamily: 'Euclid Circular B',
-                    fontSize: 14.0,
-                    color: AppColors.greyW400,
-                  ),
-                )
+                ValueListenableBuilder<String>(
+                    valueListenable: productProvider.categoryNotifier,
+                    builder: (context, category, _) {
+                      return Text(
+                        category,
+                        style: TextStyle(
+                          fontFamily: 'Euclid Circular B',
+                          fontSize: 14.0,
+                          color: AppColors.greyW400,
+                        ),
+                      );
+                    })
               ],
             ),
             Column(
               children: [
                 Chip(
-                    backgroundColor: AppColors.primaryW25,
-                    label: Text(
-                      appData.price,
-                      style: TextStyle(
-                        color: AppColors.primaryW600,
-                      ),
-                    )),
+                  backgroundColor: AppColors.primaryW25,
+                  label: ValueListenableBuilder<String>(
+                      valueListenable: productProvider.priceNotifier,
+                      builder: (context, price, _) {
+                        return Text(
+                          price,
+                          style: TextStyle(
+                            color: AppColors.primaryW600,
+                          ),
+                        );
+                      }),
+                ),
               ],
             )
           ],
@@ -141,19 +154,28 @@ class CardDetails extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: AppRatingsWidget(
-                  ratings: appData.avgRatings,
-                ),
+                child: ValueListenableBuilder<double>(
+                    valueListenable: productProvider.ratingNotifier,
+                    builder: (context, avgRatings, _) {
+                      return const StarRating();
+                      // return AppRatingsWidget(
+                      //   ratings: avgRatings,
+                      // );
+                    }),
               ),
-              Text(
-                appData.numRatings.toString(),
-                style: TextStyle(
-                  fontFamily: 'Euclid Circular B',
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.greyW900,
-                ),
-              )
+              ValueListenableBuilder<int>(
+                  valueListenable: productProvider.reviewerCountNotifier,
+                  builder: (context, numRatings, _) {
+                    return Text(
+                      numRatings.toString(),
+                      style: TextStyle(
+                        fontFamily: 'Euclid Circular B',
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.greyW900,
+                      ),
+                    );
+                  })
             ],
           ),
         )

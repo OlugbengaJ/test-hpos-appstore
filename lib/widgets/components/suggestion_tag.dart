@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/models/app_model.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/widgets/components/product_card/horizontal_app_card.dart';
 import 'package:hpos_appstore/widgets/components/vertical_app_card.dart';
+import 'package:provider/provider.dart';
 
 class SuggestionTag extends StatelessWidget {
-  const SuggestionTag({Key? key, required this.tag, required this.apps})
+  const SuggestionTag(
+      {Key? key, required this.tag, required this.apps, required this.cardType})
       : super(key: key);
 
   final String tag;
   final List<AppModel> apps;
+  final String cardType;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +72,13 @@ class SuggestionTag extends StatelessWidget {
                 ...apps
                     .map((app) => Padding(
                           padding: const EdgeInsets.only(right: 32.0),
-                          child: VerticalAppCard(appData: app),
+                          child: ListenableProvider(
+                                  create: (context) =>
+                                      ProductProvider.fromModel(app),
+                                  child: (cardType == 'vertical')
+                                      ? VerticalAppCard(appData: app)
+                                      : const HorizontalProductCard(),
+                                ),
                         ))
                     .toList(),
                 const Padding(
