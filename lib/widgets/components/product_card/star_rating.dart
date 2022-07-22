@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/product_provider.dart';
+import '../../../utils/colors.dart';
 
 class StarRating extends StatelessWidget {
   const StarRating({Key? key}) : super(key: key);
@@ -22,14 +23,14 @@ class StarRating extends StatelessWidget {
                 rating.floor(),
                 (index) => const Icon(
                   Icons.star,
-                  color: Color(0xfff79009),
+                  color: AppColors.orange,
                   size: 18,
                 ),
               ),
               if (rating - rating.floor() >= 0.5)
                 const Icon(
                   Icons.star_half,
-                  color: Color(0xfff79009),
+                  color: AppColors.orange,
                   size: 18,
                 ),
             ],

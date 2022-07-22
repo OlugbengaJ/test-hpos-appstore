@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/models/app_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/product_card/horizontal_app_card.dart';
 import 'package:hpos_appstore/widgets/components/vertical_app_card.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,7 @@ class SuggestionTag extends StatelessWidget {
               children: [
                 Text(
                   tag,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Euclid Circular B',
                     fontSize: 24.0,
                     fontWeight: FontWeight.w600,
@@ -42,7 +43,7 @@ class SuggestionTag extends StatelessWidget {
                   onPressed: () => {},
                   child: Container(
                     padding: const EdgeInsets.only(bottom: 5),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           color: AppColors.primaryW600,
@@ -50,8 +51,8 @@ class SuggestionTag extends StatelessWidget {
                         ),
                       ),
                     ),
-                    child: Text(
-                      "See all",
+                    child: const Text(
+                      AppTexts.seeAll,
                       style: TextStyle(
                         fontFamily: 'Euclid Circular B',
                         fontSize: 18.0,
@@ -104,9 +105,9 @@ class ArrowForwardWidget extends StatelessWidget {
       child: Ink(
         width: 40.0,
         height: 40.0,
-        decoration: ShapeDecoration(
+        decoration: const ShapeDecoration(
           color: AppColors.primaryW400,
-          shape: const CircleBorder(),
+          shape: CircleBorder(),
         ),
         child: IconButton(
           splashRadius: 25.0,

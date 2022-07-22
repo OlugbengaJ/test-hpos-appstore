@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hpos_appstore/models/app_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
+import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/product_card/star_rating.dart';
 import 'package:provider/provider.dart';
 
 class VerticalAppCard extends StatelessWidget {
   const VerticalAppCard({Key? key}) : super(key: key);
-
-  // final AppModel appData;
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +46,13 @@ class CardBanner extends StatelessWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
             AppColors.greyW900,
-            const Color(0xff344054),
-            const Color(0xff1D2939)
+            Color(0xff344054),
+            Color(0xff1D2939)
           ],
         ),
         borderRadius:
@@ -73,8 +71,9 @@ class CardBanner extends StatelessWidget {
                   height: 58.0,
                   semanticsLabel: 'App Logo',
                   placeholderBuilder: (BuildContext context) => Container(
-                      padding: const EdgeInsets.all(30.0),
-                      child: const CircularProgressIndicator()),
+                    padding: const EdgeInsets.all(30.0),
+                    child: const CircularProgressIndicator(),
+                  ),
                 );
               }),
         ),
@@ -106,7 +105,7 @@ class CardDetails extends StatelessWidget {
                       builder: (context, name, _) {
                         return Text(
                           name,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Euclid Circular B',
                             fontSize: 18.0,
                             fontWeight: FontWeight.w800,
@@ -120,7 +119,7 @@ class CardDetails extends StatelessWidget {
                     builder: (context, category, _) {
                       return Text(
                         category,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'Euclid Circular B',
                           fontSize: 14.0,
                           color: AppColors.greyW400,
@@ -138,7 +137,7 @@ class CardDetails extends StatelessWidget {
                       builder: (context, price, _) {
                         return Text(
                           price,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppColors.primaryW600,
                           ),
                         );
@@ -168,7 +167,7 @@ class CardDetails extends StatelessWidget {
                   builder: (context, numRatings, _) {
                     return Text(
                       numRatings.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Euclid Circular B',
                         fontSize: 14.0,
                         fontWeight: FontWeight.w600,
@@ -210,14 +209,14 @@ class AppRatingsWidget extends StatelessWidget {
       children: [
         ...List.generate(
           getFractionalPart(),
-          (index) => Icon(Icons.star, color: AppColors.orange, size: starSize),
+          (index) => const Icon(Icons.star, color: AppColors.orange, size: starSize),
         ),
         if (getDecimalPart() > 0)
-          Icon(Icons.star_half, color: AppColors.orange, size: starSize),
+          const Icon(Icons.star_half, color: AppColors.orange, size: starSize),
         ...List.generate(
           getUnfilledPart(),
           (index) =>
-              Icon(Icons.star_outline, color: AppColors.orange, size: starSize),
+              const Icon(Icons.star_outline, color: AppColors.orange, size: starSize),
         ),
       ],
     );
@@ -248,7 +247,7 @@ class InstallButtonWidget extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(right: 10.0),
               child: Text(
-                "Install",
+                AppTexts.install,
                 style: TextStyle(
                   fontFamily: 'Euclid Circular B',
                   fontSize: 16.0,

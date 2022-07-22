@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/app_model.dart';
+import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 
 class HomeView extends StatelessWidget {
@@ -39,13 +40,13 @@ class HomeView extends StatelessWidget {
     ];
 
     var suggestedProd =
-        SuggestedApps('Top Productivity apps', productivityApps);
+        SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
 
     return Column(
       children: [
         SuggestionTag(tag: suggestedProd.tag, apps: suggestedProd.apps, cardType: 'vertical'),
         const Padding(padding: EdgeInsets.only(bottom: 54)),
-        SuggestionTag(tag: 'Top paid apps', apps: suggestedProd.apps, cardType: 'horizontal'),
+        SuggestionTag(tag: AppTexts.suggestedPaid, apps: suggestedProd.apps, cardType: 'horizontal'),
       ],
     );
   }

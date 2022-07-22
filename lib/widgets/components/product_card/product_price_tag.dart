@@ -16,7 +16,7 @@ class ProductPriceTag extends StatelessWidget {
           backgroundColor: AppColors.primaryW25,
           label: Text(
             '$price',
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.primaryW600,
             ),
           ),
