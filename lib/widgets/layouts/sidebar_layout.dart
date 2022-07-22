@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/assets.dart';
 
 class SidebarLayout extends StatelessWidget {
   const SidebarLayout({Key? key}) : super(key: key);
@@ -9,25 +10,32 @@ class SidebarLayout extends StatelessWidget {
       margin: const EdgeInsets.only(top: 16),
       child: Column(
         children: [
-          SizedBox(child: Image.asset("assets/images/hp_logo.png")),
+          SizedBox(child: Image.asset(AppAssets.hpLogoPng)),
           const SizedBox(
             height: 100,
           ),
           Column(
-            children: const [
-              SizedBox(
-                child: ImageIcon(
-                  AssetImage("assets/icons/home.png"),
-                  color: Colors.white,
+            children: [
+              InkWell(
+                onTap: () => Navigator.of(context)
+                    .popUntil(ModalRoute.withName('/home')),
+                child: SizedBox(
+                  child: ImageIcon(
+                    AssetImage(AppAssets.homePng),
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                child: ImageIcon(
-                  AssetImage("assets/icons/laptop.png"),
-                  color: Colors.white,
+              InkWell(
+                onTap: () => Navigator.pushNamed(context, "/library"),
+                child: SizedBox(
+                  child: ImageIcon(
+                    AssetImage(AppAssets.laptopPng),
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
@@ -36,11 +44,14 @@ class SidebarLayout extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 16),
-                  child: const ImageIcon(
-                    AssetImage("assets/icons/help.png"),
-                    color: Colors.white,
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, "/app_details"),
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 16),
+                    child: ImageIcon(
+                      AssetImage(AppAssets.helpPng),
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
