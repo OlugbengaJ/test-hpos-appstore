@@ -43,11 +43,14 @@ class SidebarLayout extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 16),
-                  child: ImageIcon(
-                    AssetImage(AppAssets.helpPng),
-                    color: Colors.white,
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, "/app_details"),
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 16),
+                    child: ImageIcon(
+                      AssetImage(AppAssets.helpPng),
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
