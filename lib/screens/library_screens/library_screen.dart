@@ -10,7 +10,7 @@ class LibraryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppLayout(
-      Center(
+      content: Center(
         child: ListenableProvider(
           create: (context) => ProductProvider(),
           child: const ProductCardPreview(),
