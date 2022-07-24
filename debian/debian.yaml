@@ -1,9 +1,9 @@
 flutter_app:
-  command: hpos_appstore
+  command: hpos-appstore
   arch: x64
 
 control:
-  Package: hpos_appstore
+  Package: hpos-appstore
   Version: 1.0.0
   Architecture: amd64
   Essential: no

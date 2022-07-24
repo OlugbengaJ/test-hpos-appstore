@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Name=HPOS_APPSTORE
-GenericName=HPOS_APPSTORE
+Name=HPOS-APPSTORE
+GenericName=HPOS-APPSTORE
 Comment=hpOS configuration application
 Terminal=false
 Type=Application
