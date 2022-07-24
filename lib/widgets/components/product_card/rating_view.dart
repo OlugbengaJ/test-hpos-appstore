@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../../../providers/product_provider.dart';
 import '../../../utils/colors.dart';
 
-class StarRating extends StatelessWidget {
-  const StarRating({Key? key}) : super(key: key);
+class RatingView extends StatelessWidget {
+  const RatingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
