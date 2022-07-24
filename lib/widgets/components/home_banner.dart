@@ -23,7 +23,7 @@ class HomeBanner extends StatelessWidget {
             AppColors.greyW1000,
           ],
         ),
-        borderRadius: BorderRadius.circular(Numericals.radius16),
+        borderRadius: BorderRadius.circular(Numericals.double16),
       ),
       child: SizedBox(
         child: Padding(
@@ -65,7 +65,10 @@ class HomeBanner extends StatelessWidget {
                   ButtonGradient(
                     radius: 4.0,
                     gradient: LinearGradient(
-                      colors: [AppColors.primaryW500, AppColors.primaryW400],
+                      colors: [
+                        AppColors.primaryW500,
+                        AppColors.primaryW400,
+                      ],
                     ),
                     text: Text(
                       AppTexts.discoverMore,

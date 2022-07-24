@@ -16,7 +16,7 @@ class CardProductVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(Numericals.radius16)),
+        borderRadius: BorderRadius.all(Radius.circular(Numericals.double16)),
       ),
       child: Container(
         width: 276.0,
