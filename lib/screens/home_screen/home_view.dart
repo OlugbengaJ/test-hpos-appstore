@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/app_model.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/widgets/components/home_banner.dart';
+import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 
 class HomeView extends StatelessWidget {
@@ -44,9 +46,20 @@ class HomeView extends StatelessWidget {
 
     return Column(
       children: [
-        SuggestionTag(tag: suggestedProd.tag, apps: suggestedProd.apps, cardType: 'vertical'),
-        const Padding(padding: EdgeInsets.only(bottom: 54)),
-        SuggestionTag(tag: AppTexts.suggestedPaid, apps: suggestedProd.apps, cardType: 'horizontal'),
+        app_spacer.Spacer.medium,
+        const HomeBanner(),
+        app_spacer.Spacer.medium,
+        SuggestionTag(
+          tag: suggestedProd.tag,
+          apps: suggestedProd.apps,
+          cardType: 'vertical',
+        ),
+        app_spacer.Spacer.medium,
+        SuggestionTag(
+          tag: AppTexts.suggestedPaid,
+          apps: suggestedProd.apps,
+          cardType: 'horizontal',
+        ),
       ],
     );
   }
