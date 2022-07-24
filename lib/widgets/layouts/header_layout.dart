@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/widgets/components/home_banner.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 
 class HeaderLayout extends StatelessWidget {
   const HeaderLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const HomeBanner();
+    return AppBar(
+      backgroundColor: AppColors.white,
+      bottomOpacity: 0.0,
+      elevation: 0.0,
+    );
   }
 }
