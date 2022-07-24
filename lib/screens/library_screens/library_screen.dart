@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 class LibraryScreen extends StatelessWidget {
   const LibraryScreen({Key? key}) : super(key: key);
 
+  static String route = '/library';
+
   @override
   Widget build(BuildContext context) {
     return AppLayout(
