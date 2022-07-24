@@ -4,8 +4,8 @@ import 'package:hpos_appstore/models/app_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
-import 'package:hpos_appstore/widgets/components/product_card/horizontal_app_card.dart';
-import 'package:hpos_appstore/widgets/components/vertical_app_card.dart';
+import 'package:hpos_appstore/widgets/components/product_card/card_product_horizontal.dart';
+import 'package:hpos_appstore/widgets/components/product_card/card_product_vertical.dart';
 import 'package:provider/provider.dart';
 
 class SuggestionTag extends StatelessWidget {
@@ -77,8 +77,8 @@ class SuggestionTag extends StatelessWidget {
                                   create: (context) =>
                                       ProductProvider.fromModel(app),
                                   child: (cardType == 'vertical')
-                                      ? const VerticalAppCard()
-                                      : const HorizontalProductCard(),
+                                      ? const CardProductVertical()
+                                      : const CardProductHorizontal(),
                                 ),
                         ))
                     .toList(),

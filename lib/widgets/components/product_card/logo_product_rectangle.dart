@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../../providers/product_provider.dart';
 
-class RectangleProductLogo extends StatelessWidget {
-  const RectangleProductLogo({Key? key}) : super(key: key);
+class LogoProductRectangle extends StatelessWidget {
+  const LogoProductRectangle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
