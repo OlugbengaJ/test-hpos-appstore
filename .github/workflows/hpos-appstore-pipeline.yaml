@@ -1,0 +1,290 @@
+name: hpos-appstore-pipeline
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  push:
+    branches:
+      - development
+      - qa
+
+jobs:
+  Andriod:
+    name: Build Andriod
+    if: | 
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: checkout
+        uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
+      
+      - uses: actions/setup-java@f0bb91606209742fe3ea40199be2f3ef195ecabf
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - uses: subosito/flutter-action@a93e024dfea2add254640576989cf8e6507ee7f9
+        with:
+          channel: 'stable'
+      
+      # Andriod app signing
+      - name: Decode andriod/key.properties
+        run:  echo "${{ secrets.KEY_PROPERTIES_ANDROID }}" | base64 --decode > android/key.properties
+      - name: Decode andriod/upload_key.jks
+        run: echo "${{ secrets.KEYSTORE_JKS_ANDROID }}" | base64 --decode > android/app/key.jks
+
+      - run: flutter pub get
+      #- run: flutter test
+
+      - name: Build APK
+        run: flutter build apk --obfuscate --split-debug-info=./debug/debug --split-per-abi --release
+      
+      - name: Build APPBUNDLE
+        run: flutter build appbundle --obfuscate --split-debug-info=./debug/debug --release
+
+      - name: Publish Andriod Build
+        if: |
+          contains('
+            refs/heads/development
+            refs/heads/qa
+          ', github.ref)
+        uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535
+        with:
+          name: APK_${{github.run_id}}
+          path: |
+            build/app/outputs/apk/release/*.apk
+            build/app/outputs/bundle/release/*.aab
+            
+  WEB:
+    name: Build WEB
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: checkout
+        uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
+      - uses: subosito/flutter-action@a93e024dfea2add254640576989cf8e6507ee7f9
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      #- run: flutter test
+      - run: flutter build web
+
+      - name: Deploy to DEV Netlify
+        if: |
+          contains('
+            refs/heads/development
+          ', github.ref)
+        uses: nwtgck/actions-netlify@8e8eb9ffce1dd4eaf34d3bd54ea59ecc80b0a9c8
+        with:
+          publish-dir: './build/web'
+          production-branch: development
+          github-token: ${{ secrets.MY_GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions_${{github.run_id}}"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
+        timeout-minutes: 1
+      
+      - name: Deploy to QA Netlify
+        if: |
+          contains('
+            refs/heads/qa
+          ', github.ref)
+        uses: nwtgck/actions-netlify@8e8eb9ffce1dd4eaf34d3bd54ea59ecc80b0a9c8
+        with:
+          publish-dir: './build/web'
+          production-branch: qa
+          github-token: ${{ secrets.MY_GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions_${{github.run_id}}"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.QA_NETLIFY_SITE_ID }}
+        timeout-minutes: 1
+
+      - name: Publish WEB Build
+        if: |
+          contains('
+            refs/heads/development
+            refs/heads/qa
+          ', github.ref)
+        uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535
+        with:
+          name: WEB_${{github.run_id}}
+          path: |
+            build/web/
+  Windows:
+    name: Build Windows
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize'))
+    runs-on: windows-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: checkout
+        uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
+      - uses: subosito/flutter-action@a93e024dfea2add254640576989cf8e6507ee7f9
+        with:
+          channel: 'stable'
+      - run: flutter config --enable-windows-desktop
+      - run: flutter build windows
+
+      - name: Publish Windows Build
+        if: |
+          contains('
+            refs/heads/development
+            refs/heads/qa
+          ', github.ref)
+        uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535
+        with:
+          name: Windows_${{github.run_id}}
+          path: |
+            build/windows/runner/Release/
+  Linux:
+    name: Build Linux
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: checkout
+        uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
+
+      - uses: subosito/flutter-action@a93e024dfea2add254640576989cf8e6507ee7f9
+        with:
+          channel: 'stable'
+      - run: |
+          sudo apt-get update -y
+          sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+      - run: flutter config --enable-linux-desktop
+      - run: flutter build linux
+      - name: Generate .deb
+        run: |
+          dart pub global activate flutter_to_debian
+          flutter_to_debian
+
+          DEB=$(ls debian/packages/hpos*.deb)
+          # TODO: upload deb to nanabenz repo --> Job: Upload-deb-package
+      
+      - name: cache .deb build
+        uses: actions/cache@661fd3eb7f2f20d8c7c84bc2b0509efd7a826628
+        id: restore-generate-hpos-appstore-package 
+        with:
+          path: debian/packages/hpos*.deb
+          key: ${{ github.sha }}
+
+      - name: Publish Linux Build
+        if: |
+          contains('
+            refs/heads/development
+            refs/heads/qa
+          ', github.ref)
+        uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535
+        with:
+          name: Linux_${{github.run_id}}
+          path: |
+            build/linux/x64/release/bundle
+            linux-dependencies/
+  Notify:
+    name: Nofify on Slack
+    if: |
+      github.ref == 'refs/heads/qa' && 
+      github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: [Andriod, WEB, Windows, Linux]
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: send custom slack message 
+        uses: 8398a7/action-slack@a74b761b4089b5d730d813fbedcd2ec5d394f3af
+        with:
+          status: custom
+          fields: workflow,job,commit,repo,ref,author,took
+          custom_payload: |
+            {
+              attachments: [{
+                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+                text: `${process.env.AS_WORKFLOW} (${process.env.AS_COMMIT}) of ${process.env.AS_REPO}@${process.env.AS_REF}\nStatus: ${{ job.status }}\nDownload Artifacts--> https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}`,
+              }]
+            }
+        env: 
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  
+  Upload-deb-package:
+    name: Upload deb-package
+    if: |
+      github.ref == 'refs/heads/qa' && 
+      github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: [Linux]
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: Restore hpos-appstore deb package
+        uses: actions/cache@661fd3eb7f2f20d8c7c84bc2b0509efd7a826628
+        id: restore-generate-hpos-appstore-package
+        with:
+          path: debian/packages/hpos*.deb
+          key: ${{ github.sha }}
+      - run: ls debian/packages/
+
+      - name: upload hpos-appstore debian package
+        run: |
+          set -x
+          DEB=$(ls debian/packages/hpos*.deb)
+          PACKAGE=hpos_appstore
+          OS_CODENAME=jammy
+          SSH_HOST=hp_vm2@51.12.90.239
+
+          # upload hpos appstore debian package
+          TARGET_FILE=/tmp/$(basename "$DEB")
+          echo "==== Uploading $DEB to $SSH_HOST"
+          echo "${{ secrets.APT_REPO_SSH_PRIVATE_KEY }}" > apt-repo-key
+          chmod 600 apt-repo-key
+
+          # Reprepro doesn't allow updating a package with the same
+          # version. For this POC, wipe out the existing package first
+          ssh -i apt-repo-key -o StrictHostKeyChecking=no "$SSH_HOST" \
+            reprepro_expect -- -b /datadrive/var/debian-repositories remove "$OS_CODENAME" "$PACKAGE" || true \
+            reprepro_expect -- -b /datadrive/var/debian-repositories deleteunreferenced
+          
+          scp -i apt-repo-key -o StrictHostKeyChecking=no "$DEB" "$SSH_HOST":/tmp
+          
+          ssh -i apt-repo-key -o StrictHostKeyChecking=no "$SSH_HOST" \
+            reprepro_expect -- -b /datadrive/var/debian-repositories includedeb "$OS_CODENAME" "$TARGET_FILE"
+          
+          ssh -i apt-repo-key -o StrictHostKeyChecking=no "$SSH_HOST" rm "$TARGET_FILE"
