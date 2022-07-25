@@ -60,6 +60,18 @@ class HomeView extends StatelessWidget {
           apps: suggestedProd.apps,
           cardType: 'horizontal',
         ),
+        const Padding(padding: EdgeInsets.only(bottom: 54)),
+        SuggestionTag(
+          tag: AppTexts.suggestedGames,
+          apps: suggestedProd.apps,
+          cardType: 'vertical',
+        ),
+        const Padding(padding: EdgeInsets.only(bottom: 54)),
+        SuggestionTag(
+          tag: AppTexts.suggestedNew,
+          apps: suggestedProd.apps,
+          cardType: 'horizontal',
+        ),
       ],
     );
   }

@@ -32,7 +32,7 @@ class HomeBanner extends StatelessWidget {
       ),
       child: SizedBox(
         child: Padding(
-          padding: const EdgeInsets.all(40.0),
+          padding: const EdgeInsets.only(bottom: 55.0, top: 55.0, left: 60.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
@@ -40,7 +40,7 @@ class HomeBanner extends StatelessWidget {
               TextGradient(
                 text: AppTexts.homeBannerText1,
                 textStyle: themeData.textTheme.headline4
-                    ?.copyWith(fontWeight: FontWeight.w700),
+                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 40.0),
                 gradient: const RadialGradient(
                   radius: 10,
                   colors: [
@@ -53,7 +53,7 @@ class HomeBanner extends StatelessWidget {
               TextGradient(
                 text: AppTexts.homeBannerText2,
                 textStyle: themeData.textTheme.headline4
-                    ?.copyWith(fontWeight: FontWeight.w700),
+                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 40.0),
                 gradient: const RadialGradient(
                   radius: 10,
                   colors: [
@@ -63,7 +63,7 @@ class HomeBanner extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
@@ -78,7 +78,15 @@ class HomeBanner extends StatelessWidget {
                     text: Text(
                       AppTexts.discoverMore,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 20.5,
                     ),
                   ),
                 ],
