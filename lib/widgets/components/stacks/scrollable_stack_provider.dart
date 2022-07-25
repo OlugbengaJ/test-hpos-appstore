@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ScrollableStackProvider extends ChangeNotifier {
-  ScrollableStackProvider(this.controller);
+  ScrollableStackProvider();
 
-  late ScrollController controller;
-
+  final ScrollController controller = ScrollController();
   final prefixVisibleNotifier = ValueNotifier(false);
   final suffixVisibleNotifier = ValueNotifier(true);
 

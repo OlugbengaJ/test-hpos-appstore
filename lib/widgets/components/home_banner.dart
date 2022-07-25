@@ -3,7 +3,7 @@ import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
-import 'package:hpos_appstore/widgets/components/materials/button_gradient.dart';
+import 'package:hpos_appstore/widgets/components/buttons/button_gradient.dart';
 import 'package:hpos_appstore/widgets/components/texts/text_gradient.dart';
 
 class HomeBanner extends StatelessWidget {

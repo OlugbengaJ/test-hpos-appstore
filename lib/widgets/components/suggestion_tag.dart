@@ -5,7 +5,7 @@ import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_horizontal.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_vertical.dart';
-import 'package:hpos_appstore/widgets/components/materials/scrollable/scrollable_stack.dart';
+import 'package:hpos_appstore/widgets/components/stacks/scrollable_stack.dart';
 import 'package:provider/provider.dart';
 
 class SuggestionTag extends StatelessWidget {
