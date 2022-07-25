@@ -22,4 +22,5 @@ class AppTexts {
   static const String seeAll = 'See all';
   static const String install = 'Install';
   static const String free = 'Free';
+  static const String share = 'share';
 }

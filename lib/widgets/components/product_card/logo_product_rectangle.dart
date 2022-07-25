@@ -5,15 +5,24 @@ import 'package:provider/provider.dart';
 import '../../../providers/product_provider.dart';
 
 class LogoProductRectangle extends StatelessWidget {
-  const LogoProductRectangle({Key? key}) : super(key: key);
+  const LogoProductRectangle({
+    Key? key,
+    this.borderLength = 127,
+    this.logoWidth = 62.13,
+    this.logoHeight = 58.0,
+  }) : super(key: key);
+
+  final double borderLength;
+  final double logoWidth;
+  final double logoHeight;
 
   @override
   Widget build(BuildContext context) {
     var productProvider = Provider.of<ProductProvider>(context);
 
     return Container(
-      width: 127,
-      height: 127,
+      width: borderLength,
+      height: borderLength,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xff101828), Color(0xff344054), Color(0xff1d2939)],
@@ -25,11 +34,7 @@ class LogoProductRectangle extends StatelessWidget {
       child: ValueListenableBuilder<String>(
         valueListenable: productProvider.imageNotifier,
         builder: (context, image, _) {
-          return NetworkImage(logo: image);
-          // return Image(
-          //   image: AssetImage(image),
-          //   fit: BoxFit.scaleDown,
-          // );
+          return NetworkImage(logo: image, width: logoWidth, height: logoHeight,);
         },
       ),
     );
@@ -37,21 +42,26 @@ class LogoProductRectangle extends StatelessWidget {
 }
 
 class NetworkImage extends StatelessWidget {
-  const NetworkImage({Key? key, required this.logo}) : super(key: key);
+  const NetworkImage(
+      {Key? key, required this.logo, this.width = 62.13, this.height = 58.0})
+      : super(key: key);
 
   final String logo;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 244.0,
-      height: 127.0,
+      // width: 244.0,
+      // height: 127.0,
       child: Center(
         child: SvgPicture.network(
           logo,
-          width: 62.13,
-          height: 58.0,
+          width: width,
+          height: height,
           semanticsLabel: 'App Logo',
+          fit: BoxFit.scaleDown,
           placeholderBuilder: (BuildContext context) => Container(
               padding: const EdgeInsets.all(30.0),
               child: const CircularProgressIndicator()),

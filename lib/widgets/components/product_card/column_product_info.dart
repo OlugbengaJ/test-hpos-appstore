@@ -6,7 +6,9 @@ import '../../../providers/product_provider.dart';
 import '../../../utils/colors.dart';
 
 class ColumnProductInfo extends StatelessWidget {
-  const ColumnProductInfo({Key? key}) : super(key: key);
+  const ColumnProductInfo({Key? key, this.headerOnly = false}) : super(key: key);
+
+  final bool headerOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class ColumnProductInfo extends StatelessWidget {
               );
             }),
         const Padding(padding: EdgeInsets.only(bottom: 12)),
+        if (!headerOnly)
         Row(
           children: [
             const RatingView(),
