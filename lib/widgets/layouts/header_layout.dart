@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/greetings.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/avatar.dart';
-import 'package:hpos_appstore/widgets/components/searchbar.dart';
+import 'package:hpos_appstore/widgets/components/search_bar.dart';
 import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
 
 class HeaderLayout extends StatelessWidget {
@@ -46,7 +44,7 @@ class HeaderLayout extends StatelessWidget {
           margin: EdgeInsets.zero,
           width: 400,
           height: 40,
-          child: const Searchbar(
+          child: const SearchBar(
             hintText: AppTexts.search,
           ),
         ),

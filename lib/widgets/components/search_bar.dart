@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 
-class Searchbar extends StatelessWidget {
-  const Searchbar({
+class SearchBar extends StatelessWidget {
+  const SearchBar({
     Key? key,
     this.hintText,
     this.labelText,
