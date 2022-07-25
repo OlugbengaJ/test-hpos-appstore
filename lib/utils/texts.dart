@@ -13,7 +13,7 @@
 class AppTexts {
   static const String homeBannerText1 = 'Let\'s get you into all the goodness';
   static const String homeBannerText2 = 'on the hp App Store';
-  static const String discoverMore = 'Discover more';
+  static const String discoverMore = 'Discover more 🚀';
   static const String search = 'Search through apps, games, and more';
   static const String suggestedProductivity = 'Top productivity apps';
   static const String suggestedPaid = 'Top paid apps';

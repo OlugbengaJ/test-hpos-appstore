@@ -98,3 +98,20 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: EuclidCircularB
+      fonts:
+        - asset: assets/fonts/EuclidCircularB-Regular.ttf
+        - asset: assets/fonts/EuclidCircularB-Italic.ttf
+          style: italic
+        - asset: assets/fonts/EuclidCircularB-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/EuclidCircularB-Light.ttf
+        - asset: assets/fonts/EuclidCircularB-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/EuclidCircularB-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/EuclidCircularB-SemiBoldItalic.ttf
+        - asset: assets/fonts/EuclidCircularB-BoldItalic.ttf
+        - asset: assets/fonts/EuclidCircularB-LightItalic.ttf
+        - asset: assets/fonts/EuclidCircularB-MediumItalic.ttf

@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       initialRoute: HomeScreen.route,
+      theme: ThemeData(fontFamily: 'EuclidCircularB'),
       routes: {
         HomeScreen.route: (context) => const HomeScreen(),
         LibraryScreen.route: (context) => const LibraryScreen(),
