@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color primary = const Color(0xff4758F6);
-  static Color secondary = const Color(0xff434afa);
-  static Color dark = const Color(0xff434afa);
-  static Color white = const Color(0xffffffff);
-  static Color tertiary = const Color(0xff434afa);
-  static Color danger = const Color(0xFFFA4343);
-  static Color success = const Color(0xff434afa);
-  static Color greyW400 = const Color(0xff98A2B3);
-  static Color greyW600 = const Color(0xff344054);
-  static Color greyW900 = const Color(0xff101828);
-  static Color greyW1000 = const Color(0xff1D2939);
-  static Color orange = const Color(0xffF79009);
-  static Color primaryW25 = const Color(0xffEDEEFE);
-  static Color primaryW100 = const Color(0xffC8CDFC);
-  static Color primaryW500 = const Color(0xff4758F6);
-  static Color primaryW400 = const Color(0xff6C79F8);
-  static Color primaryW600 = const Color(0xff3947C9);
-  static Color greenShader1 = const Color(0xffd4ffec);
-  static Color greenShader2 = const Color(0xff57f2cc);
-  static Color greenShader3 = const Color(0xff4596fb);
+  static const Color primary = Color(0xff4758F6);
+  static const Color secondary = Color(0xff434afa);
+  static const Color dark = Color(0xff434afa);
+  static const Color white = Color(0xffffffff);
+  static const Color tertiary = Color(0xff434afa);
+  static const Color danger = Color(0xFFFA4343);
+  static const Color success = Color(0xff434afa);
+  static const Color greyW400 = Color(0xff98A2B3);
+  static const Color greyW600 = Color(0xff344054);
+  static const Color greyW900 = Color(0xff101828);
+  static const Color greyW1000 = Color(0xff1D2939);
+  static const Color orange = Color(0xffF79009);
+  static const Color primaryW25 = Color(0xffEDEEFE);
+  static const Color primaryW100 = Color(0xffC8CDFC);
+  static const Color primaryW500 = Color(0xff4758F6);
+  static const Color primaryW400 = Color(0xff6C79F8);
+  static const Color primaryW600 = Color(0xff3947C9);
+  static const Color greenShader1 = Color(0xffd4ffec);
+  static const Color greenShader2 = Color(0xff57f2cc);
+  static const Color greenShader3 = Color(0xff4596fb);
 }

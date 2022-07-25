@@ -14,7 +14,7 @@ class HomeBanner extends StatelessWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
@@ -36,7 +36,7 @@ class HomeBanner extends StatelessWidget {
                 text: AppTexts.homeBannerText1,
                 textStyle: themeData.textTheme.headline4
                     ?.copyWith(fontWeight: FontWeight.w700),
-                gradient: RadialGradient(
+                gradient: const RadialGradient(
                   radius: 10,
                   colors: [
                     AppColors.greenShader1,
@@ -49,7 +49,7 @@ class HomeBanner extends StatelessWidget {
                 text: AppTexts.homeBannerText2,
                 textStyle: themeData.textTheme.headline4
                     ?.copyWith(fontWeight: FontWeight.w700),
-                gradient: RadialGradient(
+                gradient: const RadialGradient(
                   radius: 10,
                   colors: [
                     // AppColors.greenShader1,
@@ -61,7 +61,7 @@ class HomeBanner extends StatelessWidget {
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   ButtonGradient(
                     radius: 4.0,
                     gradient: LinearGradient(
@@ -70,7 +70,7 @@ class HomeBanner extends StatelessWidget {
                     text: Text(
                       AppTexts.discoverMore,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ],

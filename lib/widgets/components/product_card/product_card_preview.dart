@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/product_provider.dart';
-import 'horizontal_app_card.dart';
+import 'card_product_horizontal.dart';
 
 class ProductCardPreview extends StatelessWidget {
   const ProductCardPreview({
@@ -15,7 +15,7 @@ class ProductCardPreview extends StatelessWidget {
 
     return Column(
       children: [
-        const HorizontalProductCard(),
+        const CardProductHorizontal(),
         const Padding(padding: EdgeInsets.all(7)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

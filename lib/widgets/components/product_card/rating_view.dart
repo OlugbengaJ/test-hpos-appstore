@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/product_provider.dart';
+import '../../../utils/colors.dart';
 
-class StarRating extends StatelessWidget {
-  const StarRating({Key? key}) : super(key: key);
+class RatingView extends StatelessWidget {
+  const RatingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +21,17 @@ class StarRating extends StatelessWidget {
             children: [
               ...List.generate(
                 rating.floor(),
-                (index) => const ImageIcon(
-                  AssetImage('assets/icons/star.png'),
-                  color: Color(0xfff79009),
+                (index) => const Icon(
+                  Icons.star,
+                  color: AppColors.orange,
+                  size: 18,
                 ),
               ),
               if (rating - rating.floor() >= 0.5)
-                const ImageIcon(
-                  AssetImage('assets/icons/half_star.png'),
-                  color: Color(0xfff79009),
+                const Icon(
+                  Icons.star_half,
+                  color: AppColors.orange,
+                  size: 18,
                 ),
             ],
           );

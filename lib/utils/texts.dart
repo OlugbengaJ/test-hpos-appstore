@@ -11,7 +11,13 @@
 /// This approach makes refactoring quick and error free.
 /// Also, for localization, you have a central place to do just that.
 class AppTexts {
-  static String homeBannerText1 = 'Let\'s get you into all the goodness';
-  static String homeBannerText2 = 'on the hp App Store';
-  static String discoverMore = 'Discover more';
+  static const String homeBannerText1 = 'Let\'s get you into all the goodness';
+  static const String homeBannerText2 = 'on the hp App Store';
+  static const String discoverMore = 'Discover more';
+  static const String suggestedProductivity = 'Top productivity apps';
+  static const String suggestedPaid = 'Top paid apps';
+  static const String seeAll = 'See all';
+  static const String install = 'Install';
+  static const String free = 'Free';
+  static const String currencySymbol = 'Free';
 }
