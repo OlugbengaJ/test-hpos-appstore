@@ -17,6 +17,8 @@ class AppTexts {
   static const String search = 'Search through apps, games, and more';
   static const String suggestedProductivity = 'Top productivity apps';
   static const String suggestedPaid = 'Top paid apps';
+  static const String suggestedGames = 'Top paid games';
+  static const String suggestedNew = 'Top new apps';
   static const String seeAll = 'See all';
   static const String install = 'Install';
   static const String free = 'Free';
