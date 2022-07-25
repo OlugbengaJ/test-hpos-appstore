@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/numericals.dart';
 
 class Searchbar extends StatelessWidget {
   const Searchbar({
@@ -31,7 +32,9 @@ class Searchbar extends StatelessWidget {
     return TextField(
       controller: textController,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(Numericals.double16)),
+        ),
         hintText: hintText,
         labelText: labelText,
         prefixIcon: prefixIcon ?? const Icon(Icons.search),

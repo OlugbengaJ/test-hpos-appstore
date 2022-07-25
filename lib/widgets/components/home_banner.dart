@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
@@ -24,6 +25,10 @@ class HomeBanner extends StatelessWidget {
           ],
         ),
         borderRadius: BorderRadius.circular(Numericals.double16),
+        image: DecorationImage(
+          image: Image.asset(AppAssets.bannerAppsPng).image,
+          alignment: Alignment.centerRight,
+        ),
       ),
       child: SizedBox(
         child: Padding(

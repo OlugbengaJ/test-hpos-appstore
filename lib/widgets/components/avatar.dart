@@ -20,7 +20,10 @@ class AppAvatar extends StatelessWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       radius: radius,
-      child: Text(_getAvatarText),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Text(_getAvatarText),
+      ),
     );
   }
 

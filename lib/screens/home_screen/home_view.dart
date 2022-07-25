@@ -46,15 +46,15 @@ class HomeView extends StatelessWidget {
 
     return Column(
       children: [
-        app_spacer.Spacer.medium,
+        app_spacer.Spacer.bottomLarge,
         const HomeBanner(),
-        app_spacer.Spacer.medium,
+        app_spacer.Spacer.bottomMedium,
         SuggestionTag(
           tag: suggestedProd.tag,
           apps: suggestedProd.apps,
           cardType: 'vertical',
         ),
-        app_spacer.Spacer.medium,
+        app_spacer.Spacer.bottomMedium,
         SuggestionTag(
           tag: AppTexts.suggestedPaid,
           apps: suggestedProd.apps,
