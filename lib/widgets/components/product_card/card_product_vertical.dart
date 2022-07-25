@@ -89,8 +89,8 @@ class InstallButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: AppColors.primaryW500,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(8.0)),
           ),
         ),
         onPressed: () => {},

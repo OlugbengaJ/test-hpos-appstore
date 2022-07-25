@@ -14,7 +14,7 @@ class SuggestionTag extends StatelessWidget {
       : super(key: key);
 
   final String tag;
-  final List<AppModel> apps;
+  final List<Product> apps;
   final String cardType;
 
   @override

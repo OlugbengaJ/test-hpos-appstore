@@ -16,7 +16,6 @@ class ColumnProductInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // const Padding(padding: EdgeInsets.only(top: 5)),
         ValueListenableBuilder<String>(
           valueListenable: productProvider.nameNotifier,
           builder: (context, name, _) => Text(

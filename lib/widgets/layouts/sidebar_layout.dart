@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/screens/app_screen/app_details.dart';
+import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
+import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 import 'package:hpos_appstore/utils/assets.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/navigation_provider.dart';
 
 class SidebarLayout extends StatelessWidget {
   const SidebarLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var navigationProvider = Provider.of<NavigationProvider>(context);
+
     return Container(
       margin: const EdgeInsets.only(top: 16),
       child: Column(
@@ -17,7 +25,7 @@ class SidebarLayout extends StatelessWidget {
           Column(
             children: [
               InkWell(
-                onTap: () => Navigator.of(context).popUntil(ModalRoute.withName('/home')),
+                onTap: () => navigationProvider.navigateTo(HomeScreen.route),
                 child: SizedBox(
                   child: ImageIcon(
                     AssetImage(AppAssets.homePng),
@@ -29,7 +37,7 @@ class SidebarLayout extends StatelessWidget {
                 height: 20,
               ),
               InkWell(
-                onTap: () => Navigator.pushNamed(context, "/library"),
+                onTap: () => navigationProvider.navigateTo(LibraryScreen.route),
                 child: SizedBox(
                   child: ImageIcon(
                     AssetImage(AppAssets.laptopPng),
@@ -44,7 +52,8 @@ class SidebarLayout extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 InkWell(
-                  onTap: () => Navigator.pushNamed(context, "/app_details"),
+                  onTap: () =>
+                      navigationProvider.navigateTo(AppDetailsView.route),
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 16),
                     child: ImageIcon(
