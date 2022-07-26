@@ -16,13 +16,11 @@ class ColumnProductInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // const Padding(padding: EdgeInsets.only(top: 5)),
         ValueListenableBuilder<String>(
           valueListenable: productProvider.nameNotifier,
           builder: (context, name, _) => Text(
             name,
             style: const TextStyle(
-              fontFamily: 'Euclid Circular B',
               fontSize: 20,
               fontWeight: FontWeight.w600,
               color: AppColors.greyW900,
@@ -36,7 +34,6 @@ class ColumnProductInfo extends StatelessWidget {
               return Text(
                 category,
                 style: const TextStyle(
-                  fontFamily: 'Euclid Circular B',
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: AppColors.greyW400,
@@ -53,7 +50,6 @@ class ColumnProductInfo extends StatelessWidget {
               builder: (context, count, _) => Text(
                 '$count',
                 style: const TextStyle(
-                  fontFamily: 'Euclid Circular B',
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: AppColors.greyW900,

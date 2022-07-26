@@ -16,7 +16,7 @@ class CardProductVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(Numericals.radius16)),
+        borderRadius: BorderRadius.all(Radius.circular(Numericals.double16)),
       ),
       child: Container(
         width: 276.0,
@@ -26,7 +26,7 @@ class CardProductVertical extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: const [
             LogoProductBanner(),
-            Padding(padding: EdgeInsets.only(bottom: 16.0)),
+            Padding(padding: EdgeInsets.only(bottom: 11.0)),
             CardDetails(),
             Padding(padding: EdgeInsets.only(bottom: 17)),
             InstallButtonWidget(),
@@ -61,6 +61,8 @@ class CardDetails extends StatelessWidget {
                         return Text(
                           price,
                           style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12.0,
                             color: AppColors.primaryW600,
                           ),
                         );
@@ -87,8 +89,8 @@ class InstallButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: AppColors.primaryW500,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(8.0)),
           ),
         ),
         onPressed: () => {},
@@ -101,7 +103,6 @@ class InstallButtonWidget extends StatelessWidget {
               child: Text(
                 AppTexts.install,
                 style: TextStyle(
-                  fontFamily: 'Euclid Circular B',
                   fontSize: 16.0,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,

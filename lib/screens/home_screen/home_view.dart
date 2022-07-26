@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/app_model.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/widgets/components/home_banner.dart';
+import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 
 class HomeView extends StatelessWidget {
@@ -9,28 +11,28 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var productivityApps = [
-      AppModel(
+      Product(
           'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
           'Microsoft Teams',
           'Productivity',
           'Free',
           4.5,
           70),
-      AppModel(
+      Product(
           'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
           'Google Meet',
           'Productivity',
           '48.99',
           3.5,
           70),
-      AppModel(
+      Product(
           'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
           'Zoom',
           'Productivity',
           'Free',
           3.5,
           70),
-      AppModel(
+      Product(
           'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
           'Google Suite',
           'Productivity',
@@ -44,9 +46,32 @@ class HomeView extends StatelessWidget {
 
     return Column(
       children: [
-        SuggestionTag(tag: suggestedProd.tag, apps: suggestedProd.apps, cardType: 'vertical'),
+        app_spacer.Spacer.bottomLarge,
+        const HomeBanner(),
+        app_spacer.Spacer.bottomMedium,
+        SuggestionTag(
+          tag: suggestedProd.tag,
+          apps: suggestedProd.apps,
+          cardType: 'vertical',
+        ),
+        app_spacer.Spacer.bottomMedium,
+        SuggestionTag(
+          tag: AppTexts.suggestedPaid,
+          apps: suggestedProd.apps,
+          cardType: 'horizontal',
+        ),
         const Padding(padding: EdgeInsets.only(bottom: 54)),
-        SuggestionTag(tag: AppTexts.suggestedPaid, apps: suggestedProd.apps, cardType: 'horizontal'),
+        SuggestionTag(
+          tag: AppTexts.suggestedGames,
+          apps: suggestedProd.apps,
+          cardType: 'vertical',
+        ),
+        const Padding(padding: EdgeInsets.only(bottom: 54)),
+        SuggestionTag(
+          tag: AppTexts.suggestedNew,
+          apps: suggestedProd.apps,
+          cardType: 'horizontal',
+        ),
       ],
     );
   }

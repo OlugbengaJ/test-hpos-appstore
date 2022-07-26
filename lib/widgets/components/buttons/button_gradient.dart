@@ -22,6 +22,7 @@ class ButtonGradient extends StatelessWidget {
     required this.gradient,
     required this.text,
     this.radius = 0,
+    this.contentPadding = const EdgeInsets.all(10.0),
   }) : super(key: key);
 
   /// Alows you to define the gradient for the button.
@@ -32,6 +33,9 @@ class ButtonGradient extends StatelessWidget {
 
   /// Radius of the button.
   final double radius;
+
+  /// Padding to surround content
+  final EdgeInsetsGeometry contentPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class ButtonGradient extends StatelessWidget {
             borderRadius: BorderRadius.circular(radius),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: contentPadding,
             child: text,
           ),
         ),

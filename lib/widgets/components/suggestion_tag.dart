@@ -14,7 +14,7 @@ class SuggestionTag extends StatelessWidget {
       : super(key: key);
 
   final String tag;
-  final List<AppModel> apps;
+  final List<Product> apps;
   final String cardType;
 
   @override
@@ -33,7 +33,6 @@ class SuggestionTag extends StatelessWidget {
                 Text(
                   tag,
                   style: const TextStyle(
-                    fontFamily: 'Euclid Circular B',
                     fontSize: 24.0,
                     fontWeight: FontWeight.w600,
                     color: AppColors.greyW900,
@@ -54,7 +53,6 @@ class SuggestionTag extends StatelessWidget {
                     child: const Text(
                       AppTexts.seeAll,
                       style: TextStyle(
-                        fontFamily: 'Euclid Circular B',
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
                         color: AppColors.primaryW600,
