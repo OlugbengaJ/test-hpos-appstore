@@ -14,6 +14,7 @@ class CardProductVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: AppColors.greyW25,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(Numericals.double16)),
       ),

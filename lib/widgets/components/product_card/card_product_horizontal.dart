@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
 import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
@@ -12,7 +13,7 @@ class CardProductHorizontal extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
-      color: const Color(0xfffcfcfd),
+      color: AppColors.greyW25,
       child: Container(
         width: 423,
         height: 162,
