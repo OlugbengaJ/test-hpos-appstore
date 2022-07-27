@@ -72,7 +72,6 @@ class ScrollableStack extends StatelessWidget {
 
     return Stack(
       children: [
-        // contents go here.
         SingleChildScrollView(
           controller: provider.controller,
           scrollDirection: scrollDirection,
@@ -85,7 +84,6 @@ class ScrollableStack extends StatelessWidget {
           ValueListenableBuilder<bool>(
             valueListenable: provider.prefixVisibleNotifier,
             builder: (_, value, child) {
-              // if (value) {
               return Positioned.fill(
                 child: Align(
                   alignment: _prefixIconAlignment(),
@@ -101,9 +99,6 @@ class ScrollableStack extends StatelessWidget {
                   ),
                 ),
               );
-              // }
-
-              // return const SizedBox();
             },
           ),
 
@@ -111,7 +106,6 @@ class ScrollableStack extends StatelessWidget {
           ValueListenableBuilder<bool>(
             valueListenable: provider.suffixVisibleNotifier,
             builder: (_, value, child) {
-              // if (value) {
               return Positioned.fill(
                 child: Align(
                   alignment: _suffixIconAlignment(),
@@ -126,9 +120,6 @@ class ScrollableStack extends StatelessWidget {
                       padding: iconPadding),
                 ),
               );
-              // }
-
-              // return const SizedBox();
             },
           ),
         ] else if (!disableIcons && useIconGroup) ...[
@@ -154,7 +145,6 @@ class ScrollableStack extends StatelessWidget {
       ValueListenableBuilder<bool>(
         valueListenable: provider.prefixVisibleNotifier,
         builder: (_, value, child) {
-          // if (value) {
           return _scrollIcon(
             enabled: value,
             axisDirection: AxisDirection.left,
@@ -166,15 +156,11 @@ class ScrollableStack extends StatelessWidget {
                 ? const EdgeInsets.only(right: 4.0)
                 : const EdgeInsets.only(bottom: 4.0),
           );
-          // }
-
-          // return const SizedBox();
         },
       ),
       ValueListenableBuilder<bool>(
         valueListenable: provider.suffixVisibleNotifier,
         builder: (_, value, child) {
-          // if (value) {
           return _scrollIcon(
             enabled: value,
             axisDirection: AxisDirection.right,
@@ -186,9 +172,6 @@ class ScrollableStack extends StatelessWidget {
                 ? const EdgeInsets.only(left: 4.0)
                 : const EdgeInsets.only(top: 4.0),
           );
-          // }
-
-          // return const SizedBox();
         },
       ),
     ];

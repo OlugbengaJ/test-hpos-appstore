@@ -15,12 +15,6 @@ class ScrollableStackProvider extends ChangeNotifier {
   final prefixVisibleNotifier = ValueNotifier(false);
   final suffixVisibleNotifier = ValueNotifier(true);
 
-  // @override
-  // void dispose() {
-  //   controller.removeListener(_controllerListener);
-  //   super.dispose();
-  // }
-
   /// Attach a listener to the controller.
   void _controllerListener() => _setIconsVisibility();
 
