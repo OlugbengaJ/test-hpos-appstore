@@ -74,7 +74,7 @@ class SuggestionTag extends StatelessWidget {
             ),
           ),
           ScrollableStack(
-            useIconGroup: true,
+            groupIcons: true,
             border: Border.all(color: themeData.primaryColorLight, width: 2.0),
             size: 34,
             children: [

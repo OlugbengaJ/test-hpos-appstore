@@ -19,7 +19,7 @@ class ScrollableStack extends StatelessWidget {
     this.scrollDirection = Axis.horizontal,
     this.disableIcons = false,
     this.iconPadding = const EdgeInsets.all(40.0),
-    this.useIconGroup = false,
+    this.groupIcons = false,
     this.iconGroupAtStart = false,
   }) : super(key: key);
 
@@ -58,9 +58,9 @@ class ScrollableStack extends StatelessWidget {
   final EdgeInsets iconPadding;
 
   /// Groups prefix and suffix icons at a specific end.
-  final bool useIconGroup;
+  final bool groupIcons;
 
-  /// Displays icons on the left or right if [useIconGroup] is `true`.
+  /// Displays icons on the left or right if [groupIcons] is `true`.
   /// Defaults to `false`, so icons appear on the right.
   /// When set to true, icons appear on the left.
   final bool iconGroupAtStart;
@@ -79,7 +79,7 @@ class ScrollableStack extends StatelessWidget {
         ),
 
         // non-grouped icons.
-        if (!disableIcons && !useIconGroup) ...[
+        if (!disableIcons && !groupIcons) ...[
           // non-grouped left button
           ValueListenableBuilder<bool>(
             valueListenable: provider.prefixVisibleNotifier,
@@ -122,7 +122,7 @@ class ScrollableStack extends StatelessWidget {
               );
             },
           ),
-        ] else if (!disableIcons && useIconGroup) ...[
+        ] else if (!disableIcons && groupIcons) ...[
           // grouped buttons
           Positioned.fill(
             child: Align(
