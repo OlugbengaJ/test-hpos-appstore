@@ -80,6 +80,8 @@ class ScrollableStackProvider extends ChangeNotifier {
         controller.position.extentAfter == 0) {
       // explicitly hide buttons since no extent to scroll
       _buttonsVisible = false;
+    } else if (!buttonsVisible) {
+      _buttonsVisible = true;
     }
   }
 }
