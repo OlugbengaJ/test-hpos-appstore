@@ -37,25 +37,25 @@ class AppLayout extends StatelessWidget {
                   topLeft: Radius.circular(Numericals.double40),
                 ),
               ),
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: Numericals.double40,
-                    bottom: Numericals.double40,
-                  ),
-                  child: Column(
-                    children: [
-                      header,
-                      Row(
-                        children: [
-                          Expanded(
-                            child: content,
-                          ),
-                        ],
+              child: Column(
+                children: [
+                  header,
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(
+                            0, Numericals.double40, 0, Numericals.double40),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: content,
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           )
