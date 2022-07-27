@@ -5,7 +5,6 @@ import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/widgets/components/nav_item.dart';
 
-
 class SidebarLayout extends StatelessWidget {
   const SidebarLayout({Key? key}) : super(key: key);
 
@@ -21,7 +20,10 @@ class SidebarLayout extends StatelessWidget {
           ),
           Column(
             children: [
-              NavItem(route: HomeScreen.route, asset: AppAssets.homePng),
+              NavItem(
+                route: HomeScreen.route,
+                asset: AppAssets.homePng,
+              ),
               const SizedBox(
                 height: 34,
               ),

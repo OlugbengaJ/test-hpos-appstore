@@ -14,8 +14,7 @@ class TextGradient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ShaderMask is used here but this could also be
-    // achieve using a custom paint
+    // ShaderMask is used here but could also be done using a custom paint.
     return ShaderMask(
       blendMode: BlendMode.srcIn,
       shaderCallback: (bounds) => gradient.createShader(

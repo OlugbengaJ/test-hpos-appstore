@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ButtonRound extends StatelessWidget {
   const ButtonRound({
     Key? key,
-    required this.size,
+    this.size = 24.0,
     this.color,
     this.icon,
     this.iconColor,
@@ -21,7 +21,7 @@ class ButtonRound extends StatelessWidget {
   /// If null, the button is set as disabled.
   final VoidCallback? onTap;
 
-  /// [size] is the size of the button.
+  /// [size] is the size of the button and defaults to 24.0.
   final double size;
 
   /// [radius] affects the inkwell radius.
@@ -60,13 +60,13 @@ class ButtonRound extends StatelessWidget {
         child: InkWell(
           onTap: onTap ?? () {},
           customBorder: const CircleBorder(),
-          splashColor: splashColor ?? Theme.of(context).primaryColor,
+          splashColor: splashColor,
           radius: radius,
           child: Icon(
             icon,
             // if icon size is null, use 70% of size to show tap effect
             size: iconSize ?? size * 0.7,
-            color: iconColor ?? Theme.of(context).primaryColorLight,
+            color: iconColor,
             semanticLabel: semanticLabel,
           ),
         ),

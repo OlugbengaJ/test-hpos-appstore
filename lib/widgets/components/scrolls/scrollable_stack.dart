@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
-import 'package:hpos_appstore/widgets/components/stacks/scrollable_stack_provider.dart';
+import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack_provider.dart';
 
 /// [ScrollableStack] renders a stack with widget children and overlay buttons.
 ///
@@ -48,6 +48,8 @@ class ScrollableStack extends StatelessWidget {
     final themeData = Theme.of(context);
     final provider = ScrollableStackProvider();
 
+    const double defaultButtonSize = 24.0;
+
     return Stack(
       children: [
         SingleChildScrollView(
@@ -65,7 +67,7 @@ class ScrollableStack extends StatelessWidget {
                   child: ButtonRound(
                     onTap: () => provider.scroll(AxisDirection.left),
                     color: buttonColor ?? themeData.primaryColor,
-                    size: size ?? 24,
+                    size: size ?? defaultButtonSize,
                     icon: suffixIcon ?? Icons.arrow_back,
                     iconColor:
                         iconColor ?? themeData.colorScheme.inversePrimary,
@@ -88,7 +90,7 @@ class ScrollableStack extends StatelessWidget {
                     child: ButtonRound(
                       onTap: () => provider.scroll(AxisDirection.right),
                       color: buttonColor ?? themeData.primaryColor,
-                      size: size ?? 24,
+                      size: size ?? defaultButtonSize,
                       icon: suffixIcon ?? Icons.arrow_forward,
                       iconColor:
                           iconColor ?? themeData.colorScheme.inversePrimary,

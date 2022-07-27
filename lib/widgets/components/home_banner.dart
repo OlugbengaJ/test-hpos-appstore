@@ -27,19 +27,19 @@ class HomeBanner extends StatelessWidget {
         borderRadius: BorderRadius.circular(Numericals.double16),
         image: DecorationImage(
           image: Image.asset(AppAssets.bannerAppsPng).image,
-          alignment: Alignment.centerRight,
+          alignment: const Alignment(0.8, 1.0),
         ),
       ),
       child: SizedBox(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 55.0, top: 55.0, left: 60.0),
+          padding: const EdgeInsets.all(55.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
               TextGradient(
                 text: AppTexts.homeBannerText1,
-                textStyle: themeData.textTheme.headline4
+                textStyle: themeData.textTheme.headline5
                     ?.copyWith(fontWeight: FontWeight.w600, fontSize: 40.0),
                 gradient: const RadialGradient(
                   radius: 10,
@@ -52,7 +52,7 @@ class HomeBanner extends StatelessWidget {
               ),
               TextGradient(
                 text: AppTexts.homeBannerText2,
-                textStyle: themeData.textTheme.headline4
+                textStyle: themeData.textTheme.headline5
                     ?.copyWith(fontWeight: FontWeight.w600, fontSize: 40.0),
                 gradient: const RadialGradient(
                   radius: 10,

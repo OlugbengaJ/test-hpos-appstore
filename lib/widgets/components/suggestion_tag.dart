@@ -2,23 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/enums.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_horizontal.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_vertical.dart';
-import 'package:hpos_appstore/widgets/components/stacks/scrollable_stack.dart';
+import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:provider/provider.dart';
 
 class SuggestionTag extends StatelessWidget {
-  const SuggestionTag(
-      {Key? key, required this.tag, required this.apps, required this.cardType})
-      : super(key: key);
+  const SuggestionTag({
+    Key? key,
+    required this.tag,
+    required this.products,
+    required this.cardType,
+  }) : super(key: key);
 
   final String tag;
-  final List<Product> apps;
-  final String cardType;
+  final List<Product> products;
+  final CardType cardType;
 
   @override
   Widget build(BuildContext context) {
+    final maxIndex = products.length - 1;
+
     return Padding(
       padding: const EdgeInsets.only(top: 24.0),
       child: Column(
@@ -66,16 +72,20 @@ class SuggestionTag extends StatelessWidget {
           ScrollableStack(
             size: 34,
             children: [
-              ...apps.map(
-                (app) => Padding(
-                  padding: const EdgeInsets.only(right: 32.0),
-                  child: ListenableProvider(
-                    create: (context) => ProductProvider.fromModel(app),
-                    child: (cardType == 'vertical')
-                        ? const CardProductVertical()
-                        : const CardProductHorizontal(),
-                  ),
-                ),
+              ...products.map(
+                (product) {
+                  final bool isLast = products.indexOf(product) == maxIndex;
+
+                  return Padding(
+                    padding: EdgeInsets.only(right: isLast ? 0.0 : 32.0),
+                    child: ListenableProvider(
+                      create: (context) => ProductProvider.fromModel(product),
+                      child: (cardType == CardType.vertical)
+                          ? const CardProductVertical()
+                          : const CardProductHorizontal(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
