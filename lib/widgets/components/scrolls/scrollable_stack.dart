@@ -259,7 +259,7 @@ class ScrollableStack extends StatelessWidget {
       padding: padding,
       child: ButtonRound(
         onTap: enabled ? () => provider.scroll(axisDirection) : null,
-        color: enabled ? color : color.withAlpha(40),
+        color: enabled ? color : color.withAlpha(20),
         border: border,
         size: size ?? 24.0,
         icon: icon,
