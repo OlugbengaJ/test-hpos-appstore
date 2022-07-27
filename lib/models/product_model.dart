@@ -12,7 +12,7 @@ class Product {
 
 class SuggestedApps {
   final String tag;
-  final List<Product> apps;
+  final List<Product> products;
 
-  SuggestedApps(this.tag, this.apps);
+  SuggestedApps(this.tag, this.products);
 }
