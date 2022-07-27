@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/models/app_model.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
 import 'package:hpos_appstore/widgets/components/ratings_bar.dart';
+import 'package:hpos_appstore/widgets/components/stacks/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
 
@@ -213,206 +215,97 @@ class AppDetailsView extends StatelessWidget {
             
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "Ratings",
-                        style: TextStyle(
-                          color: Color(0xff667085)
-                        ),
-                      ),
+              children:  [
+                const AppInfoCard(
+                  top: "Ratings",
+                  center: Text(
+                    "4.5",
+                    style: TextStyle(
+                      color: Color(0xffF2F4F7),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40
                     ),
-                    Container(
-                      child: Text(
-                        "4.5",
-                        style: TextStyle(
-                          color: Color(0xffF2F4F7)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Average",
-                        style: TextStyle(
-                          color: Color(0xffD0D5DD)
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),bottom: "Average",
                 ),
-                VerticalDivider(
+                const VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "Ratings",
-                        style: TextStyle(
-                          color: Color(0xff667085)
-                        ),
-                      ),
+                const AppInfoCard(
+                  top: "Size",
+                  center: Text(
+                    "148",
+                    style: TextStyle(
+                      color: Color(0xffF2F4F7),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40
                     ),
-                    Container(
-                      child: Text(
-                        "4.5",
-                        style: TextStyle(
-                          color: Color(0xffF2F4F7)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Average",
-                        style: TextStyle(
-                          color: Color(0xffD0D5DD)
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                VerticalDivider(
+                  ),bottom: "MB",
+                ),                
+                const VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "Ratings",
-                        style: TextStyle(
-                          color: Color(0xff667085)
-                        ),
-                      ),
+                const AppInfoCard(
+                  top: "Age",
+                  center: Text(
+                    "4 +",
+                   style: TextStyle(
+                      color: Color(0xffF2F4F7),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40
                     ),
-                    Container(
-                      child: Text(
-                        "4.5",
-                        style: TextStyle(
-                          color: Color(0xffF2F4F7)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Average",
-                        style: TextStyle(
-                          color: Color(0xffD0D5DD)
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),bottom: "Years",
                 ),
-                VerticalDivider(
+                const VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "Ratings",
-                        style: TextStyle(
-                          color: Color(0xff667085)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "4.5",
-                        style: TextStyle(
-                          color: Color(0xffF2F4F7)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Average",
-                        style: TextStyle(
-                          color: Color(0xffD0D5DD)
-                        ),
-                      ),
-                    ),
-                  ],
+                 AppInfoCard(
+                  top: "Developer",
+                  center: ImageIcon(
+                    AssetImage("assets/icons/terminal-square.png"),
+                    size: 40,
+                    color:  Color(0xffF2F4F7)
+                  ),
+                  bottom: "Microsoft Inc",
                 ),
-                VerticalDivider(
+                const VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "Ratings",
-                        style: TextStyle(
-                          color: Color(0xff667085)
-                        ),
-                      ),
+                const AppInfoCard(
+                  top: "Language",
+                  center: Text(
+                    "EN",
+                    style: TextStyle(
+                      color: Color(0xffF2F4F7),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40
                     ),
-                    Container(
-                      child: Text(
-                        "4.5",
-                        style: TextStyle(
-                          color: Color(0xffF2F4F7)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Average",
-                        style: TextStyle(
-                          color: Color(0xffD0D5DD)
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),bottom: "+ 10 More",
                 ),
-                VerticalDivider(
+                const VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "Ratings",
-                        style: TextStyle(
-                          color: Color(0xff667085)
-                        ),
-                      ),
+                const AppInfoCard(
+                  top: "Parental Guidance",
+                  center: Text(
+                    "12 +",
+                    style: TextStyle(
+                      color: Color(0xffF2F4F7),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40
                     ),
-                    Container(
-                      child: Text(
-                        "4.5",
-                        style: TextStyle(
-                          color: Color(0xffF2F4F7)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Average",
-                        style: TextStyle(
-                          color: Color(0xffD0D5DD)
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),bottom: "Recommended",
                 ),
+
               ],
             ),
           ),
@@ -465,35 +358,22 @@ class AppDetailsView extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: SizedBox(
+                  child: Container(
+                    alignment: Alignment.topLeft,
                     height: 403,
-                    child: Stack(
+                    child: const ScrollableStack(
+                      size: 40,
                       children: [
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: const [
-                                AppScreenShot(
-                                  image: "assets/images/screenshot_1.png",
-                                ),
-                                SizedBox(width: 17,),
-                                AppScreenShot(
-                                  image: "assets/images/screenshot_2.png",
-                                ),
-                              ],
-                            ),
-                          ),
+                        AppScreenShot(
+                          image: "assets/images/screenshot_1.png",
                         ),
-                        Container(
-                          height: 403,
-                          alignment: Alignment.centerRight,
-                          child: const ArrowForwardWidget(),
+                        SizedBox(width: 17,),
+                        AppScreenShot(
+                          image: "assets/images/screenshot_2.png",
                         ),
                       ],
-                    ),
+                    )
+                    
                   ),
                 ),
 
@@ -512,7 +392,7 @@ class AppDetailsView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Ratings and Reviews",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -624,50 +504,37 @@ class AppDetailsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: SizedBox(
+                  child: Container(
+                    alignment: Alignment.topLeft,
                     height: 403,
-                    child: Stack(
+                    child: const ScrollableStack(
+                      size: 40,
                       children: [
-                        Container(
-                          height: 299,
-                          alignment: Alignment.topLeft,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: const [
-                                AppReviewCard(
-                                  title: "This app is trash",
-                                  content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                                  username: "Draqaris001",
-                                  date: "14/07/2021",
-                                  likes: 25,
-                                  dislikes: 0,
-                                  stars: 1,
-                                ),
-                                SizedBox(width: 17,),
+                        AppReviewCard(
+                          title: "This app is trash",
+                          content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
+                          username: "Draqaris001",
+                          date: "14/07/2021",
+                          likes: 25,
+                          dislikes: 0,
+                          stars: 1,
+                        ),
+                        SizedBox(width: 17,),
 
-                                AppReviewCard(
-                                  title: "Best app in the world",
-                                  content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                                  username: "Draqaris001",
-                                  date: "14/07/2021",
-                                  likes: 23,
-                                  dislikes: 0,
-                                  stars: 1,
-                                ),
-                                
-                              ],
-                            ),
-                          ),
+                        AppReviewCard(
+                          title: "Best app in the world",
+                          content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
+                          username: "Draqaris001",
+                          date: "14/07/2021",
+                          likes: 23,
+                          dislikes: 0,
+                          stars: 1,
                         ),
-                        Container(
-                          height: 299,
-                          alignment: Alignment.centerRight,
-                          child: const ArrowForwardWidget(),
-                        ),
+                        
                       ],
-                    ),
+                    )
+                    
+                    
                   ),
                 ),                
               ],
