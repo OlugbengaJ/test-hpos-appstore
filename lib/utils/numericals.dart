@@ -4,6 +4,7 @@
 /// which allows easy code refactoring when necessary.
 class Numericals {
   static double double4 = 4.0;
+  static double double8 = 8.0;
   static double double16 = 16.0;
   static double double40 = 40.0;
   static double navItemRect = 3.0;

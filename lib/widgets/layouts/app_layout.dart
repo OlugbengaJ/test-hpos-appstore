@@ -39,7 +39,10 @@ class AppLayout extends StatelessWidget {
               ),
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.all(Numericals.double40),
+                  padding: EdgeInsets.only(
+                    top: Numericals.double40,
+                    bottom: Numericals.double40,
+                  ),
                   child: Column(
                     children: [
                       header,

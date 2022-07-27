@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/utils/enums.dart';
+import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/home_banner.dart';
 import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
@@ -47,7 +48,13 @@ class HomeView extends StatelessWidget {
 
     return Column(
       children: [
-        const HomeBanner(),
+        Padding(
+          padding: EdgeInsets.only(
+            left: Numericals.double40,
+            right: Numericals.double40,
+          ),
+          child: const HomeBanner(),
+        ),
         app_spacer.Spacer.bottomMedium,
         SuggestionTag(
           tag: suggestedProd.tag,
