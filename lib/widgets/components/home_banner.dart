@@ -75,6 +75,10 @@ class HomeBanner extends StatelessWidget {
                         AppColors.primaryW400,
                       ],
                     ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 20.5,
+                    ),
                     text: const Text(
                       AppTexts.discoverMore,
                       textAlign: TextAlign.center,
@@ -83,10 +87,6 @@ class HomeBanner extends StatelessWidget {
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
                       ),
-                    ),
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 20.5,
                     ),
                   ),
                 ],
