@@ -79,25 +79,30 @@ class ScrollableStack extends StatelessWidget {
         ),
 
         // non-grouped icons.
-        if (!disableIcons && !groupIcons) ...[
+        if (!disableIcons && !groupIcons && provider.buttonsVisible) ...[
           // non-grouped left button
           ValueListenableBuilder<bool>(
-            valueListenable: provider.prefixVisibleNotifier,
-            builder: (_, value, child) {
-              return Positioned.fill(
-                child: Align(
-                  alignment: _prefixIconAlignment(),
-                  child: _scrollIcon(
-                    enabled: value,
-                    axisDirection: AxisDirection.left,
-                    provider: provider,
-                    color: buttonColor ?? themeData.primaryColor,
-                    iconColor:
-                        iconColor ?? themeData.colorScheme.inversePrimary,
-                    icon: prefixIcon ?? Icons.arrow_back,
-                    padding: iconPadding,
-                  ),
-                ),
+            valueListenable: provider.suffixVisibleNotifier,
+            builder: (_, suffixVisible, child) {
+              return ValueListenableBuilder<bool>(
+                valueListenable: provider.prefixVisibleNotifier,
+                builder: (_, prefixVisible, child) {
+                  return Positioned.fill(
+                    child: Align(
+                      alignment: _prefixIconAlignment(),
+                      child: _scrollIcon(
+                        enabled: prefixVisible,
+                        axisDirection: AxisDirection.left,
+                        provider: provider,
+                        color: buttonColor ?? themeData.primaryColor,
+                        iconColor:
+                            iconColor ?? themeData.colorScheme.inversePrimary,
+                        icon: prefixIcon ?? Icons.arrow_back,
+                        padding: iconPadding,
+                      ),
+                    ),
+                  );
+                },
               );
             },
           ),
@@ -105,32 +110,47 @@ class ScrollableStack extends StatelessWidget {
           // non-grouped right button
           ValueListenableBuilder<bool>(
             valueListenable: provider.suffixVisibleNotifier,
-            builder: (_, value, child) {
-              return Positioned.fill(
-                child: Align(
-                  alignment: _suffixIconAlignment(),
-                  child: _scrollIcon(
-                      enabled: value,
-                      axisDirection: AxisDirection.right,
-                      provider: provider,
-                      color: buttonColor ?? themeData.primaryColor,
-                      iconColor:
-                          iconColor ?? themeData.colorScheme.inversePrimary,
-                      icon: suffixIcon ?? Icons.arrow_forward,
-                      padding: iconPadding),
-                ),
+            builder: (_, suffixVisible, child) {
+              return ValueListenableBuilder<bool>(
+                valueListenable: provider.suffixVisibleNotifier,
+                builder: (_, suffixVisible, child) {
+                  return Positioned.fill(
+                    child: Align(
+                      alignment: _suffixIconAlignment(),
+                      child: _scrollIcon(
+                          enabled: suffixVisible,
+                          axisDirection: AxisDirection.right,
+                          provider: provider,
+                          color: buttonColor ?? themeData.primaryColor,
+                          iconColor:
+                              iconColor ?? themeData.colorScheme.inversePrimary,
+                          icon: suffixIcon ?? Icons.arrow_forward,
+                          padding: iconPadding),
+                    ),
+                  );
+                },
               );
             },
           ),
-        ] else if (!disableIcons && groupIcons) ...[
+        ] else if (!disableIcons && groupIcons && provider.buttonsVisible) ...[
           // grouped buttons
-          Positioned.fill(
-            child: Align(
-              alignment: iconGroupAtStart
-                  ? Alignment.centerLeft
-                  : Alignment.centerRight,
-              child: _groupedIconsLayout(_groupedIcons(provider, themeData)),
-            ),
+          ValueListenableBuilder<bool>(
+            valueListenable: provider.buttonsVisibleNotifier,
+            builder: (_, buttonVisible, __) {
+              if (buttonVisible) {
+                return Positioned.fill(
+                  child: Align(
+                    alignment: iconGroupAtStart
+                        ? Alignment.centerLeft
+                        : Alignment.centerRight,
+                    child:
+                        _groupedIconsLayout(_groupedIcons(provider, themeData)),
+                  ),
+                );
+              }
+
+              return const SizedBox();
+            },
           )
         ],
       ],

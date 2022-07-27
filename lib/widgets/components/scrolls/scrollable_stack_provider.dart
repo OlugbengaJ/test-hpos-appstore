@@ -14,6 +14,7 @@ class ScrollableStackProvider extends ChangeNotifier {
   late ScrollController controller;
   final prefixVisibleNotifier = ValueNotifier(false);
   final suffixVisibleNotifier = ValueNotifier(true);
+  final buttonsVisibleNotifier = ValueNotifier(true);
 
   /// Attach a listener to the controller.
   void _controllerListener() => _setIconsVisibility();
@@ -23,6 +24,11 @@ class ScrollableStackProvider extends ChangeNotifier {
 
   /// Change the value of the [prefixVisibleNotifier].
   set _prefixVisible(bool value) => prefixVisibleNotifier.value = value;
+
+  /// Change the value of the [buttonsVisibleNotifier].
+  /// This explicitly hides scroll buttons if the scrolling is not possible.
+  set _buttonsVisible(bool value) => buttonsVisibleNotifier.value = value;
+  bool get buttonsVisible => buttonsVisibleNotifier.value;
 
   /// Animates the [controller] position from its current value to the given value.
   void scroll(AxisDirection axisDirection, [double? scrollExtent]) async {
@@ -68,6 +74,12 @@ class ScrollableStackProvider extends ChangeNotifier {
     }
     if (controller.offset != controller.position.maxScrollExtent) {
       _suffixVisible = true;
+    }
+
+    if (controller.position.extentBefore == 0 &&
+        controller.position.extentAfter == 0) {
+      // explicitly hide buttons since no extent to scroll
+      _buttonsVisible = false;
     }
   }
 }
