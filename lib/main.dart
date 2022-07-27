@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/providers/navigation_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/screens/app_screen/app_details.dart';
@@ -8,12 +9,21 @@ import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(
-    ListenableProvider<NavigationProvider>(
-      create: (context) => NavigationProvider(),
-      child: const MyApp(),
-    ),
-  );
+  // runApp(
+  //   MultiProvider(
+  //     providers: [
+  //       ChangeNotifierProvider(create: (_) => LayersProvider()),
+  //     ],
+  //     child: const MyApp(),
+  //   ),
+  runApp(MultiProvider(
+    providers: [
+      ListenableProvider<NavigationProvider>(
+          create: (context) => NavigationProvider()),
+      ChangeNotifierProvider(create: (_) => LibraryProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

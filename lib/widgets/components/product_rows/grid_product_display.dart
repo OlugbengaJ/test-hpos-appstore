@@ -5,27 +5,23 @@ import 'package:hpos_appstore/widgets/components/product_card/card_product_verti
 import 'package:provider/provider.dart';
 
 class GridProductDisplay extends StatelessWidget {
-  const GridProductDisplay({Key? key, required this.tag, required this.apps})
-      : super(key: key);
+  const GridProductDisplay({Key? key, required this.apps}) : super(key: key);
 
-  final String tag;
-  final List<AppModel> apps;
+  final List<Product> apps;
   // final Bool? showTitle;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 24.0),
-      child: Wrap(
-        children: [
-          ...apps
-              .map((app) => ListenableProvider(
-                    create: (context) => ProductProvider.fromModel(app),
-                    child: const CardProductVertical(),
-                  ))
-              .toList(),
-        ],
-      ),
+    return Wrap(
+      children: [
+        ...apps.map((app) => ListenableProvider(
+              create: (context) => ProductProvider.fromModel(app),
+              child: const Padding(
+                padding: EdgeInsets.only(right: 30.0),
+                child: CardProductVertical(),
+              ),
+            )),
+      ],
     );
   }
 }

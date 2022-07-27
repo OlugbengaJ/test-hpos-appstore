@@ -5,11 +5,9 @@ import 'package:hpos_appstore/widgets/components/product_card/card_product_horiz
 import 'package:provider/provider.dart';
 
 class ListProductDisplay extends StatelessWidget {
-  const ListProductDisplay({Key? key, required this.tag, required this.apps})
-      : super(key: key);
+  const ListProductDisplay({Key? key, required this.apps}) : super(key: key);
 
-  final String tag;
-  final List<AppModel> apps;
+  final List<Product> apps;
   // final Bool? showTitle;
 
   @override
