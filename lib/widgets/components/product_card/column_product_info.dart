@@ -15,7 +15,7 @@ class ColumnProductInfo extends StatelessWidget {
     var productProvider = Provider.of<ProductProvider>(context);
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ValueListenableBuilder<String>(
@@ -42,10 +42,10 @@ class ColumnProductInfo extends StatelessWidget {
                 ),
               );
             }),
-        const Padding(padding: EdgeInsets.only(bottom: 12)),
         if (!headerOnly)
         Row(
           children: [
+            const Padding(padding: EdgeInsets.only(bottom: 12)),
             const RatingView(),
             const Padding(padding: EdgeInsets.only(right: 8)),
             ValueListenableBuilder<int>(

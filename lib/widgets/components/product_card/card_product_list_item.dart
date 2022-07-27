@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
@@ -7,6 +6,7 @@ import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.
 import 'package:hpos_appstore/widgets/components/product_card/rating_view.dart';
 
 import '../../../utils/texts.dart';
+import 'button_install.dart';
 
 class CardProductListItem extends StatelessWidget {
   const CardProductListItem({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class CardProductListItem extends StatelessWidget {
             Padding(padding: EdgeInsets.only(left: 127)),
             ButtonShare(),
             Padding(padding: EdgeInsets.only(left: 102)),
-            ButtonInstall(),
+            ButtonInstall(borderRadius: BorderRadius.all(Radius.circular(8.0))),
           ],
         ),
       ),
@@ -71,51 +71,6 @@ class ButtonShare extends StatelessWidget {
                 color: AppColors.primaryW500),
           )
         ],
-      ),
-    );
-  }
-}
-
-class ButtonInstall extends StatelessWidget {
-  const ButtonInstall({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40.0,
-      width: 256,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: AppColors.primaryW500,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          ),
-        ),
-        onPressed: () => {},
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: Text(
-                AppTexts.install,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            SvgPicture.asset(
-              'assets/icons/install.svg',
-              width: 12,
-              height: 12,
-              color: Colors.white,
-              semanticsLabel: 'Install icon',
-            ),
-          ],
-        ),
       ),
     );
   }

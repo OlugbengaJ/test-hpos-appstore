@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/widgets/components/product_card/card_product_list_item.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/product_provider.dart';
@@ -33,6 +34,7 @@ class ProductCardPreview extends StatelessWidget {
             ),
           ],
         ),
+        const CardProductListItem()
       ],
     );
   }
