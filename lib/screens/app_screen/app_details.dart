@@ -684,7 +684,7 @@ class AppDetailsView extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(bottom: 24),
-                  child: Text(
+                  child: const Text(
                     "System requirements",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
