@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/screens/app_screen/app_details.dart';
+import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
+import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 import 'package:hpos_appstore/utils/assets.dart';
+import 'package:hpos_appstore/widgets/components/nav_item.dart';
 
 class SidebarLayout extends StatelessWidget {
   const SidebarLayout({Key? key}) : super(key: key);
@@ -16,27 +20,13 @@ class SidebarLayout extends StatelessWidget {
           ),
           Column(
             children: [
-              InkWell(
-                onTap: () => Navigator.of(context)
-                    .popUntil(ModalRoute.withName('/home')),
-                child: SizedBox(
-                  child: ImageIcon(
-                    AssetImage(AppAssets.homePng),
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              NavItem(route: HomeScreen.route, asset: AppAssets.homePng),
               const SizedBox(
-                height: 20,
+                height: 34,
               ),
-              InkWell(
-                onTap: () => Navigator.pushNamed(context, "/library"),
-                child: SizedBox(
-                  child: ImageIcon(
-                    AssetImage(AppAssets.laptopPng),
-                    color: Colors.white,
-                  ),
-                ),
+              NavItem(
+                route: LibraryScreen.route,
+                asset: AppAssets.laptopPng,
               ),
             ],
           ),
@@ -44,14 +34,11 @@ class SidebarLayout extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                InkWell(
-                  onTap: () => Navigator.pushNamed(context, "/app_details"),
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    child: ImageIcon(
-                      AssetImage(AppAssets.helpPng),
-                      color: Colors.white,
-                    ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 16),
+                  child: NavItem(
+                    route: AppDetailsView.route,
+                    asset: AppAssets.helpPng,
                   ),
                 ),
               ],

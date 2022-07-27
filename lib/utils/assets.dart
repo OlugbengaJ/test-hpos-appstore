@@ -11,8 +11,9 @@
 /// This approach makes refactoring quick and error free.
 /// Also, for localization, you have a central place to do just that.
 class AppAssets {
-  static String hpLogoPng = 'assets/images/hp_logo.png';
-  static String homePng = 'assets/icons/home.png';
-  static String laptopPng = 'assets/icons/laptop.png';
+  static String bannerAppsPng = 'assets/images/banner_apps.png';
   static String helpPng = 'assets/icons/help.png';
+  static String homePng = 'assets/icons/home.png';
+  static String hpLogoPng = 'assets/images/hp_logo.png';
+  static String laptopPng = 'assets/icons/laptop.png';
 }
