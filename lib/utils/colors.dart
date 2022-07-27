@@ -8,6 +8,7 @@ class AppColors {
   static const Color tertiary = Color(0xff434afa);
   static const Color danger = Color(0xFFFA4343);
   static const Color success = Color(0xff434afa);
+  static const Color greyW25 = Color(0xffFCFCFD);
   static const Color greyW400 = Color(0xff98A2B3);
   static const Color greyW600 = Color(0xff344054);
   static const Color greyW900 = Color(0xff101828);
@@ -21,4 +22,5 @@ class AppColors {
   static const Color greenShader1 = Color(0xffd4ffec);
   static const Color greenShader2 = Color(0xff57f2cc);
   static const Color greenShader3 = Color(0xff4596fb);
+  static const Color background = Color(0xffF2F5F7);
 }

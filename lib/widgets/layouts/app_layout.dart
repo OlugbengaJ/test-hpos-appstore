@@ -17,50 +17,46 @@ class AppLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          color: AppColors.primaryW500,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              width: 111,
-              child: Container(
-                color: AppColors.primary,
-                child: const SidebarLayout(),
+      backgroundColor: AppColors.primaryW500,
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(
+            width: 111,
+            child: Container(
+              color: AppColors.primary,
+              child: const SidebarLayout(),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(top: Numericals.double16),
+              decoration: BoxDecoration(
+                color: AppColors.background,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(Numericals.double40),
+                ),
+              ),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(Numericals.double40),
+                  child: Column(
+                    children: [
+                      header,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: content,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(top: Numericals.double16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Numericals.double40),
-                  ),
-                ),
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.all(Numericals.double40),
-                    child: Column(
-                      children: [
-                        header,
-                        Row(
-                          children: [
-                            Expanded(
-                              child: content,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
