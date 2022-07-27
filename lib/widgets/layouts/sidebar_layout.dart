@@ -3,17 +3,14 @@ import 'package:hpos_appstore/screens/app_screen/app_details.dart';
 import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
 import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 import 'package:hpos_appstore/utils/assets.dart';
-import 'package:provider/provider.dart';
+import 'package:hpos_appstore/widgets/components/nav_item.dart';
 
-import '../../providers/navigation_provider.dart';
 
 class SidebarLayout extends StatelessWidget {
   const SidebarLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var navigationProvider = Provider.of<NavigationProvider>(context);
-
     return Container(
       margin: const EdgeInsets.only(top: 16),
       child: Column(
@@ -24,26 +21,13 @@ class SidebarLayout extends StatelessWidget {
           ),
           Column(
             children: [
-              InkWell(
-                onTap: () => navigationProvider.navigateTo(HomeScreen.route),
-                child: SizedBox(
-                  child: ImageIcon(
-                    AssetImage(AppAssets.homePng),
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              NavItem(route: HomeScreen.route, asset: AppAssets.homePng),
               const SizedBox(
-                height: 20,
+                height: 34,
               ),
-              InkWell(
-                onTap: () => navigationProvider.navigateTo(LibraryScreen.route),
-                child: SizedBox(
-                  child: ImageIcon(
-                    AssetImage(AppAssets.laptopPng),
-                    color: Colors.white,
-                  ),
-                ),
+              NavItem(
+                route: LibraryScreen.route,
+                asset: AppAssets.laptopPng,
               ),
             ],
           ),
@@ -51,15 +35,11 @@ class SidebarLayout extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                InkWell(
-                  onTap: () =>
-                      navigationProvider.navigateTo(AppDetailsView.route),
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    child: ImageIcon(
-                      AssetImage(AppAssets.helpPng),
-                      color: Colors.white,
-                    ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 16),
+                  child: NavItem(
+                    route: AppDetailsView.route,
+                    asset: AppAssets.helpPng,
                   ),
                 ),
               ],

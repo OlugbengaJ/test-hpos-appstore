@@ -11,7 +11,7 @@ class HeaderLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themData = Theme.of(context);
+    final themeData = Theme.of(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +35,7 @@ class HeaderLayout extends StatelessWidget {
             ),
             Text(
               'Amaka Obasi',
-              style: themData.textTheme.headline5
+              style: themeData.textTheme.headline5
                   ?.copyWith(fontWeight: FontWeight.bold),
             ),
           ],
@@ -52,7 +52,7 @@ class HeaderLayout extends StatelessWidget {
           children: [
             Icon(
               Icons.notifications_outlined,
-              color: themData.primaryColor,
+              color: themeData.primaryColor,
             ),
             app_spacer.Spacer.leftMedium,
             Container(
@@ -60,7 +60,7 @@ class HeaderLayout extends StatelessWidget {
               width: 48.0,
               height: 48.0,
               decoration: BoxDecoration(
-                  border: Border.all(color: themData.highlightColor, width: 3),
+                  border: Border.all(color: themeData.highlightColor, width: 3),
                   borderRadius: BorderRadius.circular(24)),
               child: const AppAvatar(title: 'Amaka Obasi'),
             ),
