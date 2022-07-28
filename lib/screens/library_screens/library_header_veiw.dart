@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/product_card/tag_button.dart';
@@ -10,6 +11,11 @@ class LibraryHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LibraryApps view =
+        Provider.of<LibraryProvider>(context, listen: false).appView;
+    String filterTag =
+        Provider.of<LibraryProvider>(context, listen: false).filterTag;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,15 +43,20 @@ class LibraryHeaderView extends StatelessWidget {
                             height: 3,
                             width: 70,
                             margin: const EdgeInsets.only(top: 46),
-                            decoration: const BoxDecoration(
-                              color: AppColors.primary,
+                            decoration: BoxDecoration(
+                              color: (view == LibraryApps.all)
+                                  ? AppColors.primary
+                                  : Colors.transparent,
                             ))
                       ]),
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<LibraryProvider>(context, listen: false)
+                        .setAppView(LibraryApps.all);
+                  },
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      fixedSize: const Size(150, 50),
+                      fixedSize: const Size(110, 50),
                       primary: Colors.grey,
                       backgroundColor: Colors.transparent),
                   child: Stack(
@@ -53,13 +64,21 @@ class LibraryHeaderView extends StatelessWidget {
                       fit: StackFit.passthrough,
                       children: [
                         const Positioned(
-                            top: 10, child: Text('Installed Apps')),
+                            top: 16, child: Text('Installed Apps')),
                         Container(
-                          height: 2,
-                          margin: const EdgeInsets.only(top: 40.0),
-                        )
+                            height: 3,
+                            width: 100,
+                            margin: const EdgeInsets.only(top: 46),
+                            decoration: BoxDecoration(
+                              color: (view == LibraryApps.installed)
+                                  ? AppColors.primary
+                                  : Colors.transparent,
+                            ))
                       ]),
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<LibraryProvider>(context, listen: false)
+                        .setAppView(LibraryApps.installed);
+                  },
                 ),
               ],
             )),

@@ -18,6 +18,8 @@ class LibraryView extends StatelessWidget {
         Provider.of<LibraryProvider>(context).getFilterData('all');
     var display =
         Provider.of<LibraryProvider>(context, listen: false).displayType;
+    LibraryApps appView =
+        Provider.of<LibraryProvider>(context, listen: false).appView;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -60,12 +62,15 @@ class LibraryView extends StatelessWidget {
           ],
         ),
         app_spacer.Spacer.bottomMedium,
-        Wrap(children: [
-          (Provider.of<LibraryProvider>(context, listen: false).displayType ==
-                  LibraryDisplay.grid)
-              ? GridProductDisplay(apps: apps)
-              : ListProductDisplay(apps: apps)
-        ]),
+        (appView == LibraryApps.installed)
+            ? ListProductDisplay(apps: apps)
+            : Wrap(children: [
+                (Provider.of<LibraryProvider>(context, listen: false)
+                            .displayType ==
+                        LibraryDisplay.grid)
+                    ? GridProductDisplay(apps: apps)
+                    : ListProductDisplay(apps: apps)
+              ]),
       ],
     );
   }
