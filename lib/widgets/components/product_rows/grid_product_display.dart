@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/models/app_model.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_vertical.dart';
 import 'package:provider/provider.dart';

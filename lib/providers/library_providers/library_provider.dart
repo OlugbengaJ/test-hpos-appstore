@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/models/app_model.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 
 class LibraryProvider extends ChangeNotifier {
   List<Product> getFilterData(String categoryName) {
