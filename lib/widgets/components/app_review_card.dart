@@ -66,7 +66,7 @@ class AppReviewCard extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
-                              color: Color(0xff98A2B3)
+                              color: AppColors.greyW400
                             ),
                           ),
                         ),
@@ -75,7 +75,7 @@ class AppReviewCard extends StatelessWidget {
                           child: Icon(
                             Icons.circle,
                             size: 5,
-                            color: Color(0xff98A2B3)
+                            color: AppColors.greyW400
                           ),
                         ),
                         Container(
@@ -84,7 +84,7 @@ class AppReviewCard extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
-                              color: Color(0xff98A2B3)
+                              color: AppColors.greyW400
                             ),
                           ),
                         )
