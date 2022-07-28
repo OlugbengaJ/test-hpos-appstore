@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 
 class SystemRequirementCard extends StatefulWidget {
@@ -25,14 +26,14 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
               child: Row(
                 children: [
                   Container(
-                    child: Icon(
+                    child: const Icon(
                       Icons.check_circle,
                       color: AppColors.green,
                     )
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 26.33),
-                    child: Text(
+                    child: const Text(
                       "This application should work on your device. Items with a tick meets the developer’s system requirments",
                       style: TextStyle(
                         color: AppColors.primaryW900,
@@ -68,7 +69,9 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                   ),
                   Container(
                     child: ImageIcon(
-                      AssetImage("assets/icons/chevron-down.png")
+                      AssetImage(
+                        AppAssets.chevronDownPng
+                      )
                     )
                   ),
                 ],
