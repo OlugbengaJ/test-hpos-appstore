@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 
 class SystemRequirementCard extends StatefulWidget {
   const SystemRequirementCard({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
   @override
   Widget build(BuildContext context) {
     return PhysicalModel(
-      color: Color(0xffFCFCFD),
+      color: AppColors.greyW25,
       borderRadius: BorderRadius.circular(16),
       elevation: 1,
       child: Container(

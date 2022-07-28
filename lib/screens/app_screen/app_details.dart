@@ -57,7 +57,7 @@ class AppDetailsView extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(top:100),
+          margin: const EdgeInsets.only(top:100),
           padding: EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
@@ -74,7 +74,11 @@ class AppDetailsView extends StatelessWidget {
                       width: 184,
                       decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xff101828), Color(0xff344054), Color(0xff1d2939)],
+                        colors: [
+                          AppColors.greyW900, 
+                          AppColors.greyW600, 
+                          AppColors.greyW1000
+                        ],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
@@ -102,10 +106,10 @@ class AppDetailsView extends StatelessWidget {
                                     title: Row(
                                       children: [
                                         Container(
-                                          child: Text(
+                                          child: const Text(
                                             "Microsoft Teams",
                                             style: TextStyle(
-                                              color: Color(0xff101828),
+                                              color: AppColors.greyW900,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 28
                                             ),
@@ -116,14 +120,14 @@ class AppDetailsView extends StatelessWidget {
                                           width: 45,
                                           height: 23,
                                           decoration: BoxDecoration(
-                                            color: Color(0xffEDEEFE),
+                                            color: AppColors.primaryW25,
                                             borderRadius: BorderRadius.circular(16)                                      
                                           ),
                                           child: Center(
                                             child: Text(
                                               "Free",
                                               style: TextStyle(
-                                                color: Color(0xff3947C9),
+                                                color: AppColors.primaryW600,
                                                 fontWeight: FontWeight.bold
                                               ),
                                             )
@@ -163,7 +167,7 @@ class AppDetailsView extends StatelessWidget {
                                   InkWell(
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: Color(0xff4758F6),
+                                        color: AppColors.primaryW500,
                                         borderRadius: BorderRadius.circular(8)
                                       ),
                                       height: 48,
@@ -175,7 +179,7 @@ class AppDetailsView extends StatelessWidget {
                                             child: Text(
                                               "Install",
                                               style: TextStyle(
-                                                color: Color(0xffffffff),
+                                                color: AppColors.white,
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 18
                                               ),
@@ -183,7 +187,7 @@ class AppDetailsView extends StatelessWidget {
                                           ),
                                           ImageIcon(
                                             AssetImage("assets/icons/install.png"),
-                                            color: Color(0xffffffff),
+                                            color: AppColors.white,
                                           )
                                         ],
                                       ),
@@ -193,7 +197,7 @@ class AppDetailsView extends StatelessWidget {
                                   InkWell(
                                     child: ImageIcon(
                                       AssetImage("assets/icons/share_icon.png"),
-                                      color: Color(0xff6C79F8),
+                                      color: AppColors.primaryW400,
                                     ),
                                   ),
                                 ],
@@ -214,7 +218,7 @@ class AppDetailsView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 18),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Color(0xff101828), Color(0xff344054), Color(0xff1d2939)],
+                    colors: [AppColors.greyW900, AppColors.greyW600, AppColors.greyW1000],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
@@ -222,7 +226,7 @@ class AppDetailsView extends StatelessWidget {
                 ),
                 
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: const  [
                     AppInfoCard(
                       top: "Ratings",
@@ -438,7 +442,7 @@ class AppDetailsView extends StatelessWidget {
                           height: 184,
                           width: 184,
                           decoration:  BoxDecoration(
-                            color: const Color(0xff3947C9),
+                            color: AppColors.primaryW600,
                             borderRadius: BorderRadius.circular(16)
                           ),
                           child: Column(
@@ -450,7 +454,7 @@ class AppDetailsView extends StatelessWidget {
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 72,
-                                    color: Color(0xffffffff),
+                                    color: AppColors.white,
                                   ),
                                 ),
                               ),
@@ -460,7 +464,7 @@ class AppDetailsView extends StatelessWidget {
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 24,
-                                    color: Color(0xffffffff),
+                                    color: AppColors.white,
                                   ),
                                 ),
                               ),

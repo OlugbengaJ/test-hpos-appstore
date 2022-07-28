@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/product_card/rating_edit.dart';
 
 class AppReviewCard extends StatelessWidget {
@@ -26,14 +27,14 @@ class AppReviewCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return PhysicalModel(
       elevation: 1,
-      color: Color(0xffFCFCFD),
+      color: AppColors.greyW25,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         height: 299,
         width: 540,
         padding: const EdgeInsets.all(35),
         decoration: BoxDecoration(
-          color: Color(0xffFCFCFD),
+          color: AppColors.greyW25,
           borderRadius: BorderRadius.circular(16)
         ),
         
