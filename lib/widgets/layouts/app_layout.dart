@@ -36,6 +36,7 @@ class AppLayout extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  // header section containing search, profile, etc.
                   header,
                   Expanded(
                     child: SingleChildScrollView(
@@ -45,6 +46,7 @@ class AppLayout extends StatelessWidget {
                         child: Row(
                           children: [
                             Expanded(
+                              // content section
                               child: content,
                             ),
                           ],

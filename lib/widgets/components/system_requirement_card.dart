@@ -23,58 +23,48 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 36.33),
+              margin: const EdgeInsets.only(left: 36.33),
               child: Row(
                 children: [
                   Container(
-                    child: const Icon(
-                      Icons.check_circle,
-                      color: AppColors.green,
-                    )
-                  ),
+                      child: const Icon(
+                    Icons.check_circle,
+                    color: AppColors.green,
+                  )),
                   Container(
-                    margin: EdgeInsets.only(left: 26.33),
+                    margin: const EdgeInsets.only(left: 26.33),
                     child: const Text(
                       AppTexts.systemRequirementsMessage,
                       style: TextStyle(
-                        color: AppColors.primaryW900,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18
-                      ),
+                          color: AppColors.primaryW900,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18),
                     ),
                   )
                 ],
               ),
             ),
-
             Container(
-              margin: EdgeInsets.only(right: 19),
+              margin: const EdgeInsets.only(right: 19),
               height: 40,
               width: 137,
               decoration: BoxDecoration(
-                color: AppColors.primaryW25,
-                borderRadius: BorderRadius.circular(24)
-              ),
+                  color: AppColors.primaryW25,
+                  borderRadius: BorderRadius.circular(24)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [              
+                children: [
                   Container(
                     child: const Text(
                       AppTexts.showMore,
                       style: TextStyle(
-                        color: AppColors.primaryW600,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14
-                      ),
+                          color: AppColors.primaryW600,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14),
                     ),
                   ),
                   Container(
-                    child: ImageIcon(
-                      AssetImage(
-                        AppAssets.chevronDownPng
-                      )
-                    )
-                  ),
+                      child: ImageIcon(AssetImage(AppAssets.chevronDownPng))),
                 ],
               ),
             ),

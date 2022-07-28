@@ -21,14 +21,14 @@ class SidebarLayout extends StatelessWidget {
           Column(
             children: [
               NavItem(
-                route: HomeScreen.route,
+                screenConfig: HomeScreen.screenConfig,
                 asset: AppAssets.homePng,
               ),
               const SizedBox(
                 height: 34,
               ),
               NavItem(
-                route: LibraryScreen.route,
+                screenConfig: LibraryScreen.screenConfig,
                 asset: AppAssets.laptopPng,
               ),
             ],
@@ -40,7 +40,7 @@ class SidebarLayout extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child: NavItem(
-                    route: AppDetailsView.route,
+                    screenConfig: AppDetailsView.screenConfig,
                     asset: AppAssets.helpPng,
                   ),
                 ),

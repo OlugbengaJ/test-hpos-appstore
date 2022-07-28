@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
+import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/enums.dart';
@@ -16,11 +17,10 @@ import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
 class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
 
-  static String route = '/app_details';
+  static const screenConfig = ScreenConfig('/app_details');
 
   @override
   Widget build(BuildContext context) {
-
     var productivityApps = [
       Product(
           'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
@@ -58,7 +58,7 @@ class AppDetailsView extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(top:100),
+          margin: const EdgeInsets.only(top: 100),
           padding: EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
@@ -67,28 +67,29 @@ class AppDetailsView extends StatelessWidget {
             children: [
               // App Icon and summary
               Container(
-                margin: EdgeInsets.only(bottom:64),
+                margin: const EdgeInsets.only(bottom: 64),
                 child: Row(
                   children: [
                     Container(
                       height: 184,
                       width: 184,
                       decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: AppColors.gradientGreyW500,
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
+                        gradient: LinearGradient(
+                          colors: AppColors.gradientGreyW500,
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(16)),
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
-                    ),
                       child: Image(
-                        image: AssetImage("assets/icons/logos_microsoft-teams.png"),
+                        image: AssetImage(
+                            "assets/icons/logos_microsoft-teams.png"),
                       ),
                     ),
                     Expanded(
                       child: Container(
                         height: 184,
-                        margin: EdgeInsets.only(left: 30),
+                        margin: const EdgeInsets.only(left: 30),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +97,7 @@ class AppDetailsView extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
+                                SizedBox(
                                   height: 50,
                                   child: ListTile(
                                     contentPadding: EdgeInsets.zero,
@@ -106,29 +107,27 @@ class AppDetailsView extends StatelessWidget {
                                           child: const Text(
                                             "Microsoft Teams",
                                             style: TextStyle(
-                                              color: AppColors.greyW900,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 28
-                                            ),
+                                                color: AppColors.greyW900,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 28),
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(left: 10),
+                                          margin:
+                                              const EdgeInsets.only(left: 10),
                                           width: 45,
                                           height: 23,
                                           decoration: BoxDecoration(
-                                            color: AppColors.primaryW25,
-                                            borderRadius: BorderRadius.circular(16)                                      
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              "Free",
-                                              style: TextStyle(
+                                              color: AppColors.primaryW25,
+                                              borderRadius:
+                                                  BorderRadius.circular(16)),
+                                          child: const Center(
+                                              child: Text(
+                                            AppTexts.free,
+                                            style: TextStyle(
                                                 color: AppColors.primaryW600,
-                                                fontWeight: FontWeight.bold
-                                              ),
-                                            )
-                                          ),
+                                                fontWeight: FontWeight.bold),
+                                          )),
                                         ),
                                       ],
                                     ),
@@ -153,51 +152,49 @@ class AppDetailsView extends StatelessWidget {
                                 Container(
                                   margin: EdgeInsets.only(top: 10),
                                   width: 600,
-                                  child: Text("Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere."),
+                                  child: Text(
+                                      "Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere."),
                                 ),
                               ],
                             ),
-
                             Container(
                               child: Row(
                                 children: [
                                   InkWell(
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: AppColors.primaryW500,
-                                        borderRadius: BorderRadius.circular(8)
-                                      ),
+                                          color: AppColors.primaryW500,
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
                                       height: 48,
                                       width: 187,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Container(
                                             child: Text(
                                               AppTexts.install,
                                               style: TextStyle(
-                                                color: AppColors.white,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 18
-                                              ),
+                                                  color: AppColors.white,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18),
                                             ),
                                           ),
                                           ImageIcon(
-                                            AssetImage(
-                                              AppAssets.installPng
-                                            ),
+                                            AssetImage(AppAssets.installPng),
                                             color: AppColors.white,
                                           )
                                         ],
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 20,),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
                                   InkWell(
                                     child: ImageIcon(
-                                      AssetImage(
-                                        AppAssets.shareIconPng
-                                      ),
+                                      AssetImage(AppAssets.shareIconPng),
                                       color: AppColors.primaryW400,
                                     ),
                                   ),
@@ -212,33 +209,35 @@ class AppDetailsView extends StatelessWidget {
                 ),
               ),
 
-
               Container(
                 margin: EdgeInsets.only(bottom: 72),
                 height: 132,
                 padding: EdgeInsets.symmetric(vertical: 18),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [AppColors.greyW900, AppColors.greyW600, AppColors.greyW1000],
+                    colors: [
+                      AppColors.greyW900,
+                      AppColors.greyW600,
+                      AppColors.greyW1000
+                    ],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(16)),
                 ),
-                
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children:  [
+                  children: [
                     AppInfoCard(
                       top: "Ratings",
                       center: Text(
                         "4.5",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "Average",
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "Average",
                     ),
                     VerticalDivider(
                       color: AppColors.greyW600,
@@ -250,12 +249,12 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "148",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "MB",
-                    ),                
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "MB",
+                    ),
                     VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
@@ -265,27 +264,22 @@ class AppDetailsView extends StatelessWidget {
                       top: "Age",
                       center: Text(
                         "4 +",
-                       style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "Years",
+                        style: TextStyle(
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "Years",
                     ),
                     VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                     AppInfoCard(
+                    AppInfoCard(
                       top: "Developer",
-                      center: ImageIcon(
-                        AssetImage(
-                          AppAssets.terminalSquarePng
-                        ),
-                        size: 40,
-                        color:  AppColors.greyW100
-                      ),
+                      center: ImageIcon(AssetImage(AppAssets.terminalSquarePng),
+                          size: 40, color: AppColors.greyW100),
                       bottom: "Microsoft Inc",
                     ),
                     VerticalDivider(
@@ -298,11 +292,11 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "EN",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "+ 10 More",
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "+ 10 More",
                     ),
                     VerticalDivider(
                       color: AppColors.greyW600,
@@ -314,13 +308,12 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "12 +",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "Recommended",
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "Recommended",
                     ),
-
                   ],
                 ),
               ),
@@ -342,9 +335,7 @@ class AppDetailsView extends StatelessWidget {
                             const Text(
                               AppTexts.appScreenshots,
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 24
-                              ),
+                                  fontWeight: FontWeight.w600, fontSize: 24),
                             ),
                             TextButton(
                               onPressed: () => {},
@@ -374,25 +365,23 @@ class AppDetailsView extends StatelessWidget {
                     ),
                     Expanded(
                       child: Container(
-                        alignment: Alignment.topLeft,
-                        height: 403,
-                        child: const ScrollableStack(
-                          size: 40,
-                          children: [
-                            AppScreenShot(
-                              image: "assets/images/screenshot_1.png",
-                            ),
-                            SizedBox(width: 17,),
-                            AppScreenShot(
-                              image: "assets/images/screenshot_2.png",
-                            ),
-                          ],
-                        )
-                        
-                      ),
+                          alignment: Alignment.topLeft,
+                          height: 403,
+                          child: const ScrollableStack(
+                            size: 40,
+                            children: [
+                              AppScreenShot(
+                                image: "assets/images/screenshot_1.png",
+                              ),
+                              SizedBox(
+                                width: 17,
+                              ),
+                              AppScreenShot(
+                                image: "assets/images/screenshot_2.png",
+                              ),
+                            ],
+                          )),
                     ),
-
-                    
                   ],
                 ),
               ),
@@ -410,9 +399,7 @@ class AppDetailsView extends StatelessWidget {
                           const Text(
                             AppTexts.ratingsReviews,
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 24
-                            ),
+                                fontWeight: FontWeight.w600, fontSize: 24),
                           ),
                           TextButton(
                             onPressed: () => {},
@@ -444,10 +431,9 @@ class AppDetailsView extends StatelessWidget {
                         Container(
                           height: 184,
                           width: 184,
-                          decoration:  BoxDecoration(
-                            color: AppColors.primaryW600,
-                            borderRadius: BorderRadius.circular(16)
-                          ),
+                          decoration: BoxDecoration(
+                              color: AppColors.primaryW600,
+                              borderRadius: BorderRadius.circular(16)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -474,8 +460,6 @@ class AppDetailsView extends StatelessWidget {
                             ],
                           ),
                         ),
-                        
-
                         Container(
                           margin: const EdgeInsets.only(left: 56),
                           height: 184,
@@ -502,7 +486,6 @@ class AppDetailsView extends StatelessWidget {
                                 star: 1,
                                 percent: 0.1,
                               ),
-                            
                             ],
                           ),
                         )
@@ -520,47 +503,45 @@ class AppDetailsView extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        alignment: Alignment.topLeft,
-                        height: 403,
-                        child: const ScrollableStack(
-                          size: 40,
-                          children: [
-                            AppReviewCard(
-                              title: "This app is trash",
-                              content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                              username: "Draqaris001",
-                              date: "14/07/2021",
-                              likes: 25,
-                              dislikes: 0,
-                              stars: 1,
-                            ),
-                            SizedBox(width: 17,),
-
-                            AppReviewCard(
-                              title: "Best app in the world",
-                              content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                              username: "Draqaris001",
-                              date: "14/07/2021",
-                              likes: 23,
-                              dislikes: 0,
-                              stars: 1,
-                            ),
-                            
-                          ],
-                        )
-                        
-                        
-                      ),
-                    ),                
+                          alignment: Alignment.topLeft,
+                          height: 403,
+                          child: const ScrollableStack(
+                            size: 40,
+                            children: [
+                              AppReviewCard(
+                                title: "This app is trash",
+                                content:
+                                    "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
+                                username: "Draqaris001",
+                                date: "14/07/2021",
+                                likes: 25,
+                                dislikes: 0,
+                                stars: 1,
+                              ),
+                              SizedBox(
+                                width: 17,
+                              ),
+                              AppReviewCard(
+                                title: "Best app in the world",
+                                content:
+                                    "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
+                                username: "Draqaris001",
+                                date: "14/07/2021",
+                                likes: 23,
+                                dislikes: 0,
+                                stars: 1,
+                              ),
+                            ],
+                          )),
+                    ),
                   ],
                 ),
               ),
 
-
               // System requirements
 
               Container(
-                 margin: EdgeInsets.only(top: 72),
+                margin: EdgeInsets.only(top: 72),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -569,26 +550,20 @@ class AppDetailsView extends StatelessWidget {
                       child: const Text(
                         AppTexts.systemRequirements,
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24
-                        ),
+                            fontWeight: FontWeight.w600, fontSize: 24),
                       ),
                     ),
-
                     SystemRequirementCard(),
                   ],
                 ),
               ),
-              
             ],
           ),
         ),
-
         Container(
           margin: EdgeInsets.only(top: 72),
           //height: 150,
-          child:
-          SuggestionTag(
+          child: SuggestionTag(
             tag: AppTexts.similarAppSugestions,
             products: suggestedProd.products,
             cardType: CardType.vertical,
@@ -596,8 +571,5 @@ class AppDetailsView extends StatelessWidget {
         ),
       ],
     );
-
-
-    
   }
 }

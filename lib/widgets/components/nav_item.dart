@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/providers/navigation_provider.dart';
+import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:provider/provider.dart';
@@ -10,12 +11,12 @@ import 'package:provider/provider.dart';
 class NavItem extends StatelessWidget {
   const NavItem({
     Key? key,
-    required this.route,
+    required this.screenConfig,
     required this.asset,
   }) : super(key: key);
 
   /// Route to be navigated to
-  final String route;
+  final ScreenConfig screenConfig;
 
   /// Location to the image asset
   final String asset;
@@ -24,10 +25,10 @@ class NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var navigationProvider = Provider.of<NavigationProvider>(context);
 
-    return ValueListenableBuilder<String>(
+    return ValueListenableBuilder<ScreenConfig>(
       valueListenable: navigationProvider.selectedPane,
       builder: (context, selectedPane, child) {
-        final bool isSelected = selectedPane == route;
+        final bool isSelected = selectedPane == screenConfig;
         return Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -52,7 +53,7 @@ class NavItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () => navigationProvider.navigateTo(route),
+                    onTap: () => navigationProvider.navigateTo(screenConfig),
                     child: SizedBox(
                       width: Numericals.navItemHeight,
                       height: Numericals.navItemHeight,

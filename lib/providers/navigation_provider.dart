@@ -1,78 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
+import 'package:hpos_appstore/screens/screen_config.dart';
 
+/// [NavigationProvider] handles navigation between screens
+/// while notifying other components of a change in route.
 class NavigationProvider extends ChangeNotifier {
-  var selectedPane = ValueNotifier(HomeScreen.route);
+  final selectedPane = ValueNotifier(HomeScreen.screenConfig);
+  ScreenConfig get _currentRoute => selectedPane.value;
+  set _currentRoute(ScreenConfig config) => selectedPane.value = config;
 
+  /// Notifies a change to the header visibility.
   final headerVisibility = ValueNotifier(true);
+  bool get _headerVisible => headerVisibility.value;
+  set _headerVisible(bool visible) => headerVisibility.value = visible;
 
+  /// Notifies a change to the header's search visibility.
   final searchVisibility = ValueNotifier(true);
+  bool get _searchVisible => searchVisibility.value;
+  set _searchVisible(bool visible) => searchVisibility.value = visible;
 
-  final backVisibility = ValueNotifier(false);
-
-  final notificationVisibility = ValueNotifier(true);
-
+  /// Notifies a change to the header's profile visibility
   final profileVisibility = ValueNotifier(true);
+  bool get _profileVisible => profileVisibility.value;
+  set _profileVisible(bool visible) => profileVisibility.value = visible;
 
-  final childVisibility = ValueNotifier<MapEntry<String, Widget?>>(
-      MapEntry(HomeScreen.route, null));
+  /// Notifies a change to the header's home greeting section.
+  final childVisibility = ValueNotifier<Widget?>(null);
+  set _childVisible(Widget? widget) => childVisibility.value = widget;
 
-  void navigateTo(
-    String route, {
+  void navigateTo(ScreenConfig route) {
+    // set header values first
+    _setHeader(route);
 
-    /// When [headerVisibility] is false, the entire header is removed from the view.
-    bool? showHeader,
-
-    /// Show/hide the back button on the header when [headerVisibility] is true.
-    bool? showBack,
-
-    /// Show/hide the search button on the header when [headerVisibility] is true.
-    bool? showSearch,
-
-    /// Show/hide the notification button on the header when [headerVisibility] is true.
-    bool? showNotification,
-
-    /// Show/hide the profile avatar on the header when [headerVisibility] is true.
-    bool? showProfile,
-
-    /// Replacement for the default greeting section of the header.
-    Widget? greeting,
-  }) {
-    selectedPane.value = route;
-
-    // set header values
-    _setHeader(
-      showHeader,
-      showBack,
-      showSearch,
-      showNotification,
-      showProfile,
-      MapEntry(route, greeting),
-    );
+    // then route to page
+    _currentRoute = route;
   }
 
-  void _setHeader(
-    bool? showHeader,
-    bool? showBack,
-    bool? showSearch,
-    bool? showNotification,
-    bool? showProfile,
-    MapEntry<String, Widget?> greeting,
-  ) {
+  void _setHeader(ScreenConfig newRoute) {
+    final showHeader = newRoute.showHeader;
+    final showSearch = newRoute.showSearch;
+    final showProfile = newRoute.showProfile;
+    final child = newRoute.child;
+
     // set visibilty of header components based on the screen.
-    if (showHeader != null && showHeader != headerVisibility.value) {}
+    if (showHeader != null && showHeader != _headerVisible) {
+      _headerVisible = showHeader;
+    } else if (!_headerVisible) {
+      _headerVisible = true;
+    }
 
-    if (showBack != null && showBack != backVisibility.value) {}
+    if (showSearch != null && showSearch != _searchVisible) {
+      _searchVisible = showSearch;
+    } else if (!_searchVisible) {
+      _searchVisible = true;
+    }
 
-    if (showSearch != null && showSearch != searchVisibility.value) {}
+    if (showProfile != null && showProfile != _profileVisible) {
+      _profileVisible = showProfile;
+    } else if (!_profileVisible) {
+      _profileVisible = true;
+    }
 
-    if (showNotification != null &&
-        showNotification != notificationVisibility.value) {}
-
-    if (showProfile != null && showProfile != profileVisibility.value) {}
-
-    if (childVisibility.value.key != greeting.key) {
-      childVisibility.value = MapEntry(greeting.key, greeting.value);
+    if (_currentRoute != newRoute) {
+      // route has changed
+      _childVisible = child;
     }
   }
 }

@@ -5,23 +5,18 @@ import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/screens/app_screen/app_details.dart';
 import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
 import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
+import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  // runApp(
-  //   MultiProvider(
-  //     providers: [
-  //       ChangeNotifierProvider(create: (_) => LayersProvider()),
-  //     ],
-  //     child: const MyApp(),
-  //   ),
   runApp(MultiProvider(
     providers: [
       ListenableProvider<NavigationProvider>(
-          create: (context) => NavigationProvider()),
+        create: (context) => NavigationProvider(),
+      ),
       ChangeNotifierProvider(create: (_) => LibraryProvider()),
     ],
     child: const MyApp(),
@@ -69,7 +64,7 @@ class NavigationManager extends StatelessWidget {
   Widget build(BuildContext context) {
     var navigationProvider = Provider.of<NavigationProvider>(context);
 
-    return ValueListenableBuilder<String>(
+    return ValueListenableBuilder<ScreenConfig>(
       valueListenable: navigationProvider.selectedPane,
       builder: (context, selectedPane, _) {
         var selectedScreen = selectScreen(selectedPane);
@@ -78,10 +73,10 @@ class NavigationManager extends StatelessWidget {
     );
   }
 
-  Widget selectScreen(String selectedPane) {
-    if (selectedPane == HomeScreen.route) {
+  Widget selectScreen(ScreenConfig screenConfig) {
+    if (screenConfig == HomeScreen.screenConfig) {
       return const HomeScreen();
-    } else if (selectedPane == LibraryScreen.route) {
+    } else if (screenConfig == LibraryScreen.screenConfig) {
       return const LibraryScreen();
     } else {
       return ListenableProvider(
