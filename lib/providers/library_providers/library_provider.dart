@@ -4,7 +4,7 @@ import 'package:hpos_appstore/models/product_model.dart';
 
 class LibraryProvider extends ChangeNotifier {
   LibraryDisplay displayType = LibraryDisplay.grid;
-  LibraryApps appView = LibraryApps.all;
+  LibraryProducts appView = LibraryProducts.all;
   String filterTag = 'all';
 
   setDisplayView(LibraryDisplay choice) {
@@ -12,7 +12,7 @@ class LibraryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  setAppView(LibraryApps choice) {
+  setAppView(LibraryProducts choice) {
     appView = choice;
     notifyListeners();
   }

@@ -7,8 +7,8 @@ enum LibraryDisplay {
   grid,
 }
 
-/// [LibraryAppsEnum] indicates the view that's activated.
-enum LibraryApps {
+/// [LibraryProductsEnum] indicates the view that's activated.
+enum LibraryProducts {
   /// [all] view is active
   all,
 

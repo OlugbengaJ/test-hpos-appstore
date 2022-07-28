@@ -11,7 +11,7 @@ class LibraryHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LibraryApps view =
+    LibraryProducts view =
         Provider.of<LibraryProvider>(context, listen: false).appView;
     String filterTag =
         Provider.of<LibraryProvider>(context, listen: false).filterTag;
@@ -44,14 +44,14 @@ class LibraryHeaderView extends StatelessWidget {
                             width: 70,
                             margin: const EdgeInsets.only(top: 46),
                             decoration: BoxDecoration(
-                              color: (view == LibraryApps.all)
+                              color: (view == LibraryProducts.all)
                                   ? AppColors.primary
                                   : Colors.transparent,
                             ))
                       ]),
                   onPressed: () {
                     Provider.of<LibraryProvider>(context, listen: false)
-                        .setAppView(LibraryApps.all);
+                        .setAppView(LibraryProducts.all);
                   },
                 ),
                 TextButton(
@@ -70,14 +70,14 @@ class LibraryHeaderView extends StatelessWidget {
                             width: 100,
                             margin: const EdgeInsets.only(top: 46),
                             decoration: BoxDecoration(
-                              color: (view == LibraryApps.installed)
+                              color: (view == LibraryProducts.installed)
                                   ? AppColors.primary
                                   : Colors.transparent,
                             ))
                       ]),
                   onPressed: () {
                     Provider.of<LibraryProvider>(context, listen: false)
-                        .setAppView(LibraryApps.installed);
+                        .setAppView(LibraryProducts.installed);
                   },
                 ),
               ],

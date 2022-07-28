@@ -18,7 +18,7 @@ class LibraryView extends StatelessWidget {
         Provider.of<LibraryProvider>(context).getFilterData('all');
     var display =
         Provider.of<LibraryProvider>(context, listen: false).displayType;
-    LibraryApps appView =
+    LibraryProducts appView =
         Provider.of<LibraryProvider>(context, listen: false).appView;
 
     return Column(
@@ -62,7 +62,7 @@ class LibraryView extends StatelessWidget {
           ],
         ),
         app_spacer.Spacer.bottomMedium,
-        (appView == LibraryApps.installed)
+        (appView == LibraryProducts.installed)
             ? ListProductDisplay(apps: apps)
             : Wrap(children: [
                 (Provider.of<LibraryProvider>(context, listen: false)
