@@ -74,9 +74,6 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 ],
               ),
             ),
-            
-
-
           ],
         ),
       ),
