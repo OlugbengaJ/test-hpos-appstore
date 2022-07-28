@@ -20,7 +20,7 @@ class RatingsBar extends StatelessWidget {
         children: [
           Container(
             child: Text(
-              "$star",
+              star.toString(),
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 20
