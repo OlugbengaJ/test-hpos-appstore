@@ -5,12 +5,9 @@ import 'package:hpos_appstore/widgets/layouts/header_layout.dart';
 import 'package:hpos_appstore/widgets/layouts/sidebar_layout.dart';
 
 class AppLayout extends StatelessWidget {
-  const AppLayout({
-    Key? key,
-    required this.content,
-    this.header = const HeaderLayout(),
-  }) : super(key: key);
-
+  const AppLayout(
+      {Key? key, required this.content, this.header = const HeaderLayout()})
+      : super(key: key);
   final Widget content;
   final Widget header;
 
