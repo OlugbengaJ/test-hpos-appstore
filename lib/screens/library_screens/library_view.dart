@@ -8,9 +8,15 @@ import 'package:hpos_appstore/widgets/components/product_rows/list_product_displ
 import 'package:provider/provider.dart';
 import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
 
-class LibraryView extends StatelessWidget {
+class LibraryView extends StatefulWidget {
   const LibraryView({Key? key}) : super(key: key);
-  final LibraryDisplay displayType = LibraryDisplay.grid;
+
+  @override
+  State<LibraryView> createState() => _LibraryViewState();
+}
+
+class _LibraryViewState extends State<LibraryView> {
+  LibraryDisplay displayType = LibraryDisplay.grid;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +32,16 @@ class LibraryView extends StatelessWidget {
           children: [
             MaterialButton(
               shape: const CircleBorder(
-                  side: BorderSide(
-                      width: 1,
-                      color: AppColors.primary,
-                      style: BorderStyle.solid)),
+                side: BorderSide(
+                  width: 1,
+                  color: AppColors.primary,
+                  style: BorderStyle.solid,
+                ),
+              ),
               color: AppColors.white,
               textColor: AppColors.primary,
               onPressed: () {
-                // displayType = LibraryDisplay.grid;
+                setState(() => displayType = LibraryDisplay.grid);
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -47,14 +55,15 @@ class LibraryView extends StatelessWidget {
             ),
             MaterialButton(
               shape: const CircleBorder(
-                  side: BorderSide(
-                      width: 1,
-                      color: AppColors.primary,
-                      style: BorderStyle.solid)),
+                side: BorderSide(
+                    width: 1,
+                    color: AppColors.primary,
+                    style: BorderStyle.solid),
+              ),
               color: AppColors.white,
               textColor: AppColors.primary,
               onPressed: () {
-                // displayType = LibraryDisplay.list;
+                setState(() => displayType = LibraryDisplay.list);
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

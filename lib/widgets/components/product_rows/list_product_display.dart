@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_horizontal.dart';
+import 'package:hpos_appstore/widgets/components/product_card/card_product_list_item.dart';
 import 'package:provider/provider.dart';
 
 class ListProductDisplay extends StatelessWidget {
@@ -19,7 +20,7 @@ class ListProductDisplay extends StatelessWidget {
           ...apps
               .map((app) => ListenableProvider(
                     create: (context) => ProductProvider.fromModel(app),
-                    child: const CardProductHorizontal(),
+                    child: const CardProductListItem(),
                   ))
               .toList(),
         ],

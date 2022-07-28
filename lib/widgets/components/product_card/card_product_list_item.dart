@@ -19,12 +19,12 @@ class CardProductListItem extends StatelessWidget {
       ),
       color: const Color(0xfffcfcfd),
       child: Container(
-        width: 1289,
+        // width: 1289,
         height: 96,
         padding:
             const EdgeInsets.only(left: 14, top: 13, right: 30, bottom: 12),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
             LogoProductRectangle(
