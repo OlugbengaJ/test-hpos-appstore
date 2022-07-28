@@ -377,8 +377,10 @@ class AppDetailsView extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         height: 403,
                         child: const ScrollableStack(
+                          groupIcons: true,
+                          //border: Border.all(color: themeData.primaryColorLight, width: 2.0),
                           size: 40,
-                          children: [
+                          children:  [
                             AppScreenShot(
                               image: "assets/images/screenshot_1.png",
                             ),
@@ -523,6 +525,7 @@ class AppDetailsView extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         height: 403,
                         child: const ScrollableStack(
+                          groupIcons: true,
                           size: 40,
                           children: [
                             AppReviewCard(
