@@ -8,8 +8,11 @@ import 'package:provider/provider.dart';
 /// It also applies proper styling if the [NavItem] is selected.
 /// Selected status is gotten from the [NavigationProvider].
 class NavItem extends StatelessWidget {
-  const NavItem({Key? key, required this.route, required this.asset})
-      : super(key: key);
+  const NavItem({
+    Key? key,
+    required this.route,
+    required this.asset,
+  }) : super(key: key);
 
   /// Route to be navigated to
   final String route;
