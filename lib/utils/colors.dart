@@ -19,6 +19,8 @@ class AppColors {
   static const Color primaryW500 = Color(0xff4758F6);
   static const Color primaryW400 = Color(0xff6C79F8);
   static const Color primaryW600 = Color(0xff3947C9);
+  static const Color primaryW900 = Color(0xff161C58);
+  static const Color green = Color(0xff12B76A);
   static const Color greenShader1 = Color(0xffd4ffec);
   static const Color greenShader2 = Color(0xff57f2cc);
   static const Color greenShader3 = Color(0xff4596fb);

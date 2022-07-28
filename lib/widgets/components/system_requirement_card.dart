@@ -27,7 +27,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                   Container(
                     child: Icon(
                       Icons.check_circle,
-                      color: Color(0xff12B76A),
+                      color: AppColors.green,
                     )
                   ),
                   Container(
@@ -35,7 +35,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                     child: Text(
                       "This application should work on your device. Items with a tick meets the developer’s system requirments",
                       style: TextStyle(
-                        color: Color(0xff161C58),
+                        color: AppColors.primaryW900,
                         fontWeight: FontWeight.w500,
                         fontSize: 18
                       ),
@@ -50,7 +50,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
               height: 40,
               width: 137,
               decoration: BoxDecoration(
-                color: Color(0xffEDEEFE),
+                color: AppColors.primaryW25,
                 borderRadius: BorderRadius.circular(24)
               ),
               child: Row(
@@ -60,7 +60,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                     child: Text(
                       "Show more",
                       style: TextStyle(
-                        color: Color(0xff3947C9),
+                        color: AppColors.primaryW600,
                         fontWeight: FontWeight.w500,
                         fontSize: 14
                       ),
