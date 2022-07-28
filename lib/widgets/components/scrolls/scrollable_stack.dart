@@ -9,17 +9,40 @@ import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack_provid
 class ScrollableStack extends StatelessWidget {
   const ScrollableStack({
     Key? key,
-    this.scrollDirection = Axis.horizontal,
-    this.disableIcons = false,
     required this.children,
     this.buttonColor,
+    this.border,
     this.iconColor,
+    this.prefixIcon,
     this.suffixIcon,
     this.size,
+    this.scrollDirection = Axis.horizontal,
+    this.disableIcons = false,
+    this.iconPadding = const EdgeInsets.all(40.0),
+    this.groupIcons = false,
+    this.iconGroupAtStart = false,
   }) : super(key: key);
 
   /// A collection of widgets to be rendered in the stack.
   final List<Widget> children;
+
+  /// Background color of the button.
+  final Color? buttonColor;
+
+  /// Border used by the button.
+  final BoxBorder? border;
+
+  /// Foreground color of the button's icon.
+  final Color? iconColor;
+
+  /// An icon to be displayed on the prefix button.
+  final IconData? prefixIcon;
+
+  /// An icon to be displayed on the suffix button.
+  final IconData? suffixIcon;
+
+  /// The size of the button
+  final double? size;
 
   /// When [Axis.horizontal] is used, the scroll is horizontal and buttons are
   /// displayed at the left and right if [disableIcons] is false.
@@ -31,24 +54,21 @@ class ScrollableStack extends StatelessWidget {
   /// Explicitly prevent the icons from showing.
   final bool disableIcons;
 
-  /// Background color of the button.
-  final Color? buttonColor;
+  /// The padding around the icon
+  final EdgeInsets iconPadding;
 
-  /// Foreground color of the button's icon.
-  final Color? iconColor;
+  /// Groups prefix and suffix icons at a specific end.
+  final bool groupIcons;
 
-  /// An icon to be displayed on the button.
-  final IconData? suffixIcon;
-
-  /// The size of the button
-  final double? size;
+  /// Displays icons on the left or right if [groupIcons] is `true`.
+  /// Defaults to `false`, so icons appear on the right.
+  /// When set to true, icons appear on the left.
+  final bool iconGroupAtStart;
 
   @override
   Widget build(BuildContext context) {
-    final themeData = Theme.of(context);
     final provider = ScrollableStackProvider();
-
-    const double defaultButtonSize = 24.0;
+    final themeData = Theme.of(context);
 
     return Stack(
       children: [
@@ -57,52 +77,148 @@ class ScrollableStack extends StatelessWidget {
           scrollDirection: scrollDirection,
           child: _getLayout(),
         ),
-        ValueListenableBuilder<bool>(
-          valueListenable: provider.prefixVisibleNotifier,
-          builder: (_, value, child) {
-            if (value) {
-              return Positioned.fill(
-                child: Align(
-                  alignment: _prefixIconAlignment(),
-                  child: ButtonRound(
-                    onTap: () => provider.scroll(AxisDirection.left),
-                    color: buttonColor ?? themeData.primaryColor,
-                    size: size ?? defaultButtonSize,
-                    icon: suffixIcon ?? Icons.arrow_back,
-                    iconColor:
-                        iconColor ?? themeData.colorScheme.inversePrimary,
-                  ),
-                ),
-              );
-            }
 
-            return const SizedBox();
-          },
-        ),
-        if (!disableIcons)
+        // non-grouped icons.
+        if (!disableIcons && !groupIcons && provider.buttonsVisible) ...[
+          // non-grouped left button
           ValueListenableBuilder<bool>(
             valueListenable: provider.suffixVisibleNotifier,
-            builder: (_, value, child) {
-              if (value) {
+            builder: (_, suffixVisible, child) {
+              return ValueListenableBuilder<bool>(
+                valueListenable: provider.prefixVisibleNotifier,
+                builder: (_, prefixVisible, child) {
+                  return Positioned.fill(
+                    child: Align(
+                      alignment: _prefixIconAlignment(),
+                      child: _scrollIcon(
+                        enabled: prefixVisible,
+                        axisDirection: AxisDirection.left,
+                        provider: provider,
+                        color: buttonColor ?? themeData.primaryColor,
+                        iconColor:
+                            iconColor ?? themeData.colorScheme.inversePrimary,
+                        icon: prefixIcon ?? Icons.arrow_back,
+                        padding: iconPadding,
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+
+          // non-grouped right button
+          ValueListenableBuilder<bool>(
+            valueListenable: provider.suffixVisibleNotifier,
+            builder: (_, suffixVisible, child) {
+              return ValueListenableBuilder<bool>(
+                valueListenable: provider.suffixVisibleNotifier,
+                builder: (_, suffixVisible, child) {
+                  return Positioned.fill(
+                    child: Align(
+                      alignment: _suffixIconAlignment(),
+                      child: _scrollIcon(
+                          enabled: suffixVisible,
+                          axisDirection: AxisDirection.right,
+                          provider: provider,
+                          color: buttonColor ?? themeData.primaryColor,
+                          iconColor:
+                              iconColor ?? themeData.colorScheme.inversePrimary,
+                          icon: suffixIcon ?? Icons.arrow_forward,
+                          padding: iconPadding),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        ] else if (!disableIcons && groupIcons && provider.buttonsVisible) ...[
+          // grouped buttons
+          ValueListenableBuilder<bool>(
+            valueListenable: provider.buttonsVisibleNotifier,
+            builder: (_, buttonVisible, __) {
+              if (buttonVisible) {
                 return Positioned.fill(
                   child: Align(
-                    alignment: _suffixIconAlignment(),
-                    child: ButtonRound(
-                      onTap: () => provider.scroll(AxisDirection.right),
-                      color: buttonColor ?? themeData.primaryColor,
-                      size: size ?? defaultButtonSize,
-                      icon: suffixIcon ?? Icons.arrow_forward,
-                      iconColor:
-                          iconColor ?? themeData.colorScheme.inversePrimary,
-                    ),
+                    alignment: iconGroupAtStart
+                        ? Alignment.centerLeft
+                        : Alignment.centerRight,
+                    child:
+                        _groupedIconsLayout(_groupedIcons(provider, themeData)),
                   ),
                 );
               }
 
               return const SizedBox();
             },
-          ),
+          )
+        ],
       ],
+    );
+  }
+
+  List<Widget> _groupedIcons(
+    ScrollableStackProvider provider,
+    ThemeData themeData,
+  ) {
+    return [
+      ValueListenableBuilder<bool>(
+        valueListenable: provider.prefixVisibleNotifier,
+        builder: (_, value, child) {
+          return _scrollIcon(
+            enabled: value,
+            axisDirection: AxisDirection.left,
+            provider: provider,
+            color: buttonColor ?? themeData.primaryColor,
+            iconColor: iconColor ?? themeData.colorScheme.inversePrimary,
+            icon: prefixIcon ?? Icons.arrow_back,
+            padding: scrollDirection == Axis.horizontal
+                ? const EdgeInsets.only(right: 4.0)
+                : const EdgeInsets.only(bottom: 4.0),
+          );
+        },
+      ),
+      ValueListenableBuilder<bool>(
+        valueListenable: provider.suffixVisibleNotifier,
+        builder: (_, value, child) {
+          return _scrollIcon(
+            enabled: value,
+            axisDirection: AxisDirection.right,
+            provider: provider,
+            color: buttonColor ?? themeData.primaryColor,
+            iconColor: iconColor ?? themeData.colorScheme.inversePrimary,
+            icon: prefixIcon ?? Icons.arrow_forward,
+            padding: scrollDirection == Axis.horizontal
+                ? const EdgeInsets.only(left: 4.0)
+                : const EdgeInsets.only(top: 4.0),
+          );
+        },
+      ),
+    ];
+  }
+
+  Widget _groupedIconsLayout(List<Widget> children) {
+    if (scrollDirection == Axis.horizontal) {
+      return Padding(
+        padding:
+            EdgeInsets.only(right: iconGroupAtStart ? 0 : iconPadding.right),
+        child: Row(
+          mainAxisAlignment: iconGroupAtStart
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.end,
+          children: children,
+        ),
+      );
+    }
+
+    return Padding(
+      padding:
+          EdgeInsets.only(bottom: iconGroupAtStart ? 0 : iconPadding.bottom),
+      child: Column(
+        mainAxisAlignment:
+            iconGroupAtStart ? MainAxisAlignment.start : MainAxisAlignment.end,
+        children: children,
+      ),
     );
   }
 
@@ -128,5 +244,27 @@ class ScrollableStack extends StatelessWidget {
     }
 
     return Alignment.bottomRight;
+  }
+
+  Widget _scrollIcon({
+    required bool enabled,
+    required AxisDirection axisDirection,
+    required ScrollableStackProvider provider,
+    required Color color,
+    required Color iconColor,
+    required IconData icon,
+    required EdgeInsetsGeometry padding,
+  }) {
+    return Padding(
+      padding: padding,
+      child: ButtonRound(
+        onTap: enabled ? () => provider.scroll(axisDirection) : null,
+        color: enabled ? color : color.withAlpha(20),
+        border: border,
+        size: size ?? 24.0,
+        icon: icon,
+        iconColor: enabled ? iconColor : iconColor.withAlpha(180),
+      ),
+    );
   }
 }

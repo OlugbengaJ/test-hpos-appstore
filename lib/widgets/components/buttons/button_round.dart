@@ -7,6 +7,7 @@ class ButtonRound extends StatelessWidget {
     Key? key,
     this.size = 24.0,
     this.color,
+    this.border,
     this.icon,
     this.iconColor,
     this.iconSize,
@@ -27,14 +28,16 @@ class ButtonRound extends StatelessWidget {
   /// [radius] affects the inkwell radius.
   final double? radius;
 
-  /// [color] of the button
+  /// Background color of the button.
   final Color? color;
+
+  /// Defines the border of the button.
+  final BoxBorder? border;
 
   /// [icon] an [IconData] to be displayed on the button
   final IconData? icon;
 
   /// [iconSize] is the size of the icon and defaults to 70% of [size].
-  ///
   /// Ensure this value is less than [size].
   final double? iconSize;
 
@@ -53,12 +56,10 @@ class ButtonRound extends StatelessWidget {
       child: Ink(
         width: size,
         height: size,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: color,
-        ),
+        decoration:
+            BoxDecoration(shape: BoxShape.circle, color: color, border: border),
         child: InkWell(
-          onTap: onTap ?? () {},
+          onTap: onTap,
           customBorder: const CircleBorder(),
           splashColor: splashColor,
           radius: radius,

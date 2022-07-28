@@ -66,16 +66,20 @@ class HomeBanner extends StatelessWidget {
               const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
+                children: [
                   ButtonGradient(
-                    radius: 4.0,
-                    gradient: LinearGradient(
+                    radius: Numericals.double8,
+                    gradient: const LinearGradient(
                       colors: [
                         AppColors.primaryW500,
                         AppColors.primaryW400,
                       ],
                     ),
-                    text: Text(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 20.5,
+                    ),
+                    text: const Text(
                       AppTexts.discoverMore,
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -83,10 +87,6 @@ class HomeBanner extends StatelessWidget {
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
                       ),
-                    ),
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 20.5,
                     ),
                   ),
                 ],

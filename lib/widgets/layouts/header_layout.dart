@@ -15,7 +15,7 @@ class HeaderLayout extends StatelessWidget {
     final themeData = Theme.of(context);
 
     return Padding(
-      padding: EdgeInsets.only(bottom: Numericals.double40),
+      padding: EdgeInsets.all(Numericals.double40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
