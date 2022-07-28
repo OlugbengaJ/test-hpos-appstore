@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../screens/home_screen/homes_screen.dart';
+import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
 
 class NavigationProvider extends ChangeNotifier {
   var selectedPane = ValueNotifier(HomeScreen.route);

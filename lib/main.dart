@@ -30,18 +30,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'EuclidCircularB',
         primaryColor: AppColors.primaryW400,
+        primaryColorLight: AppColors.primaryW25,
         primaryColorDark: AppColors.primaryW600,
+
         // general theme for inputs e.g. text field
         inputDecorationTheme: InputDecorationTheme(
           contentPadding: EdgeInsets.zero,
           iconColor: AppColors.primaryW400,
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.primaryW100),
-            borderRadius: BorderRadius.circular(Numericals.double16),
+            borderRadius: BorderRadius.circular(Numericals.double8),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.primaryW400),
-            borderRadius: BorderRadius.circular(Numericals.double16),
+            borderRadius: BorderRadius.circular(Numericals.double8),
           ),
         ),
       ),

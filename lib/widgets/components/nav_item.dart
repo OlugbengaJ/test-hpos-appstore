@@ -26,7 +26,6 @@ class NavItem extends StatelessWidget {
       builder: (context, selectedPane, child) {
         final bool isSelected = selectedPane == route;
         return Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           children: [
             // section higlight bar

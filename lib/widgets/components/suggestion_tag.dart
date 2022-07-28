@@ -3,6 +3,7 @@ import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/enums.dart';
+import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_horizontal.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_vertical.dart';
@@ -23,16 +24,19 @@ class SuggestionTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final maxIndex = products.length - 1;
+    final themeData = Theme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.only(top: 24.0),
+      padding: EdgeInsets.only(top: 24.0, left: Numericals.double40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 24.0),
+            padding: EdgeInsets.only(
+              bottom: Numericals.double40,
+              right: Numericals.double40,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -70,22 +74,20 @@ class SuggestionTag extends StatelessWidget {
             ),
           ),
           ScrollableStack(
+            groupIcons: true,
+            border: Border.all(color: themeData.primaryColorLight, width: 2.0),
             size: 34,
             children: [
               ...products.map(
-                (product) {
-                  final bool isLast = products.indexOf(product) == maxIndex;
-
-                  return Padding(
-                    padding: EdgeInsets.only(right: isLast ? 0.0 : 32.0),
-                    child: ListenableProvider(
-                      create: (context) => ProductProvider.fromModel(product),
-                      child: (cardType == CardType.vertical)
-                          ? const CardProductVertical()
-                          : const CardProductHorizontal(),
-                    ),
-                  );
-                },
+                (product) => Padding(
+                  padding: EdgeInsets.only(right: Numericals.double40),
+                  child: ListenableProvider(
+                    create: (context) => ProductProvider.fromModel(product),
+                    child: (cardType == CardType.vertical)
+                        ? const CardProductVertical()
+                        : const CardProductHorizontal(),
+                  ),
+                ),
               ),
             ],
           ),
