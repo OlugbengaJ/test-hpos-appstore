@@ -11,15 +11,18 @@ class LibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        app_spacer.Spacer.bottomMedium,
-        const LibraryHeaderView(),
-        app_spacer.Spacer.bottomMedium,
-        const LibraryView(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(48.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          app_spacer.Spacer.bottomMedium,
+          const LibraryHeaderView(),
+          app_spacer.Spacer.bottomMedium,
+          const LibraryView(),
+        ],
+      ),
     );
   }
 }

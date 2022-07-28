@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
@@ -30,48 +31,67 @@ class _LibraryViewState extends State<LibraryView> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            MaterialButton(
-              shape: const CircleBorder(
-                side: BorderSide(
-                  width: 1,
-                  color: AppColors.primary,
-                  style: BorderStyle.solid,
+            SizedBox(
+              width: 40,
+              height: 40,
+              child: MaterialButton(
+                elevation: 0,
+                shape: CircleBorder(
+                  side: displayType == LibraryDisplay.grid
+                      ? const BorderSide(
+                    width: 3,
+                    color: AppColors.primaryW100,
+                    style: BorderStyle.solid,
+                  )
+                      : BorderSide.none,
                 ),
-              ),
-              color: AppColors.white,
-              textColor: AppColors.primary,
-              onPressed: () {
-                setState(() => displayType = LibraryDisplay.grid);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.grid_3x3_sharp, color: AppColors.primary),
-                  ],
+                color: displayType == LibraryDisplay.grid
+                    ? AppColors.primary
+                    : AppColors.primaryW25,
+                onPressed: () {
+                  setState(() => displayType = LibraryDisplay.grid);
+                },
+                child: SvgPicture.asset(
+                  'assets/icons/grid_icon.svg',
+                  width: 18,
+                  height: 18,
+                  color: displayType == LibraryDisplay.grid
+                      ? AppColors.primaryW25
+                      : AppColors.primary,
+                  semanticsLabel: 'grid view icon',
                 ),
               ),
             ),
-            MaterialButton(
-              shape: const CircleBorder(
-                side: BorderSide(
-                    width: 1,
-                    color: AppColors.primary,
-                    style: BorderStyle.solid),
-              ),
-              color: AppColors.white,
-              textColor: AppColors.primary,
-              onPressed: () {
-                setState(() => displayType = LibraryDisplay.list);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.list_alt_outlined, color: AppColors.primary),
-                  ],
+            const Padding(padding: EdgeInsets.only(left: 16)),
+            SizedBox(
+              width: 40,
+              height: 40,
+              child: MaterialButton(
+                elevation: 0,
+                shape: CircleBorder(
+                  side: displayType == LibraryDisplay.list
+                      ? const BorderSide(
+                          width: 3,
+                          color: AppColors.primaryW100,
+                          style: BorderStyle.solid,
+                        )
+                      : BorderSide.none,
+                ),
+                color: displayType == LibraryDisplay.list
+                    ? AppColors.primary
+                    : AppColors.primaryW25,
+                textColor: AppColors.primary,
+                onPressed: () {
+                  setState(() => displayType = LibraryDisplay.list);
+                },
+                child: SvgPicture.asset(
+                  'assets/icons/list_icon.svg',
+                  width: 18,
+                  height: 14,
+                  color: displayType == LibraryDisplay.list
+                      ? AppColors.primaryW25
+                      : AppColors.primary,
+                  semanticsLabel: 'grid view icon',
                 ),
               ),
             ),

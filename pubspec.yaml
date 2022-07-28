@@ -73,6 +73,8 @@ flutter:
     - assets/icons/share_icon.png
     - assets/icons/install.svg
     - assets/icons/arrow_forward.svg
+    - assets/icons/grid_icon.svg
+    - assets/icons/list_icon.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
