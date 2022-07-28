@@ -20,4 +20,8 @@ class AppAssets {
   static String terminalSquarePng = 'assets/icons/terminal-square.png';
   static String installPng = 'assets/icons/install.png';
   static String shareIconPng = 'assets/icons/share_icon.png';
+  static String thumbsUpPng = 'assets/icons/thumbs_up.png';
+  static String thumbsDownPng = 'assets/icons/thumbs_down.png';
+  static String flagPng = 'assets/icons/flag.png';
+  static String starPng = 'assets/icons/star.png';
 }

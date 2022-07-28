@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -28,8 +29,10 @@ class RatingsBar extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(left: 5),
-            child: const ImageIcon(
-              AssetImage("assets/icons/star.png"),
+            child: ImageIcon(
+              AssetImage(
+                AppAssets.starPng
+              ),
               color: AppColors.orange,
             ),
           ),

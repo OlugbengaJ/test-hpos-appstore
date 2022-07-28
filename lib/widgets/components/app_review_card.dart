@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/product_card/rating_edit.dart';
 
@@ -125,7 +126,9 @@ class AppReviewCard extends StatelessWidget {
                       children: [
                         Container(
                           child: ImageIcon(
-                            AssetImage("assets/icons/thumbs_up.png")
+                            AssetImage(
+                              AppAssets.thumbsUpPng
+                            )
                           ),
                         ),
                         Container(
@@ -139,7 +142,9 @@ class AppReviewCard extends StatelessWidget {
                       children: [
                         Container(
                           child: ImageIcon(
-                            AssetImage("assets/icons/thumbs_down.png")
+                            AssetImage(
+                              AppAssets.thumbsDownPng
+                            )
                           ),
                         ),
                         Container(
@@ -153,7 +158,9 @@ class AppReviewCard extends StatelessWidget {
                       children: [
                         Container(
                           child: ImageIcon(
-                            AssetImage("assets/icons/flag.png")
+                            AssetImage(
+                              AppAssets.flagPng
+                            )
                           ),
                         ),                      
                       ],

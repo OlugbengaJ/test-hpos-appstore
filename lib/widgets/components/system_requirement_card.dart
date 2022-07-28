@@ -35,7 +35,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                   Container(
                     margin: EdgeInsets.only(left: 26.33),
                     child: const Text(
-                      "This application should work on your device. Items with a tick meets the developer’s system requirments",
+                      AppTexts.systemRequirementsMessage,
                       style: TextStyle(
                         color: AppColors.primaryW900,
                         fontWeight: FontWeight.w500,
