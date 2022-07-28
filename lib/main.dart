@@ -11,13 +11,6 @@ import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  // runApp(
-  //   MultiProvider(
-  //     providers: [
-  //       ChangeNotifierProvider(create: (_) => LayersProvider()),
-  //     ],
-  //     child: const MyApp(),
-  //   ),
   runApp(MultiProvider(
     providers: [
       ListenableProvider<NavigationProvider>(

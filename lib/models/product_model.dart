@@ -16,3 +16,10 @@ class SuggestedApps {
 
   SuggestedApps(this.tag, this.products);
 }
+
+class ProductFilterTag {
+  final String name;
+  final String slug;
+
+  ProductFilterTag(this.name, this.slug);
+}
