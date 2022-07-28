@@ -78,7 +78,7 @@ class HeaderLayout extends StatelessWidget {
                               ),
                             ),
                           )
-                        : Flexible(fit: FlexFit.tight, child: const SizedBox()),
+                        : const Flexible(fit: FlexFit.tight, child: SizedBox()),
                   ),
 
                   // listen for notification and profile visibility
@@ -112,7 +112,7 @@ class HeaderLayout extends StatelessWidget {
                               ],
                             ),
                           )
-                        : Flexible(fit: FlexFit.tight, child: const SizedBox()),
+                        : const Flexible(fit: FlexFit.tight, child: SizedBox()),
                   ),
                 ],
               ),
