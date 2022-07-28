@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/enums.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
 import 'package:hpos_appstore/widgets/components/ratings_bar.dart';
-import 'package:hpos_appstore/widgets/components/stacks/scrollable_stack.dart';
+import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
 
@@ -204,6 +205,7 @@ class AppDetailsView extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(bottom: 72),
             height: 132,
+            padding: EdgeInsets.symmetric(vertical: 18),
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xff101828), Color(0xff344054), Color(0xff1d2939)],
@@ -215,8 +217,8 @@ class AppDetailsView extends StatelessWidget {
             
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children:  [
-                const AppInfoCard(
+              children: const  [
+                AppInfoCard(
                   top: "Ratings",
                   center: Text(
                     "4.5",
@@ -227,12 +229,12 @@ class AppDetailsView extends StatelessWidget {
                     ),
                   ),bottom: "Average",
                 ),
-                const VerticalDivider(
+                VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                const AppInfoCard(
+                AppInfoCard(
                   top: "Size",
                   center: Text(
                     "148",
@@ -243,12 +245,12 @@ class AppDetailsView extends StatelessWidget {
                     ),
                   ),bottom: "MB",
                 ),                
-                const VerticalDivider(
+                VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                const AppInfoCard(
+                AppInfoCard(
                   top: "Age",
                   center: Text(
                     "4 +",
@@ -259,7 +261,7 @@ class AppDetailsView extends StatelessWidget {
                     ),
                   ),bottom: "Years",
                 ),
-                const VerticalDivider(
+                VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
@@ -273,12 +275,12 @@ class AppDetailsView extends StatelessWidget {
                   ),
                   bottom: "Microsoft Inc",
                 ),
-                const VerticalDivider(
+                VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                const AppInfoCard(
+                AppInfoCard(
                   top: "Language",
                   center: Text(
                     "EN",
@@ -289,12 +291,12 @@ class AppDetailsView extends StatelessWidget {
                     ),
                   ),bottom: "+ 10 More",
                 ),
-                const VerticalDivider(
+                VerticalDivider(
                   color: Color(0xff475467),
                   width: 2,
                   thickness: 2,
                 ),
-                const AppInfoCard(
+                AppInfoCard(
                   top: "Parental Guidance",
                   center: Text(
                     "12 +",
@@ -569,10 +571,11 @@ class AppDetailsView extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 72),
             //height: 150,
-            child:SuggestionTag(
+            child:
+            SuggestionTag(
               tag: "Similar App Suggestions",
-              apps: suggestedProd.apps,
-              cardType: 'vertical',
+              products: suggestedProd.products,
+              cardType: CardType.vertical,
             ),
           ),
         ],

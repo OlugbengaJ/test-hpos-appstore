@@ -14,7 +14,6 @@ class AppInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 18),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
