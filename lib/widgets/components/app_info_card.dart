@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 
 class AppInfoCard extends StatelessWidget {
   const AppInfoCard({
@@ -21,7 +22,7 @@ class AppInfoCard extends StatelessWidget {
             child: Text(
               top,
               style: TextStyle(
-                color: Color(0xff667085)
+                color: AppColors.greyW500
               ),
             ),
           ),
@@ -30,7 +31,7 @@ class AppInfoCard extends StatelessWidget {
             child: Text(
               bottom,
               style: TextStyle(
-                color: Color(0xffD0D5DD)
+                color: AppColors.greyW300
               ),
             ),
           ),
