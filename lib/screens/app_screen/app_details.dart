@@ -58,7 +58,7 @@ class AppDetailsView extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(top:100),
+          margin: const EdgeInsets.only(top:50),
           padding: EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
@@ -120,9 +120,9 @@ class AppDetailsView extends StatelessWidget {
                                             color: AppColors.primaryW25,
                                             borderRadius: BorderRadius.circular(16)                                      
                                           ),
-                                          child: Center(
+                                          child: const Center(
                                             child: Text(
-                                              "Free",
+                                              AppTexts.free,
                                               style: TextStyle(
                                                 color: AppColors.primaryW600,
                                                 fontWeight: FontWeight.bold
@@ -153,7 +153,7 @@ class AppDetailsView extends StatelessWidget {
                                 Container(
                                   margin: EdgeInsets.only(top: 10),
                                   width: 600,
-                                  child: Text("Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere."),
+                                  child: const Text("Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere."),
                                 ),
                               ],
                             ),
@@ -172,7 +172,7 @@ class AppDetailsView extends StatelessWidget {
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Container(
+                                          const SizedBox(
                                             child: Text(
                                               AppTexts.install,
                                               style: TextStyle(
@@ -192,7 +192,7 @@ class AppDetailsView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 20,),
+                                  const SizedBox(width: 20,),
                                   InkWell(
                                     child: ImageIcon(
                                       AssetImage(
@@ -229,7 +229,7 @@ class AppDetailsView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children:  [
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Ratings",
                       center: Text(
                         "4.5",
@@ -240,12 +240,12 @@ class AppDetailsView extends StatelessWidget {
                         ),
                       ),bottom: "Average",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Size",
                       center: Text(
                         "148",
@@ -256,12 +256,12 @@ class AppDetailsView extends StatelessWidget {
                         ),
                       ),bottom: "MB",
                     ),                
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Age",
                       center: Text(
                         "4 +",
@@ -272,7 +272,7 @@ class AppDetailsView extends StatelessWidget {
                         ),
                       ),bottom: "Years",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
@@ -288,12 +288,12 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "Microsoft Inc",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Language",
                       center: Text(
                         "EN",
@@ -304,12 +304,12 @@ class AppDetailsView extends StatelessWidget {
                         ),
                       ),bottom: "+ 10 More",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Parental Guidance",
                       center: Text(
                         "12 +",
