@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 class ButtonRound extends StatelessWidget {
   const ButtonRound({
     Key? key,
-    required this.size,
+    this.size = 24.0,
     this.color,
+    this.border,
     this.icon,
     this.iconColor,
     this.iconSize,
@@ -21,20 +22,22 @@ class ButtonRound extends StatelessWidget {
   /// If null, the button is set as disabled.
   final VoidCallback? onTap;
 
-  /// [size] is the size of the button.
+  /// [size] is the size of the button and defaults to 24.0.
   final double size;
 
   /// [radius] affects the inkwell radius.
   final double? radius;
 
-  /// [color] of the button
+  /// Background color of the button.
   final Color? color;
+
+  /// Defines the border of the button.
+  final BoxBorder? border;
 
   /// [icon] an [IconData] to be displayed on the button
   final IconData? icon;
 
   /// [iconSize] is the size of the icon and defaults to 70% of [size].
-  ///
   /// Ensure this value is less than [size].
   final double? iconSize;
 
@@ -53,20 +56,18 @@ class ButtonRound extends StatelessWidget {
       child: Ink(
         width: size,
         height: size,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: color,
-        ),
+        decoration:
+            BoxDecoration(shape: BoxShape.circle, color: color, border: border),
         child: InkWell(
-          onTap: onTap ?? () {},
+          onTap: onTap,
           customBorder: const CircleBorder(),
-          splashColor: splashColor ?? Theme.of(context).primaryColor,
+          splashColor: splashColor,
           radius: radius,
           child: Icon(
             icon,
             // if icon size is null, use 70% of size to show tap effect
             size: iconSize ?? size * 0.7,
-            color: iconColor ?? Theme.of(context).primaryColorLight,
+            color: iconColor,
             semanticLabel: semanticLabel,
           ),
         ),

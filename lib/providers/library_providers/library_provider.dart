@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/models/app_model.dart';
+import 'package:hpos_appstore/models/app_enum.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 
 class LibraryProvider extends ChangeNotifier {
+  LibraryDisplay displayType = LibraryDisplay.grid;
+  String filterTag = 'all';
+
+  setDisplayView(LibraryDisplay choice) {
+    displayType = choice;
+    notifyListeners();
+  }
+
   List<Product> getFilterData(String categoryName) {
     return [
       Product(
@@ -91,7 +100,7 @@ class LibraryProvider extends ChangeNotifier {
     ];
   }
 
-  getTags() {
-    return [];
+  List<ProductFilterTag> getTags() {
+    return [ProductFilterTag('All', 'all'), ProductFilterTag('Games', 'games')];
   }
 }

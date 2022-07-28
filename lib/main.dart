@@ -5,17 +5,12 @@ import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/screens/app_screen/app_details.dart';
 import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
 import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
+import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  // runApp(
-  //   MultiProvider(
-  //     providers: [
-  //       ChangeNotifierProvider(create: (_) => LayersProvider()),
-  //     ],
-  //     child: const MyApp(),
-  //   ),
   runApp(MultiProvider(
     providers: [
       ListenableProvider<NavigationProvider>(
@@ -35,7 +30,26 @@ class MyApp extends StatelessWidget {
       title: 'HPOS App Store',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
-      theme: ThemeData(fontFamily: 'EuclidCircularB'),
+      theme: ThemeData(
+        fontFamily: 'EuclidCircularB',
+        primaryColor: AppColors.primaryW400,
+        primaryColorLight: AppColors.primaryW25,
+        primaryColorDark: AppColors.primaryW600,
+
+        // general theme for inputs e.g. text field
+        inputDecorationTheme: InputDecorationTheme(
+          contentPadding: EdgeInsets.zero,
+          iconColor: AppColors.primaryW400,
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.primaryW100),
+            borderRadius: BorderRadius.circular(Numericals.double8),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.primaryW400),
+            borderRadius: BorderRadius.circular(Numericals.double8),
+          ),
+        ),
+      ),
       home: const Center(child: NavigationManager()),
     );
   }
