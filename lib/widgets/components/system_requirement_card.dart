@@ -22,28 +22,33 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              margin: EdgeInsets.only(left: 36.33),
-              child: Row(
-                children: [
-                  Container(
-                    child: const Icon(
-                      Icons.check_circle,
-                      color: AppColors.green,
-                    )
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 26.33),
-                    child: const Text(
-                      AppTexts.systemRequirementsMessage,
-                      style: TextStyle(
-                        color: AppColors.primaryW900,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18
-                      ),
+            Expanded(
+              flex: 8,
+              child: Container(
+                margin: EdgeInsets.only(left: 36.33),
+                child: Row(
+                  children: [
+                    Container(
+                      child: const Icon(
+                        Icons.check_circle,
+                        color: AppColors.green,
+                      )
                     ),
-                  )
-                ],
+                    Container(
+                      margin: EdgeInsets.only(left: 26.33),
+                      width: 800,
+                      child: const Text(
+                        AppTexts.systemRequirementsMessage,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: AppColors.primaryW900,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
 
