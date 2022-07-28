@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/texts.dart';
 
 class SystemRequirementCard extends StatefulWidget {
   const SystemRequirementCard({Key? key}) : super(key: key);
@@ -58,8 +59,8 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [              
                   Container(
-                    child: Text(
-                      "Show more",
+                    child: const Text(
+                      AppTexts.showMore,
                       style: TextStyle(
                         color: AppColors.primaryW600,
                         fontWeight: FontWeight.w500,

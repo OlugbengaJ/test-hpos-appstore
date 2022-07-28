@@ -75,11 +75,7 @@ class AppDetailsView extends StatelessWidget {
                       width: 184,
                       decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          AppColors.greyW900, 
-                          AppColors.greyW600, 
-                          AppColors.greyW1000
-                        ],
+                        colors: AppColors.gradientGreyW500,
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
@@ -178,7 +174,7 @@ class AppDetailsView extends StatelessWidget {
                                         children: [
                                           Container(
                                             child: Text(
-                                              "Install",
+                                              AppTexts.install,
                                               style: TextStyle(
                                                 color: AppColors.white,
                                                 fontWeight: FontWeight.w600,
@@ -187,7 +183,9 @@ class AppDetailsView extends StatelessWidget {
                                             ),
                                           ),
                                           ImageIcon(
-                                            AssetImage("assets/icons/install.png"),
+                                            AssetImage(
+                                              AppAssets.installPng
+                                            ),
                                             color: AppColors.white,
                                           )
                                         ],
@@ -197,7 +195,9 @@ class AppDetailsView extends StatelessWidget {
                                   SizedBox(width: 20,),
                                   InkWell(
                                     child: ImageIcon(
-                                      AssetImage("assets/icons/share_icon.png"),
+                                      AssetImage(
+                                        AppAssets.shareIconPng
+                                      ),
                                       color: AppColors.primaryW400,
                                     ),
                                   ),
@@ -234,14 +234,14 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "4.5",
                         style: TextStyle(
-                          color: Color(0xffF2F4F7),
+                          color: AppColors.greyW100,
                           fontWeight: FontWeight.w600,
                           fontSize: 40
                         ),
                       ),bottom: "Average",
                     ),
                     VerticalDivider(
-                      color: Color(0xff475467),
+                      color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
@@ -250,14 +250,14 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "148",
                         style: TextStyle(
-                          color: Color(0xffF2F4F7),
+                          color: AppColors.greyW100,
                           fontWeight: FontWeight.w600,
                           fontSize: 40
                         ),
                       ),bottom: "MB",
                     ),                
                     VerticalDivider(
-                      color: Color(0xff475467),
+                      color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
@@ -266,14 +266,14 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "4 +",
                        style: TextStyle(
-                          color: Color(0xffF2F4F7),
+                          color: AppColors.greyW100,
                           fontWeight: FontWeight.w600,
                           fontSize: 40
                         ),
                       ),bottom: "Years",
                     ),
                     VerticalDivider(
-                      color: Color(0xff475467),
+                      color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
@@ -284,12 +284,12 @@ class AppDetailsView extends StatelessWidget {
                           AppAssets.terminalSquarePng
                         ),
                         size: 40,
-                        color:  Color(0xffF2F4F7)
+                        color:  AppColors.greyW100
                       ),
                       bottom: "Microsoft Inc",
                     ),
                     VerticalDivider(
-                      color: Color(0xff475467),
+                      color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
@@ -298,14 +298,14 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "EN",
                         style: TextStyle(
-                          color: Color(0xffF2F4F7),
+                          color: AppColors.greyW100,
                           fontWeight: FontWeight.w600,
                           fontSize: 40
                         ),
                       ),bottom: "+ 10 More",
                     ),
                     VerticalDivider(
-                      color: Color(0xff475467),
+                      color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
@@ -314,7 +314,7 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "12 +",
                         style: TextStyle(
-                          color: Color(0xffF2F4F7),
+                          color: AppColors.greyW100,
                           fontWeight: FontWeight.w600,
                           fontSize: 40
                         ),
@@ -340,7 +340,7 @@ class AppDetailsView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              "App screenshots",
+                              AppTexts.appScreenshots,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 24
@@ -408,7 +408,7 @@ class AppDetailsView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            "Ratings and Reviews",
+                            AppTexts.ratingsReviews,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 24
@@ -567,7 +567,7 @@ class AppDetailsView extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(bottom: 24),
                       child: const Text(
-                        "System requirements",
+                        AppTexts.systemRequirements,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 24
@@ -589,7 +589,7 @@ class AppDetailsView extends StatelessWidget {
           //height: 150,
           child:
           SuggestionTag(
-            tag: "Similar App Suggestions",
+            tag: AppTexts.similarAppSugestions,
             products: suggestedProd.products,
             cardType: CardType.vertical,
           ),

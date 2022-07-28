@@ -18,4 +18,6 @@ class AppAssets {
   static String laptopPng = 'assets/icons/laptop.png';
   static String chevronDownPng = 'assets/icons/chevron-down.png';
   static String terminalSquarePng = 'assets/icons/terminal-square.png';
+  static String installPng = 'assets/icons/install.png';
+  static String shareIconPng = 'assets/icons/share_icon.png';
 }

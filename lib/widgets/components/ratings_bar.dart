@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/utils/colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 
@@ -29,19 +30,16 @@ class RatingsBar extends StatelessWidget {
             margin: const EdgeInsets.only(left: 5),
             child: const ImageIcon(
               AssetImage("assets/icons/star.png"),
-              color: Color(0xffF79009),
+              color: AppColors.orange,
             ),
           ),
           LinearPercentIndicator(
             width: 324.0,
             lineHeight: 12.0,
             percent: percent,
-            backgroundColor: const Color(0xffC8CDFC),
+            backgroundColor: AppColors.primaryW100,
             linearGradient: const LinearGradient(
-              colors: [
-                Color(0xff4758F6),
-                Color(0xff919BFA),
-              ]
+              colors: AppColors.gradientBlueW500
             ),
             barRadius: const Radius.circular(16),
           ),

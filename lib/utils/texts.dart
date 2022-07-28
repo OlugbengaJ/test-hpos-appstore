@@ -23,4 +23,9 @@ class AppTexts {
   static const String install = 'Install';
   static const String free = 'Free';
   static const String share = 'share';
+  static const String systemRequirements = 'System requirements';
+  static const String similarAppSugestions = 'Similar App Suggestions';
+  static const String ratingsReviews = 'Ratings and Reviews';
+  static const String appScreenshots = 'App screenshots';
+  static const String showMore = 'Show more';
 }
