@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
+import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/enums.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
@@ -227,7 +228,7 @@ class AppDetailsView extends StatelessWidget {
                 
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const  [
+                  children:  [
                     AppInfoCard(
                       top: "Ratings",
                       center: Text(
@@ -279,7 +280,9 @@ class AppDetailsView extends StatelessWidget {
                      AppInfoCard(
                       top: "Developer",
                       center: ImageIcon(
-                        AssetImage("assets/icons/terminal-square.png"),
+                        AssetImage(
+                          AppAssets.terminalSquarePng
+                        ),
                         size: 40,
                         color:  Color(0xffF2F4F7)
                       ),

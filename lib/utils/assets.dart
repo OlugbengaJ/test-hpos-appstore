@@ -17,4 +17,5 @@ class AppAssets {
   static String hpLogoPng = 'assets/images/hp_logo.png';
   static String laptopPng = 'assets/icons/laptop.png';
   static String chevronDownPng = 'assets/icons/chevron-down.png';
+  static String terminalSquarePng = 'assets/icons/terminal-square.png';
 }
