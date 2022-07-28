@@ -111,7 +111,7 @@ class AppReviewCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
-                  color: Color(0xff475467)
+                  color: AppColors.greyW600
                 ),
 
               ),
