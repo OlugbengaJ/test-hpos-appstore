@@ -110,5 +110,12 @@ class LibraryProvider extends ChangeNotifier {
     return [ProductFilterTag('All', 'all'), ProductFilterTag('Games', 'games')];
   }
 
-  ValueNotifier<LibraryDisplay> selectedView =  ValueNotifier(LibraryDisplay.grid);
+  ValueNotifier<LibraryDisplay> selectedView =
+      ValueNotifier(LibraryDisplay.grid);
 }
+// ImageIcon(
+//     AssetImage('assets/images/pikachu.png'),
+//   )
+
+//   assets/icons/grid_icon.svg
+//   assets/icons/list_icon.svg
