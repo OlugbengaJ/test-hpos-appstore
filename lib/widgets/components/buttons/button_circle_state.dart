@@ -20,6 +20,7 @@ class ButtonCircleState extends StatelessWidget {
     this.color = AppColors.primaryW25,
     this.selectedColor = AppColors.primary,
     this.borderColor = AppColors.primaryW100,
+    this.borderWidth = 3,
     this.iconColor = AppColors.primary,
     this.iconSelectedColor = AppColors.primaryW25,
   }) : super(key: key);
@@ -52,9 +53,13 @@ class ButtonCircleState extends StatelessWidget {
   /// [selectedColor] the color of the button in the selected state.
   final Color selectedColor;
 
-  /// [borderColor] the color of the border drawn aroung the button in
+  /// [borderColor] the color of the border drawn around the button in
   /// the selected state.
   final Color borderColor;
+
+  /// [borderWidth] the width of the border drawn around the button in
+  /// the selected state.
+  final double borderWidth;
 
   /// [iconColor] the color of the icon in the unselected state.
   final Color iconColor;
@@ -64,29 +69,31 @@ class ButtonCircleState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 40,
-      height: 40,
-      child: MaterialButton(
-        elevation: 0,
-        shape: CircleBorder(
-          side: selectionFunction()
-              ? BorderSide(
-                  width: 3,
-                  color: borderColor,
-                  style: BorderStyle.solid,
-                )
-              : BorderSide.none,
-        ),
-        color: selectionFunction() ? selectedColor : color,
-        textColor: AppColors.primary,
-        onPressed: onPressed,
-        child: SvgPicture.asset(
-          pictureAsset,
-          width: logoWidth,
-          height: logoHeight,
-          color: selectionFunction() ? iconSelectedColor : iconColor,
-          semanticsLabel: 'grid view icon',
+    return Material(
+      color: Colors.transparent,
+      child: Ink(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: selectionFunction() ? selectedColor : color,
+            border: selectionFunction()
+                ? Border.all(
+                    width: borderWidth,
+                    color: borderColor,
+                    style: BorderStyle.solid,
+                  )
+                : null),
+        child: InkWell(
+          onTap: onPressed,
+          child: Center(
+            child: SvgPicture.asset(
+              pictureAsset,
+              width: logoWidth,
+              height: logoHeight,
+              color: selectionFunction() ? iconSelectedColor : iconColor,
+            ),
+          ),
         ),
       ),
     );

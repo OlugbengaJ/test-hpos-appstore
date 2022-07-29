@@ -3,18 +3,13 @@ import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 
 class LibraryProvider extends ChangeNotifier {
-  LibraryDisplay displayType = LibraryDisplay.grid;
   LibraryProducts appView = LibraryProducts.all;
   String filterTag = 'all';
 
-  setDisplayView(LibraryDisplay choice) {
-    displayType = choice;
-    notifyListeners();
-  }
+  var displayType = ValueNotifier(LibraryDisplay.grid);
 
   setAppView(LibraryProducts choice) {
     appView = choice;
-    displayType = LibraryDisplay.grid;
     notifyListeners();
   }
 
@@ -130,10 +125,5 @@ class LibraryProvider extends ChangeNotifier {
   List<ProductFilterTag> removeFilterTag(int tagId) {
     return [];
   }
-}
-// ImageIcon(
-//     AssetImage('assets/images/pikachu.png'),
-//   )
 
-//   assets/icons/grid_icon.svg
-//   assets/icons/list_icon.svg
+}

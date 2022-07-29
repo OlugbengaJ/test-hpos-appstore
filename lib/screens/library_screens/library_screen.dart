@@ -26,11 +26,10 @@ class LibraryScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          app_spacer.Spacer.bottomMedium,
-          const LibraryHeaderView(),
-          app_spacer.Spacer.bottomMedium,
-          const LibraryView(),
+        children: const [
+          LibraryHeaderView(),
+          Padding(padding: EdgeInsets.only(bottom: 40)),
+          LibraryView(),
         ],
       ),
     );
