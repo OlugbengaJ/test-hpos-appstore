@@ -71,9 +71,7 @@ class WriteReviewScreen extends StatelessWidget {
                       minRating: 0,
                       direction: Axis.horizontal,
                       allowHalfRating: false,
-                      itemSize: getVerticalSize(
-                        40.00,
-                      ),
+                      itemSize: Numericals.double40,
                       itemCount: 5,
                       updateOnDrag: true,
                       onRatingUpdate: (rating) {},
