@@ -16,19 +16,20 @@ class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
 
   static final screenConfig = ScreenConfig('/app_details',
-      showSearch: false,
-      child: Row(
-        children: [
-          ButtonRound(
-            icon: Icons.arrow_back,
-            iconColor: Theme.of(navigatorKey.currentContext!).primaryColor,
-            size: 36.0,
-            iconSize: 24.0,
-            onTap: () {},
-          ),
-          const Text(AppTexts.back),
-        ],
-      ));
+    showSearch: false,
+    child: Row(
+      children: [
+        ButtonRound(
+          icon: Icons.arrow_back,
+          iconColor: Theme.of(navigatorKey.currentContext!).primaryColor,
+          size: 36.0,
+          iconSize: 24.0,
+          onTap: () {},
+        ),
+        const Text(AppTexts.back),
+      ],
+    )
+  );
 
   @override
   Widget build(BuildContext context) {
