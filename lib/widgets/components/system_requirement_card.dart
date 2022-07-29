@@ -27,10 +27,11 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
               child: Row(
                 children: [
                   Container(
-                      child: const Icon(
-                    Icons.check_circle,
-                    color: AppColors.green,
-                  )),
+                    child: const Icon(
+                      Icons.check_circle,
+                      color: AppColors.green,
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.only(left: 26.33),
                     child: const Text(
