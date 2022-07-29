@@ -4,6 +4,7 @@ import 'package:hpos_appstore/providers/app_provider/app_provider.dart';
 import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/widgets/modals.dart';
 import 'package:provider/provider.dart';
 
 class AppDetailsTopCard extends StatelessWidget {
@@ -133,127 +134,129 @@ class AppDetailsTopCard extends StatelessWidget {
 
 
                   ValueListenableBuilder<bool>(
-                  valueListenable: appProvider.installed, 
-                  builder: (context, installed, _){
-                    return Container(
-                      child: Row(
-                        children: [
-                          (!installed)?
-                          Row(
-                            children: [
-                              InkWell(
-                                onTap: appProvider.install,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primaryW500,
-                                    borderRadius: BorderRadius.circular(8)
-                                  ),
-                                  height: 48,
-                                  width: 187,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(
-                                        child: Text(
-                                          AppTexts.install,
-                                          style: TextStyle(
-                                            color: AppColors.white,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 8.0),
-                                        child: SvgPicture.asset(
-                                          AppAssets.installSVG,
-                                          color: AppColors.white,
-                                        ),
-                                      ),                                
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 20,),
-                            ],
-                          ):
-                         Row(
+                    valueListenable: appProvider.installed, 
+                    builder: (context, installed, _){
+                      return Container(
+                        child: Row(
                           children: [
-                              InkWell(                                
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primaryW400,
-                                    borderRadius: BorderRadius.circular(8)
-                                  ),
-                                  height: 48,
-                                  width: 187,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      SizedBox(
-                                        child: Text(
-                                          AppTexts.installed,
-                                          style: TextStyle(
+                            (!installed)?
+                            Row(
+                              children: [
+                                InkWell(
+                                  onTap: appProvider.install,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.primaryW500,
+                                      borderRadius: BorderRadius.circular(8)
+                                    ),
+                                    height: 48,
+                                    width: 187,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        const SizedBox(
+                                          child: Text(
+                                            AppTexts.install,
+                                            style: TextStyle(
+                                              color: AppColors.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 8.0),
+                                          child: SvgPicture.asset(
+                                            AppAssets.installSVG,
                                             color: AppColors.white,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18
                                           ),
-                                        ),
-                                      ),
-                                    ],
+                                        ),                                
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(width: 20,),
-                              InkWell(
-                                onTap: appProvider.uninstall,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: AppColors.red),
-                                    borderRadius: BorderRadius.circular(8)
-                                  ),
-                                  height: 48,
-                                  width: 134,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(
-                                        child: Text(
-                                          AppTexts.uninstall,
-                                          style: TextStyle(
-                                            color: AppColors.red,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18
+                                const SizedBox(width: 20,),
+                              ],
+                            ):
+                            Row(
+                              children: [
+                                  InkWell(                                
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primaryW400,
+                                        borderRadius: BorderRadius.circular(8)
+                                      ),
+                                      height: 48,
+                                      width: 187,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: const [
+                                          SizedBox(
+                                            child: Text(
+                                              AppTexts.installed,
+                                              style: TextStyle(
+                                                color: AppColors.white,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 8.0),
-                                        child: SvgPicture.asset(
-                                          AppAssets.trashSVG,
-                                          color: AppColors.red,
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                              const SizedBox(width: 20,),
-                          ],
-                         ),
-                          InkWell(
-                            child: ImageIcon(
-                              AssetImage(
-                                AppAssets.shareIconPng
-                              ),
-                              color: AppColors.primaryW400,
+                                  const SizedBox(width: 20,),
+                                  InkWell(
+                                    onTap: (){
+                                      uninstallAppDialog(context, appProvider);
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: AppColors.red),
+                                        borderRadius: BorderRadius.circular(8)
+                                      ),
+                                      height: 48,
+                                      width: 134,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          const SizedBox(
+                                            child: Text(
+                                              AppTexts.uninstall,
+                                              style: TextStyle(
+                                                color: AppColors.red,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 8.0),
+                                            child: SvgPicture.asset(
+                                              AppAssets.trashSVG,
+                                              color: AppColors.red,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20,),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                ),
+                            InkWell(
+                              child: ImageIcon(
+                                AssetImage(
+                                  AppAssets.shareIconPng
+                                ),
+                                color: AppColors.primaryW400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  ),
 
                   
                 ],
