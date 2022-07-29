@@ -19,7 +19,7 @@ class WriteReviewScreen extends StatelessWidget {
     return Container(
       margin: EdgeInsets.zero,
       constraints: BoxConstraints(
-        maxWidth: size.width * 0.4,
+        maxWidth: size.width * 0.35,
         maxHeight: size.height * 0.8,
       ),
       child: SingleChildScrollView(
