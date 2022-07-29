@@ -108,19 +108,16 @@ class AppDetailsView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 50,
                                   child: ListTile(
                                     contentPadding: EdgeInsets.zero,
                                     title: Row(
                                       children: [
-                                        Container(
-                                          child: const Text(
-                                            "Microsoft Teams",
-                                            style: TextStyle(
-                                                color: AppColors.greyW900,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 28),
-                                          ),
+                                        const Text(
+                                          "Microsoft Teams",
+                                          style: TextStyle(
+                                              color: AppColors.greyW900,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 28),
                                         ),
                                         Container(
                                           margin:
@@ -132,35 +129,38 @@ class AppDetailsView extends StatelessWidget {
                                               borderRadius:
                                                   BorderRadius.circular(16)),
                                           child: const Center(
-                                              child: Text(
-                                            AppTexts.free,
-                                            style: TextStyle(
-                                                color: AppColors.primaryW600,
-                                                fontWeight: FontWeight.bold),
-                                          )),
+                                            child: Text(
+                                              AppTexts.free,
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: AppColors.primaryW600,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
-                                    subtitle: Row(
-                                      children: [
-                                        Container(
-                                          child: Text("Productivity"),
-                                        ),
-                                        Container(
-                                          child: Icon(
-                                            Icons.circle,
-                                            size: 5,
+                                    subtitle: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 4.0, bottom: 4.0),
+                                      child: Row(
+                                        children: const [
+                                          Text("Productivity"),
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Icon(
+                                              Icons.circle,
+                                              size: 5,
+                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          child: Text("App"),
-                                        ),
-                                      ],
+                                          Text("App"),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 10),
+                                const SizedBox(
+                                  // margin: EdgeInsets.only(top: 10),
                                   width: 600,
                                   child: Text(
                                       "Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere."),
@@ -182,14 +182,12 @@ class AppDetailsView extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Container(
-                                            child: Text(
-                                              AppTexts.install,
-                                              style: TextStyle(
-                                                  color: AppColors.white,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 18),
-                                            ),
+                                          const Text(
+                                            AppTexts.install,
+                                            style: TextStyle(
+                                                color: AppColors.white,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 18),
                                           ),
                                           ImageIcon(
                                             AssetImage(AppAssets.installPng),
@@ -199,9 +197,7 @@ class AppDetailsView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
+                                  const SizedBox(width: 20),
                                   InkWell(
                                     child: ImageIcon(
                                       AssetImage(AppAssets.shareIconPng),
