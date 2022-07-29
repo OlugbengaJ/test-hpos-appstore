@@ -17,7 +17,8 @@ import 'package:hpos_appstore/widgets/write_review_card.dart';
 class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
 
-  static final screenConfig = ScreenConfig('/app_details',
+  static final screenConfig = ScreenConfig(
+    '/app_details',
     showSearch: false,
     child: Row(
       children: [
@@ -30,7 +31,7 @@ class AppDetailsView extends StatelessWidget {
         ),
         const Text(AppTexts.back),
       ],
-    )
+    ),
   );
 
   @override
@@ -74,7 +75,7 @@ class AppDetailsView extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(top:50),
+          margin: const EdgeInsets.only(top: 50),
           padding: EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
@@ -83,7 +84,7 @@ class AppDetailsView extends StatelessWidget {
             children: [
               // App Icon and summary
               Container(
-                margin: EdgeInsets.only(bottom:64),
+                margin: EdgeInsets.only(bottom: 64),
                 child: AppDetailsTopCard(),
               ),
 
@@ -94,9 +95,7 @@ class AppDetailsView extends StatelessWidget {
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: AppColors.gradientGreyW500,
-                    stops: [
-                      0.25, 71, 96
-                    ],
+                    stops: [0.25, 71, 96],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
@@ -104,7 +103,7 @@ class AppDetailsView extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children:  [
+                  children: [
                     const AppInfoCard(
                       top: "Ratings",
                       center: Text(
@@ -126,12 +125,12 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "148",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "MB",
-                    ),                
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "MB",
+                    ),
                     const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
@@ -241,23 +240,23 @@ class AppDetailsView extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      alignment: Alignment.topLeft,
-                      height: 403,
-                      child: const ScrollableStack(
-                        groupIcons: true,
-                        size: 40,
-                        children:  [
-                          AppScreenShot(
-                            image: "assets/images/screenshot_1.png",
-                          ),
-                          SizedBox(width: 17,),
-                          AppScreenShot(
-                            image: "assets/images/screenshot_2.png",
-                          ),
-                        ],
-                      )
-                      
-                    ),
+                        alignment: Alignment.topLeft,
+                        height: 403,
+                        child: const ScrollableStack(
+                          groupIcons: true,
+                          size: 40,
+                          children: [
+                            AppScreenShot(
+                              image: "assets/images/screenshot_1.png",
+                            ),
+                            SizedBox(
+                              width: 17,
+                            ),
+                            AppScreenShot(
+                              image: "assets/images/screenshot_2.png",
+                            ),
+                          ],
+                        )),
                   ],
                 ),
               ),
@@ -384,7 +383,7 @@ class AppDetailsView extends StatelessWidget {
                     Numericals.double28,
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         'Click to rate this Application',
@@ -393,32 +392,53 @@ class AppDetailsView extends StatelessWidget {
                         ),
                       ),
 
+                      // space between sections
+                      SizedBox(width: Numericals.double48),
+
                       // TODO: Refactor clickable stars here
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: const [
-                          Icon(
-                            Icons.star_border_outlined,
-                            color: AppColors.primary,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
                           ),
-                          Icon(
-                            Icons.star_border_outlined,
-                            color: AppColors.primary,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
                           ),
-                          Icon(
-                            Icons.star_border_outlined,
-                            color: AppColors.primary,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
                           ),
-                          Icon(
-                            Icons.star_border_outlined,
-                            color: AppColors.primary,
-                          ),
-                          Icon(
-                            Icons.star_border_outlined,
-                            color: AppColors.primary,
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
                           ),
                         ],
                       ),
+
+                      // space between sections
+                      SizedBox(width: Numericals.double48),
+
+                      // write review section
                       TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(AppColors.primaryW25),
+                          ),
                           onPressed: () => showReview(context),
                           child: Row(
                             children: const [
@@ -447,39 +467,38 @@ class AppDetailsView extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        alignment: Alignment.topLeft,
-                        height: 403,
-                        child: const ScrollableStack(
-                          groupIcons: true,
-                          size: 40,
-                          children: [
-                            AppReviewCard(
-                              title: "This app is trash",
-                              content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                              username: "Draqaris001",
-                              date: "14/07/2021",
-                              likes: 25,
-                              dislikes: 0,
-                              stars: 1,
-                            ),
-                            SizedBox(width: 17,),
-
-                            AppReviewCard(
-                              title: "Best app in the world",
-                              content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                              username: "Draqaris001",
-                              date: "14/07/2021",
-                              likes: 23,
-                              dislikes: 0,
-                              stars: 1,
-                            ),
-                            
-                          ],
-                        )
-                        
-                        
-                      ),
-                    ),                
+                          alignment: Alignment.topLeft,
+                          height: 403,
+                          child: const ScrollableStack(
+                            groupIcons: true,
+                            size: 40,
+                            children: [
+                              AppReviewCard(
+                                title: "This app is trash",
+                                content:
+                                    "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
+                                username: "Draqaris001",
+                                date: "14/07/2021",
+                                likes: 25,
+                                dislikes: 0,
+                                stars: 1,
+                              ),
+                              SizedBox(
+                                width: 17,
+                              ),
+                              AppReviewCard(
+                                title: "Best app in the world",
+                                content:
+                                    "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
+                                username: "Draqaris001",
+                                date: "14/07/2021",
+                                likes: 23,
+                                dislikes: 0,
+                                stars: 1,
+                              ),
+                            ],
+                          )),
+                    ),
                   ],
                 ),
               ),
