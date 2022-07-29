@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
+import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/enums.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/utils/utils_import.dart';
 import 'package:hpos_appstore/widgets/components/app_details_top_card.dart';
 import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
+import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
 import 'package:hpos_appstore/widgets/components/ratings_bar.dart';
 import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
@@ -17,11 +20,23 @@ import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
 class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
 
-  static String route = '/app_details';
+  static final screenConfig = ScreenConfig('/app_details',
+      showSearch: false,
+      child: Row(
+        children: [
+          ButtonRound(
+            icon: Icons.arrow_back,
+            iconColor: Theme.of(navigatorKey.currentContext!).primaryColor,
+            size: 36.0,
+            iconSize: 24.0,
+            onTap: () {},
+          ),
+          const Text(AppTexts.back),
+        ],
+      ));
 
   @override
   Widget build(BuildContext context) {
-
     var productivityApps = [
       Product(
           'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
@@ -72,7 +87,6 @@ class AppDetailsView extends StatelessWidget {
                 child: AppDetailsTopCard(),
               ),
 
-
               Container(
                 margin: EdgeInsets.only(bottom: 72),
                 height: 132,
@@ -88,7 +102,6 @@ class AppDetailsView extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(16)),
                 ),
-                
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children:  [
@@ -97,11 +110,11 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "4.5",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "Average",
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "Average",
                     ),
                     const VerticalDivider(
                       color: AppColors.greyW600,
@@ -128,27 +141,22 @@ class AppDetailsView extends StatelessWidget {
                       top: "Age",
                       center: Text(
                         "4 +",
-                       style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "Years",
+                        style: TextStyle(
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "Years",
                     ),
                     const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                     AppInfoCard(
+                    AppInfoCard(
                       top: "Developer",
-                      center: ImageIcon(
-                        AssetImage(
-                          AppAssets.terminalSquarePng
-                        ),
-                        size: 40,
-                        color:  AppColors.greyW100
-                      ),
+                      center: ImageIcon(AssetImage(AppAssets.terminalSquarePng),
+                          size: 40, color: AppColors.greyW100),
                       bottom: "Microsoft Inc",
                     ),
                     const VerticalDivider(
@@ -161,11 +169,11 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "EN",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "+ 10 More",
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "+ 10 More",
                     ),
                     const VerticalDivider(
                       color: AppColors.greyW600,
@@ -177,13 +185,12 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "12 +",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "Recommended",
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "Recommended",
                     ),
-
                   ],
                 ),
               ),
@@ -205,9 +212,7 @@ class AppDetailsView extends StatelessWidget {
                             const Text(
                               AppTexts.appScreenshots,
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 24
-                              ),
+                                  fontWeight: FontWeight.w600, fontSize: 24),
                             ),
                             TextButton(
                               onPressed: () => {},
@@ -253,8 +258,6 @@ class AppDetailsView extends StatelessWidget {
                       )
                       
                     ),
-
-                    
                   ],
                 ),
               ),
@@ -272,9 +275,7 @@ class AppDetailsView extends StatelessWidget {
                           const Text(
                             AppTexts.ratingsReviews,
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 24
-                            ),
+                                fontWeight: FontWeight.w600, fontSize: 24),
                           ),
                           TextButton(
                             onPressed: () => {},
@@ -306,10 +307,9 @@ class AppDetailsView extends StatelessWidget {
                         Container(
                           height: 184,
                           width: 184,
-                          decoration:  BoxDecoration(
-                            color: AppColors.primaryW600,
-                            borderRadius: BorderRadius.circular(16)
-                          ),
+                          decoration: BoxDecoration(
+                              color: AppColors.primaryW600,
+                              borderRadius: BorderRadius.circular(16)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -336,8 +336,6 @@ class AppDetailsView extends StatelessWidget {
                             ],
                           ),
                         ),
-                        
-
                         Container(
                           margin: const EdgeInsets.only(left: 56),
                           height: 184,
@@ -364,7 +362,6 @@ class AppDetailsView extends StatelessWidget {
                                 star: 1,
                                 percent: 0.1,
                               ),
-                            
                             ],
                           ),
                         )
@@ -419,11 +416,10 @@ class AppDetailsView extends StatelessWidget {
                 ),
               ),
 
-
               // System requirements
 
               Container(
-                 margin: EdgeInsets.only(top: 72),
+                margin: EdgeInsets.only(top: 72),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -432,26 +428,20 @@ class AppDetailsView extends StatelessWidget {
                       child: const Text(
                         AppTexts.systemRequirements,
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24
-                        ),
+                            fontWeight: FontWeight.w600, fontSize: 24),
                       ),
                     ),
-
                     SystemRequirementCard(),
                   ],
                 ),
               ),
-              
             ],
           ),
         ),
-
         Container(
           margin: EdgeInsets.only(top: 72),
           //height: 150,
-          child:
-          SuggestionTag(
+          child: SuggestionTag(
             tag: AppTexts.similarAppSugestions,
             products: suggestedProd.products,
             cardType: CardType.vertical,
@@ -459,8 +449,5 @@ class AppDetailsView extends StatelessWidget {
         ),
       ],
     );
-
-
-    
   }
 }

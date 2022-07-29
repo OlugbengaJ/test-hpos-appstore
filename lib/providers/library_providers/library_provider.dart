@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 
 class LibraryProvider extends ChangeNotifier {
@@ -94,4 +95,6 @@ class LibraryProvider extends ChangeNotifier {
   getTags() {
     return [];
   }
+
+  ValueNotifier<LibraryDisplay> selectedView =  ValueNotifier(LibraryDisplay.grid);
 }

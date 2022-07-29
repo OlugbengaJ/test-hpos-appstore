@@ -39,4 +39,5 @@ class AppColors {
     Color(0xff4758F6),
     Color(0xff919BFA),
   ];
+  static const Color shadow = Color(0xff101828);
 }
