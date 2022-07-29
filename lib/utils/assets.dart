@@ -24,4 +24,10 @@ class AppAssets {
   static String thumbsDownPng = 'assets/icons/thumbs_down.png';
   static String flagPng = 'assets/icons/flag.png';
   static String starPng = 'assets/icons/star.png';
+
+  // SVGs
+  static String trashSVG = 'assets/icons/trash-02.svg';
+  static String installSVG = 'assets/icons/install.svg';
+  static String checkSVG = 'assets/icons/check.svg';
+  static String closeSVG = 'assets/icons/close.svg';
 }

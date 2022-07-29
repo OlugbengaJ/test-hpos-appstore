@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/providers/app_provider/app_provider.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/providers/navigation_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
@@ -18,6 +19,7 @@ void main() {
         create: (context) => NavigationProvider(),
       ),
       ChangeNotifierProvider(create: (_) => LibraryProvider()),
+      ChangeNotifierProvider(create: (_) => AppProvider()),
     ],
     child: const MyApp(),
   ));
