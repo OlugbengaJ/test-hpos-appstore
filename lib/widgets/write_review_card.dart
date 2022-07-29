@@ -4,288 +4,199 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hpos_appstore/utils/utils_import.dart';
+import 'package:hpos_appstore/widgets/components/buttons/button_rect.dart';
+import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
+import 'package:hpos_appstore/widgets/components/texts/textfield_box.dart';
 
 class WriteReviewScreen extends StatelessWidget {
+  const WriteReviewScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorConstant.whiteA700,
-        body: Container(
-          width: size.width,
-          child: SingleChildScrollView(
-            child: Container(
-              height: size.height,
-              width: size.width,
-              child: Stack(
+    final themeData = Theme.of(context);
+
+    return Container(
+      margin: EdgeInsets.zero,
+      constraints: BoxConstraints(
+        maxWidth: size.width * 0.4,
+        maxHeight: size.height * 0.8,
+      ),
+      child: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(Numericals.double16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Align(
                     alignment: Alignment.center,
-                    child: Container(
-                      margin: getMargin(
-                        left: 40,
-                        top: 37,
-                        right: 40,
-                        bottom: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          'Review Microsoft Teams',
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.left,
+                          style: themeData.textTheme.headline6,
+                        ),
+                        Padding(
+                          padding: getPadding(
+                            top: 10,
+                            bottom: 10,
+                          ),
+                          child: ButtonRound(
+                            icon: Icons.close,
+                            iconColor: themeData.primaryColor,
+                            size: 36.0,
+                            iconSize: 24.0,
+                            onTap: () => Navigator.pop(context),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: getPadding(
+                      top: 29,
+                      right: 10,
+                    ),
+                    child: RatingBar.builder(
+                      initialRating: 5,
+                      minRating: 0,
+                      direction: Axis.horizontal,
+                      allowHalfRating: false,
+                      itemSize: getVerticalSize(
+                        40.00,
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      itemCount: 5,
+                      updateOnDrag: true,
+                      onRatingUpdate: (rating) {},
+                      itemBuilder: (context, _) {
+                        return const Icon(Icons.star_border,
+                            color: AppColors.primary);
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+                    child: Text(AppTexts.reviewTitle,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.left,
+                        style: themeData.textTheme.labelMedium),
+                  ),
+                  TextFieldBox(
+                    textController: TextEditingController(),
+                    hintText: AppTexts.reviewTitleHint,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+                    child: Text(AppTexts.reviewDescription,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.left,
+                        style: themeData.textTheme.labelMedium),
+                  ),
+                  TextFieldBox(
+                    textController: TextEditingController(),
+                    hintText: AppTexts.reviewDescriptionHint,
+                    maxLines: 6,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+                    child: RichText(
+                      text: TextSpan(
                         children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              width: size.width,
-                              margin: getMargin(
-                                right: 8,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Review Microsoft Teams',
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style: AppStyle.txtEuclidCircularBSemiBold24
-                                        .copyWith(),
-                                  ),
-                                  Padding(
-                                    padding: getPadding(
-                                      top: 10,
-                                      bottom: 10,
-                                    ),
-                                    child: CommonImageView(
-                                      svgPath: ImageConstant.imgArrowright,
-                                      height: getSize(
-                                        10.00,
-                                      ),
-                                      width: getSize(
-                                        10.00,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          TextSpan(
+                            text: AppTexts.reviewTerms,
+                            style: themeData.textTheme.bodySmall,
                           ),
-                          Padding(
-                            padding: getPadding(
-                              top: 29,
-                              right: 10,
-                            ),
-                            child: RatingBar.builder(
-                              initialRating: 5,
-                              minRating: 0,
-                              direction: Axis.horizontal,
-                              allowHalfRating: false,
-                              itemSize: getVerticalSize(
-                                40.00,
-                              ),
-                              itemCount: 5,
-                              updateOnDrag: true,
-                              onRatingUpdate: (rating) {},
-                              itemBuilder: (context, _) {
-                                return Icon(
-                                  Icons.star,
-                                );
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: getPadding(
-                              top: 24,
-                              right: 10,
-                            ),
-                            child: Text(
-                              'Give a title to your review (Optional)',
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.left,
-                              style:
-                              AppStyle.txtEuclidCircularBMedium14.copyWith(
-                                height: 1.43,
-                              ),
-                            ),
-                          ),
-                          CustomTextFormField(
-                            width: 437,
-                            focusNode: FocusNode(),
-                            controller: null,
-                            hintText: 'Enter title',
-                            margin: getMargin(
-                              top: 6,
-                              right: 1,
-                            ),
-                            textInputAction: TextInputAction.done,
-                            alignment: Alignment.center,
-                          ),
-                          Padding(
-                            padding: getPadding(
-                              top: 24,
-                              right: 10,
-                            ),
-                            child: Text(
-                              'Describe your experience using this app (Optional)',
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.left,
-                              style:
-                              AppStyle.txtEuclidCircularBMedium14.copyWith(
-                                height: 1.43,
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              width: double.infinity,
-                              margin: getMargin(
-                                top: 6,
-                                right: 1,
-                              ),
-                              decoration:
-                              AppDecoration.outlineBluegray100.copyWith(
-                                borderRadius: BorderRadiusStyle.roundedBorder8,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: getPadding(
-                                        left: 14,
-                                        top: 10,
-                                        right: 14,
-                                        bottom: 108,
-                                      ),
-                                      child: Text(
-                                        'Describe experience',
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.left,
-                                        style: AppStyle
-                                            .txtEuclidCircularBRegular14
-                                            .copyWith(
-                                          height: 1.71,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              width: getHorizontalSize(
-                                437.00,
-                              ),
-                              margin: getMargin(
-                                left: 1,
-                                top: 17,
-                              ),
-                              child: RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: 'Your reviews, ratings and name may be posted publicly on Microsoft and/or '
-                                          'third-party applications and websites. By submitting a review, you agree to '
-                                          'the ',
-                                      style: TextStyle(
-                                        color: ColorConstant.bluegray900,
-                                        fontSize: getFontSize(
-                                          12,
-                                        ),
-                                        fontFamily: 'Euclid Circular B',
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.67,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'Terms of Sale',
-                                      style: TextStyle(
-                                        color: ColorConstant.indigo500,
-                                        fontSize: getFontSize(
-                                          12,
-                                        ),
-                                        fontFamily: 'Euclid Circular B',
-                                        fontWeight: FontWeight.w500,
-                                        height: 1.67,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Padding(
-                              padding: getPadding(
-                                top: 24,
-                                right: 1,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  CustomButton(
-                                    width: 274,
-                                    text: 'Submit',
-                                  ),
-                                  CustomButton(
-                                    width: 147,
-                                    text: 'Cancel',
-                                    variant: ButtonVariant.OutlineIndigoA400,
-                                    fontStyle: ButtonFontStyle
-                                        .EuclidCircularBSemiBold18IndigoA400,
-                                  ),
-                                ],
-                              ),
-                            ),
+                          TextSpan(
+                            text: ' ${AppTexts.termsOfSale}',
+                            style: themeData.textTheme.bodySmall
+                                ?.copyWith(color: ColorConstant.indigo500),
                           ),
                         ],
                       ),
+                      textAlign: TextAlign.left,
                     ),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        fit: FlexFit.tight,
+                        child: ButtonRect(
+                          tapHandler: () => Navigator.pop(context),
+                          color: AppColors.primary,
+                          radius: BorderRadius.circular(8.0),
+                          child: const Text(
+                            AppTexts.submit,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // creates a space between buttons
+                      const SizedBox(width: 8.0),
+
+                      // cancel button
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: ButtonRect(
+                          tapHandler: () => Navigator.pop(context),
+                          radius: BorderRadius.circular(8.0),
+                          child: const Text(
+                            'Cancel',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: AppColors.primary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 }
 
-
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField(
       {this.shape,
-        this.padding,
-        this.variant,
-        this.fontStyle,
-        this.alignment,
-        this.width,
-        this.margin,
-        this.controller,
-        this.focusNode,
-        this.isObscureText = false,
-        this.textInputAction = TextInputAction.next,
-        this.hintText,
-        this.prefix,
-        this.prefixConstraints,
-        this.suffix,
-        this.suffixConstraints,
-        this.validator});
+      this.padding,
+      this.variant,
+      this.fontStyle,
+      this.alignment,
+      this.width,
+      this.margin,
+      this.controller,
+      this.focusNode,
+      this.isObscureText = false,
+      this.textInputAction = TextInputAction.next,
+      this.hintText,
+      this.prefix,
+      this.prefixConstraints,
+      this.suffix,
+      this.suffixConstraints,
+      this.validator});
 
   TextFormFieldShape? shape;
 
@@ -325,9 +236,9 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
-      alignment: alignment ?? Alignment.center,
-      child: _buildTextFormFieldWidget(),
-    )
+            alignment: alignment ?? Alignment.center,
+            child: _buildTextFormFieldWidget(),
+          )
         : _buildTextFormFieldWidget();
   }
 
@@ -429,30 +340,32 @@ class CustomTextFormField extends StatelessWidget {
 }
 
 enum TextFormFieldShape {
-  RoundedBorder8,
-}
-enum TextFormFieldPadding {
-  PaddingAll10,
-}
-enum TextFormFieldVariant {
-  OutlineBluegray100,
-}
-enum TextFormFieldFontStyle {
-  EuclidCircularBRegular14,
+  roundedBorder8,
 }
 
+enum TextFormFieldPadding {
+  paddingAll10,
+}
+
+enum TextFormFieldVariant {
+  outlineBluegray100,
+}
+
+enum TextFormFieldFontStyle {
+  euclidCircularBRegular14,
+}
 
 class CustomButton extends StatelessWidget {
   CustomButton(
       {this.shape,
-        this.padding,
-        this.variant,
-        this.fontStyle,
-        this.alignment,
-        this.onTap,
-        this.width,
-        this.margin,
-        this.text});
+      this.padding,
+      this.variant,
+      this.fontStyle,
+      this.alignment,
+      this.onTap,
+      this.width,
+      this.margin,
+      this.text});
 
   ButtonShape? shape;
 
@@ -476,9 +389,9 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
-      alignment: alignment ?? Alignment.center,
-      child: _buildButtonWidget(),
-    )
+            alignment: alignment ?? Alignment.center,
+            child: _buildButtonWidget(),
+          )
         : _buildButtonWidget();
   }
 
@@ -492,7 +405,7 @@ class CustomButton extends StatelessWidget {
         padding: _setPadding(),
         decoration: _buildDecoration(),
         child: Text(
-          text ?? "",
+          text ?? '',
           textAlign: TextAlign.center,
           style: _setFontStyle(),
         ),
@@ -519,7 +432,7 @@ class CustomButton extends StatelessWidget {
 
   _setColor() {
     switch (variant) {
-      case ButtonVariant.OutlineIndigoA400:
+      case ButtonVariant.outlineIndigoA400:
         return null;
       default:
         return ColorConstant.indigoA400;
@@ -528,14 +441,14 @@ class CustomButton extends StatelessWidget {
 
   _setBorder() {
     switch (variant) {
-      case ButtonVariant.OutlineIndigoA400:
+      case ButtonVariant.outlineIndigoA400:
         return Border.all(
           color: ColorConstant.indigoA400,
           width: getHorizontalSize(
             1.00,
           ),
         );
-      case ButtonVariant.FillIndigoA400:
+      case ButtonVariant.fillIndigoA400:
         return null;
       default:
         return null;
@@ -544,7 +457,7 @@ class CustomButton extends StatelessWidget {
 
   _setBorderRadius() {
     switch (shape) {
-      case ButtonShape.Square:
+      case ButtonShape.square:
         return BorderRadius.circular(0);
       default:
         return BorderRadius.circular(
@@ -557,7 +470,7 @@ class CustomButton extends StatelessWidget {
 
   _setFontStyle() {
     switch (fontStyle) {
-      case ButtonFontStyle.EuclidCircularBSemiBold18IndigoA400:
+      case ButtonFontStyle.euclidCircularBSemiBold18IndigoA400:
         return TextStyle(
           color: ColorConstant.indigoA400,
           fontSize: getFontSize(
@@ -580,21 +493,23 @@ class CustomButton extends StatelessWidget {
 }
 
 enum ButtonShape {
-  Square,
-  RoundedBorder8,
+  square,
+  roundedBorder8,
 }
+
 enum ButtonPadding {
   PaddingAll12,
 }
+
 enum ButtonVariant {
-  FillIndigoA400,
-  OutlineIndigoA400,
-}
-enum ButtonFontStyle {
-  EuclidCircularBSemiBold18,
-  EuclidCircularBSemiBold18IndigoA400,
+  fillIndigoA400,
+  outlineIndigoA400,
 }
 
+enum ButtonFontStyle {
+  euclidCircularBSemiBold18,
+  euclidCircularBSemiBold18IndigoA400,
+}
 
 class ColorConstant {
   static Color bluegray900 = fromHex('#1d2838');
@@ -627,9 +542,8 @@ class ColorConstant {
   }
 }
 
-
-Size size = WidgetsBinding.instance!.window.physicalSize /
-    WidgetsBinding.instance!.window.devicePixelRatio;
+Size size = WidgetsBinding.instance.window.physicalSize; // * 0.5;
+// WidgetsBinding.instance.window.devicePixelRatio;
 
 ///This method is used to set padding/margin (for the left and Right side) & width of the screen or widget according to the Viewport width.
 double getHorizontalSize(double px) {
@@ -638,9 +552,8 @@ double getHorizontalSize(double px) {
 
 ///This method is used to set padding/margin (for the top and bottom side) & height of the screen or widget according to the Viewport height.
 double getVerticalSize(double px) {
-  num statusBar = MediaQueryData.fromWindow(WidgetsBinding.instance!.window)
-      .viewPadding
-      .top;
+  num statusBar =
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window).viewPadding.top;
   num screenHeight = size.height - statusBar;
   return px * (screenHeight / 611);
 }
@@ -725,15 +638,13 @@ EdgeInsetsGeometry getMargin({
       bottom ?? 0,
     ),
   );
-
 }
 
 class ImageConstant {
-  static String imgArrowright = 'assets/images/img_arrowright.svg';
+  static String imgArrowright = 'assets/icons/arrow_forward.svg';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
 }
-
 
 class AppStyle {
   static TextStyle txtEuclidCircularBRegular14 = TextStyle(
@@ -797,35 +708,34 @@ class AppStyle {
   );
 }
 
-
 class AppDecoration {
   static BoxDecoration get outlineBluegray100 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    border: Border.all(
-      color: ColorConstant.bluegray100,
-      width: getHorizontalSize(
-        1.00,
-      ),
-    ),
-    boxShadow: [
-      BoxShadow(
-        color: ColorConstant.gray9000c,
-        spreadRadius: getHorizontalSize(
-          2.00,
+        color: ColorConstant.whiteA700,
+        border: Border.all(
+          color: ColorConstant.bluegray100,
+          width: getHorizontalSize(
+            1.00,
+          ),
         ),
-        blurRadius: getHorizontalSize(
-          2.00,
-        ),
-        offset: Offset(
-          0,
-          1,
-        ),
-      ),
-    ],
-  );
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstant.gray9000c,
+            spreadRadius: getHorizontalSize(
+              2.00,
+            ),
+            blurRadius: getHorizontalSize(
+              2.00,
+            ),
+            offset: Offset(
+              0,
+              1,
+            ),
+          ),
+        ],
+      );
   static BoxDecoration get fillWhiteA700 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-  );
+        color: ColorConstant.whiteA700,
+      );
 }
 
 class BorderRadiusStyle {
@@ -835,7 +745,6 @@ class BorderRadiusStyle {
     ),
   );
 }
-
 
 class CommonImageView extends StatelessWidget {
   ///[url] is required parameter for fetching network image

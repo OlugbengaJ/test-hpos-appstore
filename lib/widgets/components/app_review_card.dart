@@ -15,7 +15,6 @@ class AppReviewCard extends StatelessWidget {
     required this.dislikes,
   }) : super(key: key);
 
-
   final String title;
   final String content;
   final String username;
@@ -35,10 +34,7 @@ class AppReviewCard extends StatelessWidget {
         width: 540,
         padding: const EdgeInsets.all(35),
         decoration: BoxDecoration(
-          color: AppColors.greyW25,
-          borderRadius: BorderRadius.circular(16)
-        ),
-        
+            color: AppColors.greyW25, borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,49 +46,40 @@ class AppReviewCard extends StatelessWidget {
                   Container(
                     child: Text(
                       title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20
-                      ),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                     ),
                   ),
-
                   Container(
-                    margin: EdgeInsets.only(top:8),
+                    margin: EdgeInsets.only(top: 8),
                     child: Row(
                       children: [
                         Container(
                           child: Text(
                             username,
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12,
-                              color: AppColors.greyW400
-                            ),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color: AppColors.greyW400),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 5),
-                          child: Icon(
-                            Icons.circle,
-                            size: 5,
-                            color: AppColors.greyW400
-                          ),
+                          child: Icon(Icons.circle,
+                              size: 5, color: AppColors.greyW400),
                         ),
                         Container(
                           child: Text(
                             date,
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12,
-                              color: AppColors.greyW400
-                            ),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color: AppColors.greyW400),
                           ),
                         )
                       ],
                     ),
                   ),
-
                   Container(
                     height: 20,
                     margin: EdgeInsets.only(top: 16, bottom: 25),
@@ -109,16 +96,14 @@ class AppReviewCard extends StatelessWidget {
               child: Text(
                 content,
                 style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  color: AppColors.greyW600
-                ),
-
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: AppColors.greyW600),
               ),
             ),
 
             Container(
-              margin: EdgeInsets.only(top:30),
+              margin: EdgeInsets.only(top: 30),
               child: Row(
                 children: [
                   Container(
@@ -127,9 +112,7 @@ class AppReviewCard extends StatelessWidget {
                       children: [
                         Container(
                           child: ImageIcon(
-                            AssetImage(
-                              AppAssets.thumbsUpPng
-                            ),
+                            AssetImage(AppAssets.thumbsUpPng),
                             color: AppColors.primaryW500,
                           ),
                         ),
@@ -138,10 +121,9 @@ class AppReviewCard extends StatelessWidget {
                           child: Text(
                             likes.toString(),
                             style: TextStyle(
-                              color: AppColors.greyW700,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18
-                            ),
+                                color: AppColors.greyW700,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
                           ),
                         )
                       ],
@@ -153,9 +135,7 @@ class AppReviewCard extends StatelessWidget {
                       children: [
                         Container(
                           child: ImageIcon(
-                            AssetImage(
-                              AppAssets.thumbsDownPng
-                            ),
+                            AssetImage(AppAssets.thumbsDownPng),
                             color: AppColors.primaryW500,
                           ),
                         ),
@@ -164,34 +144,29 @@ class AppReviewCard extends StatelessWidget {
                           child: Text(
                             dislikes.toString(),
                             style: TextStyle(
-                              color: AppColors.greyW700,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18
-                            ),
+                                color: AppColors.greyW700,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
                           ),
                         )
                       ],
                     ),
                   ),
-
                   Container(
                     child: Row(
                       children: [
                         Container(
                           child: ImageIcon(
-                            AssetImage(
-                              AppAssets.flagPng
-                            ),
+                            AssetImage(AppAssets.flagPng),
                             color: AppColors.primaryW500,
                           ),
-                        ),                      
+                        ),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            
           ],
         ),
       ),
