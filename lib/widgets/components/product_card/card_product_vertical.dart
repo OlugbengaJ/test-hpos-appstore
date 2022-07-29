@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
+import 'package:hpos_appstore/widgets/components/product_card/button_update_delete.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
 import 'package:provider/provider.dart';
 
@@ -27,8 +28,9 @@ class CardProductVertical extends StatelessWidget {
             const CardDetails(),
             const Padding(padding: EdgeInsets.only(bottom: 17)),
             (isInstalled == true)
-                ? Wrap(
-                    children: [Container()],
+                ? ButtonUpdateDelete(
+                    onDelete: () {},
+                    onUpdate: () {},
                   )
                 : ButtonInstall(
                     borderRadius:

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/widgets/components/product_card/tag_button.dart';
+import 'package:hpos_appstore/widgets/components/buttons/tag_button.dart';
 import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
 import 'package:provider/provider.dart';
 
