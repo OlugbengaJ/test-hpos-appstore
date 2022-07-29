@@ -132,7 +132,6 @@ class AppDetailsView extends StatelessWidget {
                                             child: Text(
                                               AppTexts.free,
                                               style: TextStyle(
-                                                  fontSize: 12,
                                                   color: AppColors.primaryW600,
                                                   fontWeight: FontWeight.w500),
                                             ),
