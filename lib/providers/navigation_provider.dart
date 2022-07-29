@@ -6,34 +6,25 @@ import 'package:hpos_appstore/screens/screen_config.dart';
 /// while notifying other components of a change in route.
 class NavigationProvider extends ChangeNotifier {
   final selectedPane = ValueNotifier(HomeScreen.screenConfig);
-  ScreenConfig get _currentRoute => selectedPane.value;
-  set _currentRoute(ScreenConfig config) => selectedPane.value = config;
 
   /// Notifies a change to the header visibility.
   final headerVisibility = ValueNotifier(true);
-  bool get _headerVisible => headerVisibility.value;
-  set _headerVisible(bool visible) => headerVisibility.value = visible;
 
   /// Notifies a change to the header's search visibility.
   final searchVisibility = ValueNotifier(true);
-  bool get _searchVisible => searchVisibility.value;
-  set _searchVisible(bool visible) => searchVisibility.value = visible;
 
   /// Notifies a change to the header's profile visibility
   final profileVisibility = ValueNotifier(true);
-  bool get _profileVisible => profileVisibility.value;
-  set _profileVisible(bool visible) => profileVisibility.value = visible;
 
   /// Notifies a change to the header's home greeting section.
   final childVisibility = ValueNotifier<Widget?>(null);
-  set _childVisible(Widget? widget) => childVisibility.value = widget;
 
   void navigateTo(ScreenConfig route) {
     // set header values first
     _setHeader(route);
 
     // then route to page
-    _currentRoute = route;
+    selectedPane.value = route;
   }
 
   void _setHeader(ScreenConfig newRoute) {
@@ -42,28 +33,28 @@ class NavigationProvider extends ChangeNotifier {
     final showProfile = newRoute.showProfile;
     final child = newRoute.child;
 
-    // set visibilty of header components based on the screen.
-    if (showHeader != null && showHeader != _headerVisible) {
-      _headerVisible = showHeader;
-    } else if (!_headerVisible) {
-      _headerVisible = true;
+    // set visibility of header components based on the screen.
+    if (showHeader != null && showHeader != headerVisibility.value) {
+      headerVisibility.value = showHeader;
+    } else if (!headerVisibility.value) {
+      headerVisibility.value = true;
     }
 
-    if (showSearch != null && showSearch != _searchVisible) {
-      _searchVisible = showSearch;
-    } else if (!_searchVisible) {
-      _searchVisible = true;
+    if (showSearch != null && showSearch != searchVisibility.value) {
+      searchVisibility.value = showSearch;
+    } else if (!searchVisibility.value) {
+      searchVisibility.value = true;
     }
 
-    if (showProfile != null && showProfile != _profileVisible) {
-      _profileVisible = showProfile;
-    } else if (!_profileVisible) {
-      _profileVisible = true;
+    if (showProfile != null && showProfile != profileVisibility.value) {
+      profileVisibility.value = showProfile;
+    } else if (!profileVisibility.value) {
+      profileVisibility.value = true;
     }
 
-    if (_currentRoute != newRoute) {
+    if (selectedPane.value != newRoute) {
       // route has changed
-      _childVisible = child;
+      childVisibility.value = child;
     }
   }
 }
