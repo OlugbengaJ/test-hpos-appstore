@@ -8,6 +8,7 @@ import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/utils_import.dart';
 import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
+import 'package:hpos_appstore/widgets/themes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -32,26 +33,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-        fontFamily: 'EuclidCircularB',
-        primaryColor: AppColors.primaryW400,
-        primaryColorLight: AppColors.primaryW25,
-        primaryColorDark: AppColors.primaryW600,
-
-        // general theme for inputs e.g. text field
-        inputDecorationTheme: InputDecorationTheme(
-          contentPadding: EdgeInsets.zero,
-          iconColor: AppColors.primaryW400,
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.primaryW100),
-            borderRadius: BorderRadius.circular(Numericals.double8),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.primaryW400),
-            borderRadius: BorderRadius.circular(Numericals.double8),
-          ),
-        ),
-      ),
+      theme: appTheme,
       home: const Center(child: NavigationManager()),
     );
   }
