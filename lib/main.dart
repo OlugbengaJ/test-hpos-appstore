@@ -6,8 +6,7 @@ import 'package:hpos_appstore/screens/app_screen/app_details.dart';
 import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
 import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
-import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/utils/numericals.dart';
+import 'package:hpos_appstore/utils/utils_import.dart';
 import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:provider/provider.dart';
 
@@ -30,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'HPOS App Store',
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: ThemeData(

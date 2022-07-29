@@ -54,12 +54,19 @@ class HeaderLayout extends StatelessWidget {
                                 Text(
                                   'Amaka Obasi',
                                   style: themeData.textTheme.headline5
-                                      ?.copyWith(fontWeight: FontWeight.bold),
+                                      ?.copyWith(fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ),
                           )
-                        : Flexible(fit: FlexFit.tight, child: childValue),
+                        : Flexible(
+                            fit: FlexFit.tight,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                childValue,
+                              ],
+                            )),
                   ),
 
                   // listen for search visibility
@@ -93,7 +100,7 @@ class HeaderLayout extends StatelessWidget {
                                 ButtonRound(
                                   icon: Icons.notifications_outlined,
                                   iconColor: themeData.primaryColor,
-                                  size: 48.0,
+                                  size: 36.0,
                                   iconSize: 24.0,
                                   onTap: () {},
                                 ),

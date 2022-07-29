@@ -12,6 +12,7 @@
 /// ******************************************************************
 class AppTexts {
   static const String appScreenshots = 'App screenshots';
+  static const String back = 'Back';
   static const String discoverMore = 'Discover more 🚀';
   static const String free = 'Free';
   static const String homeBannerText1 = 'Let\'s get you into all the goodness';

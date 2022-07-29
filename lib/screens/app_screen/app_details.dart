@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
-import 'package:hpos_appstore/utils/assets.dart';
-import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/utils/enums.dart';
-import 'package:hpos_appstore/utils/numericals.dart';
-import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/utils/utils_import.dart';
 import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
+import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
 import 'package:hpos_appstore/widgets/components/ratings_bar.dart';
 import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
@@ -17,7 +14,20 @@ import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
 class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
 
-  static const screenConfig = ScreenConfig('/app_details');
+  static final screenConfig = ScreenConfig('/app_details',
+      showSearch: false,
+      child: Row(
+        children: [
+          ButtonRound(
+            icon: Icons.arrow_back,
+            iconColor: Theme.of(navigatorKey.currentContext!).primaryColor,
+            size: 36.0,
+            iconSize: 24.0,
+            onTap: () {},
+          ),
+          const Text(AppTexts.back),
+        ],
+      ));
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +68,7 @@ class AppDetailsView extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(top: 100),
+          margin: const EdgeInsets.only(top: 0),
           padding: EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
@@ -368,7 +378,7 @@ class AppDetailsView extends StatelessWidget {
                           alignment: Alignment.topLeft,
                           height: 403,
                           child: const ScrollableStack(
-                            size: 40,
+                            size: 34,
                             children: [
                               AppScreenShot(
                                 image: "assets/images/screenshot_1.png",
@@ -506,7 +516,8 @@ class AppDetailsView extends StatelessWidget {
                           alignment: Alignment.topLeft,
                           height: 403,
                           child: const ScrollableStack(
-                            size: 40,
+                            groupIcons: true,
+                            size: 34,
                             children: [
                               AppReviewCard(
                                 title: "This app is trash",
