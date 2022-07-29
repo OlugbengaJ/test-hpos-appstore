@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class Product {
   final String logo;
   final String name;
@@ -18,8 +20,9 @@ class SuggestedApps {
 }
 
 class ProductFilterTag {
+  final int id;
   final String name;
   final String slug;
 
-  ProductFilterTag(this.name, this.slug);
+  ProductFilterTag(this.id, this.name, this.slug);
 }

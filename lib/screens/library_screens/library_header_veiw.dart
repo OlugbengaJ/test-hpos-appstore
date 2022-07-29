@@ -11,6 +11,8 @@ class LibraryHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LibraryProvider libraryProvider =
+        Provider.of<LibraryProvider>(context, listen: false);
     LibraryProducts view =
         Provider.of<LibraryProvider>(context, listen: false).appView;
     String filterTag =
@@ -50,8 +52,7 @@ class LibraryHeaderView extends StatelessWidget {
                             ))
                       ]),
                   onPressed: () {
-                    Provider.of<LibraryProvider>(context, listen: false)
-                        .setAppView(LibraryProducts.all);
+                    libraryProvider.setAppView(LibraryProducts.all);
                   },
                 ),
                 TextButton(
@@ -76,20 +77,27 @@ class LibraryHeaderView extends StatelessWidget {
                             ))
                       ]),
                   onPressed: () {
-                    Provider.of<LibraryProvider>(context, listen: false)
-                        .setAppView(LibraryProducts.installed);
+                    libraryProvider.setAppView(LibraryProducts.installed);
                   },
                 ),
               ],
             )),
-        app_spacer.Spacer.bottomLarge,
-        Wrap(
-          children: [
-            ...Provider.of<LibraryProvider>(context).getTags().map(
-                  (e) => ProductTagButton(name: e.name, slug: e.slug),
-                )
-          ],
-        ),
+        (libraryProvider.appView == LibraryProducts.all)
+            ? Column(
+                children: [
+                  app_spacer.Spacer.bottomLarge,
+                  Wrap(
+                    alignment: WrapAlignment.start,
+                    children: [
+                      ...Provider.of<LibraryProvider>(context).getTags().map(
+                            (e) => ProductTagButton(
+                                id: e.id, name: e.name, slug: e.slug),
+                          )
+                    ],
+                  ),
+                ],
+              )
+            : Container(),
         app_spacer.Spacer.bottomMedium,
       ],
     );

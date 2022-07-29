@@ -18,6 +18,11 @@ class LibraryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  setFilterTag(String choice) {
+    filterTag = choice;
+    notifyListeners();
+  }
+
   List<Product> getFilterData(String categoryName) {
     return [
       Product(
@@ -108,11 +113,23 @@ class LibraryProvider extends ChangeNotifier {
   }
 
   List<ProductFilterTag> getTags() {
-    return [ProductFilterTag('All', 'all'), ProductFilterTag('Games', 'games')];
+    return [
+      ProductFilterTag(1, 'All', 'all'),
+      ProductFilterTag(2, 'Games', 'games'),
+      ProductFilterTag(3, 'Entertainment', 'entertainment'),
+      ProductFilterTag(4, 'Utilities', 'utilities'),
+      ProductFilterTag(5, 'Team Collaboration', 'team_collaboration'),
+      ProductFilterTag(6, 'Software Dev Tools', 'software_dev_tools'),
+      ProductFilterTag(7, 'Freelancer Tools', 'freelancer_tools'),
+      ProductFilterTag(8, 'Social Media', 'social_media'),
+      ProductFilterTag(9, 'Free', 'free'),
+      ProductFilterTag(10, 'Paid', 'paid')
+    ];
   }
 
-  ValueNotifier<LibraryDisplay> selectedView =
-      ValueNotifier(LibraryDisplay.grid);
+  List<ProductFilterTag> removeFilterTag(int tagId) {
+    return [];
+  }
 }
 // ImageIcon(
 //     AssetImage('assets/images/pikachu.png'),
