@@ -122,37 +122,58 @@ class AppReviewCard extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
+                    width: 60,
                     child: Row(
                       children: [
                         Container(
                           child: ImageIcon(
                             AssetImage(
                               AppAssets.thumbsUpPng
-                            )
+                            ),
+                            color: AppColors.primaryW500,
                           ),
                         ),
                         Container(
-                          child: Text(likes.toString()),
+                          padding: EdgeInsets.only(left: 4),
+                          child: Text(
+                            likes.toString(),
+                            style: TextStyle(
+                              color: AppColors.greyW700,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18
+                            ),
+                          ),
                         )
                       ],
                     ),
                   ),
                   Container(
+                    width: 60,
                     child: Row(
                       children: [
                         Container(
                           child: ImageIcon(
                             AssetImage(
                               AppAssets.thumbsDownPng
-                            )
+                            ),
+                            color: AppColors.primaryW500,
                           ),
                         ),
                         Container(
-                          child: Text(dislikes.toString()),
+                          padding: EdgeInsets.only(left: 4),
+                          child: Text(
+                            dislikes.toString(),
+                            style: TextStyle(
+                              color: AppColors.greyW700,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18
+                            ),
+                          ),
                         )
                       ],
                     ),
                   ),
+
                   Container(
                     child: Row(
                       children: [
@@ -160,7 +181,8 @@ class AppReviewCard extends StatelessWidget {
                           child: ImageIcon(
                             AssetImage(
                               AppAssets.flagPng
-                            )
+                            ),
+                            color: AppColors.primaryW500,
                           ),
                         ),                      
                       ],

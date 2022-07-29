@@ -7,6 +7,7 @@ class AppColors {
   static const Color white = Color(0xffffffff);
   static const Color tertiary = Color(0xff434afa);
   static const Color danger = Color(0xFFFA4343);
+  static const Color red = Color(0xFFF04438);
   static const Color success = Color(0xff434afa);
   static const Color greyW25 = Color(0xffFCFCFD);
   static const Color greyW100 = Color(0xffF2F4F7);
@@ -14,6 +15,7 @@ class AppColors {
   static const Color greyW400 = Color(0xff98A2B3);  
   static const Color greyW500 = Color(0xff667085);
   static const Color greyW600 = Color(0xff475467);
+  static const Color greyW700 = Color(0xff344054);
   static const Color greyW900 = Color(0xff101828);
   static const Color greyW1000 = Color(0xff1D2939);
   static const Color orange = Color(0xffF79009);
