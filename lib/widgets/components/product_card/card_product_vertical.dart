@@ -9,7 +9,8 @@ import 'button_install.dart';
 import 'logo_product_banner.dart';
 
 class CardProductVertical extends StatelessWidget {
-  const CardProductVertical({Key? key}) : super(key: key);
+  CardProductVertical({Key? key, this.isInstalled}) : super(key: key);
+  bool? isInstalled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,18 @@ class CardProductVertical extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children:  [
+          children: [
             const LogoProductBanner(),
             const Padding(padding: EdgeInsets.only(bottom: 11.0)),
             const CardDetails(),
             const Padding(padding: EdgeInsets.only(bottom: 17)),
-            ButtonInstall(borderRadius: BorderRadius.all(Radius.circular(Numericals.double8)))
+            (isInstalled == true)
+                ? Wrap(
+                    children: [Container()],
+                  )
+                : ButtonInstall(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(Numericals.double8)))
           ],
         ),
       ),

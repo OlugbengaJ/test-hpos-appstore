@@ -64,7 +64,10 @@ class LibraryView extends StatelessWidget {
         app_spacer.Spacer.bottomMedium,
         Wrap(children: [
           (display == LibraryDisplay.grid)
-              ? GridProductDisplay(apps: apps)
+              ? GridProductDisplay(
+                  apps: apps,
+                  isInstalled:
+                      (appView == LibraryProducts.installed) ? true : false)
               : ListProductDisplay(
                   apps: apps,
                   isInstalled:
