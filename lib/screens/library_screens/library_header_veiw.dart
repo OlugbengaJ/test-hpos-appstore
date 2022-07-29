@@ -34,7 +34,9 @@ class LibraryHeaderView extends StatelessWidget {
                 TextButton(
                   style: TextButton.styleFrom(
                       fixedSize: const Size(90, 50),
-                      primary: Colors.grey,
+                      primary: (libraryProvider.appView == LibraryProducts.all)
+                          ? AppColors.primary
+                          : AppColors.greyW600,
                       backgroundColor: Colors.transparent),
                   child: Stack(
                       alignment: Alignment.topCenter,
@@ -58,7 +60,10 @@ class LibraryHeaderView extends StatelessWidget {
                 TextButton(
                   style: TextButton.styleFrom(
                       fixedSize: const Size(110, 50),
-                      primary: Colors.grey,
+                      primary:
+                          (libraryProvider.appView == LibraryProducts.installed)
+                              ? AppColors.primary
+                              : AppColors.greyW600,
                       backgroundColor: Colors.transparent),
                   child: Stack(
                       alignment: Alignment.topCenter,
