@@ -4,7 +4,6 @@ import 'package:hpos_appstore/screens/library_screens/library_view.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
-import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
 
 class LibraryScreen extends StatelessWidget {
   const LibraryScreen({Key? key}) : super(key: key);
