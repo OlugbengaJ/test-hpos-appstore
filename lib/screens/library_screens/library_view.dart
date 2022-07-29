@@ -43,7 +43,7 @@ class LibraryView extends StatelessWidget {
                     .setDisplayView(LibraryDisplay.grid);
               },
             ),
-            const Padding(padding: EdgeInsets.only(left: 20)),
+            const Padding(padding: EdgeInsets.only(left: 15)),
             ButtonRound(
               icon: Icons.list_alt_outlined,
               color: (display == LibraryDisplay.list)
