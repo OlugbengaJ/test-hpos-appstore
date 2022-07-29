@@ -9,14 +9,12 @@ class AppScreenShot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 403,
-      width: 636,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
       child: Image(
         image: AssetImage(image),
         height: 403,
-        width: 636,
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/enums.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/widgets/components/app_details_top_card.dart';
 import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
@@ -68,148 +69,7 @@ class AppDetailsView extends StatelessWidget {
               // App Icon and summary
               Container(
                 margin: EdgeInsets.only(bottom:64),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 184,
-                      width: 184,
-                      decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: AppColors.gradientGreyW500,
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
-                    ),
-                      child: Image(
-                        image: AssetImage("assets/icons/logos_microsoft-teams.png"),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 184,
-                        margin: EdgeInsets.only(left: 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  height: 50,
-                                  child: ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    title: Row(
-                                      children: [
-                                        Container(
-                                          child: const Text(
-                                            "Microsoft Teams",
-                                            style: TextStyle(
-                                              color: AppColors.greyW900,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 28
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(left: 10),
-                                          width: 45,
-                                          height: 23,
-                                          decoration: BoxDecoration(
-                                            color: AppColors.primaryW25,
-                                            borderRadius: BorderRadius.circular(16)                                      
-                                          ),
-                                          child: const Center(
-                                            child: Text(
-                                              AppTexts.free,
-                                              style: TextStyle(
-                                                color: AppColors.primaryW600,
-                                                fontWeight: FontWeight.bold
-                                              ),
-                                            )
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    subtitle: Row(
-                                      children: [
-                                        Container(
-                                          child: Text("Productivity"),
-                                        ),
-                                        Container(
-                                          child: Icon(
-                                            Icons.circle,
-                                            size: 5,
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Text("App"),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 10),
-                                  width: 600,
-                                  child: const Text("Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere."),
-                                ),
-                              ],
-                            ),
-
-                            Container(
-                              child: Row(
-                                children: [
-                                  InkWell(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.primaryW500,
-                                        borderRadius: BorderRadius.circular(8)
-                                      ),
-                                      height: 48,
-                                      width: 187,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          const SizedBox(
-                                            child: Text(
-                                              AppTexts.install,
-                                              style: TextStyle(
-                                                color: AppColors.white,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 18
-                                              ),
-                                            ),
-                                          ),
-                                          ImageIcon(
-                                            AssetImage(
-                                              AppAssets.installPng
-                                            ),
-                                            color: AppColors.white,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 20,),
-                                  InkWell(
-                                    child: ImageIcon(
-                                      AssetImage(
-                                        AppAssets.shareIconPng
-                                      ),
-                                      color: AppColors.primaryW400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: AppDetailsTopCard(),
               ),
 
 
@@ -219,7 +79,10 @@ class AppDetailsView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 18),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [AppColors.greyW900, AppColors.greyW600, AppColors.greyW1000],
+                    colors: AppColors.gradientGreyW500,
+                    stops: [
+                      0.25, 71, 96
+                    ],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
@@ -329,7 +192,7 @@ class AppDetailsView extends StatelessWidget {
               Container(
                 alignment: Alignment.topLeft,
                 margin: const EdgeInsets.only(bottom: 72),
-                height: 400,
+                height: 500,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -372,26 +235,23 @@ class AppDetailsView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        height: 403,
-                        child: const ScrollableStack(
-                          groupIcons: true,
-                          //border: Border.all(color: themeData.primaryColorLight, width: 2.0),
-                          size: 40,
-                          children:  [
-                            AppScreenShot(
-                              image: "assets/images/screenshot_1.png",
-                            ),
-                            SizedBox(width: 17,),
-                            AppScreenShot(
-                              image: "assets/images/screenshot_2.png",
-                            ),
-                          ],
-                        )
-                        
-                      ),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      height: 403,
+                      child: const ScrollableStack(
+                        groupIcons: true,
+                        size: 40,
+                        children:  [
+                          AppScreenShot(
+                            image: "assets/images/screenshot_1.png",
+                          ),
+                          SizedBox(width: 17,),
+                          AppScreenShot(
+                            image: "assets/images/screenshot_2.png",
+                          ),
+                        ],
+                      )
+                      
                     ),
 
                     

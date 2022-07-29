@@ -21,6 +21,8 @@ class AppTexts {
   static const String suggestedNew = 'Top new apps';
   static const String seeAll = 'See all';
   static const String install = 'Install';
+  static const String installed = 'Installed';
+  static const String uninstall = 'Uninstall';
   static const String free = 'Free';
   static const String share = 'share';
   static const String systemRequirements = 'System requirements';
