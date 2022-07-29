@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
-import 'package:hpos_appstore/utils/assets.dart';
-import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/utils/enums.dart';
-import 'package:hpos_appstore/utils/numericals.dart';
-import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/utils/utils_import.dart';
 import 'package:hpos_appstore/widgets/components/app_details_top_card.dart';
 import 'package:hpos_appstore/widgets/components/app_info_card.dart';
