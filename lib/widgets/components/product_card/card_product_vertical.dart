@@ -20,12 +20,12 @@ class CardProductVertical extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [
-            LogoProductBanner(),
-            Padding(padding: EdgeInsets.only(bottom: 11.0)),
-            CardDetails(),
-            Padding(padding: EdgeInsets.only(bottom: 17)),
-            ButtonInstall(borderRadius: BorderRadius.vertical(bottom: Radius.circular(8.0)))
+          children:  [
+            const LogoProductBanner(),
+            const Padding(padding: EdgeInsets.only(bottom: 11.0)),
+            const CardDetails(),
+            const Padding(padding: EdgeInsets.only(bottom: 17)),
+            ButtonInstall(borderRadius: BorderRadius.all(Radius.circular(Numericals.double8)))
           ],
         ),
       ),
