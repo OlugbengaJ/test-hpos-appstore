@@ -33,7 +33,7 @@ class ProductCardPreview extends StatelessWidget {
             ),
           ],
         ),
-        const CardProductListItem()
+        CardProductListItem()
       ],
     );
   }

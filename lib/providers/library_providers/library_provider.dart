@@ -14,6 +14,7 @@ class LibraryProvider extends ChangeNotifier {
 
   setAppView(LibraryProducts choice) {
     appView = choice;
+    displayType = LibraryDisplay.grid;
     notifyListeners();
   }
 

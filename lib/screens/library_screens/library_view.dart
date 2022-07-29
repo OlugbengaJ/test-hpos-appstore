@@ -62,13 +62,14 @@ class LibraryView extends StatelessWidget {
           ],
         ),
         app_spacer.Spacer.bottomMedium,
-        (appView == LibraryProducts.installed)
-            ? ListProductDisplay(apps: apps)
-            : Wrap(children: [
-                (display == LibraryDisplay.grid)
-                    ? GridProductDisplay(apps: apps)
-                    : ListProductDisplay(apps: apps)
-              ]),
+        Wrap(children: [
+          (display == LibraryDisplay.grid)
+              ? GridProductDisplay(apps: apps)
+              : ListProductDisplay(
+                  apps: apps,
+                  isInstalled:
+                      (appView == LibraryProducts.installed) ? true : false)
+        ]),
       ],
     );
   }

@@ -9,7 +9,8 @@ import 'package:hpos_appstore/widgets/components/product_card/rating_view.dart';
 import 'button_install.dart';
 
 class CardProductListItem extends StatelessWidget {
-  const CardProductListItem({Key? key}) : super(key: key);
+  CardProductListItem({Key? key, this.isInstalled = false}) : super(key: key);
+  bool? isInstalled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +41,13 @@ class CardProductListItem extends StatelessWidget {
                   ],
                 )),
             const Padding(padding: EdgeInsets.only(left: 102)),
-            const Expanded(
-                child: ButtonInstall(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+            Expanded(
+                child: (isInstalled == true)
+                    ? Wrap(
+                        children: [Container()],
+                      )
+                    : const ButtonInstall(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)))),
           ],
         ),
       ),
