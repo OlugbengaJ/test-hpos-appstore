@@ -7,10 +7,12 @@ import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
+import 'package:hpos_appstore/widgets/components/dialogs/content_dialog.dart';
 import 'package:hpos_appstore/widgets/components/ratings_bar.dart';
 import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
+import 'package:hpos_appstore/widgets/write_review_card.dart';
 
 class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
@@ -66,6 +68,8 @@ class AppDetailsView extends StatelessWidget {
 
     var suggestedProd =
         SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
+
+    final themeData = Theme.of(context);
 
     return Column(
       children: [
@@ -367,6 +371,74 @@ class AppDetailsView extends StatelessWidget {
                 ),
               ),
 
+              // Write review and rating section
+              Card(
+                margin: EdgeInsets.only(top: Numericals.double40),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(Numericals.double16)),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    Numericals.double35,
+                    Numericals.double28,
+                    Numericals.double35,
+                    Numericals.double28,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Click to rate this Application',
+                        style: themeData.textTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+
+                      // TODO: Refactor clickable stars here
+                      Row(
+                        children: const [
+                          Icon(
+                            Icons.star_border_outlined,
+                            color: AppColors.primary,
+                          ),
+                          Icon(
+                            Icons.star_border_outlined,
+                            color: AppColors.primary,
+                          ),
+                          Icon(
+                            Icons.star_border_outlined,
+                            color: AppColors.primary,
+                          ),
+                          Icon(
+                            Icons.star_border_outlined,
+                            color: AppColors.primary,
+                          ),
+                          Icon(
+                            Icons.star_border_outlined,
+                            color: AppColors.primary,
+                          ),
+                        ],
+                      ),
+                      TextButton(
+                          onPressed: () => showReview(context),
+                          child: Row(
+                            children: const [
+                              Icon(
+                                Icons.rate_review,
+                                color: AppColors.primary,
+                              ),
+                              Text(
+                                'Write a review',
+                                style: TextStyle(
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            ],
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+
               Container(
                 margin: const EdgeInsets.only(top: 56),
                 height: 300,
@@ -427,7 +499,7 @@ class AppDetailsView extends StatelessWidget {
                             fontWeight: FontWeight.w600, fontSize: 24),
                       ),
                     ),
-                    SystemRequirementCard(),
+                    const SystemRequirementCard(),
                   ],
                 ),
               ),
@@ -445,5 +517,10 @@ class AppDetailsView extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void showReview(BuildContext context) {
+    ContentDialog.open(context,
+        content: WriteReviewScreen(key: GlobalKey()).build(context));
   }
 }
