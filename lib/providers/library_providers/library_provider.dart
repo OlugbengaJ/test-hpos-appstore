@@ -109,4 +109,6 @@ class LibraryProvider extends ChangeNotifier {
   List<ProductFilterTag> getTags() {
     return [ProductFilterTag('All', 'all'), ProductFilterTag('Games', 'games')];
   }
+
+  ValueNotifier<LibraryDisplay> selectedView =  ValueNotifier(LibraryDisplay.grid);
 }

@@ -8,20 +8,21 @@ class ListProductDisplay extends StatelessWidget {
   const ListProductDisplay({Key? key, required this.apps}) : super(key: key);
 
   final List<Product> apps;
+
   // final Bool? showTitle;
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      runSpacing: 12,
       children: [
         ...apps
-            .map((app) => ListenableProvider(
-                  create: (context) => ProductProvider.fromModel(app),
-                  child: const Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: CardProductListItem(),
-                  ),
-                ))
+            .map(
+              (app) => ListenableProvider(
+                create: (context) => ProductProvider.fromModel(app),
+                child: const CardProductListItem(),
+              ),
+            )
             .toList(),
       ],
     );

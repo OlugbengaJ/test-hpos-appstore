@@ -14,9 +14,11 @@ class LibraryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LibraryProvider libraryProvider =
+        Provider.of<LibraryProvider>(context, listen: false);
     List<Product> apps =
         Provider.of<LibraryProvider>(context).getFilterData('all');
-    var display =
+    LibraryDisplay display =
         Provider.of<LibraryProvider>(context, listen: false).displayType;
     LibraryProducts appView =
         Provider.of<LibraryProvider>(context, listen: false).appView;
@@ -39,8 +41,7 @@ class LibraryView extends StatelessWidget {
               size: 40,
               iconSize: 25,
               onTap: () {
-                Provider.of<LibraryProvider>(context, listen: false)
-                    .setDisplayView(LibraryDisplay.grid);
+                libraryProvider.setDisplayView(LibraryDisplay.grid);
               },
             ),
             const Padding(padding: EdgeInsets.only(left: 15)),
@@ -55,8 +56,7 @@ class LibraryView extends StatelessWidget {
               size: 40,
               iconSize: 25,
               onTap: () {
-                Provider.of<LibraryProvider>(context, listen: false)
-                    .setDisplayView(LibraryDisplay.list);
+                libraryProvider.setDisplayView(LibraryDisplay.list);
               },
             ),
           ],
@@ -65,9 +65,7 @@ class LibraryView extends StatelessWidget {
         (appView == LibraryProducts.installed)
             ? ListProductDisplay(apps: apps)
             : Wrap(children: [
-                (Provider.of<LibraryProvider>(context, listen: false)
-                            .displayType ==
-                        LibraryDisplay.grid)
+                (display == LibraryDisplay.grid)
                     ? GridProductDisplay(apps: apps)
                     : ListProductDisplay(apps: apps)
               ]),
