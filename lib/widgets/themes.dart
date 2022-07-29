@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 
-ButtonStyle textBtnStyleWhite = ButtonStyle(
-    foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+ButtonStyle filterBtnWhite = ButtonStyle(
+    foregroundColor: MaterialStateProperty.all<Color>(AppColors.dark),
+    backgroundColor: MaterialStateProperty.all<Color>(AppColors.white),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    )));
+
+ButtonStyle filterBtnPrimary = ButtonStyle(
+    foregroundColor: MaterialStateProperty.all<Color>(AppColors.white),
+    backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/widgets/components/product_card/tag_button.dart';
+import 'package:hpos_appstore/widgets/components/buttons/tag_button.dart';
 import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
 import 'package:provider/provider.dart';
 
@@ -11,6 +11,8 @@ class LibraryHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LibraryProvider libraryProvider =
+        Provider.of<LibraryProvider>(context, listen: false);
     LibraryProducts view =
         Provider.of<LibraryProvider>(context, listen: false).appView;
     String filterTag =
@@ -32,7 +34,9 @@ class LibraryHeaderView extends StatelessWidget {
                 TextButton(
                   style: TextButton.styleFrom(
                       fixedSize: const Size(90, 50),
-                      primary: Colors.grey,
+                      primary: (libraryProvider.appView == LibraryProducts.all)
+                          ? AppColors.primary
+                          : AppColors.greyW600,
                       backgroundColor: Colors.transparent),
                   child: Stack(
                       alignment: Alignment.topCenter,
@@ -50,14 +54,16 @@ class LibraryHeaderView extends StatelessWidget {
                             ))
                       ]),
                   onPressed: () {
-                    Provider.of<LibraryProvider>(context, listen: false)
-                        .setAppView(LibraryProducts.all);
+                    libraryProvider.setAppView(LibraryProducts.all);
                   },
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
                       fixedSize: const Size(110, 50),
-                      primary: Colors.grey,
+                      primary:
+                          (libraryProvider.appView == LibraryProducts.installed)
+                              ? AppColors.primary
+                              : AppColors.greyW600,
                       backgroundColor: Colors.transparent),
                   child: Stack(
                       alignment: Alignment.topCenter,
@@ -76,20 +82,27 @@ class LibraryHeaderView extends StatelessWidget {
                             ))
                       ]),
                   onPressed: () {
-                    Provider.of<LibraryProvider>(context, listen: false)
-                        .setAppView(LibraryProducts.installed);
+                    libraryProvider.setAppView(LibraryProducts.installed);
                   },
                 ),
               ],
             )),
-        app_spacer.Spacer.bottomLarge,
-        Wrap(
-          children: [
-            ...Provider.of<LibraryProvider>(context).getTags().map(
-                  (e) => ProductTagButton(name: e.name, slug: e.slug),
-                )
-          ],
-        ),
+        (libraryProvider.appView == LibraryProducts.all)
+            ? Column(
+                children: [
+                  app_spacer.Spacer.bottomLarge,
+                  Wrap(
+                    alignment: WrapAlignment.start,
+                    children: [
+                      ...Provider.of<LibraryProvider>(context).getTags().map(
+                            (e) => ProductTagButton(
+                                id: e.id, name: e.name, slug: e.slug),
+                          )
+                    ],
+                  ),
+                ],
+              )
+            : Container(),
         app_spacer.Spacer.bottomMedium,
       ],
     );

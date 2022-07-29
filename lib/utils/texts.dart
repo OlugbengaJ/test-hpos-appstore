@@ -18,8 +18,11 @@ class AppTexts {
   static const String homeBannerText1 = 'Let\'s get you into all the goodness';
   static const String homeBannerText2 = 'on the hp App Store';
   static const String install = 'Install';
+  static const String updateAll = 'Update All';
+  static const String update = 'Update';
   static const String uninstallApp = 'Uninstall Application';
-  static const String sureUninstallQuestion = 'Are you sure you want to uninstall this application?';
+  static const String sureUninstallQuestion =
+      'Are you sure you want to uninstall this application?';
   static const String yesUninstall = 'Yes, Uninstall';
   static const String library = 'Library';
   static const String ratingsReviews = 'Ratings and Reviews';

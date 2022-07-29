@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/widgets/components/product_card/button_update_delete.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
 import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.dart';
@@ -43,8 +44,9 @@ class CardProductListItem extends StatelessWidget {
             const Padding(padding: EdgeInsets.only(left: 102)),
             Expanded(
                 child: (isInstalled == true)
-                    ? Wrap(
-                        children: [Container()],
+                    ? ButtonUpdateDelete(
+                        onDelete: () {},
+                        onUpdate: () {},
                       )
                     : const ButtonInstall(
                         borderRadius: BorderRadius.all(Radius.circular(8.0)))),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
+import 'package:hpos_appstore/widgets/components/product_card/button_update_delete.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +10,8 @@ import 'button_install.dart';
 import 'logo_product_banner.dart';
 
 class CardProductVertical extends StatelessWidget {
-  const CardProductVertical({Key? key}) : super(key: key);
+  CardProductVertical({Key? key, this.isInstalled}) : super(key: key);
+  bool? isInstalled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +22,19 @@ class CardProductVertical extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children:  [
+          children: [
             const LogoProductBanner(),
             const Padding(padding: EdgeInsets.only(bottom: 11.0)),
             const CardDetails(),
             const Padding(padding: EdgeInsets.only(bottom: 17)),
-            ButtonInstall(borderRadius: BorderRadius.all(Radius.circular(Numericals.double8)))
+            (isInstalled == true)
+                ? ButtonUpdateDelete(
+                    onDelete: () {},
+                    onUpdate: () {},
+                  )
+                : ButtonInstall(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(Numericals.double8)))
           ],
         ),
       ),
