@@ -178,7 +178,7 @@ class WriteReviewScreen extends StatelessWidget {
 
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField(
-      {this.shape,
+      {Key? key, this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -194,7 +194,7 @@ class CustomTextFormField extends StatelessWidget {
       this.prefixConstraints,
       this.suffix,
       this.suffixConstraints,
-      this.validator});
+      this.validator}) : super(key: key);
 
   TextFormFieldShape? shape;
 
@@ -355,7 +355,7 @@ enum TextFormFieldFontStyle {
 
 class CustomButton extends StatelessWidget {
   CustomButton(
-      {this.shape,
+      {Key? key, this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -363,7 +363,7 @@ class CustomButton extends StatelessWidget {
       this.onTap,
       this.width,
       this.margin,
-      this.text});
+      this.text}) : super(key: key);
 
   ButtonShape? shape;
 
@@ -496,7 +496,7 @@ enum ButtonShape {
 }
 
 enum ButtonPadding {
-  PaddingAll12,
+  paddingAll12,
 }
 
 enum ButtonVariant {
@@ -724,7 +724,7 @@ class AppDecoration {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               1,
             ),
@@ -775,7 +775,7 @@ class CommonImageView extends StatelessWidget {
 
   Widget _buildImageView() {
     if (svgPath != null && svgPath!.isNotEmpty) {
-      return Container(
+      return SizedBox(
         height: height,
         width: width,
         child: SvgPicture.asset(
@@ -798,7 +798,7 @@ class CommonImageView extends StatelessWidget {
         width: width,
         fit: fit,
         imageUrl: url!,
-        placeholder: (context, url) => Container(
+        placeholder: (context, url) => SizedBox(
           height: 30,
           width: 30,
           child: LinearProgressIndicator(
@@ -821,6 +821,6 @@ class CommonImageView extends StatelessWidget {
         fit: fit,
       );
     }
-    return SizedBox();
+    return const SizedBox();
   }
 }

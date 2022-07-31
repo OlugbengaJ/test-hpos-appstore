@@ -22,6 +22,7 @@ class LibraryHeaderView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
+            padding: const EdgeInsets.only(top: 25),
             decoration: const BoxDecoration(
               border: Border(
                 bottom: BorderSide(width: .2, color: AppColors.greyW900),
@@ -33,20 +34,19 @@ class LibraryHeaderView extends StatelessWidget {
               children: [
                 TextButton(
                   style: TextButton.styleFrom(
-                      fixedSize: const Size(90, 50),
-                      primary: (libraryProvider.appView == LibraryProducts.all)
-                          ? AppColors.primary
-                          : AppColors.greyW600,
-                      backgroundColor: Colors.transparent),
-                  child: Stack(
-                      alignment: Alignment.topCenter,
-                      fit: StackFit.passthrough,
+                    primary: (libraryProvider.appView == LibraryProducts.all)
+                        ? AppColors.primary
+                        : AppColors.greyW600,
+                    backgroundColor: Colors.transparent,
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Positioned(top: 16, child: Text('All Apps')),
+                        const Text('All Apps'),
+                        const Padding(padding: EdgeInsets.only(bottom: 25)),
                         Container(
                             height: 3,
                             width: 70,
-                            margin: const EdgeInsets.only(top: 46),
                             decoration: BoxDecoration(
                               color: (view == LibraryProducts.all)
                                   ? AppColors.primary
@@ -59,22 +59,19 @@ class LibraryHeaderView extends StatelessWidget {
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      fixedSize: const Size(110, 50),
                       primary:
                           (libraryProvider.appView == LibraryProducts.installed)
                               ? AppColors.primary
                               : AppColors.greyW600,
                       backgroundColor: Colors.transparent),
-                  child: Stack(
-                      alignment: Alignment.topCenter,
-                      fit: StackFit.passthrough,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Positioned(
-                            top: 16, child: Text('Installed Apps')),
+                        const Text('Installed Apps'),
+                        const Padding(padding: EdgeInsets.only(bottom: 25)),
                         Container(
                             height: 3,
                             width: 100,
-                            margin: const EdgeInsets.only(top: 46),
                             decoration: BoxDecoration(
                               color: (view == LibraryProducts.installed)
                                   ? AppColors.primary

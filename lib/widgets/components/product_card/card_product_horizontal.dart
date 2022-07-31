@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
-import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
+import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.dart';
 
 class CardProductHorizontal extends StatelessWidget {
   const CardProductHorizontal({Key? key}) : super(key: key);

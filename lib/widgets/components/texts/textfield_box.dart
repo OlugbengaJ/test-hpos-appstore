@@ -45,7 +45,7 @@ class TextFieldBox extends StatelessWidget {
     return TextField(
       controller: textController,
       decoration: InputDecoration(
-        contentPadding: prefixIcon == null ? EdgeInsets.all(8.0) : null,
+        contentPadding: prefixIcon == null ? const EdgeInsets.all(8.0) : null,
         hintText: hintText,
         labelText: labelText,
         prefixIcon: disableIcons ? null : prefixIcon,
