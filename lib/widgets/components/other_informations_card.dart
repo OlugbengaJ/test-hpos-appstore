@@ -3,7 +3,7 @@ import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 
 class OtherInformationsCard extends StatefulWidget {
-  OtherInformationsCard({Key? key}) : super(key: key);
+  const OtherInformationsCard({Key? key}) : super(key: key);
 
   @override
   State<OtherInformationsCard> createState() => _OtherInformationsCardState();
@@ -18,19 +18,19 @@ class _OtherInformationsCardState extends State<OtherInformationsCard> {
       elevation: 0.5,
       child: Container(
         height: 276,
-        padding: EdgeInsets.only(left: 35, top: 43),
+        padding: const EdgeInsets.only(left: 35, top: 43),
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: 58),
+              margin: const EdgeInsets.only(bottom: 58),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Expanded(
                     flex: 25,
                     child: InfoCard(
                       title: AppTexts.provider, 
-                      child: const SizedBox(
+                      child: SizedBox(
                         child: Text(
                           "Microsoft inc.",
                           style: TextStyle(
@@ -46,7 +46,7 @@ class _OtherInformationsCardState extends State<OtherInformationsCard> {
                     flex: 25,
                     child: InfoCard(
                       title: AppTexts.size, 
-                      child: const SizedBox(
+                      child:  SizedBox(
                         child: Text(
                           "234.78 MB",
                           style: TextStyle(
@@ -62,7 +62,7 @@ class _OtherInformationsCardState extends State<OtherInformationsCard> {
                     flex: 25,
                     child: InfoCard(
                       title: AppTexts.category, 
-                      child: const SizedBox(
+                      child:  SizedBox(
                         child: Text(
                           "Collaboration",
                           style: TextStyle(
@@ -78,7 +78,7 @@ class _OtherInformationsCardState extends State<OtherInformationsCard> {
                     flex: 25,
                     child: InfoCard(
                       title: AppTexts.latestVersion, 
-                      child: const SizedBox(
+                      child:  SizedBox(
                         child: Text(
                           "12.564",
                           style: TextStyle(
@@ -93,83 +93,80 @@ class _OtherInformationsCardState extends State<OtherInformationsCard> {
                 ],
               ),
             ),
-            Container(
-              
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,                
-                children: [
-                  Expanded(
-                    flex: 25,
-                    child: InfoCard(
-                      title: AppTexts.releasedDate, 
-                      child: const SizedBox(
-                        child: Text(
-                          "22/07/2004",
-                          style: TextStyle(
-                            color: AppColors.greyW700,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20
-                          ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,                
+              children: [
+                const Expanded(
+                  flex: 25,
+                  child: InfoCard(
+                    title: AppTexts.releasedDate, 
+                    child:  SizedBox(
+                      child: Text(
+                        "22/07/2004",
+                        style: TextStyle(
+                          color: AppColors.greyW700,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20
                         ),
-                      )
-                    ),
+                      ),
+                    )
                   ),
-                  Expanded(
-                    flex: 25,
-                    child: InfoCard(
-                      title: AppTexts.languages, 
-                      child: const SizedBox(
-                        child: Text(
-                          "English +10 more",
-                          style: TextStyle(
-                            color: AppColors.greyW700,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20
-                          ),
+                ),
+                const Expanded(
+                  flex: 25,
+                  child: InfoCard(
+                    title: AppTexts.languages, 
+                    child: SizedBox(
+                      child: Text(
+                        "English +10 more",
+                        style: TextStyle(
+                          color: AppColors.greyW700,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20
                         ),
-                      )
-                    ),
+                      ),
+                    )
                   ),
-                  Expanded(
-                    flex: 25,
-                    child: InfoCard(
-                      title: AppTexts.otherItem, 
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: const Text(
-                              "Privacy policy",
-                              style: TextStyle(
-                                color: AppColors.primaryW500,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20
-                              ),
+                ),
+                Expanded(
+                  flex: 25,
+                  child: InfoCard(
+                    title: AppTexts.otherItem, 
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          child: const Text(
+                            "Privacy policy",
+                            style: TextStyle(
+                              color: AppColors.primaryW500,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            child: const Text(
-                              "Terms of service",
-                              style: TextStyle(
-                                color: AppColors.primaryW500,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20
-                              ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          child: const Text(
+                            "Terms of service",
+                            style: TextStyle(
+                              color: AppColors.primaryW500,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20
                             ),
                           ),
-                        ],
-                      )
-                    ),
+                        ),
+                      ],
+                    )
                   ),
-                  Expanded(
-                    flex: 25,
-                    child: Container(),
-                  ),
-                ],
-              ),
+                ),
+                Expanded(
+                  flex: 25,
+                  child: Container(),
+                ),
+              ],
             ),
           ],
         ),
@@ -190,26 +187,24 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: EdgeInsets.only(bottom: 8),
-            child: Text(
-              title,
-              style: const TextStyle(
-                color: AppColors.greyW400,
-                fontWeight: FontWeight.w500,
-                fontSize: 16
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(bottom: 8),
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: AppColors.greyW400,
+              fontWeight: FontWeight.w500,
+              fontSize: 16
             ),
           ),
-          Container(            
-            child: child,
-          )
-        ],
-      ),
+        ),
+        Container(            
+          child: child,
+        )
+      ],
     );
   }
 }

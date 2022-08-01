@@ -553,7 +553,7 @@ class AppDetailsView extends StatelessWidget {
                             fontWeight: FontWeight.w600, fontSize: 24),
                       ),
                     ),
-                    OtherInformationsCard(),
+                    const OtherInformationsCard(),
                   ],
                 ),
               ),
