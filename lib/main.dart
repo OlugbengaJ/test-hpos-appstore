@@ -51,21 +51,26 @@ class NavigationManager extends StatelessWidget {
     return ValueListenableBuilder<ScreenConfig>(
       valueListenable: navigationProvider.selectedPane,
       builder: (context, selectedPane, _) {
-        var selectedScreen = selectScreen(selectedPane);
+        var selectedScreen = selectScreen(selectedPane, navigationProvider);
         return AppLayout(content: selectedScreen);
       },
     );
   }
 
-  Widget selectScreen(ScreenConfig screenConfig) {
+  Widget selectScreen(ScreenConfig screenConfig, NavigationProvider navigationProvider) {
     if (screenConfig == HomeScreen.screenConfig) {
       return const HomeScreen();
     } else if (screenConfig == LibraryScreen.screenConfig) {
       return const LibraryScreen();
     } else {
-      return ListenableProvider(
-        create: (context) => ProductProvider(),
-        child: const AppDetailsView(),
+      return ValueListenableBuilder<ProductProvider?>(
+        valueListenable: navigationProvider.product,
+        builder: (context, productProvider, _) {
+          return ListenableProvider(
+            create: (context) => productProvider ?? ProductProvider(),
+            child: const AppDetailsView(),
+          );
+        }
       );
     }
   }

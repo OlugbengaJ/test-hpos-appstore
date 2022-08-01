@@ -34,7 +34,11 @@ class LogoProductRectangle extends StatelessWidget {
       child: ValueListenableBuilder<String>(
         valueListenable: productProvider.imageNotifier,
         builder: (context, image, _) {
-          return NetworkImage(logo: image, width: logoWidth, height: logoHeight,);
+          return NetworkImage(
+            logo: image,
+            width: logoWidth,
+            height: logoHeight,
+          );
         },
       ),
     );
@@ -61,7 +65,7 @@ class NetworkImage extends StatelessWidget {
           width: width,
           height: height,
           semanticsLabel: 'App Logo',
-          fit: BoxFit.scaleDown,
+          fit: BoxFit.contain,
           placeholderBuilder: (BuildContext context) => Container(
               padding: const EdgeInsets.all(30.0),
               child: const CircularProgressIndicator()),

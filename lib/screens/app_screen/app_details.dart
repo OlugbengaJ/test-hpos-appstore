@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/utils_import.dart';
 import 'package:hpos_appstore/widgets/components/app_details_top_card.dart';
@@ -14,6 +15,7 @@ import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
 import 'package:hpos_appstore/widgets/write_review_card.dart';
+import 'package:provider/provider.dart';
 
 class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
@@ -77,6 +79,8 @@ class AppDetailsView extends StatelessWidget {
 
     final themeData = Theme.of(context);
 
+    var productProvider = Provider.of<ProductProvider>(context);
+
     return Column(
       children: [
         Container(
@@ -108,24 +112,29 @@ class AppDetailsView extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
+                  children: [
                     AppInfoCard(
                       top: "Ratings",
-                      center: Text(
-                        "4.5",
-                        style: TextStyle(
-                            color: AppColors.greyW100,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 40),
+                      center: ValueListenableBuilder(
+                        valueListenable: productProvider.ratingNotifier,
+                        builder: (context, rating, _) {
+                          return Text(
+                            rating.toString(),
+                            style: const TextStyle(
+                                color: AppColors.greyW100,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 40),
+                          );
+                        }
                       ),
                       bottom: "Average",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Size",
                       center: Text(
                         "148",
@@ -136,12 +145,12 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "MB",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Age",
                       center: Text(
                         "4 +",
@@ -152,23 +161,23 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "Years",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Developer",
                       center: ImageIcon(AssetImage(AppAssets.terminalSquarePng),
                           size: 40, color: AppColors.greyW100),
                       bottom: "Microsoft Inc",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Language",
                       center: Text(
                         "EN",
@@ -179,12 +188,12 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "+ 10 More",
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    AppInfoCard(
+                    const AppInfoCard(
                       top: "Parental Guidance",
                       center: Text(
                         "12 +",
@@ -316,22 +325,32 @@ class AppDetailsView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(16)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                '4.5',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 72,
-                                  color: AppColors.white,
-                                ),
+                            children: [
+                              ValueListenableBuilder<double>(
+                                valueListenable: productProvider.ratingNotifier,
+                                builder: (context, rating, _) {
+                                  return Text(
+                                    rating.toString(),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 72,
+                                      color: AppColors.white,
+                                    ),
+                                  );
+                                }
                               ),
-                              Text(
-                                '25 Ratings',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 24,
-                                  color: AppColors.white,
-                                ),
+                              ValueListenableBuilder<int>(
+                                valueListenable: productProvider.reviewerCountNotifier,
+                                builder: (context, count, _) {
+                                  return Text(
+                                    '$count Ratings',
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 24,
+                                      color: AppColors.white,
+                                    ),
+                                  );
+                                }
                               ),
                             ],
                           ),
