@@ -37,7 +37,7 @@ class CardProductVertical extends StatelessWidget {
                       onDelete: () {},
                       onUpdate: () {},
                     )
-                  :  ButtonInstall(
+                  : const ButtonInstall(
                       borderRadius: BorderRadius.all(
                         Radius.circular(Numericals.double8),
                       ),
