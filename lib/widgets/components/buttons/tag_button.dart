@@ -26,18 +26,22 @@ class ProductTagButton extends StatelessWidget {
             : filterBtnWhite,
         child: Wrap(
           children: [
-            InkWell(
-              onTap: () {
-                libraryProvider.removeFilterTag(id);
-              },
-              child: Icon(Icons.close,
-                  size: (libraryProvider.filterTag == slug) ? 15 : 0),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Text(
+                name,
+              ),
             ),
-            const Padding(padding: EdgeInsets.only(left: 15)),
-            Text(
-              name,
+            Padding(
+              padding: const EdgeInsets.only(top: 2.0),
+              child: InkWell(
+                onTap: () {
+                  libraryProvider.removeFilterTag(id);
+                },
+                child: Icon(Icons.close,
+                    size: (libraryProvider.filterTag == slug) ? 15 : 0),
+              ),
             ),
-            const Padding(padding: EdgeInsets.only(left: 15)),
           ],
         ),
       ),

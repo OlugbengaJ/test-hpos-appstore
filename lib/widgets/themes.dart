@@ -4,10 +4,10 @@ import 'package:hpos_appstore/utils/numericals.dart';
 
 ButtonStyle filterBtnWhite = ButtonStyle(
     foregroundColor: MaterialStateProperty.all<Color>(AppColors.dark),
-    backgroundColor: MaterialStateProperty.all<Color>(AppColors.white),
+    backgroundColor: MaterialStateProperty.all<Color>(AppColors.primaryW25),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
+      borderRadius: BorderRadius.all(Radius.circular(24)),
     )));
 
 ButtonStyle filterBtnPrimary = ButtonStyle(
@@ -15,7 +15,7 @@ ButtonStyle filterBtnPrimary = ButtonStyle(
     backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
+      borderRadius: BorderRadius.all(Radius.circular(24)),
     )));
 
 ThemeData appTheme = ThemeData(
