@@ -10,10 +10,10 @@ import 'button_install.dart';
 import 'logo_product_banner.dart';
 
 class CardProductVertical extends StatelessWidget {
-  CardProductVertical({Key? key, this.isInstalled, this.hasUpdate})
+  const CardProductVertical({Key? key, this.isInstalled, this.hasUpdate})
       : super(key: key);
-  bool? isInstalled = false;
-  bool? hasUpdate;
+  final bool? isInstalled;
+  final bool? hasUpdate;
 
   @override
   Widget build(BuildContext context) {

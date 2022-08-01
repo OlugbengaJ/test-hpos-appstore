@@ -10,11 +10,11 @@ import 'package:hpos_appstore/widgets/components/product_card/rating_view.dart';
 import 'button_install.dart';
 
 class CardProductListItem extends StatelessWidget {
-  CardProductListItem(
+  const CardProductListItem(
       {Key? key, this.isInstalled = false, this.hasUpdate = false})
       : super(key: key);
-  bool? isInstalled = false;
-  bool? hasUpdate;
+  final bool? isInstalled;
+  final bool? hasUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CardProductListItem extends StatelessWidget {
         padding:
             const EdgeInsets.only(left: 14, top: 13, right: 30, bottom: 12),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const LogoProductRectangle(
               borderLength: 71,
@@ -34,7 +34,7 @@ class CardProductListItem extends StatelessWidget {
             const Padding(padding: EdgeInsets.only(left: 39)),
             const Expanded(flex: 2, child: ColumnProductInfo(headerOnly: true)),
             Expanded(
-                flex: 2,
+                flex: 3,
                 child: Wrap(
                   children: const [
                     ProductPriceTag(),
@@ -44,8 +44,8 @@ class CardProductListItem extends StatelessWidget {
                     ButtonShare(),
                   ],
                 )),
-            const Padding(padding: EdgeInsets.only(left: 102)),
             Expanded(
+                flex: (isInstalled == true) ? 2 : 1,
                 child: (isInstalled == true)
                     ? ButtonUpdateDelete(
                         hasUpdate: hasUpdate,
