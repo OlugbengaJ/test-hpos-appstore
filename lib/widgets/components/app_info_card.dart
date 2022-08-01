@@ -14,29 +14,23 @@ class AppInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            child: Text(
-              top,
-              style: TextStyle(
-                color: AppColors.greyW500
-              ),
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          top,
+          style: const TextStyle(
+            color: AppColors.greyW500
           ),
-          center,
-          Container(
-            child: Text(
-              bottom,
-              style: TextStyle(
-                color: AppColors.greyW300
-              ),
-            ),
+        ),
+        center,
+        Text(
+          bottom,
+          style: const TextStyle(
+            color: AppColors.greyW300
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

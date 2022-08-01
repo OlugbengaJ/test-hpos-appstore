@@ -5,9 +5,11 @@ import 'package:hpos_appstore/widgets/components/product_card/card_product_list_
 import 'package:provider/provider.dart';
 
 class ListProductDisplay extends StatelessWidget {
-  const ListProductDisplay({Key? key, required this.apps}) : super(key: key);
+  ListProductDisplay({Key? key, required this.apps, this.isInstalled})
+      : super(key: key);
 
   final List<Product> apps;
+  bool? isInstalled = false;
 
   // final Bool? showTitle;
 
@@ -20,7 +22,10 @@ class ListProductDisplay extends StatelessWidget {
             .map(
               (app) => ListenableProvider(
                 create: (context) => ProductProvider.fromModel(app),
-                child: const CardProductListItem(),
+                child: CardProductListItem(
+                  isInstalled: isInstalled,
+                  hasUpdate: app.updateAvailable,
+                ),
               ),
             )
             .toList(),

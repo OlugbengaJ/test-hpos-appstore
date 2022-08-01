@@ -12,7 +12,7 @@ class AppColors {
   static const Color greyW25 = Color(0xffFCFCFD);
   static const Color greyW100 = Color(0xffF2F4F7);
   static const Color greyW300 = Color(0xffD0D5DD);
-  static const Color greyW400 = Color(0xff98A2B3);  
+  static const Color greyW400 = Color(0xff98A2B3);
   static const Color greyW500 = Color(0xff667085);
   static const Color greyW600 = Color(0xff475467);
   static const Color greyW700 = Color(0xff344054);
@@ -36,7 +36,7 @@ class AppColors {
     Color(0xff1D2939),
   ];
   static const List<Color> gradientBlueW500 = [
-    Color(0xff4758F6),
+    primary,
     Color(0xff919BFA),
   ];
   static const Color shadow = Color(0xff101828);

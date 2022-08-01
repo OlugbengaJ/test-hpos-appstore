@@ -1,65 +1,103 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/models/app_enum.dart';
+import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/widgets/components/buttons/tag_button.dart';
 import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
+import 'package:provider/provider.dart';
 
 class LibraryHeaderView extends StatelessWidget {
   const LibraryHeaderView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    LibraryProvider libraryProvider =
+        Provider.of<LibraryProvider>(context, listen: false);
+
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppBar(
-          toolbarHeight: 50.0,
-          backgroundColor: AppColors.white,
-          bottomOpacity: 0.0,
-          elevation: 0.0,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              TextButton(
-                style: TextButton.styleFrom(
-                    fixedSize: const Size(150, 50),
-                    primary: Colors.grey,
-                    backgroundColor: Colors.transparent),
-                child: Stack(
-                    alignment: Alignment.topCenter,
-                    fit: StackFit.passthrough,
-                    children: [
-                      const Positioned(top: 10, child: Text('All Apps')),
-                      Container(
-                          height: 2,
-                          margin: const EdgeInsets.only(top: 40.0),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              Colors.lightBlue,
-                              Colors.blue.shade900,
-                              Colors.purple
-                            ]),
-                          ))
-                    ]),
-                onPressed: () {},
+        Container(
+            padding: const EdgeInsets.only(top: 25),
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(width: .2, color: AppColors.greyW900),
+                top: BorderSide(width: .2, color: AppColors.greyW900),
               ),
-              TextButton(
-                style: TextButton.styleFrom(
-                    fixedSize: const Size(150, 50),
-                    primary: Colors.grey,
-                    backgroundColor: Colors.transparent),
-                child: Stack(
-                    alignment: Alignment.topCenter,
-                    fit: StackFit.passthrough,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: (libraryProvider.appView == LibraryProducts.all)
+                        ? AppColors.primary
+                        : AppColors.greyW600,
+                    backgroundColor: Colors.transparent,
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('All Apps'),
+                        const Padding(padding: EdgeInsets.only(bottom: 15)),
+                        Container(
+                            height: 3,
+                            width: 70,
+                            decoration: BoxDecoration(
+                              color: (libraryProvider.appView ==
+                                      LibraryProducts.all)
+                                  ? AppColors.primary
+                                  : Colors.transparent,
+                            ))
+                      ]),
+                  onPressed: () {
+                    libraryProvider.setAppView(LibraryProducts.all);
+                  },
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                      primary:
+                          (libraryProvider.appView == LibraryProducts.installed)
+                              ? AppColors.primary
+                              : AppColors.greyW600,
+                      backgroundColor: Colors.transparent),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Installed Apps'),
+                        const Padding(padding: EdgeInsets.only(bottom: 15)),
+                        Container(
+                            height: 3,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              color: (libraryProvider.appView ==
+                                      LibraryProducts.installed)
+                                  ? AppColors.primary
+                                  : Colors.transparent,
+                            ))
+                      ]),
+                  onPressed: () {
+                    libraryProvider.setAppView(LibraryProducts.installed);
+                  },
+                ),
+              ],
+            )),
+        (libraryProvider.appView == LibraryProducts.all)
+            ? Column(
+                children: [
+                  app_spacer.Spacer.bottomLarge,
+                  Wrap(
+                    alignment: WrapAlignment.start,
                     children: [
-                      const Positioned(top: 10, child: Text('Installed Apps')),
-                      Container(
-                        height: 2,
-                        margin: const EdgeInsets.only(top: 40.0),
-                      )
-                    ]),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
+                      ...Provider.of<LibraryProvider>(context).getTags().map(
+                            (e) => ProductTagButton(
+                                id: e.id, name: e.name, slug: e.slug),
+                          )
+                    ],
+                  ),
+                ],
+              )
+            : Container(),
         app_spacer.Spacer.bottomMedium,
       ],
     );

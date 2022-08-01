@@ -5,9 +5,10 @@ class Product {
   final String price;
   final double avgRatings;
   final int numRatings;
+  final bool updateAvailable;
 
   Product(this.logo, this.name, this.category, this.price, this.avgRatings,
-      this.numRatings);
+      this.numRatings, this.updateAvailable);
 }
 
 class SuggestedApps {
@@ -15,4 +16,12 @@ class SuggestedApps {
   final List<Product> products;
 
   SuggestedApps(this.tag, this.products);
+}
+
+class ProductFilterTag {
+  final int id;
+  final String name;
+  final String slug;
+
+  ProductFilterTag(this.id, this.name, this.slug);
 }

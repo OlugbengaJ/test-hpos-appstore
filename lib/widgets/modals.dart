@@ -61,7 +61,7 @@ Future<void> uninstallAppDialog(BuildContext context, AppProvider appProvider) a
                 ),
                 
                 Container(
-                  margin: EdgeInsets.only(top: 36),
+                  margin: const EdgeInsets.only(top: 36),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

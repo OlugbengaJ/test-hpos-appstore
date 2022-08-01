@@ -15,39 +15,35 @@ class RatingsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Container(
-            child: Text(
-              star.toString(),
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 20
-              ),
-            ),
+    return Row(
+      children: [
+        Text(
+          star.toString(),
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 20
           ),
-          Container(
-            margin: const EdgeInsets.only(left: 5),
-            child: ImageIcon(
-              AssetImage(
-                AppAssets.starPng
-              ),
-              color: AppColors.orange,
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 5),
+          child: ImageIcon(
+            AssetImage(
+              AppAssets.starPng
             ),
+            color: AppColors.orange,
           ),
-          LinearPercentIndicator(
-            width: 324.0,
-            lineHeight: 12.0,
-            percent: percent,
-            backgroundColor: AppColors.primaryW100,
-            linearGradient: const LinearGradient(
-              colors: AppColors.gradientBlueW500
-            ),
-            barRadius: const Radius.circular(16),
+        ),
+        LinearPercentIndicator(
+          width: 324.0,
+          lineHeight: 12.0,
+          percent: percent,
+          backgroundColor: AppColors.primaryW100,
+          linearGradient: const LinearGradient(
+            colors: AppColors.gradientBlueW500
           ),
-        ],
-      ),
+          barRadius: const Radius.circular(16),
+        ),
+      ],
     );
   }
 }

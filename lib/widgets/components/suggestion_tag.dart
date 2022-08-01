@@ -84,7 +84,7 @@ class SuggestionTag extends StatelessWidget {
                   child: ListenableProvider(
                     create: (context) => ProductProvider.fromModel(product),
                     child: (cardType == CardType.vertical)
-                        ? const CardProductVertical()
+                        ? CardProductVertical()
                         : const CardProductHorizontal(),
                   ),
                 ),

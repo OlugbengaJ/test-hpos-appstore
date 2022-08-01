@@ -15,7 +15,6 @@ class AppReviewCard extends StatelessWidget {
     required this.dislikes,
   }) : super(key: key);
 
-
   final String title;
   final String content;
   final String username;
@@ -35,164 +34,123 @@ class AppReviewCard extends StatelessWidget {
         width: 540,
         padding: const EdgeInsets.all(35),
         decoration: BoxDecoration(
-          color: AppColors.greyW25,
-          borderRadius: BorderRadius.circular(16)
-        ),
-        
+            color: AppColors.greyW25, borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Title and username and stars
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style:
+                      const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  child: Row(
+                    children: [
+                      Text(
+                        username,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: AppColors.greyW400),
                       ),
-                    ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        child: const Icon(Icons.circle,
+                            size: 5, color: AppColors.greyW400),
+                      ),
+                      Text(
+                        date,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: AppColors.greyW400),
+                      )
+                    ],
                   ),
-
-                  Container(
-                    margin: EdgeInsets.only(top:8),
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Text(
-                            username,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12,
-                              color: AppColors.greyW400
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 5),
-                          child: Icon(
-                            Icons.circle,
-                            size: 5,
-                            color: AppColors.greyW400
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            date,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12,
-                              color: AppColors.greyW400
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    height: 20,
-                    margin: EdgeInsets.only(top: 16, bottom: 25),
-                    child: AppRatingsWidget(ratings: 1),
-                  )
-                ],
-              ),
+                ),
+                Container(
+                  height: 20,
+                  margin: const EdgeInsets.only(top: 16, bottom: 25),
+                  child: const AppRatingsWidget(ratings: 1),
+                )
+              ],
             ),
 
             // Content
 
-            Container(
+            SizedBox(
               width: 469,
               child: Text(
                 content,
-                style: TextStyle(
-                  height: 1.5,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  color: AppColors.greyW600
-                ),
-
+                style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: AppColors.greyW600),
               ),
             ),
 
             Container(
-              margin: EdgeInsets.only(top:30),
+              margin: const EdgeInsets.only(top: 30),
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: Row(
                       children: [
-                        Container(
-                          child: ImageIcon(
-                            AssetImage(
-                              AppAssets.thumbsUpPng
-                            ),
-                            color: AppColors.primaryW500,
-                          ),
+                        ImageIcon(
+                          AssetImage(AppAssets.thumbsUpPng),
+                          color: AppColors.primaryW500,
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 4),
+                          padding: const EdgeInsets.only(left: 4),
                           child: Text(
                             likes.toString(),
-                            style: TextStyle(
-                              color: AppColors.greyW700,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18
-                            ),
+                            style: const TextStyle(
+                                color: AppColors.greyW700,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
                           ),
                         )
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: Row(
                       children: [
-                        Container(
-                          child: ImageIcon(
-                            AssetImage(
-                              AppAssets.thumbsDownPng
-                            ),
-                            color: AppColors.primaryW500,
-                          ),
+                        ImageIcon(
+                          AssetImage(AppAssets.thumbsDownPng),
+                          color: AppColors.primaryW500,
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 4),
+                          padding: const EdgeInsets.only(left: 4),
                           child: Text(
                             dislikes.toString(),
-                            style: TextStyle(
-                              color: AppColors.greyW700,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18
-                            ),
+                            style: const TextStyle(
+                                color: AppColors.greyW700,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
                           ),
                         )
                       ],
                     ),
                   ),
-
-                  Container(
-                    child: Row(
-                      children: [
-                        Container(
-                          child: ImageIcon(
-                            AssetImage(
-                              AppAssets.flagPng
-                            ),
-                            color: AppColors.primaryW500,
-                          ),
-                        ),                      
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      ImageIcon(
+                        AssetImage(AppAssets.flagPng),
+                        color: AppColors.primaryW500,
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            
           ],
         ),
       ),

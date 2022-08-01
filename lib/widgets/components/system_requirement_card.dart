@@ -45,17 +45,15 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 Expanded(
                   flex: 8,
                   child: Container(
-                    margin: EdgeInsets.only(left: 36.33),
+                    margin: const EdgeInsets.only(left: 36.33),
                     child: Row(
                       children: [
-                        Container(
-                          child: const Icon(
-                            Icons.check_circle,
-                            color: AppColors.green,
-                          )
+                        const Icon(
+                          Icons.check_circle,
+                          color: AppColors.green,
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 26.33, top: 27, bottom: 26),
+                          margin: const EdgeInsets.only(left: 26.33, top: 27, bottom: 26),
                           width: 800,
                           child: const Text(
                             AppTexts.systemRequirementsMessage,
@@ -75,7 +73,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 InkWell(
                   onTap: showingMore? showLess: showMore,
                   child: Container(
-                    margin: EdgeInsets.only(top: 18, bottom: 18, right: 19),
+                    margin: const EdgeInsets.only(top: 18, bottom: 18, right: 19),
                     height: 40,
                     width: 137,
                     decoration: BoxDecoration(
@@ -85,21 +83,17 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [              
-                        Container(
-                          child: const Text(
-                            AppTexts.showMore,
-                            style: TextStyle(
-                              color: AppColors.primaryW600,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14
-                            ),
+                        const Text(
+                          AppTexts.showMore,
+                          style: TextStyle(
+                            color: AppColors.primaryW600,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14
                           ),
                         ),
-                        Container(
-                          child: ImageIcon(
-                            AssetImage(
-                              AppAssets.chevronDownPng
-                            )
+                        ImageIcon(
+                          AssetImage(
+                            AppAssets.chevronDownPng
                           )
                         ),
                       ],
@@ -119,14 +113,12 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(left: 36.33),
+                  margin: const EdgeInsets.only(left: 36.33),
                   child: Row(
                     children: [
-                      Container(
-                        child: SvgPicture.asset(
-                          AppAssets.checkSVG,
-                          color: AppColors.green,
-                        )
+                      SvgPicture.asset(
+                        AppAssets.checkSVG,
+                        color: AppColors.green,
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 19, top: 27/2, bottom: 10),
@@ -146,14 +138,12 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(left: 36.33),
+                  margin: const EdgeInsets.only(left: 36.33),
                   child: Row(
                     children: [
-                      Container(
-                        child: SvgPicture.asset(
-                          AppAssets.checkSVG,
-                          color: AppColors.green,
-                        )
+                      SvgPicture.asset(
+                        AppAssets.checkSVG,
+                        color: AppColors.green,
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 19, top: 10, bottom: 10),
@@ -173,14 +163,12 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(left: 36.33),
+                  margin: const EdgeInsets.only(left: 36.33),
                   child: Row(
                     children: [
-                      Container(
-                        child: SvgPicture.asset(
-                          AppAssets.checkSVG,
-                          color: AppColors.green,
-                        )
+                      SvgPicture.asset(
+                        AppAssets.checkSVG,
+                        color: AppColors.green,
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 19, top: 10, bottom: 10),
@@ -200,14 +188,12 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 ),
                 
                 Container(
-                  margin: EdgeInsets.only(left: 36.33),
+                  margin: const EdgeInsets.only(left: 36.33),
                   child: Row(
                     children: [
-                      Container(
-                        child: SvgPicture.asset(
-                          AppAssets.closeSVG,
-                          color: AppColors.red,
-                        )
+                      SvgPicture.asset(
+                        AppAssets.closeSVG,
+                        color: AppColors.red,
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 19, top: 10, bottom: 10),
@@ -227,14 +213,12 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                 ),
                 
                 Container(
-                  margin: EdgeInsets.only(left: 36.33),
+                  margin: const EdgeInsets.only(left: 36.33),
                   child: Row(
                     children: [
-                      Container(
-                        child: SvgPicture.asset(
-                          AppAssets.closeSVG,
-                          color: AppColors.red,
-                        )
+                      SvgPicture.asset(
+                        AppAssets.closeSVG,
+                        color: AppColors.red,
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 19, top: 10, bottom: 10),

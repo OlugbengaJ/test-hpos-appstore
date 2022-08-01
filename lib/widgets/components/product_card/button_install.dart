@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../utils/colors.dart';
-import '../../../utils/texts.dart';
+import 'package:hpos_appstore/utils/utils_import.dart';
 
 class ButtonInstall extends StatelessWidget {
   const ButtonInstall({Key? key, this.borderRadius = BorderRadius.zero})
       : super(key: key);
 
-  final String installIcon = 'assets/icons/install.svg';
   final BorderRadius borderRadius;
 
   @override
@@ -40,7 +37,7 @@ class ButtonInstall extends StatelessWidget {
               ),
             ),
             SvgPicture.asset(
-              installIcon,
+              AppAssets.installSVG,
               width: 12,
               height: 12,
               color: Colors.white,

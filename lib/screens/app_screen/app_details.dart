@@ -7,15 +7,18 @@ import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
+import 'package:hpos_appstore/widgets/components/dialogs/content_dialog.dart';
 import 'package:hpos_appstore/widgets/components/ratings_bar.dart';
 import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
 import 'package:hpos_appstore/widgets/components/system_requirement_card.dart';
+import 'package:hpos_appstore/widgets/write_review_card.dart';
 
 class AppDetailsView extends StatelessWidget {
   const AppDetailsView({Key? key}) : super(key: key);
 
-  static final screenConfig = ScreenConfig('/app_details',
+  static final screenConfig = ScreenConfig(
+    '/app_details',
     showSearch: false,
     child: Row(
       children: [
@@ -28,7 +31,7 @@ class AppDetailsView extends StatelessWidget {
         ),
         const Text(AppTexts.back),
       ],
-    )
+    ),
   );
 
   @override
@@ -40,37 +43,43 @@ class AppDetailsView extends StatelessWidget {
           'Productivity',
           'Free',
           4.5,
-          70),
+          70,
+          false),
       Product(
           'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
           'Google Meet',
           'Productivity',
           '48.99',
           3.5,
-          70),
+          70,
+          true),
       Product(
           'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
           'Zoom',
           'Productivity',
           'Free',
           3.5,
-          70),
+          70,
+          false),
       Product(
           'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
           'Google Suite',
           'Productivity',
           'Free',
           5.0,
-          70)
+          70,
+          false)
     ];
 
     var suggestedProd =
         SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
 
+    final themeData = Theme.of(context);
+
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(top:50),
+          margin: const EdgeInsets.only(top: 50),
           padding: EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
@@ -79,20 +88,18 @@ class AppDetailsView extends StatelessWidget {
             children: [
               // App Icon and summary
               Container(
-                margin: EdgeInsets.only(bottom:64),
-                child: AppDetailsTopCard(),
+                margin: const EdgeInsets.only(bottom: 64),
+                child: const AppDetailsTopCard(),
               ),
 
               Container(
-                margin: EdgeInsets.only(bottom: 72),
+                margin: const EdgeInsets.only(bottom: 72),
                 height: 132,
-                padding: EdgeInsets.symmetric(vertical: 18),
+                padding: const EdgeInsets.symmetric(vertical: 18),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: AppColors.gradientGreyW500,
-                    stops: [
-                      0.25, 71, 96
-                    ],
+                    stops: [0.25, 71, 96],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
@@ -100,7 +107,7 @@ class AppDetailsView extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children:  [
+                  children: [
                     const AppInfoCard(
                       top: "Ratings",
                       center: Text(
@@ -122,12 +129,12 @@ class AppDetailsView extends StatelessWidget {
                       center: Text(
                         "148",
                         style: TextStyle(
-                          color: AppColors.greyW100,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 40
-                        ),
-                      ),bottom: "MB",
-                    ),                
+                            color: AppColors.greyW100,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 40),
+                      ),
+                      bottom: "MB",
+                    ),
                     const VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
@@ -201,7 +208,7 @@ class AppDetailsView extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Container(
-                        margin: EdgeInsets.only(bottom: 24),
+                        margin: const EdgeInsets.only(bottom: 24),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -237,23 +244,23 @@ class AppDetailsView extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      alignment: Alignment.topLeft,
-                      height: 403,
-                      child: const ScrollableStack(
-                        groupIcons: true,
-                        size: 40,
-                        children:  [
-                          AppScreenShot(
-                            image: "assets/images/screenshot_1.png",
-                          ),
-                          SizedBox(width: 17,),
-                          AppScreenShot(
-                            image: "assets/images/screenshot_2.png",
-                          ),
-                        ],
-                      )
-                      
-                    ),
+                        alignment: Alignment.topLeft,
+                        height: 403,
+                        child: const ScrollableStack(
+                          groupIcons: true,
+                          size: 40,
+                          children: [
+                            AppScreenShot(
+                              image: "assets/images/screenshot_1.png",
+                            ),
+                            SizedBox(
+                              width: 17,
+                            ),
+                            AppScreenShot(
+                              image: "assets/images/screenshot_2.png",
+                            ),
+                          ],
+                        )),
                   ],
                 ),
               ),
@@ -264,7 +271,7 @@ class AppDetailsView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 24),
+                      margin: const EdgeInsets.only(bottom: 24),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -308,25 +315,21 @@ class AppDetailsView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(16)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: const Text(
-                                  "4.5",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 72,
-                                    color: AppColors.white,
-                                  ),
+                            children: const [
+                              Text(
+                                '4.5',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 72,
+                                  color: AppColors.white,
                                 ),
                               ),
-                              Container(
-                                child: const Text(
-                                  "25 Ratings",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24,
-                                    color: AppColors.white,
-                                  ),
+                              Text(
+                                '25 Ratings',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: AppColors.white,
                                 ),
                               ),
                             ],
@@ -367,6 +370,109 @@ class AppDetailsView extends StatelessWidget {
                 ),
               ),
 
+              // Write review and rating section
+              Card(
+                margin: EdgeInsets.only(top: Numericals.double40),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(Numericals.double16)),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    Numericals.double35,
+                    Numericals.double28,
+                    Numericals.double35,
+                    Numericals.double28,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppTexts.clickToRate,
+                        style: themeData.textTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+
+                      // space between sections
+                      SizedBox(width: Numericals.double48),
+
+                      // TODO: Refactor clickable stars here
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.star_border_outlined,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      // space between sections
+                      SizedBox(width: Numericals.double48),
+
+                      // write review section
+                      TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(AppColors.primaryW25),
+                          padding: MaterialStateProperty.all(
+                            const EdgeInsets.fromLTRB(18.0, 14.0, 18.0, 14.0),
+                          ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                          ),
+                        ),
+                        onPressed: () => showReview(context),
+                        child: Row(
+                          children: [
+                            ImageIcon(
+                              AssetImage(AppAssets.edit),
+                              size: 22.0,
+                              color: AppColors.primary,
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsets.only(left: Numericals.double8),
+                            ),
+                            Text(
+                              AppTexts.writeReview,
+                              style: themeData.textTheme.bodyText2?.copyWith(
+                                  color: AppColors.primary,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
               Container(
                 margin: const EdgeInsets.only(top: 56),
                 height: 300,
@@ -382,52 +488,51 @@ class AppDetailsView extends StatelessWidget {
                           size: 40,
                           children: [
                             AppReviewCard(
-                              title: "This app is trash",
-                              content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                              username: "Draqaris001",
-                              date: "14/07/2021",
+                              title: 'This app is trash+',
+                              content:
+                                  'Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.',
+                              username: 'Draqaris001',
+                              date: '14/07/2021',
                               likes: 25,
                               dislikes: 0,
                               stars: 1,
                             ),
-                            SizedBox(width: 17,),
-
+                            SizedBox(
+                              width: 17,
+                            ),
                             AppReviewCard(
-                              title: "Best app in the world",
-                              content: "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                              username: "Draqaris001",
-                              date: "14/07/2021",
+                              title: 'Best app in the world',
+                              content:
+                                  'Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.',
+                              username: 'Draqaris001',
+                              date: '14/07/2021',
                               likes: 23,
                               dislikes: 0,
                               stars: 1,
                             ),
-                            
                           ],
-                        )
-                        
-                        
+                        ),
                       ),
-                    ),                
+                    ),
                   ],
                 ),
               ),
 
               // System requirements
-
               Container(
-                margin: EdgeInsets.only(top: 72),
+                margin: const EdgeInsets.only(top: 72),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 24),
+                      margin: const EdgeInsets.only(bottom: 24),
                       child: const Text(
                         AppTexts.systemRequirements,
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 24),
                       ),
                     ),
-                    SystemRequirementCard(),
+                    const SystemRequirementCard(),
                   ],
                 ),
               ),
@@ -435,8 +540,7 @@ class AppDetailsView extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 72),
-          //height: 150,
+          margin: const EdgeInsets.only(top: 72),
           child: SuggestionTag(
             tag: AppTexts.similarAppSugestions,
             products: suggestedProd.products,
@@ -445,5 +549,10 @@ class AppDetailsView extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void showReview(BuildContext context) {
+    ContentDialog.open(context,
+        content: WriteReviewScreen(key: GlobalKey()).build(context));
   }
 }

@@ -5,10 +5,11 @@ import 'package:hpos_appstore/widgets/components/product_card/card_product_verti
 import 'package:provider/provider.dart';
 
 class GridProductDisplay extends StatelessWidget {
-  const GridProductDisplay({Key? key, required this.apps}) : super(key: key);
+  GridProductDisplay({Key? key, required this.apps, this.isInstalled})
+      : super(key: key);
 
   final List<Product> apps;
-  // final Bool? showTitle;
+  bool? isInstalled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,12 @@ class GridProductDisplay extends StatelessWidget {
       children: [
         ...apps.map((app) => ListenableProvider(
               create: (context) => ProductProvider.fromModel(app),
-              child: const Padding(
-                padding: EdgeInsets.only(right: 30.0),
-                child: CardProductVertical(),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 30.0),
+                child: CardProductVertical(
+                  isInstalled: isInstalled,
+                  hasUpdate: app.updateAvailable,
+                ),
               ),
             )),
       ],

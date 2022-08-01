@@ -2,6 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 
+ButtonStyle filterBtnWhite = ButtonStyle(
+    foregroundColor: MaterialStateProperty.all<Color>(AppColors.dark),
+    backgroundColor: MaterialStateProperty.all<Color>(AppColors.primaryW25),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(24)),
+    )));
+
+ButtonStyle filterBtnPrimary = ButtonStyle(
+    foregroundColor: MaterialStateProperty.all<Color>(AppColors.white),
+    backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(24)),
+    )));
+
 ThemeData appTheme = ThemeData(
   fontFamily: 'EuclidCircularB',
   primaryColor: AppColors.primaryW400,
@@ -23,7 +39,7 @@ ThemeData appTheme = ThemeData(
   ),
   cardTheme: CardTheme(
     color: AppColors.greyW25,
-    shadowColor: AppColors.shadow.withOpacity(0.5),
+    shadowColor: AppColors.shadow.withOpacity(0.25),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(
         Radius.circular(Numericals.double16),
