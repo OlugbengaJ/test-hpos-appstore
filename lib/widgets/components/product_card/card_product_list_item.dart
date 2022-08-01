@@ -48,7 +48,7 @@ class CardProductListItem extends StatelessWidget {
                     ],
                   )),
               Expanded(
-                  flex: (isInstalled == true) ? 2 : 1,
+                  flex: (isInstalled == true) ? 3 : 1,
                   child: (isInstalled == true)
                       ? ButtonUpdateDelete(
                           hasUpdate: hasUpdate,
