@@ -38,6 +38,7 @@ class AppTexts {
   static const String seeAll = 'See all';
   static const String share = 'share';
   static const String showMore = 'Show more';
+  static const String showLess = 'Show less';
   static const String similarAppSugestions = 'Similar App Suggestions';
   static const String submit = 'Submit';
   static const String suggestedGames = 'Top paid games';
@@ -48,10 +49,18 @@ class AppTexts {
   static const String systemRequirementsMessage =
       'This application should work on your device. Items with a tick meets the developer’s system requirments';
   static const String termsOfSale = 'Terms of Sale';
+  static const String otherInformations = 'Other information';
   static const String uninstall = 'Uninstall';
   static const String uninstallApp = 'Uninstall Application';
   static const String update = 'Update';
   static const String updateAll = 'Update All';
   static const String yesUninstall = 'Yes, Uninstall';
   static String writeReview = 'Write a review';
+  static String provider = 'Provider';
+  static String size = 'Size';
+  static String category = 'Category';
+  static String latestVersion = 'Latest version';
+  static String releasedDate = 'Released date';
+  static String languages = 'Languages';
+  static String otherItem = 'Other item';
 }

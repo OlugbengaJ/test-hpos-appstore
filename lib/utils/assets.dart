@@ -31,4 +31,6 @@ class AppAssets {
   static String closeSVG = 'assets/icons/close.svg';
   static String installSVG = 'assets/icons/install.svg';
   static String trashSVG = 'assets/icons/trash-02.svg';
+  static String chervronDownSVG = 'assets/icons/chevron-down.svg';
+  static String chervronUpSVG = 'assets/icons/chevron-up.svg';
 }

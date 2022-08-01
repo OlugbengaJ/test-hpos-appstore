@@ -8,6 +8,7 @@ import 'package:hpos_appstore/widgets/components/app_review_card.dart';
 import 'package:hpos_appstore/widgets/components/app_screenshot.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
 import 'package:hpos_appstore/widgets/components/dialogs/content_dialog.dart';
+import 'package:hpos_appstore/widgets/components/other_informations_card.dart';
 import 'package:hpos_appstore/widgets/components/ratings_bar.dart';
 import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:hpos_appstore/widgets/components/suggestion_tag.dart';
@@ -536,6 +537,28 @@ class AppDetailsView extends StatelessWidget {
                   ],
                 ),
               ),
+
+              
+              // Other information
+              Container(
+                margin: const EdgeInsets.only(top: 72),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 24),
+                      child: const Text(
+                        AppTexts.otherInformations,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 24),
+                      ),
+                    ),
+                    OtherInformationsCard(),
+                  ],
+                ),
+              ),
+
+
             ],
           ),
         ),
