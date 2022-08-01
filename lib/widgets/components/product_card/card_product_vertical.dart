@@ -13,7 +13,7 @@ class CardProductVertical extends StatelessWidget {
   CardProductVertical({Key? key, this.isInstalled, this.hasUpdate})
       : super(key: key);
   bool? isInstalled = false;
-  bool? hasUpdate = false;
+  bool? hasUpdate;
 
   @override
   Widget build(BuildContext context) {
