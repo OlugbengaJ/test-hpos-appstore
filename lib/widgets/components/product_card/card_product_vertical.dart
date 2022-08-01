@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/providers/navigation_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
+import 'package:hpos_appstore/screens/app_screen/app_details.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/widgets/components/product_card/button_update_delete.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
+import 'package:hpos_appstore/widgets/components/product_card/product_card_navigation.dart';
 import 'package:provider/provider.dart';
 
 import 'button_install.dart';
@@ -17,28 +20,32 @@ class CardProductVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        width: 276.0,
-        height: 299.0,
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const LogoProductBanner(),
-            const Padding(padding: EdgeInsets.only(bottom: 11.0)),
-            const CardDetails(),
-            const Padding(padding: EdgeInsets.only(bottom: 17)),
-            (isInstalled == true)
-                ? ButtonUpdateDelete(
-                    hasUpdate: hasUpdate,
-                    onDelete: () {},
-                    onUpdate: () {},
-                  )
-                : ButtonInstall(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(Numericals.double8)))
-          ],
+    return ProductCardNavigation(
+      child: Card(
+        child: Container(
+          width: 276.0,
+          height: 299.0,
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const LogoProductBanner(),
+              const Padding(padding: EdgeInsets.only(bottom: 11.0)),
+              const CardDetails(),
+              const Padding(padding: EdgeInsets.only(bottom: 17)),
+              (isInstalled == true)
+                  ? ButtonUpdateDelete(
+                      hasUpdate: hasUpdate,
+                      onDelete: () {},
+                      onUpdate: () {},
+                    )
+                  : ButtonInstall(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(Numericals.double8),
+                      ),
+                    )
+            ],
+          ),
         ),
       ),
     );
