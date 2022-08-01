@@ -84,14 +84,14 @@ class AppDetailsView extends StatelessWidget {
             children: [
               // App Icon and summary
               Container(
-                margin: EdgeInsets.only(bottom: 64),
-                child: AppDetailsTopCard(),
+                margin: const EdgeInsets.only(bottom: 64),
+                child: const AppDetailsTopCard(),
               ),
 
               Container(
-                margin: EdgeInsets.only(bottom: 72),
+                margin: const EdgeInsets.only(bottom: 72),
                 height: 132,
-                padding: EdgeInsets.symmetric(vertical: 18),
+                padding: const EdgeInsets.symmetric(vertical: 18),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: AppColors.gradientGreyW500,
@@ -204,7 +204,7 @@ class AppDetailsView extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Container(
-                        margin: EdgeInsets.only(bottom: 24),
+                        margin: const EdgeInsets.only(bottom: 24),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -267,7 +267,7 @@ class AppDetailsView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 24),
+                      margin: const EdgeInsets.only(bottom: 24),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -311,25 +311,21 @@ class AppDetailsView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(16)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: const Text(
-                                  "4.5",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 72,
-                                    color: AppColors.white,
-                                  ),
+                            children: const [
+                              Text(
+                                "4.5",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 72,
+                                  color: AppColors.white,
                                 ),
                               ),
-                              Container(
-                                child: const Text(
-                                  "25 Ratings",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24,
-                                    color: AppColors.white,
-                                  ),
+                              Text(
+                                "25 Ratings",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  color: AppColors.white,
                                 ),
                               ),
                             ],
@@ -506,12 +502,12 @@ class AppDetailsView extends StatelessWidget {
               // System requirements
 
               Container(
-                margin: EdgeInsets.only(top: 72),
+                margin: const EdgeInsets.only(top: 72),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 24),
+                      margin: const EdgeInsets.only(bottom: 24),
                       child: const Text(
                         AppTexts.systemRequirements,
                         style: TextStyle(
@@ -526,7 +522,7 @@ class AppDetailsView extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 72),
+          margin: const EdgeInsets.only(top: 72),
           //height: 150,
           child: SuggestionTag(
             tag: AppTexts.similarAppSugestions,
