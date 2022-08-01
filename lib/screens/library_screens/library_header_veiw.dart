@@ -15,8 +15,6 @@ class LibraryHeaderView extends StatelessWidget {
         Provider.of<LibraryProvider>(context, listen: false);
     LibraryProducts view =
         Provider.of<LibraryProvider>(context, listen: false).appView;
-    String filterTag =
-        Provider.of<LibraryProvider>(context, listen: false).filterTag;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
