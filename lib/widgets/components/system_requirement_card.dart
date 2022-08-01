@@ -82,8 +82,8 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [              
-                        const Text(
+                      children: const [
+                        Text(
                           AppTexts.showMore,
                           style: TextStyle(
                             color: AppColors.primaryW600,

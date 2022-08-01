@@ -102,7 +102,7 @@ class AppReviewCard extends StatelessWidget {
                     width: 60,
                     child: Row(
                       children: [
-                        ImageIcon(
+                        const ImageIcon(
                           AssetImage(AppAssets.thumbsUpPng),
                           color: AppColors.primaryW500,
                         ),
@@ -123,7 +123,7 @@ class AppReviewCard extends StatelessWidget {
                     width: 60,
                     child: Row(
                       children: [
-                        ImageIcon(
+                        const ImageIcon(
                           AssetImage(AppAssets.thumbsDownPng),
                           color: AppColors.primaryW500,
                         ),
@@ -141,7 +141,7 @@ class AppReviewCard extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       ImageIcon(
                         AssetImage(AppAssets.flagPng),
                         color: AppColors.primaryW500,

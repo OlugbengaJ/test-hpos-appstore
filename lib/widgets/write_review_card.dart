@@ -26,7 +26,7 @@ class WriteReviewScreen extends StatelessWidget {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.all(Numericals.double16),
+              padding: const EdgeInsets.all(Numericals.double16),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +56,7 @@ class WriteReviewScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: Numericals.double28),
+                    padding: const EdgeInsets.only(top: Numericals.double28),
                     child: RatingBar.builder(
                       initialRating: 5,
                       minRating: 0,
@@ -752,7 +752,7 @@ class CommonImageView extends StatelessWidget {
 
   ///a [CommonNetworkImageView] it can be used for showing any network images
   /// it will shows the placeholder image if image is not found on network
-  CommonImageView({
+  CommonImageView({Key? key,
     this.url,
     this.imagePath,
     this.svgPath,
@@ -761,7 +761,7 @@ class CommonImageView extends StatelessWidget {
     this.width,
     this.fit = BoxFit.fill,
     this.placeHolder = 'assets/images/image_not_found.png',
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

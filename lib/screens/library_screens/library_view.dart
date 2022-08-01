@@ -58,7 +58,7 @@ class LibraryView extends StatelessWidget {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               primary: AppColors.primaryW500,
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(Numericals.double8)),
                               ),

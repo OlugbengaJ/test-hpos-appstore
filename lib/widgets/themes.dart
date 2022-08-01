@@ -40,7 +40,7 @@ ThemeData appTheme = ThemeData(
   cardTheme: CardTheme(
     color: AppColors.greyW25,
     shadowColor: AppColors.shadow.withOpacity(0.25),
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(
         Radius.circular(Numericals.double16),
       ),
