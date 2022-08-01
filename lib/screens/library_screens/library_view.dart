@@ -87,7 +87,10 @@ class LibraryView extends StatelessWidget {
               ),
               const Padding(padding: EdgeInsets.only(bottom: 38)),
               (displayType == LibraryDisplay.grid)
-                  ? GridProductDisplay(apps: apps)
+                  ? GridProductDisplay(
+                      apps: apps,
+                      isInstalled:
+                          (appView == LibraryProducts.installed) ? true : false)
                   : ListProductDisplay(
                       apps: apps,
                       isInstalled:

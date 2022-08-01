@@ -19,7 +19,10 @@ class GridProductDisplay extends StatelessWidget {
               create: (context) => ProductProvider.fromModel(app),
               child: Padding(
                 padding: const EdgeInsets.only(right: 30.0),
-                child: CardProductVertical(isInstalled: isInstalled),
+                child: CardProductVertical(
+                  isInstalled: isInstalled,
+                  hasUpdate: app.updateAvailable,
+                ),
               ),
             )),
       ],

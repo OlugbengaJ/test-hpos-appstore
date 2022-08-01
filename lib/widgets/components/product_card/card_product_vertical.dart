@@ -10,8 +10,10 @@ import 'button_install.dart';
 import 'logo_product_banner.dart';
 
 class CardProductVertical extends StatelessWidget {
-  CardProductVertical({Key? key, this.isInstalled}) : super(key: key);
+  CardProductVertical({Key? key, this.isInstalled, this.hasUpdate})
+      : super(key: key);
   bool? isInstalled = false;
+  bool? hasUpdate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class CardProductVertical extends StatelessWidget {
             const Padding(padding: EdgeInsets.only(bottom: 17)),
             (isInstalled == true)
                 ? ButtonUpdateDelete(
+                    hasUpdate: hasUpdate,
                     onDelete: () {},
                     onUpdate: () {},
                   )
