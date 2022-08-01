@@ -10,8 +10,11 @@ import 'package:hpos_appstore/widgets/components/product_card/rating_view.dart';
 import 'button_install.dart';
 
 class CardProductListItem extends StatelessWidget {
-  CardProductListItem({Key? key, this.isInstalled = false}) : super(key: key);
+  CardProductListItem(
+      {Key? key, this.isInstalled = false, this.hasUpdate = false})
+      : super(key: key);
   bool? isInstalled = false;
+  bool? hasUpdate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +48,7 @@ class CardProductListItem extends StatelessWidget {
             Expanded(
                 child: (isInstalled == true)
                     ? ButtonUpdateDelete(
+                        hasUpdate: hasUpdate,
                         onDelete: () {},
                         onUpdate: () {},
                       )

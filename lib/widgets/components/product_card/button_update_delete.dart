@@ -31,7 +31,9 @@ class ButtonUpdateDelete extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 0.0,
-                primary: AppColors.primaryW500,
+                primary: (hasUpdate == true)
+                    ? AppColors.primaryW500
+                    : AppColors.primaryW400,
                 shape: RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(Numericals.double8)),
@@ -41,10 +43,10 @@ class ButtonUpdateDelete extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    AppTexts.installed,
-                    style: TextStyle(
+                    (hasUpdate == true) ? AppTexts.update : AppTexts.installed,
+                    style: const TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.w500,
                       color: Colors.white,

@@ -5,9 +5,10 @@ class Product {
   final String price;
   final double avgRatings;
   final int numRatings;
+  final bool updateAvailable;
 
   Product(this.logo, this.name, this.category, this.price, this.avgRatings,
-      this.numRatings);
+      this.numRatings, this.updateAvailable);
 }
 
 class SuggestedApps {

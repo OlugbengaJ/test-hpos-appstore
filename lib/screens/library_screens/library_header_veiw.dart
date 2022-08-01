@@ -13,8 +13,6 @@ class LibraryHeaderView extends StatelessWidget {
   Widget build(BuildContext context) {
     LibraryProvider libraryProvider =
         Provider.of<LibraryProvider>(context, listen: false);
-    LibraryProducts view =
-        Provider.of<LibraryProvider>(context, listen: false).appView;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,12 +39,13 @@ class LibraryHeaderView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text('All Apps'),
-                        const Padding(padding: EdgeInsets.only(bottom: 25)),
+                        const Padding(padding: EdgeInsets.only(bottom: 15)),
                         Container(
                             height: 3,
                             width: 70,
                             decoration: BoxDecoration(
-                              color: (view == LibraryProducts.all)
+                              color: (libraryProvider.appView ==
+                                      LibraryProducts.all)
                                   ? AppColors.primary
                                   : Colors.transparent,
                             ))
@@ -63,15 +62,16 @@ class LibraryHeaderView extends StatelessWidget {
                               : AppColors.greyW600,
                       backgroundColor: Colors.transparent),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text('Installed Apps'),
-                        const Padding(padding: EdgeInsets.only(bottom: 25)),
+                        const Padding(padding: EdgeInsets.only(bottom: 15)),
                         Container(
                             height: 3,
                             width: 100,
                             decoration: BoxDecoration(
-                              color: (view == LibraryProducts.installed)
+                              color: (libraryProvider.appView ==
+                                      LibraryProducts.installed)
                                   ? AppColors.primary
                                   : Colors.transparent,
                             ))

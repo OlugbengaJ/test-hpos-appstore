@@ -22,7 +22,10 @@ class ListProductDisplay extends StatelessWidget {
             .map(
               (app) => ListenableProvider(
                 create: (context) => ProductProvider.fromModel(app),
-                child: CardProductListItem(isInstalled: isInstalled),
+                child: CardProductListItem(
+                  isInstalled: isInstalled,
+                  hasUpdate: app.updateAvailable,
+                ),
               ),
             )
             .toList(),
