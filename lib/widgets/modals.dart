@@ -21,7 +21,7 @@ Future<void> uninstallAppDialog(BuildContext context, AppProvider appProvider) a
         content: SingleChildScrollView(
           child: Container(
             width: 520,
-            padding: EdgeInsets.all(Numericals.double40),
+            padding: const EdgeInsets.all(Numericals.double40),
             child: ListBody(
               children:  <Widget>[
                 Row(

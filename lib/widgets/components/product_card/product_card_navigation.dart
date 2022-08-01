@@ -13,6 +13,7 @@ class ProductCardNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     NavigationProvider navigationProvider =
         Provider.of<NavigationProvider>(context);
+
     return InkWell(
       onTap: () => {
         navigationProvider.navigateTo(AppDetailsView.screenConfig),

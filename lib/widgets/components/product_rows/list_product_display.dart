@@ -5,11 +5,12 @@ import 'package:hpos_appstore/widgets/components/product_card/card_product_list_
 import 'package:provider/provider.dart';
 
 class ListProductDisplay extends StatelessWidget {
-  ListProductDisplay({Key? key, required this.apps, this.isInstalled})
+  const ListProductDisplay(
+      {Key? key, required this.apps, this.isInstalled = false})
       : super(key: key);
 
   final List<Product> apps;
-  bool? isInstalled = false;
+  final bool? isInstalled;
 
   // final Bool? showTitle;
 

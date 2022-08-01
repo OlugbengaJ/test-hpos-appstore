@@ -81,7 +81,7 @@ class AppDetailsView extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.only(top: 50),
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
           ),
@@ -108,8 +108,8 @@ class AppDetailsView extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const AppInfoCard(
+                  children: const [
+                    AppInfoCard(
                       top: "Ratings",
                       center: Text(
                         "4.5",
@@ -120,12 +120,12 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "Average",
                     ),
-                    const VerticalDivider(
+                    VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    const AppInfoCard(
+                    AppInfoCard(
                       top: "Size",
                       center: Text(
                         "148",
@@ -136,12 +136,12 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "MB",
                     ),
-                    const VerticalDivider(
+                    VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    const AppInfoCard(
+                    AppInfoCard(
                       top: "Age",
                       center: Text(
                         "4 +",
@@ -152,7 +152,7 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "Years",
                     ),
-                    const VerticalDivider(
+                    VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
@@ -163,12 +163,12 @@ class AppDetailsView extends StatelessWidget {
                           size: 40, color: AppColors.greyW100),
                       bottom: "Microsoft Inc",
                     ),
-                    const VerticalDivider(
+                    VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    const AppInfoCard(
+                    AppInfoCard(
                       top: "Language",
                       center: Text(
                         "EN",
@@ -179,12 +179,12 @@ class AppDetailsView extends StatelessWidget {
                       ),
                       bottom: "+ 10 More",
                     ),
-                    const VerticalDivider(
+                    VerticalDivider(
                       color: AppColors.greyW600,
                       width: 2,
                       thickness: 2,
                     ),
-                    const AppInfoCard(
+                    AppInfoCard(
                       top: "Parental Guidance",
                       center: Text(
                         "12 +",
@@ -373,11 +373,11 @@ class AppDetailsView extends StatelessWidget {
 
               // Write review and rating section
               Card(
-                margin: EdgeInsets.only(top: Numericals.double40),
+                margin: const EdgeInsets.only(top: Numericals.double40),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(Numericals.double16)),
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(
+                  padding: const EdgeInsets.fromLTRB(
                     Numericals.double35,
                     Numericals.double28,
                     Numericals.double35,
@@ -394,7 +394,7 @@ class AppDetailsView extends StatelessWidget {
                       ),
 
                       // space between sections
-                      SizedBox(width: Numericals.double48),
+                      const SizedBox(width: Numericals.double48),
 
                       // TODO: Refactor clickable stars here
                       Row(
@@ -432,7 +432,7 @@ class AppDetailsView extends StatelessWidget {
                       ),
 
                       // space between sections
-                      SizedBox(width: Numericals.double48),
+                      const SizedBox(width: Numericals.double48),
 
                       // write review section
                       TextButton(
@@ -451,12 +451,12 @@ class AppDetailsView extends StatelessWidget {
                         onPressed: () => showReview(context),
                         child: Row(
                           children: [
-                            ImageIcon(
+                            const ImageIcon(
                               AssetImage(AppAssets.edit),
                               size: 22.0,
                               color: AppColors.primary,
                             ),
-                            Padding(
+                            const Padding(
                               padding:
                                   EdgeInsets.only(left: Numericals.double8),
                             ),

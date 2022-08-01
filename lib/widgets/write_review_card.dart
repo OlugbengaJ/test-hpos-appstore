@@ -26,7 +26,7 @@ class WriteReviewScreen extends StatelessWidget {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.all(Numericals.double16),
+              padding: const EdgeInsets.all(Numericals.double16),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +56,7 @@ class WriteReviewScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: Numericals.double28),
+                    padding: const EdgeInsets.only(top: Numericals.double28),
                     child: RatingBar.builder(
                       initialRating: 5,
                       minRating: 0,
@@ -172,8 +172,9 @@ class WriteReviewScreen extends StatelessWidget {
 }
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField(
-      {Key? key, this.shape,
+  const CustomTextFormField(
+      {Key? key,
+      this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -189,41 +190,42 @@ class CustomTextFormField extends StatelessWidget {
       this.prefixConstraints,
       this.suffix,
       this.suffixConstraints,
-      this.validator}) : super(key: key);
+      this.validator})
+      : super(key: key);
 
-  TextFormFieldShape? shape;
+  final TextFormFieldShape? shape;
 
-  TextFormFieldPadding? padding;
+  final TextFormFieldPadding? padding;
 
-  TextFormFieldVariant? variant;
+  final TextFormFieldVariant? variant;
 
-  TextFormFieldFontStyle? fontStyle;
+  final TextFormFieldFontStyle? fontStyle;
 
-  Alignment? alignment;
+  final Alignment? alignment;
 
-  double? width;
+  final double? width;
 
-  EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? margin;
 
-  TextEditingController? controller;
+  final TextEditingController? controller;
 
-  FocusNode? focusNode;
+  final FocusNode? focusNode;
 
-  bool? isObscureText;
+  final bool? isObscureText;
 
-  TextInputAction? textInputAction;
+  final TextInputAction? textInputAction;
 
-  String? hintText;
+  final String? hintText;
 
-  Widget? prefix;
+  final Widget? prefix;
 
-  BoxConstraints? prefixConstraints;
+  final BoxConstraints? prefixConstraints;
 
-  Widget? suffix;
+  final Widget? suffix;
 
-  BoxConstraints? suffixConstraints;
+  final BoxConstraints? suffixConstraints;
 
-  FormFieldValidator<String>? validator;
+  final FormFieldValidator<String>? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -349,8 +351,9 @@ enum TextFormFieldFontStyle {
 }
 
 class CustomButton extends StatelessWidget {
-  CustomButton(
-      {Key? key, this.shape,
+  const CustomButton(
+      {Key? key,
+      this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -358,25 +361,26 @@ class CustomButton extends StatelessWidget {
       this.onTap,
       this.width,
       this.margin,
-      this.text}) : super(key: key);
+      this.text})
+      : super(key: key);
 
-  ButtonShape? shape;
+  final ButtonShape? shape;
 
-  ButtonPadding? padding;
+  final ButtonPadding? padding;
 
-  ButtonVariant? variant;
+  final ButtonVariant? variant;
 
-  ButtonFontStyle? fontStyle;
+  final ButtonFontStyle? fontStyle;
 
-  Alignment? alignment;
+  final Alignment? alignment;
 
-  VoidCallback? onTap;
+  final VoidCallback? onTap;
 
-  double? width;
+  final double? width;
 
-  EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? margin;
 
-  String? text;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -740,19 +744,10 @@ class BorderRadiusStyle {
 }
 
 class CommonImageView extends StatelessWidget {
-  ///[url] is required parameter for fetching network image
-  String? url;
-  String? imagePath;
-  String? svgPath;
-  File? file;
-  double? height;
-  double? width;
-  final BoxFit fit;
-  final String placeHolder;
-
   ///a [CommonNetworkImageView] it can be used for showing any network images
   /// it will shows the placeholder image if image is not found on network
-  CommonImageView({
+  const CommonImageView({
+    Key? key,
     this.url,
     this.imagePath,
     this.svgPath,
@@ -761,7 +756,17 @@ class CommonImageView extends StatelessWidget {
     this.width,
     this.fit = BoxFit.fill,
     this.placeHolder = 'assets/images/image_not_found.png',
-  });
+  }) : super(key: key);
+
+  ///[url] is required parameter for fetching network image
+  final String? url;
+  final String? imagePath;
+  final String? svgPath;
+  final File? file;
+  final double? height;
+  final double? width;
+  final BoxFit fit;
+  final String placeHolder;
 
   @override
   Widget build(BuildContext context) {

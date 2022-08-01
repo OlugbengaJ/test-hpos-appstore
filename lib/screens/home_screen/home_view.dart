@@ -52,12 +52,12 @@ class HomeView extends StatelessWidget {
 
     return Column(
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(
             left: Numericals.double40,
             right: Numericals.double40,
           ),
-          child: const HomeBanner(),
+          child: HomeBanner(),
         ),
         app_spacer.Spacer.bottomMedium,
         SuggestionTag(

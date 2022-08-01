@@ -27,8 +27,8 @@ class AppLayout extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(top: Numericals.double16),
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.only(top: Numericals.double16),
+              decoration: const BoxDecoration(
                 color: AppColors.background,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(Numericals.double40),
@@ -41,7 +41,7 @@ class AppLayout extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(
+                        padding: const EdgeInsets.fromLTRB(
                             0, Numericals.double40, 0, Numericals.double40),
                         child: Row(
                           children: [
