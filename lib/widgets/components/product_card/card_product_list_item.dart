@@ -14,7 +14,7 @@ class CardProductListItem extends StatelessWidget {
       {Key? key, this.isInstalled = false, this.hasUpdate = false})
       : super(key: key);
   bool? isInstalled = false;
-  bool? hasUpdate = false;
+  bool? hasUpdate;
 
   @override
   Widget build(BuildContext context) {
