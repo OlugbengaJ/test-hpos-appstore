@@ -21,7 +21,7 @@ class HeaderLayout extends StatelessWidget {
       valueListenable: navProvider.headerVisibility,
       builder: (context, showHeader, _) => (showHeader)
           ? Padding(
-              padding: EdgeInsets.all(Numericals.double40),
+              padding: const EdgeInsets.all(Numericals.double40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -38,12 +38,12 @@ class HeaderLayout extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(Greetings.now),
-                                    Padding(
+                                    const Padding(
                                         padding: EdgeInsets.only(
                                             right: Numericals.double4)),
                                     Transform.scale(
                                       scaleX: -1,
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.waving_hand_rounded,
                                         color: Colors.brown,
                                         size: Numericals.double16,

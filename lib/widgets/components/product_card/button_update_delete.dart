@@ -35,7 +35,7 @@ class ButtonUpdateDelete extends StatelessWidget {
                 primary: (hasUpdate == true)
                     ? AppColors.primaryW500
                     : AppColors.primaryW400,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(Numericals.double8)),
                 ),
@@ -69,7 +69,7 @@ class ButtonUpdateDelete extends StatelessWidget {
                 ),
                 elevation: 0.0,
                 primary: AppColors.white,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(Numericals.double8)),
                 ),

@@ -33,7 +33,7 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
     return PhysicalModel(
       color: AppColors.greyW25,
       borderRadius: BorderRadius.circular(16),
-      elevation: 1,
+      elevation: 0.5,
       child: SizedBox(
         height: cardHeight,
         child: Column(
@@ -83,19 +83,19 @@ class _SystemRequirementCardState extends State<SystemRequirementCard> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [              
-                        const Text(
-                          AppTexts.showMore,
-                          style: TextStyle(
+                        Text(
+                          showingMore? AppTexts.showLess: AppTexts.showMore,
+                          style: const TextStyle(
                             color: AppColors.primaryW600,
                             fontWeight: FontWeight.w500,
                             fontSize: 14
                           ),
                         ),
-                        ImageIcon(
-                          AssetImage(
-                            AppAssets.chevronDownPng
-                          )
-                        ),
+                        SvgPicture.asset(
+                          showingMore? AppAssets.chervronUpSVG: AppAssets.chervronDownSVG,
+                          color: AppColors.primaryW600,
+                        )
+                       
                       ],
                     ),
                   ),

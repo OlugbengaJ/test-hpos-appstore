@@ -5,11 +5,14 @@ import 'package:hpos_appstore/widgets/components/product_card/card_product_verti
 import 'package:provider/provider.dart';
 
 class GridProductDisplay extends StatelessWidget {
-  GridProductDisplay({Key? key, required this.apps, this.isInstalled})
-      : super(key: key);
+  const GridProductDisplay({
+    Key? key,
+    required this.apps,
+    this.isInstalled = false,
+  }) : super(key: key);
 
   final List<Product> apps;
-  bool? isInstalled = false;
+  final bool? isInstalled;
 
   @override
   Widget build(BuildContext context) {

@@ -19,12 +19,12 @@ class SidebarLayout extends StatelessWidget {
             height: 100,
           ),
           Column(
-            children: [
+            children: const [
               NavItem(
                 screenConfig: HomeScreen.screenConfig,
                 asset: AppAssets.homePng,
               ),
-              const SizedBox(
+              SizedBox(
                 height: 34,
               ),
               NavItem(

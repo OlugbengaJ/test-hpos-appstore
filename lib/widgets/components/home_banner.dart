@@ -66,20 +66,20 @@ class HomeBanner extends StatelessWidget {
               const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   ButtonGradient(
                     radius: Numericals.double8,
-                    gradient: const LinearGradient(
+                    gradient: LinearGradient(
                       colors: [
                         AppColors.primaryW500,
                         AppColors.primaryW400,
                       ],
                     ),
-                    contentPadding: const EdgeInsets.symmetric(
+                    contentPadding: EdgeInsets.symmetric(
                       horizontal: 24,
                       vertical: 20.5,
                     ),
-                    text: const Text(
+                    text: Text(
                       AppTexts.discoverMore,
                       textAlign: TextAlign.center,
                       style: TextStyle(

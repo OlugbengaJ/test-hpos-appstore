@@ -241,7 +241,7 @@ class AppDetailsTopCard extends StatelessWidget {
                               const SizedBox(width: 20,),
                           ],
                         ),
-                        InkWell(
+                        const InkWell(
                           child: ImageIcon(
                             AssetImage(
                               AppAssets.shareIconPng

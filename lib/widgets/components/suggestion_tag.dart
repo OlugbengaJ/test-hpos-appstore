@@ -27,13 +27,13 @@ class SuggestionTag extends StatelessWidget {
     final themeData = Theme.of(context);
 
     return Padding(
-      padding: EdgeInsets.only(top: 24.0, left: Numericals.double40),
+      padding: const EdgeInsets.only(top: 24.0, left: Numericals.double40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               bottom: Numericals.double40,
               right: Numericals.double40,
             ),
@@ -80,11 +80,11 @@ class SuggestionTag extends StatelessWidget {
             children: [
               ...products.map(
                 (product) => Padding(
-                  padding: EdgeInsets.only(right: Numericals.double40),
+                  padding: const EdgeInsets.only(right: Numericals.double40),
                   child: ListenableProvider(
                     create: (context) => ProductProvider.fromModel(product),
                     child: (cardType == CardType.vertical)
-                        ? CardProductVertical()
+                        ? const CardProductVertical()
                         : const CardProductHorizontal(),
                   ),
                 ),
