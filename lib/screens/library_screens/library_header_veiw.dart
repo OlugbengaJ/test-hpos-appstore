@@ -92,17 +92,10 @@ class LibraryHeaderView extends StatelessWidget {
                     border: Border.all(width: 2.0),
                     size: 10,
                     children: [
-                      Wrap(
-                        alignment: WrapAlignment.start,
-                        children: [
-                          ...Provider.of<LibraryProvider>(context)
-                              .getTags()
-                              .map(
-                                (e) => ProductTagButton(
-                                    id: e.id, name: e.name, slug: e.slug),
-                              )
-                        ],
-                      ),
+                      ...Provider.of<LibraryProvider>(context).getTags().map(
+                            (e) => ProductTagButton(
+                                id: e.id, name: e.name, slug: e.slug),
+                          ),
                     ],
                   ),
                 ],
