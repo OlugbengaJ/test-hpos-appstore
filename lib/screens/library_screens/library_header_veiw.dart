@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/widgets/components/buttons/tag_button.dart';
@@ -14,6 +15,8 @@ class LibraryHeaderView extends StatelessWidget {
   Widget build(BuildContext context) {
     LibraryProvider libraryProvider =
         Provider.of<LibraryProvider>(context, listen: false);
+    List<ProductFilterTag> tags =
+        Provider.of<LibraryProvider>(context).getTags();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +46,7 @@ class LibraryHeaderView extends StatelessWidget {
                         const Padding(padding: EdgeInsets.only(bottom: 15)),
                         Container(
                             height: 3,
-                            width: 70,
+                            width: 50,
                             decoration: BoxDecoration(
                               color: (libraryProvider.appView ==
                                       LibraryProducts.all)
@@ -69,7 +72,7 @@ class LibraryHeaderView extends StatelessWidget {
                         const Padding(padding: EdgeInsets.only(bottom: 15)),
                         Container(
                             height: 3,
-                            width: 100,
+                            width: 80,
                             decoration: BoxDecoration(
                               color: (libraryProvider.appView ==
                                       LibraryProducts.installed)
@@ -88,14 +91,14 @@ class LibraryHeaderView extends StatelessWidget {
                 children: [
                   app_spacer.Spacer.bottomLarge,
                   ScrollableStack(
-                    groupIcons: true,
+                    disableIcons: true,
                     border: Border.all(width: 2.0),
                     size: 10,
                     children: [
-                      ...Provider.of<LibraryProvider>(context).getTags().map(
-                            (e) => ProductTagButton(
-                                id: e.id, name: e.name, slug: e.slug),
-                          ),
+                      ...tags.map(
+                        (e) => ProductTagButton(
+                            id: e.id, name: e.name, slug: e.slug),
+                      ),
                     ],
                   ),
                 ],
