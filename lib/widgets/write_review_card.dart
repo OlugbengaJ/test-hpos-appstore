@@ -19,7 +19,7 @@ class WriteReviewScreen extends StatelessWidget {
     return Container(
       margin: EdgeInsets.zero,
       constraints: BoxConstraints(
-        maxWidth: size.width * 0.35,
+        maxWidth: size.width * 0.24,
         maxHeight: size.height * 0.8,
       ),
       child: SingleChildScrollView(
@@ -45,27 +45,18 @@ class WriteReviewScreen extends StatelessWidget {
                           textAlign: TextAlign.left,
                           style: themeData.textTheme.headline6,
                         ),
-                        Padding(
-                          padding: getPadding(
-                            top: 10,
-                            bottom: 10,
-                          ),
-                          child: ButtonRound(
-                            icon: Icons.close,
-                            iconColor: themeData.primaryColor,
-                            size: 36.0,
-                            iconSize: 24.0,
-                            onTap: () => Navigator.pop(context),
-                          ),
+                        ButtonRound(
+                          icon: Icons.close,
+                          iconColor: themeData.primaryColor,
+                          size: 36.0,
+                          iconSize: 24.0,
+                          onTap: () => Navigator.pop(context),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: getPadding(
-                      top: 29,
-                      right: 10,
-                    ),
+                    padding: EdgeInsets.only(top: Numericals.double28),
                     child: RatingBar.builder(
                       initialRating: 5,
                       minRating: 0,
@@ -83,10 +74,12 @@ class WriteReviewScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
-                    child: Text(AppTexts.reviewTitle,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.left,
-                        style: themeData.textTheme.labelMedium),
+                    child: Text(
+                      AppTexts.reviewTitle,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.left,
+                      style: themeData.textTheme.labelLarge,
+                    ),
                   ),
                   TextFieldBox(
                     textController: TextEditingController(),
@@ -94,10 +87,12 @@ class WriteReviewScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
-                    child: Text(AppTexts.reviewDescription,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.left,
-                        style: themeData.textTheme.labelMedium),
+                    child: Text(
+                      AppTexts.reviewDescription,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.left,
+                      style: themeData.textTheme.labelLarge,
+                    ),
                   ),
                   TextFieldBox(
                     textController: TextEditingController(),

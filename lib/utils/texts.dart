@@ -13,17 +13,16 @@
 class AppTexts {
   static const String appScreenshots = 'App screenshots';
   static const String back = 'Back';
+  static const String cancel = 'Cancel';
+  static String clickToRate = 'Click to rate this Application';
   static const String discoverMore = 'Discover more 🚀';
   static const String free = 'Free';
   static const String homeBannerText1 = 'Let\'s get you into all the goodness';
   static const String homeBannerText2 = 'on the hp App Store';
   static const String install = 'Install';
-  static const String updateAll = 'Update All';
-  static const String update = 'Update';
-  static const String uninstallApp = 'Uninstall Application';
+  static const String installed = 'Installed';
   static const String sureUninstallQuestion =
       'Are you sure you want to uninstall this application?';
-  static const String yesUninstall = 'Yes, Uninstall';
   static const String library = 'Library';
   static const String ratingsReviews = 'Ratings and Reviews';
   static const String reviewDescription =
@@ -43,13 +42,16 @@ class AppTexts {
   static const String submit = 'Submit';
   static const String suggestedGames = 'Top paid games';
   static const String suggestedNew = 'Top new apps';
-  static const String installed = 'Installed';
-  static const String uninstall = 'Uninstall';
-  static const String cancel = 'Cancel';
   static const String suggestedPaid = 'Top paid apps';
   static const String suggestedProductivity = 'Top productivity apps';
   static const String systemRequirements = 'System requirements';
   static const String systemRequirementsMessage =
       'This application should work on your device. Items with a tick meets the developer’s system requirments';
   static const String termsOfSale = 'Terms of Sale';
+  static const String uninstall = 'Uninstall';
+  static const String uninstallApp = 'Uninstall Application';
+  static const String update = 'Update';
+  static const String updateAll = 'Update All';
+  static const String yesUninstall = 'Yes, Uninstall';
+  static String writeReview = 'Write a review';
 }
