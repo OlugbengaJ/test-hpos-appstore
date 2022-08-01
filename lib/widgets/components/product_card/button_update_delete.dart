@@ -23,7 +23,6 @@ class ButtonUpdateDelete extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerRight,
-      margin: const EdgeInsets.only(top: 10),
       child: Wrap(
         children: [
           SizedBox(

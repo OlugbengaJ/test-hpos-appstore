@@ -26,7 +26,7 @@ class CardProductListItem extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 14, top: 13, right: 30, bottom: 12),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const LogoProductRectangle(
                 borderLength: 71,
@@ -37,7 +37,7 @@ class CardProductListItem extends StatelessWidget {
               const Expanded(
                   flex: 2, child: ColumnProductInfo(headerOnly: true)),
               Expanded(
-                  flex: 4,
+                  flex: 3,
                   child: Wrap(
                     children: const [
                       ProductPriceTag(),
@@ -47,17 +47,14 @@ class CardProductListItem extends StatelessWidget {
                       ButtonShare(),
                     ],
                   )),
-              Expanded(
-                  flex: (isInstalled == true) ? 3 : 1,
-                  child: (isInstalled == true)
-                      ? ButtonUpdateDelete(
-                          hasUpdate: hasUpdate,
-                          onDelete: () {},
-                          onUpdate: () {},
-                        )
-                      : const ButtonInstall(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(8.0)))),
+              (isInstalled == true)
+                  ? ButtonUpdateDelete(
+                      hasUpdate: hasUpdate,
+                      onDelete: () {},
+                      onUpdate: () {},
+                    )
+                  : const ButtonInstall(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0))),
             ],
           ),
         ),
