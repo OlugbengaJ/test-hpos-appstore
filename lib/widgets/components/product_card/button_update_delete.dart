@@ -60,6 +60,10 @@ class ButtonUpdateDelete extends StatelessWidget {
             width: 130,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
+                side: const BorderSide(
+                  width: 1.0,
+                  color: AppColors.red,
+                ),
                 elevation: 0.0,
                 primary: AppColors.white,
                 shape: RoundedRectangleBorder(
@@ -77,7 +81,7 @@ class ButtonUpdateDelete extends StatelessWidget {
                       const Text(
                         AppTexts.uninstall,
                         style: TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 14.0,
                           fontWeight: FontWeight.w500,
                           color: AppColors.red,
                         ),
