@@ -17,7 +17,7 @@ class LibraryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: Numericals.double40,
         right: Numericals.double40,
         bottom: Numericals.double40,

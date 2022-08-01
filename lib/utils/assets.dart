@@ -11,24 +11,24 @@
 /// KINDLY KEEP IN ALPHABETIC ORDER
 /// ******************************************************************
 class AppAssets {
-  static String bannerAppsPng = 'assets/images/banner_apps.png';
-  static String chevronDownPng = 'assets/icons/chevron-down.png';
-  static String edit = 'assets/icons/edit.png';
-  static String flagPng = 'assets/icons/flag.png';
-  static String helpPng = 'assets/icons/help.png';
-  static String homePng = 'assets/icons/home.png';
-  static String hpLogoPng = 'assets/images/hp_logo.png';
-  static String laptopPng = 'assets/icons/laptop.png';
-  static String installPng = 'assets/icons/install.png';
-  static String shareIconPng = 'assets/icons/share_icon.png';
-  static String starPng = 'assets/icons/star.png';
-  static String terminalSquarePng = 'assets/icons/terminal-square.png';
-  static String thumbsDownPng = 'assets/icons/thumbs_down.png';
-  static String thumbsUpPng = 'assets/icons/thumbs_up.png';
+  static const String bannerAppsPng = 'assets/images/banner_apps.png';
+  static const String chevronDownPng = 'assets/icons/chevron-down.png';
+  static const String edit = 'assets/icons/edit.png';
+  static const String flagPng = 'assets/icons/flag.png';
+  static const String helpPng = 'assets/icons/help.png';
+  static const String homePng = 'assets/icons/home.png';
+  static const String hpLogoPng = 'assets/images/hp_logo.png';
+  static const String laptopPng = 'assets/icons/laptop.png';
+  static const String installPng = 'assets/icons/install.png';
+  static const String shareIconPng = 'assets/icons/share_icon.png';
+  static const String starPng = 'assets/icons/star.png';
+  static const String terminalSquarePng = 'assets/icons/terminal-square.png';
+  static const String thumbsDownPng = 'assets/icons/thumbs_down.png';
+  static const String thumbsUpPng = 'assets/icons/thumbs_up.png';
 
   // SVGs
-  static String checkSVG = 'assets/icons/check.svg';
-  static String closeSVG = 'assets/icons/close.svg';
-  static String installSVG = 'assets/icons/install.svg';
-  static String trashSVG = 'assets/icons/trash-02.svg';
+  static const String checkSVG = 'assets/icons/check.svg';
+  static const String closeSVG = 'assets/icons/close.svg';
+  static const String installSVG = 'assets/icons/install.svg';
+  static const String trashSVG = 'assets/icons/trash-02.svg';
 }

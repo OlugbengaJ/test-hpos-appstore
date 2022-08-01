@@ -26,7 +26,7 @@ class RatingsBar extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(left: 5),
-          child: ImageIcon(
+          child: const ImageIcon(
             AssetImage(
               AppAssets.starPng
             ),

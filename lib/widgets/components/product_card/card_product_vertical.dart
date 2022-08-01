@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/providers/navigation_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
-import 'package:hpos_appstore/screens/app_screen/app_details.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/widgets/components/product_card/button_update_delete.dart';
@@ -39,7 +37,7 @@ class CardProductVertical extends StatelessWidget {
                       onDelete: () {},
                       onUpdate: () {},
                     )
-                  : ButtonInstall(
+                  :  ButtonInstall(
                       borderRadius: BorderRadius.all(
                         Radius.circular(Numericals.double8),
                       ),
