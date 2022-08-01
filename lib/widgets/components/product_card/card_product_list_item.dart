@@ -4,6 +4,7 @@ import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/product_card/button_update_delete.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
+import 'package:hpos_appstore/widgets/components/product_card/product_card_navigation.dart';
 import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.dart';
 import 'package:hpos_appstore/widgets/components/product_card/rating_view.dart';
 
@@ -18,43 +19,45 @@ class CardProductListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        height: 96,
-        padding:
-            const EdgeInsets.only(left: 14, top: 13, right: 30, bottom: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const LogoProductRectangle(
-              borderLength: 71,
-              logoWidth: 35,
-              logoHeight: 32,
-            ),
-            const Padding(padding: EdgeInsets.only(left: 39)),
-            const Expanded(flex: 2, child: ColumnProductInfo(headerOnly: true)),
-            Expanded(
-                flex: 3,
-                child: Wrap(
-                  children: const [
-                    ProductPriceTag(),
-                    Padding(padding: EdgeInsets.only(left: 134)),
-                    SizedBox(width: 100, child: RatingView()),
-                    Padding(padding: EdgeInsets.only(left: 127)),
-                    ButtonShare(),
-                  ],
-                )),
-            Expanded(
-                flex: (isInstalled == true) ? 2 : 1,
-                child: (isInstalled == true)
-                    ? ButtonUpdateDelete(
-                        hasUpdate: hasUpdate,
-                        onDelete: () {},
-                        onUpdate: () {},
-                      )
-                    : const ButtonInstall(
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)))),
-          ],
+    return ProductCardNavigation(
+      child: Card(
+        child: Container(
+          height: 96,
+          padding:
+              const EdgeInsets.only(left: 14, top: 13, right: 30, bottom: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const LogoProductRectangle(
+                borderLength: 71,
+                logoWidth: 35,
+                logoHeight: 32,
+              ),
+              const Padding(padding: EdgeInsets.only(left: 39)),
+              const Expanded(flex: 2, child: ColumnProductInfo(headerOnly: true)),
+              Expanded(
+                  flex: 3,
+                  child: Wrap(
+                    children: const [
+                      ProductPriceTag(),
+                      Padding(padding: EdgeInsets.only(left: 134)),
+                      SizedBox(width: 100, child: RatingView()),
+                      Padding(padding: EdgeInsets.only(left: 127)),
+                      ButtonShare(),
+                    ],
+                  )),
+              Expanded(
+                  flex: (isInstalled == true) ? 2 : 1,
+                  child: (isInstalled == true)
+                      ? ButtonUpdateDelete(
+                          hasUpdate: hasUpdate,
+                          onDelete: () {},
+                          onUpdate: () {},
+                        )
+                      : const ButtonInstall(
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+            ],
+          ),
         ),
       ),
     );
