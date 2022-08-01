@@ -317,7 +317,7 @@ class AppDetailsView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
                               Text(
-                                "4.5",
+                                '4.5',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 72,
@@ -325,7 +325,7 @@ class AppDetailsView extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "25 Ratings",
+                                '25 Ratings',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 24,
@@ -386,7 +386,7 @@ class AppDetailsView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Click to rate this Application',
+                        AppTexts.clickToRate,
                         style: themeData.textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -435,25 +435,39 @@ class AppDetailsView extends StatelessWidget {
 
                       // write review section
                       TextButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(AppColors.primaryW25),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(AppColors.primaryW25),
+                          padding: MaterialStateProperty.all(
+                            const EdgeInsets.fromLTRB(18.0, 14.0, 18.0, 14.0),
                           ),
-                          onPressed: () => showReview(context),
-                          child: Row(
-                            children: const [
-                              Icon(
-                                Icons.rate_review,
-                                color: AppColors.primary,
-                              ),
-                              Text(
-                                'Write a review',
-                                style: TextStyle(
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                          ),
+                        ),
+                        onPressed: () => showReview(context),
+                        child: Row(
+                          children: [
+                            ImageIcon(
+                              AssetImage(AppAssets.edit),
+                              size: 22.0,
+                              color: AppColors.primary,
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsets.only(left: Numericals.double8),
+                            ),
+                            Text(
+                              AppTexts.writeReview,
+                              style: themeData.textTheme.bodyText2?.copyWith(
                                   color: AppColors.primary,
-                                ),
-                              ),
-                            ],
-                          )),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -467,44 +481,44 @@ class AppDetailsView extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                          alignment: Alignment.topLeft,
-                          height: 403,
-                          child: const ScrollableStack(
-                            groupIcons: true,
-                            size: 40,
-                            children: [
-                              AppReviewCard(
-                                title: "This app is trash",
-                                content:
-                                    "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                                username: "Draqaris001",
-                                date: "14/07/2021",
-                                likes: 25,
-                                dislikes: 0,
-                                stars: 1,
-                              ),
-                              SizedBox(
-                                width: 17,
-                              ),
-                              AppReviewCard(
-                                title: "Best app in the world",
-                                content:
-                                    "Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.",
-                                username: "Draqaris001",
-                                date: "14/07/2021",
-                                likes: 23,
-                                dislikes: 0,
-                                stars: 1,
-                              ),
-                            ],
-                          )),
+                        alignment: Alignment.topLeft,
+                        height: 403,
+                        child: const ScrollableStack(
+                          groupIcons: true,
+                          size: 40,
+                          children: [
+                            AppReviewCard(
+                              title: 'This app is trash+',
+                              content:
+                                  'Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.',
+                              username: 'Draqaris001',
+                              date: '14/07/2021',
+                              likes: 25,
+                              dislikes: 0,
+                              stars: 1,
+                            ),
+                            SizedBox(
+                              width: 17,
+                            ),
+                            AppReviewCard(
+                              title: 'Best app in the world',
+                              content:
+                                  'Et proin in pellentesque suspendisse nibh lectus mattis ultrices. Lorem arcu pulvinar magna donec posuere massa. Facilisi dapibus mus consectetur ipsum. Odio ut at quam pellentesque faucibus in.',
+                              username: 'Draqaris001',
+                              date: '14/07/2021',
+                              likes: 23,
+                              dislikes: 0,
+                              stars: 1,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
 
               // System requirements
-
               Container(
                 margin: const EdgeInsets.only(top: 72),
                 child: Column(
@@ -527,7 +541,6 @@ class AppDetailsView extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(top: 72),
-          //height: 150,
           child: SuggestionTag(
             tag: AppTexts.similarAppSugestions,
             products: suggestedProd.products,
