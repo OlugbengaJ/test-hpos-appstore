@@ -34,16 +34,16 @@ class CardProductListItem extends StatelessWidget {
                 logoHeight: 32,
               ),
               const Padding(padding: EdgeInsets.only(left: 39)),
-              const Expanded(
-                  flex: 2, child: ColumnProductInfo(headerOnly: true)),
+              const ColumnProductInfo(headerOnly: true),
               Expanded(
-                  flex: 3,
+                  flex: 2,
                   child: Wrap(
                     children: const [
+                      Padding(padding: EdgeInsets.only(left: 100)),
                       ProductPriceTag(),
-                      Padding(padding: EdgeInsets.only(left: 100)),
+                      Padding(padding: EdgeInsets.only(left: 70)),
                       SizedBox(width: 100, child: RatingView()),
-                      Padding(padding: EdgeInsets.only(left: 100)),
+                      Padding(padding: EdgeInsets.only(left: 70)),
                       ButtonShare(),
                     ],
                   )),

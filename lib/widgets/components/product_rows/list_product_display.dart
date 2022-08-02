@@ -16,16 +16,18 @@ class ListProductDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      runSpacing: 12,
+    return Column(
       children: [
         ...apps
             .map(
               (app) => ListenableProvider(
                 create: (context) => ProductProvider.fromModel(app),
-                child: CardProductListItem(
-                  isInstalled: isInstalled,
-                  hasUpdate: app.updateAvailable,
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 24.0),
+                  child: CardProductListItem(
+                    isInstalled: isInstalled,
+                    hasUpdate: app.updateAvailable,
+                  ),
                 ),
               ),
             )
