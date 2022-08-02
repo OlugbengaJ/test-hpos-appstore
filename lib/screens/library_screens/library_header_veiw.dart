@@ -22,65 +22,99 @@ class LibraryHeaderView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-            padding: const EdgeInsets.only(top: 25),
+            padding: const EdgeInsets.only(
+              top: 25,
+            ),
             decoration: const BoxDecoration(
               border: Border(
-                bottom: BorderSide(width: .2, color: AppColors.greyW900),
-                top: BorderSide(width: .2, color: AppColors.greyW900),
+                bottom: BorderSide(width: 1, color: AppColors.primaryW100),
+                top: BorderSide(width: 1, color: AppColors.primaryW100),
               ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: (libraryProvider.appView == LibraryProducts.all)
-                        ? AppColors.primary
-                        : AppColors.greyW600,
-                    backgroundColor: Colors.transparent,
+                InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                color: (libraryProvider.appView ==
+                                        LibraryProducts.all)
+                                    ? AppColors.primary
+                                    : Colors.transparent,
+                                width: 2))),
+                    padding: const EdgeInsets.only(bottom: 25),
+                    child: Text('All Apps',
+                        style: TextStyle(
+                            fontWeight:
+                                (libraryProvider.appView == LibraryProducts.all)
+                                    ? FontWeight.w500
+                                    : FontWeight.w400,
+                            color:
+                                (libraryProvider.appView == LibraryProducts.all)
+                                    ? AppColors.primary
+                                    : AppColors.greyW400)),
                   ),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('All Apps'),
-                        const Padding(padding: EdgeInsets.only(bottom: 15)),
-                        Container(
-                            height: 3,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: (libraryProvider.appView ==
-                                      LibraryProducts.all)
-                                  ? AppColors.primary
-                                  : Colors.transparent,
-                            ))
-                      ]),
-                  onPressed: () {
+                  // child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text('All Apps'),
+                  //       const Padding(padding: EdgeInsets.only(bottom: 25)),
+                  //       Container(
+                  //           height: 2,
+                  //           width: 70,
+                  //           decoration: BoxDecoration(
+                  //             color: (libraryProvider.appView ==
+                  //                     LibraryProducts.all)
+                  //                 ? AppColors.primary
+                  //                 : Colors.transparent,
+                  //           ))
+                  //     ]),
+                  onTap: () {
                     libraryProvider.setAppView(LibraryProducts.all);
                   },
                 ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                      primary:
-                          (libraryProvider.appView == LibraryProducts.installed)
+                const SizedBox(
+                  width: 24,
+                ),
+                InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                color: (libraryProvider.appView ==
+                                        LibraryProducts.installed)
+                                    ? AppColors.primary
+                                    : Colors.transparent,
+                                width: 2))),
+                    padding: const EdgeInsets.only(bottom: 25),
+                    child: Text(
+                      'Installed Apps',
+                      style: TextStyle(
+                          color: (libraryProvider.appView ==
+                                  LibraryProducts.installed)
                               ? AppColors.primary
-                              : AppColors.greyW600,
-                      backgroundColor: Colors.transparent),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Installed Apps'),
-                        const Padding(padding: EdgeInsets.only(bottom: 15)),
-                        Container(
-                            height: 3,
-                            width: 80,
-                            decoration: BoxDecoration(
-                              color: (libraryProvider.appView ==
-                                      LibraryProducts.installed)
-                                  ? AppColors.primary
-                                  : Colors.transparent,
-                            ))
-                      ]),
-                  onPressed: () {
+                              : AppColors.greyW400),
+                    ),
+                  ),
+                  // child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text('Installed Apps'),
+                  //       const Padding(padding: EdgeInsets.only(bottom: 15)),
+                  //       Container(
+                  //           height: 2,
+                  //           width: 100,
+                  //           decoration: BoxDecoration(
+                  //             color: (libraryProvider.appView ==
+                  //                     LibraryProducts.installed)
+                  //                 ? AppColors.primary
+                  //                 : Colors.transparent,
+                  //           ))
+                  //     ]),
+                  onTap: () {
                     libraryProvider.setAppView(LibraryProducts.installed);
                   },
                 ),

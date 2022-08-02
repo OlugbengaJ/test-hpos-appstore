@@ -26,24 +26,37 @@ class CardProductListItem extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 14, top: 13, right: 30, bottom: 12),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const LogoProductRectangle(
-                borderLength: 71,
-                logoWidth: 35,
-                logoHeight: 32,
-              ),
-              const Padding(padding: EdgeInsets.only(left: 39)),
-              const ColumnProductInfo(headerOnly: true),
               Expanded(
-                  flex: 2,
-                  child: Wrap(
+                flex: 2,
+                child: Row(
+                  children: const [
+                    LogoProductRectangle(
+                      borderLength: 71,
+                      logoWidth: 35,
+                      logoHeight: 32,
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 39)),
+                    ColumnProductInfo(headerOnly: true),
+                  ],
+                ),
+              ),
+              Expanded(
+                  flex: 3,
+                  child: Row(
+                    mainAxisAlignment: isInstalled!
+                        ? MainAxisAlignment.spaceBetween
+                        : MainAxisAlignment.spaceAround,
+                    // alignment: WrapAlignment.center,
+                    // crossAxisAlignment: WrapCrossAlignment.center,
                     children: const [
                       Padding(padding: EdgeInsets.only(left: 100)),
                       ProductPriceTag(),
-                      Padding(padding: EdgeInsets.only(left: 70)),
+                      // Padding(padding: EdgeInsets.only(left: 134)),
                       SizedBox(width: 100, child: RatingView()),
-                      Padding(padding: EdgeInsets.only(left: 70)),
+                      // Padding(padding: EdgeInsets.only(left: 127)),
                       ButtonShare(),
                     ],
                   )),

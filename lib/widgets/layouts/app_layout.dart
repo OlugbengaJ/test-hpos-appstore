@@ -42,7 +42,7 @@ class AppLayout extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(
-                            0, Numericals.double40, 0, Numericals.double40),
+                            0, 0, 0, 0),
                         child: Row(
                           children: [
                             Expanded(
