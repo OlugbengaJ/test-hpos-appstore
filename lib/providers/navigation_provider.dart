@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
 
@@ -19,9 +20,16 @@ class NavigationProvider extends ChangeNotifier {
   /// Notifies a change to the header's home greeting section.
   final childVisibility = ValueNotifier<Widget?>(null);
 
-  void navigateTo(ScreenConfig route) {
+  /// Notifies pages that require a product to show its details with the product changes.
+  final ValueNotifier<ProductProvider?> product = ValueNotifier(null);
+
+  void navigateTo(ScreenConfig route, {dynamic data}) {
     // set header values first
     _setHeader(route);
+
+    if (data != null && data is ProductProvider) {
+      product.value = data;
+    }
 
     // then route to page
     selectedPane.value = route;
