@@ -27,7 +27,7 @@ class LibraryScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           LibraryHeaderView(),
-          Padding(padding: EdgeInsets.only(bottom: 40)),
+          // Padding(padding: EdgeInsets.only(bottom: 40)),
           LibraryView(),
         ],
       ),
