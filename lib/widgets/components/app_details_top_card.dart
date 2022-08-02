@@ -226,7 +226,7 @@ class AppDetailsTopCard extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                          InkWell(
+                          const InkWell(
                             child: ImageIcon(
                               AssetImage(AppAssets.shareIconPng),
                               color: AppColors.primaryW400,

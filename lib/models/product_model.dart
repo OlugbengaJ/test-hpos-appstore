@@ -6,9 +6,26 @@ class Product {
   final double avgRatings;
   final int numRatings;
   final bool updateAvailable;
+  final int size;
+  final int minAge;
+  final String developer;
+  final String language;
+  final int parentalGuidanceAge;
 
-  Product(this.logo, this.name, this.category, this.price, this.avgRatings,
-      this.numRatings, this.updateAvailable);
+  Product(
+    this.logo,
+    this.name,
+    this.category,
+    this.price,
+    this.avgRatings,
+    this.numRatings,
+    this.updateAvailable,
+    this.size,
+    this.minAge,
+    this.developer,
+    this.language,
+    this.parentalGuidanceAge,
+  );
 }
 
 class SuggestedApps {
