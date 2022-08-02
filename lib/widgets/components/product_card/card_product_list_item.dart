@@ -61,10 +61,13 @@ class CardProductListItem extends StatelessWidget {
                     ],
                   )),
               (isInstalled == true)
-                  ? ButtonUpdateDelete(
-                      hasUpdate: hasUpdate,
-                      onDelete: () {},
-                      onUpdate: () {},
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 57),
+                      child: ButtonUpdateDelete(
+                        hasUpdate: hasUpdate,
+                        onDelete: () {},
+                        onUpdate: () {},
+                      ),
                     )
                   : const ButtonInstall(
                       borderRadius: BorderRadius.all(Radius.circular(8.0))),
