@@ -47,11 +47,11 @@ class HorizontalCardButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        const Image(
+      children: const [
+        Image(
           image: AssetImage('assets/icons/download_icon.png'),
         ),
-        const Padding(padding: EdgeInsets.only(left: 17)),
+        Padding(padding: EdgeInsets.only(left: 17)),
         Image(
           image: AssetImage(AppAssets.shareIconPng),
           fit: BoxFit.scaleDown,

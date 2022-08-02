@@ -12,24 +12,31 @@
 /// ******************************************************************
 class AppTexts {
   static const String appScreenshots = 'App screenshots';
+  static const String age = 'Age';
+  static const String average = 'Average';
   static const String back = 'Back';
   static const String cancel = 'Cancel';
   static const String category = 'Category';
   static const String clickToRate = 'Click to rate this Application';
+  static const String developer = 'Developer';
   static const String discoverMore = 'Discover more 🚀';
   static const String free = 'Free';
   static const String homeBannerText1 = 'Let\'s get you into all the goodness';
   static const String homeBannerText2 = 'on the hp App Store';
   static const String install = 'Install';
   static const String installed = 'Installed';
+  static const String language = 'Language';
   static const String languages = 'Languages';
   static const String latestVersion = 'Latest version';
   static const String library = 'Library';
   static const String otherInformations = 'Other information';
   static const String otherItem = 'Other item';
+  static const String parentalGuidance = 'Parental Guidance';
   static const String provider = 'Provider';
+  static const String rating = 'Ratings';
   static const String ratingsReviews = 'Ratings and Reviews';
   static const String releasedDate = 'Released date';
+  static const String recommended = 'Recommended';
   static const String reviewDescription =
       'Describe your experience using this app (Optional)';
   static const String reviewDescriptionHint = 'Describe experience';
@@ -44,8 +51,9 @@ class AppTexts {
   static const String share = 'share';
   static const String showMore = 'Show more';
   static const String showLess = 'Show less';
-  static const String similarAppSugestions = 'Similar App Suggestions';
+  static const String similarAppSuggestions = 'Similar App Suggestions';
   static const String size = 'Size';
+  static const String sizeUnitMB = 'MB';
   static const String submit = 'Submit';
   static const String suggestedGames = 'Top paid games';
   static const String suggestedNew = 'Top new apps';
@@ -62,6 +70,6 @@ class AppTexts {
   static const String update = 'Update';
   static const String updateAll = 'Update All';
   static const String writeReview = 'Write a review';
+  static const String years = 'Years';
   static const String yesUninstall = 'Yes, Uninstall';
-
 }
