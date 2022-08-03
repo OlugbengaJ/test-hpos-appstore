@@ -48,6 +48,8 @@ class ProductProvider extends ChangeNotifier {
   set rating(double rating) {
     if (rating < minRating || rating > maxRating) return;
     ratingNotifier.value = rating;
+
+    debugPrint("Mostafa's changes");
   }
 
   int get reviewerCount => reviewerCountNotifier.value;
