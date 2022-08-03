@@ -69,6 +69,10 @@ class ProductProvider extends ChangeNotifier {
     debugPrint("Mostafa's changes");
     debugPrint('leke;s changes');
     debugPrint('change 2');
+    debugPrint('something');
+    debugPrint('something2222');
+    debugPrint('something2222');
+    debugPrint('something2222');
   }
 
   int get reviewerCount => reviewerCountNotifier.value;
