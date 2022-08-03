@@ -14,7 +14,24 @@ class ProductProvider extends ChangeNotifier {
   final minAgeNotifier = ValueNotifier(4);
   final developerNotifier = ValueNotifier('Microsoft Inc');
   final languageNotifier = ValueNotifier('EN');
-  final supportedLanguages = ValueNotifier(['AR', 'FR', 'DE', 'JP', 'ZH', 'SP', 'IT', 'RU', 'BS', 'MY', 'ET', 'FA', 'HI', 'ID', 'SW', 'TR']);
+  final supportedLanguages = ValueNotifier([
+    'AR',
+    'FR',
+    'DE',
+    'JP',
+    'ZH',
+    'SP',
+    'IT',
+    'RU',
+    'BS',
+    'MY',
+    'ET',
+    'FA',
+    'HI',
+    'ID',
+    'SW',
+    'TR'
+  ]);
   final parentalGuidanceAgeNotifier = ValueNotifier(12);
   var minRating = 1;
   var maxRating = 5;
