@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
 import 'package:hpos_appstore/widgets/components/texts/search_bar_provider.dart';
+import 'package:provider/provider.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({
@@ -10,7 +11,6 @@ class SearchBar extends StatelessWidget {
     this.labelText,
     this.prefixIcon,
     this.suffixIcon,
-    this.onChanged,
   }) : super(key: key);
 
   final TextEditingController textController;
@@ -29,12 +29,10 @@ class SearchBar extends StatelessWidget {
   /// Refer to the docs on [TextField] suffixIcon.
   final Widget? suffixIcon;
 
-  /// Called when a user has made a change to the text value.
-  final void Function(String?)? onChanged;
-
   @override
   Widget build(BuildContext context) {
-    final provider = SearchBarProvider('');
+    final provider = Provider.of<SearchBarProvider>(context);
+
     return TextField(
       controller: textController,
       decoration: InputDecoration(
@@ -42,7 +40,7 @@ class SearchBar extends StatelessWidget {
         labelText: labelText,
         prefixIcon: prefixIcon ?? _getPrefixIcon(),
         suffixIcon: ValueListenableBuilder<String>(
-          valueListenable: provider,
+          valueListenable: provider.textNotifier,
           builder: (_, value, __) {
             if (value.isEmpty) return const SizedBox();
             return _getSuffixIcon(provider);
@@ -53,9 +51,9 @@ class SearchBar extends StatelessWidget {
       textInputAction: TextInputAction.search,
       onChanged: (value) {
         provider.text = value;
-
-        // invoke callback if provided by the user.
-        if (onChanged != null) onChanged!(value);
+      },
+      onSubmitted: (value) {
+        provider.search();
       },
     );
   }
@@ -68,11 +66,11 @@ class SearchBar extends StatelessWidget {
     );
   }
 
-  Widget _getPrefixIcon() {
+  Widget _getPrefixIcon([SearchBarProvider? provider]) {
     return prefixIcon ??
         _getIconButton(
           Icons.search,
-          () => debugPrint('search clicked'),
+          () => provider?.search(),
         );
   }
 
@@ -83,9 +81,6 @@ class SearchBar extends StatelessWidget {
           () {
             textController.clear();
             provider?.clear();
-
-            // invoke callback if provided by the user.
-            if (onChanged != null) onChanged!(null);
           },
         );
   }

@@ -41,7 +41,8 @@ class TextFieldBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = SearchBarProvider('');
+    final provider = SearchBarProvider();
+
     return TextField(
       controller: textController,
       decoration: InputDecoration(
@@ -52,7 +53,7 @@ class TextFieldBox extends StatelessWidget {
         suffixIcon: disableIcons
             ? null
             : ValueListenableBuilder<String>(
-                valueListenable: provider,
+                valueListenable: provider.textNotifier,
                 builder: (_, value, __) {
                   if (value.isEmpty) return const SizedBox();
                   return _getSuffixIcon(provider);
