@@ -8,7 +8,7 @@ import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
 import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
 import 'package:hpos_appstore/utils/utils_import.dart';
-import 'package:hpos_appstore/widgets/components/texts/search_bar_provider.dart';
+import 'package:hpos_appstore/widgets/components/texts/search_bar_import.dart';
 import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:hpos_appstore/widgets/themes.dart';
 import 'package:provider/provider.dart';
