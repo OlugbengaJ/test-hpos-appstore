@@ -443,6 +443,9 @@ class RatingReviewCard extends StatelessWidget {
                 RatingsBar(star: 3, percent: 0.2),
                 RatingsBar(star: 2, percent: 0.4),
                 RatingsBar(star: 1, percent: 0.1),
+
+
+                RatingsBar(star: 3, percent: 0.3),
               ],
             ),
           )
