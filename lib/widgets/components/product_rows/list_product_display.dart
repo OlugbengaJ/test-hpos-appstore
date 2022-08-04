@@ -25,7 +25,7 @@ class ListProductDisplay extends StatelessWidget {
                 create: (context) => ProductProvider.fromModel(app),
                 child: CardProductListItem(
                   isInstalled: isInstalled,
-                  hasUpdate: app.updateAvailable,
+                  hasUpdate: app.applicationInfo?.updateAvailable,
                 ),
               ),
             )

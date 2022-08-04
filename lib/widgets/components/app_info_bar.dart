@@ -93,7 +93,7 @@ class AppInfoBar extends StatelessWidget {
               }),
           cardDivider,
           ValueListenableBuilder<List<String>>(
-            valueListenable: productProvider.supportedLanguages,
+            valueListenable: productProvider.supportedLanguagesNotifier,
             builder: (context, supportedLanguages, _) {
               return AppInfoCard(
                 top: AppTexts.language,

@@ -24,7 +24,7 @@ class GridProductDisplay extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 30.0),
                 child: CardProductVertical(
                   isInstalled: isInstalled,
-                  hasUpdate: app.updateAvailable,
+                  hasUpdate: app.applicationInfo?.updateAvailable,
                 ),
               ),
             )),
