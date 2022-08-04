@@ -41,6 +41,11 @@ dependencies:
   percent_indicator: ^4.2.2
   flutter_rating_bar: ^4.0.1
   cached_network_image: ^3.1.0
+  hpos_app_store:                                                                                                                       
+    git:                                                              
+      url: git@github.com:ext-andela/lib-hpos-app-store.git
+      ref: main
+        
 
 dev_dependencies:
   flutter_test:
