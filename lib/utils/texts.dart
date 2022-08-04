@@ -72,4 +72,10 @@ class AppTexts {
   static const String writeReview = 'Write a review';
   static const String years = 'Years';
   static const String yesUninstall = 'Yes, Uninstall';
+  // static const String reload = 'Reload Page';
+  // static const String goback = 'Go Back';
+  // static const String nocontentTitle =
+  //     'No Content Found for this search result';
+  // static const String nocontentDescription =
+  //     'No Content Found for this search resultNo Content Found for this search result. Describe your experience using this app (Optional)';
 }
