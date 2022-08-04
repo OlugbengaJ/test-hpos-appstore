@@ -14,7 +14,26 @@ class ProductProvider extends ChangeNotifier {
   final minAgeNotifier = ValueNotifier(4);
   final developerNotifier = ValueNotifier('Microsoft Inc');
   final languageNotifier = ValueNotifier('EN');
-  final supportedLanguages = ValueNotifier(['AR', 'FR', 'DE', 'JP', 'ZH', 'SP', 'IT', 'RU', 'BS', 'MY', 'ET', 'FA', 'HI', 'ID', 'SW', 'TR']);
+
+  final supportedLanguagesNotifier = ValueNotifier([
+    'EN'
+    'AR',
+    'FR',
+    'DE',
+    'JP',
+    'ZH',
+    'SP',
+    'IT',
+    'RU',
+    'BS',
+    'MY',
+    'ET',
+    'FA',
+    'HI',
+    'ID',
+    'SW',
+    'TR'
+  ]);
   final parentalGuidanceAgeNotifier = ValueNotifier(12);
   var minRating = 1;
   var maxRating = 5;
@@ -28,10 +47,10 @@ class ProductProvider extends ChangeNotifier {
     reviewerCount = product.numRatings;
     price = double.tryParse(product.price) ?? 0;
     image = product.logo;
-    size = product.size;
+    size = product.applicationInfo?.size ?? 0;
     minAge = product.minAge;
     developer = product.developer;
-    language = product.language;
+    supportedLanguages = product.languages;
     parentalGuidanceAge = product.parentalGuidanceAge;
   }
 
@@ -79,9 +98,13 @@ class ProductProvider extends ChangeNotifier {
 
   set language(String language) => languageNotifier.value = language;
 
-  int get supportedLanguagesCount => supportedLanguages.value.length;
+  int get supportedLanguagesCount => supportedLanguagesNotifier.value.length;
 
   int get parentalGuidanceAge => parentalGuidanceAgeNotifier.value;
 
   set parentalGuidanceAge(int age) => parentalGuidanceAgeNotifier.value = age;
+
+  List<String> get supportedLanguages => supportedLanguagesNotifier.value;
+
+  set supportedLanguages(List<String> languages) => supportedLanguagesNotifier.value = languages;
 }
