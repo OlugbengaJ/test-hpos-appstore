@@ -50,3 +50,7 @@ app.*.map.json
 .vs
 
 .dccache
+
+#VS related
+.vscode/
+

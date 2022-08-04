@@ -29,7 +29,7 @@ class LibraryScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           // ValueListenableBuilder<bool>(
           //   valueListenable: searchProv.searchNotifier,
           //   builder: (context, value, child) {
