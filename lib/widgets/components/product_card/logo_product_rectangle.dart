@@ -44,4 +44,3 @@ class LogoProductRectangle extends StatelessWidget {
     );
   }
 }
-<<<<<<< HEAD
