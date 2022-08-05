@@ -18,16 +18,18 @@ class GridProductDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        ...apps.map((app) => ListenableProvider(
-              create: (context) => ProductProvider.fromModel(app),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 30.0),
-                child: CardProductVertical(
-                  isInstalled: isInstalled,
-                  hasUpdate: app.applicationInfo?.updateAvailable,
-                ),
+        ...apps.map(
+          (app) => ListenableProvider(
+            create: (context) => ProductProvider.fromModel(app),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 30.0),
+              child: CardProductVertical(
+                isInstalled: isInstalled,
+                hasUpdate: app.applicationInfo?.updateAvailable,
               ),
-            )),
+            ),
+          ),
+        ),
       ],
     );
   }

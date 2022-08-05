@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
+import 'package:hpos_appstore/widgets/components/images/centered_image.dart';
 import 'package:provider/provider.dart';
-
-import '../../../providers/product_provider.dart';
 
 class LogoProductRectangle extends StatelessWidget {
   const LogoProductRectangle({
@@ -34,49 +33,15 @@ class LogoProductRectangle extends StatelessWidget {
       child: ValueListenableBuilder<String>(
         valueListenable: productProvider.imageNotifier,
         builder: (context, image, _) {
-          return CardNetworkImage(
+          return CenteredImage(
             logo: image,
             width: logoWidth,
             height: logoHeight,
+            semanticLabel: 'App Logo',
           );
         },
       ),
     );
   }
 }
-
-class CardNetworkImage extends StatelessWidget {
-  const CardNetworkImage(
-      {Key? key, required this.logo, this.width = 62.13, this.height = 58.0})
-      : super(key: key);
-
-  final String logo;
-  final double width;
-  final double height;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Image.network(
-        logo,
-        width: width,
-        height: height,
-        fit: BoxFit.fill,
-        semanticLabel: 'App Logo',
-        errorBuilder: (context, obj, _) => Image.asset('assets/images/broken.png', fit: BoxFit.fill,),
-      ),
-
-      // todo: find a way to show svg images.
-      // child: SvgPicture.network(
-      //   logo,
-      //   width: width,
-      //   height: height,
-      //   semanticsLabel: 'App Logo',
-      //   fit: BoxFit.contain,
-      //   placeholderBuilder: (BuildContext context) => Container(
-      //       padding: const EdgeInsets.all(30.0),
-      //       child: const CircularProgressIndicator()),
-      // ),
-    );
-  }
-}
+<<<<<<< HEAD
