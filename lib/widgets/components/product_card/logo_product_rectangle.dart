@@ -34,7 +34,7 @@ class LogoProductRectangle extends StatelessWidget {
       child: ValueListenableBuilder<String>(
         valueListenable: productProvider.imageNotifier,
         builder: (context, image, _) {
-          return NetworkImage(
+          return CardNetworkImage(
             logo: image,
             width: logoWidth,
             height: logoHeight,
@@ -45,8 +45,8 @@ class LogoProductRectangle extends StatelessWidget {
   }
 }
 
-class NetworkImage extends StatelessWidget {
-  const NetworkImage(
+class CardNetworkImage extends StatelessWidget {
+  const CardNetworkImage(
       {Key? key, required this.logo, this.width = 62.13, this.height = 58.0})
       : super(key: key);
 
@@ -56,21 +56,27 @@ class NetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      // width: 244.0,
-      // height: 127.0,
-      child: Center(
-        child: SvgPicture.network(
-          logo,
-          width: width,
-          height: height,
-          semanticsLabel: 'App Logo',
-          fit: BoxFit.contain,
-          placeholderBuilder: (BuildContext context) => Container(
-              padding: const EdgeInsets.all(30.0),
-              child: const CircularProgressIndicator()),
-        ),
+    return Center(
+      child: Image.network(
+        logo,
+        width: width,
+        height: height,
+        fit: BoxFit.fill,
+        semanticLabel: 'App Logo',
+        errorBuilder: (context, obj, _) => Image.asset('assets/images/broken.png', fit: BoxFit.fill,),
       ),
+
+      // todo: find a way to show svg images.
+      // child: SvgPicture.network(
+      //   logo,
+      //   width: width,
+      //   height: height,
+      //   semanticsLabel: 'App Logo',
+      //   fit: BoxFit.contain,
+      //   placeholderBuilder: (BuildContext context) => Container(
+      //       padding: const EdgeInsets.all(30.0),
+      //       child: const CircularProgressIndicator()),
+      // ),
     );
   }
 }
