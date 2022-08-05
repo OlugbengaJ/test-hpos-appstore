@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/interactors/interactor_fetch_applications.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 
 class LibraryProvider extends ChangeNotifier {
   LibraryProducts appView = LibraryProducts.all;
   String filterTag = 'all';
+  ValueNotifier<List<Product>> products = ValueNotifier([]);
+  InteractorFetchApps interactor = InteractorFetchApps();
+
+  LibraryProvider() {
+    interactor.requestAllApps(this);
+  }
 
   var displayType = ValueNotifier(LibraryDisplay.grid);
 
@@ -16,215 +23,6 @@ class LibraryProvider extends ChangeNotifier {
   setFilterTag(String choice) {
     filterTag = choice;
     notifyListeners();
-  }
-
-  List<Product> getFilterData(String categoryName) {
-    return [
-      Product(
-        id: BigInt.zero,
-        logo:
-            'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
-        name: 'Microsoft Teams',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        avgRatings: 3.5,
-        numRatings: 70,
-        minAge: 4,
-        developer: 'Microsoft Inc',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: true,
-          size: 47,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
-        name: 'Google Meet',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        avgRatings: 4.5,
-        numRatings: 70,
-        minAge: 12,
-        developer: 'Google',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 47,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
-        name: 'Zoom',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 8,
-        avgRatings: 4.0,
-        numRatings: 70,
-        developer: 'Zoom.us',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 35,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
-        name: 'Google Suite',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 8,
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Google',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 104,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
-        name: 'Microsoft Teams',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 12,
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Microsoft Inc',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 241,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
-        name: 'Google Meet',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        avgRatings: 4.5,
-        numRatings: 70,
-        minAge: 12,
-        developer: 'Google',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 54,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
-        name: 'Zoom',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 8,
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Zoom.us',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 35,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
-        name: 'Google Suite',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 8,
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Google',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 205,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
-        name: 'Microsoft Teams',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 13,
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Microsoft Inc',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 224,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
-        name: 'Google Meet',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 12,
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Google',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 45,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
-        name: 'Zoom',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        minAge: 12,
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Zoom.us',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 47,
-        ),
-      ),
-      Product(
-        id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
-        name: 'Google Suite',
-        description: '',
-        category: 'Productivity',
-        price: 'Free',
-        avgRatings: 4.5,
-        numRatings: 70,
-        developer: 'Google',
-        languages: supportedLanguages,
-        applicationInfo: ApplicationInfo(
-          updateAvailable: false,
-          size: 204,
-        ),
-      )
-    ];
   }
 
   List<ProductFilterTag> getTags() {
@@ -246,22 +44,3 @@ class LibraryProvider extends ChangeNotifier {
     return [];
   }
 }
-
-const supportedLanguages = [
-  'AR',
-  'FR',
-  'DE',
-  'JP',
-  'ZH',
-  'SP',
-  'IT',
-  'RU',
-  'BS',
-  'MY',
-  'ET',
-  'FA',
-  'HI',
-  'ID',
-  'SW',
-  'TR'
-];
