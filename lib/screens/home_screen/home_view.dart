@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/utils/enums.dart';
+import 'package:hpos_appstore/utils/languages.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/home_banner.dart';
@@ -15,7 +16,8 @@ class HomeView extends StatelessWidget {
     var productivityApps = [
       Product(
         id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
+        logo:
+            'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
         name: 'Microsoft Teams',
         description: '',
         category: 'Productivity',
@@ -24,7 +26,7 @@ class HomeView extends StatelessWidget {
         numRatings: 70,
         minAge: 12,
         developer: 'Microsoft Inc',
-        languages: supportedLanguages,
+        languages: Languages.locales,
         applicationInfo: ApplicationInfo(
           updateAvailable: false,
           size: 254,
@@ -32,7 +34,8 @@ class HomeView extends StatelessWidget {
       ),
       Product(
         id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
+        logo:
+            'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
         name: 'Google Meet',
         description: '',
         category: 'Productivity',
@@ -40,7 +43,7 @@ class HomeView extends StatelessWidget {
         avgRatings: 3.5,
         numRatings: 70,
         developer: 'Google',
-        languages: supportedLanguages,
+        languages: Languages.locales,
         applicationInfo: ApplicationInfo(
           updateAvailable: false,
           size: 45,
@@ -48,7 +51,8 @@ class HomeView extends StatelessWidget {
       ),
       Product(
         id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
+        logo:
+            'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
         name: 'Zoom',
         description: '',
         category: 'Productivity',
@@ -57,7 +61,7 @@ class HomeView extends StatelessWidget {
         numRatings: 70,
         minAge: 12,
         developer: 'Zoom.us',
-        languages: supportedLanguages,
+        languages: Languages.locales,
         applicationInfo: ApplicationInfo(
           updateAvailable: false,
           size: 35,
@@ -65,7 +69,8 @@ class HomeView extends StatelessWidget {
       ),
       Product(
         id: BigInt.zero,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
+        logo:
+            'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
         name: 'Google Suite',
         description: '',
         category: 'Productivity',
@@ -73,7 +78,7 @@ class HomeView extends StatelessWidget {
         avgRatings: 5.0,
         numRatings: 70,
         developer: 'Google',
-        languages: supportedLanguages,
+        languages: Languages.locales,
         applicationInfo: ApplicationInfo(
           updateAvailable: false,
           size: 254,
@@ -121,22 +126,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
-const supportedLanguages = [
-  'AR',
-  'FR',
-  'DE',
-  'JP',
-  'ZH',
-  'SP',
-  'IT',
-  'RU',
-  'BS',
-  'MY',
-  'ET',
-  'FA',
-  'HI',
-  'ID',
-  'SW',
-  'TR'
-];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
+import 'package:hpos_appstore/utils/languages.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 
 class ProductProvider extends ChangeNotifier {
@@ -13,27 +14,9 @@ class ProductProvider extends ChangeNotifier {
   final sizeNotifier = ValueNotifier(148);
   final minAgeNotifier = ValueNotifier(4);
   final developerNotifier = ValueNotifier('Microsoft Inc');
-  final languageNotifier = ValueNotifier('EN');
+  final languageNotifier = ValueNotifier(Languages.locales.first);
 
-  final supportedLanguagesNotifier = ValueNotifier([
-    'EN'
-    'AR',
-    'FR',
-    'DE',
-    'JP',
-    'ZH',
-    'SP',
-    'IT',
-    'RU',
-    'BS',
-    'MY',
-    'ET',
-    'FA',
-    'HI',
-    'ID',
-    'SW',
-    'TR'
-  ]);
+  final supportedLanguagesNotifier = ValueNotifier(Languages.locales);
   final parentalGuidanceAgeNotifier = ValueNotifier(12);
   var minRating = 1;
   var maxRating = 5;
@@ -106,5 +89,6 @@ class ProductProvider extends ChangeNotifier {
 
   List<String> get supportedLanguages => supportedLanguagesNotifier.value;
 
-  set supportedLanguages(List<String> languages) => supportedLanguagesNotifier.value = languages;
+  set supportedLanguages(List<String> languages) =>
+      supportedLanguagesNotifier.value = languages;
 }
