@@ -30,16 +30,26 @@ class LogoProductBanner extends StatelessWidget {
           child: ValueListenableBuilder<String>(
               valueListenable: productProvider.imageNotifier,
               builder: (context, logo, _) {
-                return SvgPicture.network(
+                return Image.network(
                   logo,
-                  width: 62.13,
+                  width: 58.0,
                   height: 58.0,
-                  semanticsLabel: 'App Logo',
-                  placeholderBuilder: (BuildContext context) => Container(
-                    padding: const EdgeInsets.all(30.0),
-                    child: const CircularProgressIndicator(),
-                  ),
+                  fit: BoxFit.cover,
+                  semanticLabel: 'App Logo',
+                  errorBuilder: (context, obj, _) => Image.asset('assets/images/broken.png', fit: BoxFit.fill,),
                 );
+
+                // todo: find a way to show svg images.
+                // return SvgPicture.network(
+                //   logo,
+                //   width: 62.13,
+                //   height: 58.0,
+                //   semanticsLabel: 'App Logo',
+                //   placeholderBuilder: (BuildContext context) => Container(
+                //     padding: const EdgeInsets.all(30.0),
+                //     child: const CircularProgressIndicator(),
+                //   ),
+                // );
               }),
         ),
       ),
