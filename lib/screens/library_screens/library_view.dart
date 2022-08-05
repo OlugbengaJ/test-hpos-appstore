@@ -17,7 +17,6 @@ class LibraryView extends StatelessWidget {
   Widget build(BuildContext context) {
     LibraryProvider libraryProvider = Provider.of<LibraryProvider>(context);
     LibraryProducts appView = libraryProvider.appView;
-    List<Product> apps = libraryProvider.getFilterData('all');
 
     return ValueListenableBuilder(
         valueListenable: libraryProvider.displayType,
@@ -86,15 +85,21 @@ class LibraryView extends StatelessWidget {
                 ],
               ),
               const Padding(padding: EdgeInsets.only(bottom: 38)),
-              (displayType == LibraryDisplay.grid)
-                  ? GridProductDisplay(
-                      apps: apps,
-                      isInstalled:
-                          (appView == LibraryProducts.installed) ? true : false)
-                  : ListProductDisplay(
-                      apps: apps,
-                      isInstalled:
-                          (appView == LibraryProducts.installed) ? true : false)
+              ValueListenableBuilder<List<Product>>(
+                  valueListenable: libraryProvider.products,
+                  builder: (context, products, _) {
+                    return (displayType == LibraryDisplay.grid)
+                        ? GridProductDisplay(
+                            apps: products,
+                            isInstalled: (appView == LibraryProducts.installed)
+                                ? true
+                                : false)
+                        : ListProductDisplay(
+                            apps: products,
+                            isInstalled: (appView == LibraryProducts.installed)
+                                ? true
+                                : false);
+                  })
             ],
           );
         });
