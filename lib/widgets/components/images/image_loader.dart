@@ -67,9 +67,11 @@ class ImageLoader extends StatelessWidget {
     );
   }
 
-  Widget _brokenImage(ThemeData themeData) => Icon(
-        Icons.broken_image,
-        size: width,
-        color: themeData.primaryColor,
-      );
+  Widget _brokenImage(ThemeData themeData) {
+    return Icon(
+      Icons.broken_image,
+      size: width,
+      color: themeData.primaryColor,
+    );
+  }
 }
