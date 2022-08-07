@@ -24,7 +24,7 @@ class ShareLink extends StatelessWidget {
             maxWidth: screenSize.width * 0.4,
             maxHeight: screenSize.height * 0.4,
           ),
-          width: screenSize.width * 0.2,
+          width: screenSize.width * 0.25,
           height: screenSize.height * 0.3,
           child: Scaffold(
             body: SizedBox.expand(
