@@ -226,6 +226,8 @@ class AppDetailsTopCard extends StatelessWidget {
                                   const SizedBox(width: 20),
                                 ],
                               ),
+
+                        // share app
                         ButtonRound(
                           onTap: () {
                             ContentDialog.open(
@@ -237,14 +239,17 @@ class AppDetailsTopCard extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      const Icon(Icons.wifi_tethering,
-                                          size: 24.0, color: AppColors.primary),
+                                      const Icon(
+                                        Icons.wifi_tethering,
+                                        size: 36.0,
+                                        color: AppColors.primary,
+                                      ),
                                       const Padding(
                                           padding:
                                               EdgeInsets.only(right: 24.0)),
                                       Text(
                                         AppTexts.shareLink,
-                                        style: themeData.textTheme.headline5,
+                                        style: themeData.textTheme.headline6,
                                       ),
                                     ],
                                   ),
