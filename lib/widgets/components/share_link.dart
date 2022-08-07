@@ -91,7 +91,7 @@ class ShareLink extends StatelessWidget {
                               link: link,
                               text: AppTexts.email,
                               icon: Icons.mail,
-                              iconSize: 24.0,
+                              iconSize: 36.0,
                               tapHandler: () {
                                 final emailUri = Uri(
                                   scheme: 'mailto',
