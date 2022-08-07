@@ -18,8 +18,10 @@ class AppTexts {
   static const String cancel = 'Cancel';
   static const String category = 'Category';
   static const String clickToRate = 'Click to rate this Application';
+  static const String copyLink = 'Copy link';
   static const String developer = 'Developer';
   static const String discoverMore = 'Discover more 🚀';
+  static const String email = 'Email';
   static const String free = 'Free';
   static const String homeBannerText1 = 'Let\'s get you into all the goodness';
   static const String homeBannerText2 = 'on the hp App Store';
@@ -29,6 +31,7 @@ class AppTexts {
   static const String languages = 'Languages';
   static const String latestVersion = 'Latest version';
   static const String library = 'Library';
+  static const String notifyCopyToClipboard = 'copied to clipboard.';
   static const String otherInformations = 'Other information';
   static const String otherItem = 'Other item';
   static const String parentalGuidance = 'Parental Guidance';
@@ -49,6 +52,7 @@ class AppTexts {
   static const String search = 'Search through apps, games, and more';
   static const String seeAll = 'See all';
   static const String share = 'share';
+  static const String shareLink = 'Share Link';
   static const String showMore = 'Show more';
   static const String showLess = 'Show less';
   static const String similarAppSuggestions = 'Similar App Suggestions';

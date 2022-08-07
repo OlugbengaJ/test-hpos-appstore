@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hpos_appstore/providers/app_provider/app_provider.dart';
@@ -5,8 +7,11 @@ import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
+import 'package:hpos_appstore/widgets/components/dialogs/content_dialog.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
 import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.dart';
+import 'package:hpos_appstore/widgets/components/share_link.dart';
 import 'package:hpos_appstore/widgets/modals.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +22,8 @@ class AppDetailsTopCard extends StatelessWidget {
   Widget build(BuildContext context) {
     AppProvider appProvider = Provider.of<AppProvider>(context);
     ProductProvider productProvider = Provider.of<ProductProvider>(context);
+
+    final themeData = Theme.of(context);
 
     return Row(
       children: [
@@ -107,134 +114,166 @@ class AppDetailsTopCard extends StatelessWidget {
                   ],
                 ),
                 ValueListenableBuilder<bool>(
-                    valueListenable: appProvider.installed,
-                    builder: (context, installed, _) {
-                      return Row(
-                        children: [
-                          (!installed)
-                              ? Row(
-                                  children: [
-                                    InkWell(
-                                      onTap: appProvider.install,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: AppColors.primaryW500,
-                                            borderRadius:
-                                                BorderRadius.circular(8)),
-                                        height: 48,
-                                        width: 187,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const SizedBox(
-                                              child: Text(
-                                                AppTexts.install,
-                                                style: TextStyle(
-                                                    color: AppColors.white,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 18),
-                                              ),
+                  valueListenable: appProvider.installed,
+                  builder: (context, installed, _) {
+                    return Row(
+                      children: [
+                        (!installed)
+                            ? Row(
+                                children: [
+                                  InkWell(
+                                    onTap: appProvider.install,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primaryW500,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      height: 48,
+                                      width: 187,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const SizedBox(
+                                            child: Text(
+                                              AppTexts.install,
+                                              style: TextStyle(
+                                                  color: AppColors.white,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8.0),
-                                              child: SvgPicture.asset(
-                                                AppAssets.installSVG,
-                                                color: AppColors.white,
-                                              ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: SvgPicture.asset(
+                                              AppAssets.installSVG,
+                                              color: AppColors.white,
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                  ],
-                                )
-                              : Row(
-                                  children: [
-                                    InkWell(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: AppColors.primaryW400,
-                                            borderRadius:
-                                                BorderRadius.circular(8)),
-                                        height: 48,
-                                        width: 187,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: const [
-                                            SizedBox(
-                                              child: Text(
-                                                AppTexts.installed,
-                                                style: TextStyle(
-                                                    color: AppColors.white,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 18),
-                                              ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                ],
+                              )
+                            : Row(
+                                children: [
+                                  InkWell(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primaryW400,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      height: 48,
+                                      width: 187,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          SizedBox(
+                                            child: Text(
+                                              AppTexts.installed,
+                                              style: TextStyle(
+                                                  color: AppColors.white,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        uninstallAppDialog(
-                                            context, appProvider);
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: AppColors.red),
-                                            borderRadius:
-                                                BorderRadius.circular(8)),
-                                        height: 48,
-                                        width: 134,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const SizedBox(
-                                              child: Text(
-                                                AppTexts.uninstall,
-                                                style: TextStyle(
-                                                    color: AppColors.red,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 18),
-                                              ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  InkWell(
+                                    onTap: () {
+                                      uninstallAppDialog(context, appProvider);
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: AppColors.red),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      height: 48,
+                                      width: 134,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const SizedBox(
+                                            child: Text(
+                                              AppTexts.uninstall,
+                                              style: TextStyle(
+                                                  color: AppColors.red,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8.0),
-                                              child: SvgPicture.asset(
-                                                AppAssets.trashSVG,
-                                                color: AppColors.red,
-                                              ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: SvgPicture.asset(
+                                              AppAssets.trashSVG,
+                                              color: AppColors.red,
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                  ],
-                                ),
-                          const InkWell(
-                            child: ImageIcon(
-                              AssetImage(AppAssets.shareIconPng),
-                              color: AppColors.primaryW400,
-                            ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                ],
+                              ),
+                        ButtonRound(
+                          onTap: () {
+                            ContentDialog.open(
+                              context,
+                              useRootNavigator: false,
+                              title: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.wifi_tethering,
+                                          size: 24.0, color: AppColors.primary),
+                                      const Padding(
+                                          padding:
+                                              EdgeInsets.only(right: 24.0)),
+                                      Text(
+                                        AppTexts.shareLink,
+                                        style: themeData.textTheme.headline5,
+                                      ),
+                                    ],
+                                  ),
+                                  ButtonRound(
+                                    icon: Icons.close,
+                                    iconColor: themeData.primaryColor,
+                                    size: 36.0,
+                                    iconSize: 24.0,
+                                    onTap: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              ),
+                              content: ShareLink(
+                                key: GlobalKey(),
+                                link: 'my-app-link ${Random().nextDouble()}',
+                              ).build(context),
+                            );
+                          },
+                          size: 48.0,
+                          iconSize: 24.0,
+                          iconColor: AppColors.primaryW400,
+                          icon: const ImageIcon(
+                            AssetImage(AppAssets.shareIconPng),
                           ),
-                        ],
-                      );
-                    }),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ],
             ),
           ),

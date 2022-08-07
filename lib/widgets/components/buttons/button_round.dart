@@ -10,7 +10,7 @@ class ButtonRound extends StatelessWidget {
     this.border,
     this.icon,
     this.iconColor,
-    this.iconSize,
+    this.iconSize = 24.0 * 0.7,
     this.radius,
     this.splashColor,
     this.semanticLabel,
@@ -34,12 +34,13 @@ class ButtonRound extends StatelessWidget {
   /// Defines the border of the button.
   final BoxBorder? border;
 
-  /// [icon] an [IconData] to be displayed on the button
-  final IconData? icon;
+  /// [icon] is optional and could be a [Widget] or an [IconData]
+  /// to be displayed on the button.
+  final dynamic icon;
 
   /// [iconSize] is the size of the icon and defaults to 70% of [size].
   /// Ensure this value is less than [size].
-  final double? iconSize;
+  final double iconSize;
 
   /// [iconColor] is the color of the icon and defaults to primaryColorLight
   final Color? iconColor;
@@ -63,15 +64,37 @@ class ButtonRound extends StatelessWidget {
           customBorder: const CircleBorder(),
           splashColor: splashColor,
           radius: radius,
-          child: Icon(
-            icon,
-            // if icon size is null, use 70% of size to show tap effect
-            size: iconSize ?? size * 0.7,
-            color: iconColor,
-            semanticLabel: semanticLabel,
-          ),
+          child: _getIcon(),
         ),
       ),
     );
+  }
+
+  Widget _getIcon() {
+    if (icon.runtimeType == IconData || icon == null) {
+      // debugPrint(icon.runtimeType.toString());
+      return Icon(
+        icon,
+        size: iconSize,
+        color: iconColor,
+        semanticLabel: semanticLabel,
+      );
+    }
+
+    if (icon.runtimeType == ImageIcon) {
+      final ImageIcon imageIcon = icon;
+      final double padding = (size - iconSize) / 2;
+
+      return Padding(
+        padding: EdgeInsets.all(padding),
+        child: ImageIcon(
+          imageIcon.image,
+          color: imageIcon.color ?? iconColor,
+          semanticLabel: semanticLabel,
+        ),
+      );
+    }
+
+    return icon;
   }
 }
