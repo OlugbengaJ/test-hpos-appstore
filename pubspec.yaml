@@ -33,18 +33,19 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  line_icons: ^2.0.1
-  ionicons: ^0.1.2
-  provider: ^6.0.2
-  flutter_svg: ^1.1.1+1
-  percent_indicator: ^4.2.2
-  flutter_rating_bar: ^4.0.1
   cached_network_image: ^3.1.0
+  cupertino_icons: ^1.0.2
+  flutter_rating_bar: ^4.0.1
+  flutter_svg: ^1.1.1+1
   hpos_app_store:                                                                                                                       
     git:                                                              
       url: git@github.com:ext-andela/lib-hpos-app-store.git
       ref: main
+  ionicons: ^0.1.2
+  line_icons: ^2.0.1
+  percent_indicator: ^4.2.2
+  provider: ^6.0.2
+  url_launcher: ^6.1.5
         
 
 dev_dependencies:

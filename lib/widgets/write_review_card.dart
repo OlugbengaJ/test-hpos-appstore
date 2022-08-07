@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hpos_appstore/utils/constraints.dart';
 import 'package:hpos_appstore/utils/utils_import.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_rect.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
@@ -539,7 +540,7 @@ class ColorConstant {
   }
 }
 
-Size size = WidgetsBinding.instance.window.physicalSize; // * 0.5;
+Size size = AppConstraint.window.physicalSize; // * 0.5;
 // WidgetsBinding.instance.window.devicePixelRatio;
 
 ///This method is used to set padding/margin (for the left and Right side) & width of the screen or widget according to the Viewport width.

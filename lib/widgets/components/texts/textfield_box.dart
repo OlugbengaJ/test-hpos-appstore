@@ -8,7 +8,9 @@ class TextFieldBox extends StatelessWidget {
     required this.textController,
     this.hintText,
     this.labelText,
+    this.textAlign = TextAlign.start,
     this.disableIcons = true,
+    this.enabled = true,
     this.prefixIcon,
     this.suffixIcon,
     this.maxLines,
@@ -19,8 +21,13 @@ class TextFieldBox extends StatelessWidget {
   final String? hintText;
   final String? labelText;
 
-  /// Hides icons from being rendered
+  final TextAlign textAlign;
+
+  /// Hides icons from being rendered.
   final bool disableIcons;
+
+  /// Enables the input field.
+  final bool enabled;
 
   /// An icon that appears before the [prefix] or [prefixText] and before
   /// the editable part of the text field, within the decoration's container.
@@ -47,6 +54,7 @@ class TextFieldBox extends StatelessWidget {
       controller: textController,
       decoration: InputDecoration(
         contentPadding: prefixIcon == null ? const EdgeInsets.all(8.0) : null,
+        enabled: enabled,
         hintText: hintText,
         labelText: labelText,
         prefixIcon: disableIcons ? null : prefixIcon,
@@ -62,6 +70,7 @@ class TextFieldBox extends StatelessWidget {
       ),
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
+      textAlign: textAlign,
       maxLines: maxLines,
       onChanged: (value) {
         provider.text = value;

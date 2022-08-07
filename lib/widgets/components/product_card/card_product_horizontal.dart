@@ -55,6 +55,7 @@ class HorizontalCardButtons extends StatelessWidget {
         Image(
           image: AssetImage(AppAssets.shareIconPng),
           fit: BoxFit.scaleDown,
+          width: 24.0,
         )
       ],
     );

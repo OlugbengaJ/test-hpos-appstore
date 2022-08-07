@@ -6,36 +6,31 @@ import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 
-
-Future<void> uninstallAppDialog(BuildContext context, AppProvider appProvider) async {
-  
+Future<void> uninstallAppDialog(
+    BuildContext context, AppProvider appProvider) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16)
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         contentPadding: EdgeInsets.zero,
         content: SingleChildScrollView(
           child: Container(
             width: 520,
             padding: const EdgeInsets.all(Numericals.double40),
             child: ListBody(
-              children:  <Widget>[
+              children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                     const Text(
+                    const Text(
                       AppTexts.uninstallApp,
                       style: TextStyle(
-                        color: AppColors.primaryW900,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 24
-                      ),
+                          color: AppColors.primaryW900,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 24),
                     ),
-
                     InkWell(
                       onTap: () => Navigator.pop(context),
                       child: SizedBox(
@@ -47,34 +42,30 @@ Future<void> uninstallAppDialog(BuildContext context, AppProvider appProvider) a
                     ),
                   ],
                 ),
-
                 const Padding(
                   padding: EdgeInsets.only(top: 24),
                   child: Text(
                     AppTexts.sureUninstallQuestion,
                     style: TextStyle(
-                      color: AppColors.greyW600,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14
-                    ),
+                        color: AppColors.greyW600,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14),
                   ),
                 ),
-                
                 Container(
                   margin: const EdgeInsets.only(top: 36),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           appProvider.uninstall();
                           Navigator.pop(context);
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColors.primaryW500,
-                            borderRadius: BorderRadius.circular(8)
-                          ),
+                              color: AppColors.primaryW500,
+                              borderRadius: BorderRadius.circular(8)),
                           height: 48,
                           width: 274,
                           child: Row(
@@ -84,25 +75,21 @@ Future<void> uninstallAppDialog(BuildContext context, AppProvider appProvider) a
                                 child: Text(
                                   AppTexts.yesUninstall,
                                   style: TextStyle(
-                                    color: AppColors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18
-                                  ),
+                                      color: AppColors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18),
                                 ),
                               ),
-                                                            
                             ],
                           ),
                         ),
                       ),
-
                       InkWell(
                         onTap: () => Navigator.pop(context),
                         child: Container(
                           decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.primaryW500),
-                            borderRadius: BorderRadius.circular(8)
-                          ),
+                              border: Border.all(color: AppColors.primaryW500),
+                              borderRadius: BorderRadius.circular(8)),
                           height: 48,
                           width: 134,
                           child: Row(
@@ -112,13 +99,11 @@ Future<void> uninstallAppDialog(BuildContext context, AppProvider appProvider) a
                                 child: Text(
                                   AppTexts.cancel,
                                   style: TextStyle(
-                                    color: AppColors.primaryW500,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18
-                                  ),
+                                      color: AppColors.primaryW500,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18),
                                 ),
                               ),
-                              
                             ],
                           ),
                         ),
@@ -130,7 +115,6 @@ Future<void> uninstallAppDialog(BuildContext context, AppProvider appProvider) a
             ),
           ),
         ),
-        
       );
     },
   );

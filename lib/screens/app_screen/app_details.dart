@@ -115,6 +115,7 @@ class AppDetailsView extends StatelessWidget {
 
     var suggestedProd =
         SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
+
     return Column(
       children: [
         Container(
