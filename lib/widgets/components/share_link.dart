@@ -24,7 +24,7 @@ class ShareLink extends StatelessWidget {
             maxWidth: screenSize.width * 0.4,
             maxHeight: screenSize.height * 0.4,
           ),
-          width: screenSize.width * 0.3,
+          width: screenSize.width * 0.2,
           height: screenSize.height * 0.3,
           child: Scaffold(
             body: SizedBox.expand(
@@ -52,51 +52,64 @@ class ShareLink extends StatelessWidget {
                     bottom: 40.0,
                     left: 0,
                     right: 0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _ShareLinkOption(
-                          link: link,
-                          text: AppTexts.copyLink,
-                          icon: Icons.link,
-                          tapHandler: () {
-                            Clipboard.setData(ClipboardData(text: link));
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                backgroundColor: themeData.primaryColor,
-                                content: Text(
-                                  '"$link", ${AppTexts.notifyCopyToClipboard}',
-                                  textAlign: TextAlign.center,
-                                  style: themeData
-                                      .snackBarTheme.contentTextStyle
-                                      ?.copyWith(color: Colors.white),
-                                ),
-                              ),
-                            );
-                          },
+                        const Padding(
+                          padding: EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            'Share with app',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
                         ),
-                        const Divider(height: 100),
-                        _ShareLinkOption(
-                          link: link,
-                          text: AppTexts.email,
-                          icon: Icons.mail,
-                          iconSize: 24.0,
-                          tapHandler: () {
-                            final emailUri = Uri(
-                              scheme: 'mailto',
-                              // path: 'adeleke.adelaja@andela.com',
-                              query: {
-                                'subject': 'hpos App Link',
-                                'body': 'Here is your hpos App Link:'
-                                    '\r\n\r\n $link \r\n',
-                              }
-                                  .entries
-                                  .map((e) =>
-                                      '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                  .join('&'),
-                            );
-                            launchUrl(emailUri);
-                          },
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _ShareLinkOption(
+                              link: link,
+                              text: AppTexts.copyLink,
+                              icon: Icons.link,
+                              tapHandler: () {
+                                Clipboard.setData(ClipboardData(text: link));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: themeData.primaryColor,
+                                    content: Text(
+                                      '"$link", ${AppTexts.notifyCopyToClipboard}',
+                                      textAlign: TextAlign.center,
+                                      style: themeData
+                                          .snackBarTheme.contentTextStyle
+                                          ?.copyWith(color: Colors.white),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            const Divider(height: 100),
+                            _ShareLinkOption(
+                              link: link,
+                              text: AppTexts.email,
+                              icon: Icons.mail,
+                              iconSize: 24.0,
+                              tapHandler: () {
+                                final emailUri = Uri(
+                                  scheme: 'mailto',
+                                  // path: 'adeleke.adelaja@andela.com',
+                                  query: {
+                                    'subject': 'hpos App Link',
+                                    'body': 'Here is your hpos App Link:'
+                                        '\r\n\r\n $link \r\n',
+                                  }
+                                      .entries
+                                      .map((e) =>
+                                          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                      .join('&'),
+                                );
+                                launchUrl(emailUri);
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),
