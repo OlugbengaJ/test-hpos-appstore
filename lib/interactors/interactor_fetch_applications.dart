@@ -4,9 +4,9 @@ import 'package:hpos_appstore/providers/library_providers/library_provider.dart'
 
 class InteractorFetchApps {
   Future requestAllApps(LibraryProvider provider) async {
-    var productMapper = ProductMapper();
+    final productMapper = ProductMapper();
 
-    var apps = await listAvailableApplications()
+    final apps = await listAvailableApplications()
         .then((applications) => applications.map((app) => productMapper.productFromDto(app)));
 
     provider.products.value = apps.toList();
