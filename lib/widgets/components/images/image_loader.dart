@@ -94,7 +94,7 @@ bool _isLoading(String link, [ImageChunkEvent? loadingProgress]) {
     return true;
   }
 
-  // bytes are loadeding over the network, hence showing progress indicator.
+  // bytes are loading over the network, hence show progress indicator.
   if (loadingProgress != null && loadingProgress.cumulativeBytesLoaded > 0) {
     return true;
   }
