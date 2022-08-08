@@ -39,7 +39,7 @@ jobs:
       - name: Decode andriod/upload_key.jks
         run: echo "${{ secrets.KEYSTORE_JKS_ANDROID }}" | base64 --decode > android/app/key.jks
 
-      # Set-up SSH keys on runner
+      # Set-up SSH keys on Andriod runner
       -   name: Setup SSH Keys and known_hosts
           env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -50,8 +50,6 @@ jobs:
       - run: flutter pub get
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          
-      - run: flutter pub get
 
       #- run: flutter test
 
@@ -91,7 +89,19 @@ jobs:
       - uses: subosito/flutter-action@a93e024dfea2add254640576989cf8e6507ee7f9
         with:
           channel: 'stable'
+
+      # Set-up SSH keys on Andriod runner
+      -   name: Setup SSH Keys and known_hosts
+          env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: |
+              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+              ssh-add - <<< "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
+
       - run: flutter pub get
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
       #- run: flutter test
       - run: flutter build web
 
@@ -144,6 +154,7 @@ jobs:
           name: WEB_${{github.run_id}}
           path: |
             build/web/
+
   Windows:
     name: Build Windows
     if: |
@@ -175,6 +186,7 @@ jobs:
           name: Windows_${{github.run_id}}
           path: |
             build/windows/runner/Release/
+            
   Linux:
     name: Build Linux
     if: |
