@@ -53,6 +53,7 @@ class AppTexts {
   static const String seeAll = 'See all';
   static const String share = 'share';
   static const String shareLink = 'Share Link';
+  static const String shareWithApp = 'Share with app';
   static const String showMore = 'Show more';
   static const String showLess = 'Show less';
   static const String similarAppSuggestions = 'Similar App Suggestions';

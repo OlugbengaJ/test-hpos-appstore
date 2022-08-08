@@ -58,7 +58,7 @@ class ShareLink extends StatelessWidget {
                         const Padding(
                           padding: EdgeInsets.only(top: 8.0),
                           child: Text(
-                            'Share with app',
+                            AppTexts.shareWithApp,
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.bold),
                           ),
