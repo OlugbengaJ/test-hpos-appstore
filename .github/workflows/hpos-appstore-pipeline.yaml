@@ -39,7 +39,20 @@ jobs:
       - name: Decode andriod/upload_key.jks
         run: echo "${{ secrets.KEYSTORE_JKS_ANDROID }}" | base64 --decode > android/app/key.jks
 
+      # Set-up SSH keys on runner
+      -   name: Setup SSH Keys and known_hosts
+          env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: |
+              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+              ssh-add - <<< "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
+
       - run: flutter pub get
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          
+      - run: flutter pub get
+
       #- run: flutter test
 
       - name: Build APK
