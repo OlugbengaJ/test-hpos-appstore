@@ -55,7 +55,8 @@ class ImageLoader extends StatelessWidget {
       height: height,
       semanticLabel: semanticLabel,
       fit: fit,
-      loadingBuilder: (context, child, loadingProgress) => _progress(),
+      loadingBuilder: (context, child, loadingProgress) =>
+          loadingProgress == null ? child : _progress(),
       errorBuilder: (context, error, stackTrace) => _brokenImage(themeData),
     );
   }
@@ -63,7 +64,7 @@ class ImageLoader extends StatelessWidget {
   Widget _progress() {
     return Container(
       padding: EdgeInsets.all(progressIndicatorPadding ?? 30.0),
-      child: progressIndicator ?? const CircularProgressIndicator(),
+      child:  progressIndicator ?? const CircularProgressIndicator(),
     );
   }
 

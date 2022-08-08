@@ -32,42 +32,44 @@ class CardProductListItem extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Row(
-                  children:const [
-                       LogoProductRectangle(
-                borderLength: 71,
-                logoWidth: 35,
-                logoHeight: 32,
-              ),
-               Padding(padding: EdgeInsets.only(left: 39)),
-               ColumnProductInfo(headerOnly: true),
+                  children: const [
+                    LogoProductRectangle(
+                      borderLength: 71,
+                      logoWidth: 35,
+                      logoHeight: 35,
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 39)),
+                    ColumnProductInfo(headerOnly: true),
                   ],
                 ),
               ),
-            
               Expanded(
-                  flex: 3,
-                  child: Row(
-                    mainAxisAlignment: isInstalled!? MainAxisAlignment.spaceBetween:MainAxisAlignment.spaceAround,
-                    // alignment: WrapAlignment.center,
-                    // crossAxisAlignment: WrapCrossAlignment.center,
-                    children: const [
-                      ProductPriceTag(),
-                      // Padding(padding: EdgeInsets.only(left: 134)),
-                      SizedBox(width: 100, child: RatingView()),
-                      // Padding(padding: EdgeInsets.only(left: 127)),
-                      ButtonShare(),
-                    ],
-                  )),
+                flex: 3,
+                child: Row(
+                  mainAxisAlignment: isInstalled!
+                      ? MainAxisAlignment.spaceBetween
+                      : MainAxisAlignment.spaceAround,
+                  children: const [
+                    ProductPriceTag(),
+                    SizedBox(width: 100, child: RatingView()),
+                    ButtonShare(),
+                  ],
+                ),
+              ),
               Expanded(
-                  flex: (isInstalled == true) ? 2 : 1,
-                  child: (isInstalled == true)
-                      ? ButtonUpdateDelete(
-                          hasUpdate: hasUpdate,
-                          onDelete: () {},
-                          onUpdate: () {},
-                        )
-                      : const ButtonInstall(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)))),
+                flex: (isInstalled == true) ? 2 : 1,
+                child: (isInstalled == true)
+                    ? ButtonUpdateDelete(
+                        hasUpdate: hasUpdate,
+                        onDelete: () {},
+                        onUpdate: () {},
+                      )
+                    : const ButtonInstall(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                      ),
+              ),
             ],
           ),
         ),
