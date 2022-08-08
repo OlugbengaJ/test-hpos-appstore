@@ -17,7 +17,7 @@ class RatingView extends StatelessWidget {
         valueListenable: productProvider.ratingNotifier,
         builder: (context, rating, _) {
           return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ...List.generate(
                 rating.floor(),
