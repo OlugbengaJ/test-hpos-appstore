@@ -65,10 +65,7 @@ class CardProductListItem extends StatelessWidget {
                         onUpdate: () {},
                       )
                     : const ButtonInstall(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                      ),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
               ),
             ],
           ),

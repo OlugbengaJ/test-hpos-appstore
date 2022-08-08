@@ -55,8 +55,11 @@ class ImageLoader extends StatelessWidget {
       height: height,
       semanticLabel: semanticLabel,
       fit: fit,
-      loadingBuilder: (context, child, loadingProgress) =>
-          loadingProgress == null ? child : _progress(),
+      loadingBuilder: (context, child, loadingProgress) {
+        if (_isLoading(src, loadingProgress)) return _progress();
+
+        return child;
+      },
       errorBuilder: (context, error, stackTrace) => _brokenImage(themeData),
     );
   }
@@ -64,7 +67,7 @@ class ImageLoader extends StatelessWidget {
   Widget _progress() {
     return Container(
       padding: EdgeInsets.all(progressIndicatorPadding ?? 30.0),
-      child:  progressIndicator ?? const CircularProgressIndicator(),
+      child: progressIndicator ?? const CircularProgressIndicator(),
     );
   }
 
@@ -75,4 +78,22 @@ class ImageLoader extends StatelessWidget {
       color: themeData.primaryColor,
     );
   }
+}
+
+/// A place holder to hold image links that are loaded.
+final List<String> _appLinks = [];
+
+/// Identifies an image as loading or complete based on the
+/// status of the [loadingProgress]. Returns a [bool].
+bool _isLoading(String link, [ImageChunkEvent? loadingProgress]) {
+  if (!_appLinks.any((element) => element == link)) {
+    _appLinks.add(link);
+    return true;
+  }
+
+  if (loadingProgress != null && loadingProgress.cumulativeBytesLoaded > 0) {
+    return true;
+  }
+
+  return false;
 }
