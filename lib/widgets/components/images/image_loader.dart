@@ -86,14 +86,19 @@ final List<String> _appLinks = [];
 /// Identifies an image as loading or complete based on the
 /// status of the [loadingProgress]. Returns a [bool].
 bool _isLoading(String link, [ImageChunkEvent? loadingProgress]) {
+  // check if link exists in the list.
+  // first time a link is loaded it does not exist in the list,
+  // so we have to show a progress indicator.
   if (!_appLinks.any((element) => element == link)) {
     _appLinks.add(link);
     return true;
   }
 
+  // bytes are loadeding over the network, hence showing progress indicator.
   if (loadingProgress != null && loadingProgress.cumulativeBytesLoaded > 0) {
     return true;
   }
 
+  // done loading.
   return false;
 }
