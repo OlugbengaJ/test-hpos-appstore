@@ -81,7 +81,7 @@ class ImageLoader extends StatelessWidget {
 }
 
 /// A place holder to hold image links that are loaded.
-final List<String> _appLinks = [];
+final Set<String> _appLinks = {};
 
 /// Identifies an image as loading or complete based on the
 /// status of the [loadingProgress]. Returns a [bool].
