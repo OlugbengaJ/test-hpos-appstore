@@ -180,7 +180,7 @@ jobs:
           run: |
               Start-Service ssh-agent
               ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-              Get-Content {{ secrets.GIT_SSH_PRIVATE_KEY }} | ssh-add - < "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
+              Get-Content {{ secrets.GIT_SSH_PRIVATE_KEY }} | ssh-add - "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
 
       - run: flutter pub get
         env:
