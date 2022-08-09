@@ -17,6 +17,8 @@ class GridProductDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         ...apps.map((app) => ListenableProvider(
               create: (context) => ProductProvider.fromModel(app),
