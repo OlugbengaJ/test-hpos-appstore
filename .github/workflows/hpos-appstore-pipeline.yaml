@@ -178,7 +178,8 @@ jobs:
           env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           run: |
-              Start-Service ssh-agent
+              Get-Service ssh-agent | Set-Service -StartupType Manual
+              Get-service ssh-agent | Start-Service
               ssh-agent -a $SSH_AUTH_SOCK > /dev/null
               Get-Content {{ secrets.GIT_SSH_PRIVATE_KEY }} | ssh-add - "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
 
