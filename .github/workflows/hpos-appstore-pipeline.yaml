@@ -89,7 +89,7 @@ jobs:
         with:
           channel: 'stable'
 
-      # Set-up SSH keys on Andriod runner
+      # Set-up SSH keys on Web runner
       -   name: Setup SSH Keys and known_hosts
           env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -170,21 +170,11 @@ jobs:
         with:
           channel: 'stable'
       
-      # Set-up SSH keys on Andriod runner
-      -   name: Setup SSH Keys and known_hosts
-          env:
-            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          run: |
-              Get-Service ssh-agent | Set-Service -StartupType Manual
-              Get-service ssh-agent | Start-Service
-  
-              Add-Content - Path .\web\ssh-key -Value (Get-Content "${{ secrets.GIT_SSH_PRIVATE_KEY }}")
-              eval "$(ssh-agent -s)" 
-              ssh-add .\web\ssh-key
-
+      # Set-up SSH keys on Windows runner
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
       - run: flutter pub get
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - run: flutter config --enable-windows-desktop
       - run: flutter build windows
@@ -221,7 +211,7 @@ jobs:
       - run: |
           sudo apt-get update -y
           sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
-      # Set-up SSH keys on Andriod runner
+      # Set-up SSH keys on Linux runner
       -   name: Setup SSH Keys and known_hosts
           env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
