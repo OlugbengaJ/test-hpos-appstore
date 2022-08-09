@@ -89,7 +89,7 @@ bool _isLoading(String link, [ImageChunkEvent? loadingProgress]) {
   // check if link exists in the list.
   // first time a link is loaded it does not exist in the list,
   // so we have to show a progress indicator.
-  if (!_appLinks.any((element) => element == link)) {
+  if (!_appLinks.contains(link)){
     _appLinks.add(link);
     return true;
   }
