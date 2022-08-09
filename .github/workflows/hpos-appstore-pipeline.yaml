@@ -46,7 +46,6 @@ jobs:
           run: |
               ssh-agent -a $SSH_AUTH_SOCK > /dev/null
               ssh-add - <<< "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
-
       - run: flutter pub get
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -95,8 +94,8 @@ jobs:
           env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           run: |
+              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
               ssh-add - <<< "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
-
       - run: flutter pub get
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -153,7 +152,6 @@ jobs:
           name: WEB_${{github.run_id}}
           path: |
             build/web/
-
   Windows:
     name: Build Windows
     if: |
@@ -179,9 +177,8 @@ jobs:
           run: |
               Get-Service ssh-agent | Set-Service -StartupType Manual
               Get-service ssh-agent | Start-Service
-              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+  
               Get-Content {{ secrets.GIT_SSH_PRIVATE_KEY }} | ssh-add "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
-
       - run: flutter pub get
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -200,7 +197,6 @@ jobs:
           name: Windows_${{github.run_id}}
           path: |
             build/windows/runner/Release/
-
   Linux:
     name: Build Linux
     if: |
@@ -229,7 +225,6 @@ jobs:
           run: |
               ssh-agent -a $SSH_AUTH_SOCK > /dev/null
               ssh-add - <<< "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
-
       - run: flutter pub get
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -240,7 +235,6 @@ jobs:
         run: |
           dart pub global activate flutter_to_debian
           flutter_to_debian
-
           DEB=$(ls debian/packages/hpos*.deb)
           # TODO: upload deb to nanabenz repo --> Job: Upload-deb-package
       
@@ -320,13 +314,11 @@ jobs:
           PACKAGE=hpos_appstore
           OS_CODENAME=jammy
           SSH_HOST=hp_vm2@51.12.90.239
-
           # upload hpos appstore debian package
           TARGET_FILE=/tmp/$(basename "$DEB")
           echo "==== Uploading $DEB to $SSH_HOST"
           echo "${{ secrets.APT_REPO_SSH_PRIVATE_KEY }}" > apt-repo-key
           chmod 600 apt-repo-key
-
           # Reprepro doesn't allow updating a package with the same
           # version. For this POC, wipe out the existing package first
           ssh -i apt-repo-key -o StrictHostKeyChecking=no "$SSH_HOST" \
