@@ -81,15 +81,19 @@ class ApplicationInfo extends ProductInfo {
 }
 
 class ApplicationRequirements {
-  final BigInt requiredRam;
-  final BigInt requiredDisk;
-  final BigInt requiredBandwidth;
+  final String? requiredOSVersion;
+  final BigInt? requiredRam;
+  final BigInt? requiredDisk;
+  final BigInt? requiredBandwidth;
+  final BigInt? requiredProcessorMHz;
 
-  ApplicationRequirements(
+  ApplicationRequirements({
+    this.requiredOSVersion,
     this.requiredRam,
     this.requiredDisk,
     this.requiredBandwidth,
-  );
+    this.requiredProcessorMHz
+  });
 }
 
 abstract class ProductInfo {}

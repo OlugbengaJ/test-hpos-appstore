@@ -4,6 +4,7 @@ import 'package:hpos_appstore/utils/languages.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 
 class ProductProvider extends ChangeNotifier {
+  final idNotifier = ValueNotifier(BigInt.one);
   final nameNotifier = ValueNotifier('Microsoft Teams');
   final categoryNotifier = ValueNotifier('Productivity');
   final ratingNotifier = ValueNotifier(3.0);
@@ -24,6 +25,7 @@ class ProductProvider extends ChangeNotifier {
   ProductProvider();
 
   ProductProvider.fromModel(Product product) {
+    id = product.id;
     name = product.name;
     category = product.category;
     rating = product.avgRatings;
@@ -36,6 +38,10 @@ class ProductProvider extends ChangeNotifier {
     supportedLanguages = product.languages;
     parentalGuidanceAge = product.parentalGuidanceAge;
   }
+
+  BigInt get id => idNotifier.value;
+
+  set id(BigInt id) => idNotifier.value = id;
 
   String get name => nameNotifier.value;
 
