@@ -10,8 +10,13 @@ class LibraryScreen extends StatelessWidget {
 
   static const screenConfig = ScreenConfig(
     '/library',
-    child: Text(AppTexts.library,
-        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500)),
+    child: Text(
+      AppTexts.library,
+      style: TextStyle(
+        fontSize: 24.0,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
   );
 
   @override
@@ -27,7 +32,6 @@ class LibraryScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           LibraryHeaderView(),
-          // Padding(padding: EdgeInsets.only(bottom: 40)),
           LibraryView(),
         ],
       ),
