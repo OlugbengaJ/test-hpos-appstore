@@ -44,14 +44,6 @@ class SuggestedApps {
   SuggestedApps(this.tag, this.products);
 }
 
-class ProductFilterTag {
-  final int id;
-  final String name;
-  final String slug;
-
-  ProductFilterTag(this.id, this.name, this.slug);
-}
-
 enum InstallationStatus { notInstalled, installed }
 
 class ApplicationInfo extends ProductInfo {

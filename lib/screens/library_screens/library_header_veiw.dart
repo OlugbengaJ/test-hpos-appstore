@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/interactors/interactor_fetch_categories.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
@@ -12,8 +13,7 @@ class LibraryHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LibraryProvider libraryProvider =
-        Provider.of<LibraryProvider>(context, listen: false);
+    var libraryProvider = Provider.of<LibraryProvider>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,21 +54,6 @@ class LibraryHeaderView extends StatelessWidget {
                                   ? AppColors.primary
                                   : AppColors.greyW400)),
                 ),
-                // child: Column(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       const Text('All Apps'),
-                //       const Padding(padding: EdgeInsets.only(bottom: 25)),
-                //       Container(
-                //           height: 2,
-                //           width: 70,
-                //           decoration: BoxDecoration(
-                //             color: (libraryProvider.appView ==
-                //                     LibraryProducts.all)
-                //                 ? AppColors.primary
-                //                 : Colors.transparent,
-                //           ))
-                //     ]),
                 onTap: () {
                   libraryProvider.setAppView(LibraryProducts.all);
                 },
@@ -96,21 +81,6 @@ class LibraryHeaderView extends StatelessWidget {
                             : AppColors.greyW400),
                   ),
                 ),
-                // child: Column(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       const Text('Installed Apps'),
-                //       const Padding(padding: EdgeInsets.only(bottom: 15)),
-                //       Container(
-                //           height: 2,
-                //           width: 100,
-                //           decoration: BoxDecoration(
-                //             color: (libraryProvider.appView ==
-                //                     LibraryProducts.installed)
-                //                 ? AppColors.primary
-                //                 : Colors.transparent,
-                //           ))
-                //     ]),
                 onTap: () {
                   libraryProvider.setAppView(LibraryProducts.installed);
                 },
@@ -122,14 +92,20 @@ class LibraryHeaderView extends StatelessWidget {
             ? Column(
                 children: [
                   app_spacer.Spacer.bottomLarge,
-                  ScrollableStack(
-                    disableIcons: true,
-                    children: [
-                      ...Provider.of<LibraryProvider>(context).getTags().map(
-                            (e) => ProductTagButton(
-                                id: e.id, name: e.name, slug: e.slug),
+                  ValueListenableBuilder<List<String>>(
+                    valueListenable: libraryProvider.categories,
+                    builder: (context, categories, _) {
+                      return ScrollableStack(
+                        disableIcons: true,
+                        children: [
+                          ...categories.map(
+                            (tag) => ProductTagButton(
+                              name: tag,
+                            ),
                           ),
-                    ],
+                        ],
+                      );
+                    },
                   ),
                 ],
               )

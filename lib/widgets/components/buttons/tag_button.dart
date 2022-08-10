@@ -4,12 +4,11 @@ import 'package:hpos_appstore/widgets/themes.dart';
 import 'package:provider/provider.dart';
 
 class ProductTagButton extends StatelessWidget {
-  const ProductTagButton(
-      {Key? key, required this.id, required this.name, required this.slug})
-      : super(key: key);
+  const ProductTagButton({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
   final String name;
-  final String slug;
-  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +18,9 @@ class ProductTagButton extends StatelessWidget {
       padding: const EdgeInsets.only(right: 10.0),
       child: TextButton(
         onPressed: () {
-          libraryProvider.setFilterTag(slug);
+          libraryProvider.filterTag = name;
         },
-        style: (libraryProvider.filterTag == slug)
+        style: (libraryProvider.filterTag == name)
             ? filterBtnPrimary
             : filterBtnWhite,
         child: Wrap(
@@ -36,10 +35,12 @@ class ProductTagButton extends StatelessWidget {
               padding: const EdgeInsets.only(top: 2.0),
               child: InkWell(
                 onTap: () {
-                  libraryProvider.removeFilterTag(id);
+                  libraryProvider.removeFilterTag(name);
                 },
-                child: Icon(Icons.close,
-                    size: (libraryProvider.filterTag == slug) ? 15 : 0),
+                child: Icon(
+                  Icons.close,
+                  size: (libraryProvider.filterTag == name) ? 15 : 0,
+                ),
               ),
             ),
           ],
