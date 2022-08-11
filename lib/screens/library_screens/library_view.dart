@@ -89,7 +89,7 @@ class LibraryView extends StatelessWidget {
               ),
               const Padding(padding: EdgeInsets.only(bottom: 38)),
               ValueListenableBuilder<List<Product>>(
-                  valueListenable: libraryProvider.products,
+                  valueListenable: libraryProvider.filteredProductsNotifier,
                   builder: (context, products, _) {
                     return (displayType == LibraryDisplay.grid)
                         ? GridProductDisplay(

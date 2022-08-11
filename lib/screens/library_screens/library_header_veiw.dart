@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/interactors/interactor_fetch_categories.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
+import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_list_item.dart';
 import 'package:provider/provider.dart';
@@ -12,25 +13,31 @@ class ListProductDisplay extends StatelessWidget {
   final List<Product> apps;
   final bool? isInstalled;
 
-  // final Bool? showTitle;
-
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      runSpacing: 12,
-      children: [
-        ...apps
-            .map(
-              (app) => ListenableProvider(
-                create: (context) => ProductProvider.fromModel(app),
-                child: CardProductListItem(
-                  isInstalled: isInstalled,
-                  hasUpdate: app.applicationInfo?.updateAvailable,
-                ),
-              ),
-            )
-            .toList(),
-      ],
-    );
+    var libraryProvider = Provider.of<LibraryProvider>(context);
+
+    return ValueListenableBuilder<bool>(
+        valueListenable: libraryProvider.loadingNotifier,
+        builder: (context, loading, _) {
+          return loading
+              ? const Center(child: CircularProgressIndicator())
+              : Wrap(
+                  runSpacing: 12,
+                  children: [
+                    ...apps
+                        .map(
+                          (app) => ListenableProvider(
+                            create: (context) => ProductProvider.fromModel(app),
+                            child: CardProductListItem(
+                              isInstalled: isInstalled,
+                              hasUpdate: app.applicationInfo?.updateAvailable,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ],
+                );
+        });
   }
 }
