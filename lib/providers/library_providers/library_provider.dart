@@ -7,8 +7,10 @@ import 'package:hpos_appstore/models/product_model.dart';
 class LibraryProvider extends ChangeNotifier {
   LibraryProducts appView = LibraryProducts.all;
   ValueNotifier<String> filterTagNotifier = ValueNotifier('All');
-  ValueNotifier<List<Product>> products = ValueNotifier([]);
+  ValueNotifier<List<Product>> productsNotifier = ValueNotifier([]);
   ValueNotifier<List<String>> categories = ValueNotifier([]);
+  ValueNotifier<List<Product>> filteredProductsNotifier = ValueNotifier([]);
+  ValueNotifier<bool> loadingNotifier = ValueNotifier(false);
   InteractorFetchApps appsInteractor = InteractorFetchApps();
   InteractorFetchCategories categoriesInteractor = InteractorFetchCategories();
 
@@ -24,13 +26,32 @@ class LibraryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get filterTag {
-    return filterTagNotifier.value;
+  List<Product> get products => productsNotifier.value;
+
+  set products(List<Product> products) {
+    productsNotifier.value = products;
+    _applyFilter();
   }
+
+  String get filterTag => filterTagNotifier.value;
 
   set filterTag(String choice) {
     filterTagNotifier.value = choice;
+    loadingNotifier.value = true;
+    // give sometime for the listener to update the screen before passing the new list
+    Future.delayed(const Duration(milliseconds: 60), _applyFilter);
     notifyListeners();
+  }
+
+  Future _applyFilter() async {
+    filteredProductsNotifier.value = (filterTag == 'All' || filterTag.isEmpty)
+        ? List.from(productsNotifier.value)
+        : List.from(
+            productsNotifier.value.where(
+              (product) => product.category == filterTag,
+            ),
+          );
+    loadingNotifier.value = false;
   }
 
   List<String> removeFilterTag(String name) {

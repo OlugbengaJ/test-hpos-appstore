@@ -6,9 +6,9 @@ class InteractorFetchApps {
   Future requestAllApps(LibraryProvider provider) async {
     final productMapper = ProductMapper();
 
-    final apps = await listAvailableApplications()
-        .then((applications) => applications.map((app) => productMapper.productFromDto(app)));
+    final apps = await listAvailableApplications().then((applications) =>
+        applications.map((app) => productMapper.productFromDto(app)));
 
-    provider.products.value = apps.toList();
+    provider.products = apps.toList();
   }
 }
