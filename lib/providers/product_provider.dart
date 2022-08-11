@@ -65,6 +65,7 @@ class ProductProvider extends ChangeNotifier {
 
   set rating(double rating) {
     if (rating < minRating || rating > maxRating) return;
+    // TODO: Call dart library here to update ratings
     ratingNotifier.value = rating;
   }
 
