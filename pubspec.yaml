@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.17.0 <=3.0.5"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -33,7 +33,20 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  cached_network_image: ^3.1.0
   cupertino_icons: ^1.0.2
+  flutter_rating_bar: ^4.0.1
+  flutter_svg: ^1.1.1+1
+  hpos_app_store:                                                                                                                       
+    git:                                                              
+      url: git@github.com:ext-andela/lib-hpos-app-store.git
+      ref: main
+  ionicons: ^0.1.2
+  line_icons: ^2.0.1
+  percent_indicator: ^4.2.2
+  provider: ^6.0.2
+  url_launcher: ^6.1.5
+        
 
 dev_dependencies:
   flutter_test:
@@ -58,9 +71,18 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/icons/star.png
+    - assets/icons/half_star.png
+    - assets/icons/logos_microsoft-teams.png
+    - assets/icons/download_icon.png
+    - assets/icons/share_icon.png
+    - assets/icons/install.svg
+    - assets/icons/arrow_forward.svg
+    - assets/icons/grid_icon.svg
+    - assets/icons/list_icon.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -87,3 +109,20 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: EuclidCircularB
+      fonts:
+        - asset: assets/fonts/EuclidCircularB-Regular.ttf
+        - asset: assets/fonts/EuclidCircularB-Italic.ttf
+          style: italic
+        - asset: assets/fonts/EuclidCircularB-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/EuclidCircularB-Light.ttf
+        - asset: assets/fonts/EuclidCircularB-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/EuclidCircularB-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/EuclidCircularB-SemiBoldItalic.ttf
+        - asset: assets/fonts/EuclidCircularB-BoldItalic.ttf
+        - asset: assets/fonts/EuclidCircularB-LightItalic.ttf
+        - asset: assets/fonts/EuclidCircularB-MediumItalic.ttf
