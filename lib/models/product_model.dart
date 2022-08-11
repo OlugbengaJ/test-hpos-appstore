@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Product {
   final BigInt id;
   final String description;
@@ -73,15 +75,19 @@ class ApplicationInfo extends ProductInfo {
 }
 
 class ApplicationRequirements {
-  final BigInt requiredRam;
-  final BigInt requiredDisk;
-  final BigInt requiredBandwidth;
+  final String requiredOSVersion;
+  final BigInt? requiredRam;
+  final BigInt? requiredDisk;
+  final BigInt? requiredProcessorMHz;
+  final Size? requiredScreenSize;
 
-  ApplicationRequirements(
+  ApplicationRequirements({
+    required this.requiredOSVersion,
     this.requiredRam,
     this.requiredDisk,
-    this.requiredBandwidth,
-  );
+    this.requiredProcessorMHz,
+    this.requiredScreenSize
+  });
 }
 
 abstract class ProductInfo {}
