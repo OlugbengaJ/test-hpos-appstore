@@ -11,13 +11,14 @@ import 'button_install.dart';
 import 'logo_product_banner.dart';
 
 class CardProductVertical extends StatelessWidget {
-  const CardProductVertical({Key? key, this.isInstalled, this.hasUpdate})
+  const CardProductVertical({Key? key, this.hasUpdate})
       : super(key: key);
-  final bool? isInstalled;
   final bool? hasUpdate;
 
   @override
   Widget build(BuildContext context) {
+    var productProvider = Provider.of<ProductProvider>(context);
+
     return ProductCardNavigation(
       child: Card(
         child: Container(
@@ -31,17 +32,20 @@ class CardProductVertical extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(bottom: 11.0)),
               const CardDetails(),
               const Padding(padding: EdgeInsets.only(bottom: 17)),
-              (isInstalled == true)
-                  ? ButtonUpdateDelete(
-                      hasUpdate: hasUpdate,
-                      onDelete: () {},
-                      onUpdate: () {},
-                    )
-                  : const ButtonInstall(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(Numericals.double8),
+              ValueListenableBuilder<bool>(
+                valueListenable: productProvider.isInstalled,
+                builder: (context, isInstalled, _) => isInstalled
+                    ? ButtonUpdateDelete(
+                        hasUpdate: hasUpdate,
+                        onDelete: () {},
+                        onUpdate: () {},
+                      )
+                    : const ButtonInstall(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(Numericals.double8),
+                        ),
                       ),
-                    )
+              ),
             ],
           ),
         ),

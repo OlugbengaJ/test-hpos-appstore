@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/utils_import.dart';
+import 'package:provider/provider.dart';
 
 class ButtonInstall extends StatelessWidget {
   const ButtonInstall({Key? key, this.borderRadius = BorderRadius.zero})
@@ -10,6 +13,7 @@ class ButtonInstall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var productProvider = Provider.of<ProductProvider>(context);
     return SizedBox(
       height: 40.0,
       // width: 256,
@@ -20,7 +24,9 @@ class ButtonInstall extends StatelessWidget {
             borderRadius: borderRadius,
           ),
         ),
-        onPressed: () => {},
+        onPressed: () => {
+          Provider.of<LibraryProvider>(context, listen: false).install(productProvider.productId)
+        },
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,

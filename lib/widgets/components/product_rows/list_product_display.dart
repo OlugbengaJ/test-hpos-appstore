@@ -30,7 +30,6 @@ class ListProductDisplay extends StatelessWidget {
                           (app) => ListenableProvider(
                             create: (context) => ProductProvider.fromModel(app),
                             child: CardProductListItem(
-                              isInstalled: isInstalled,
                               hasUpdate: app.applicationInfo?.updateAvailable,
                             ),
                           ),

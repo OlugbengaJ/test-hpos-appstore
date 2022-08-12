@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/utils/texts.dart';
+import 'package:provider/provider.dart';
 
 class ButtonUpdateDelete extends StatelessWidget {
   const ButtonUpdateDelete(
@@ -21,6 +24,8 @@ class ButtonUpdateDelete extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var productProvider = Provider.of<ProductProvider>(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       // crossAxisAlignment:WrapCrossAlignment.center,
@@ -74,7 +79,10 @@ class ButtonUpdateDelete extends StatelessWidget {
                     BorderRadius.all(Radius.circular(Numericals.double8)),
               ),
             ),
-            onPressed: () => {},
+            onPressed: () => {
+              Provider.of<LibraryProvider>(context, listen: false)
+                  .uninstall(productProvider.productId)
+            },
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,

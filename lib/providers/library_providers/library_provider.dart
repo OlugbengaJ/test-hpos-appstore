@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/interactors/interactor_fetch_applications.dart';
 import 'package:hpos_appstore/interactors/interactor_fetch_categories.dart';
+import 'package:hpos_appstore/mappers/product_mapper.dart';
 import 'package:hpos_appstore/models/app_enum.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 
@@ -57,4 +58,26 @@ class LibraryProvider extends ChangeNotifier {
   List<String> removeFilterTag(String name) {
     return [];
   }
+
+  Future install(BigInt applicationId) async {
+    Product app = products.firstWhere((element) => element.id == applicationId);
+    if (app.applicationInfo == null) {
+      throw MissingAppInfoException();
+    }
+
+    await ProductMapper.getAppId(app).install();
+    app.applicationInfo!.installationStatus = InstallationStatus.installed;
+  }
+
+  Future uninstall(BigInt applicationId) async {
+    Product app = products.firstWhere((element) => element.id == applicationId);
+    if (app.applicationInfo == null) {
+      throw MissingAppInfoException();
+    }
+
+    await ProductMapper.getAppId(app).remove();
+    app.applicationInfo!.installationStatus = InstallationStatus.notInstalled;
+  }
 }
+
+class MissingAppInfoException implements Exception {}
