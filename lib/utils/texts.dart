@@ -69,6 +69,11 @@ class AppTexts {
   static const String systemRequirements = 'System requirements';
   static const String systemRequirementsMessage =
       'This application should work on your device. Items with a tick meets the developer’s system requirments';
+  static const String systemRequirementsOsVersion = 'Required Operating System Version:';
+  static const String systemRequirementsMemory = 'Required Memory (RAM):';
+  static const String systemRequirementsDisk = 'Required Disk Space:';
+  static const String systemRequirementsProcessor = 'Required Processor MHz:';
+  static const String systemRequirementsScreenDimension = 'Required Screen Dimension:';
   static const String termsOfSale = 'Terms of Sale';
   static const String uninstall = 'Uninstall';
   static const String uninstallApp = 'Uninstall Application';

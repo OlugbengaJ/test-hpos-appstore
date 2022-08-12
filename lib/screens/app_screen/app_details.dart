@@ -45,7 +45,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
         name: 'Microsoft Teams',
         description: '',
         category: 'Productivity',
@@ -62,7 +62,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
         name: 'Google Meet',
         description: '',
         category: 'Productivity',
@@ -79,7 +79,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
         name: 'Zoom',
         description: '',
         category: 'Productivity',
@@ -96,7 +96,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
         name: 'Google Suite',
         description: '',
         category: 'Productivity',
@@ -114,7 +114,7 @@ class AppDetailsView extends StatelessWidget {
     ];
 
     var suggestedProd =
-        SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
+    SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
 
     return Column(
       children: [
