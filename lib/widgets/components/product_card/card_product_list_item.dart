@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/product_card/button_update_delete.dart';
@@ -7,18 +8,20 @@ import 'package:hpos_appstore/widgets/components/product_card/logo_product_recta
 import 'package:hpos_appstore/widgets/components/product_card/product_card_navigation.dart';
 import 'package:hpos_appstore/widgets/components/product_card/product_price_tag.dart';
 import 'package:hpos_appstore/widgets/components/product_card/rating_view.dart';
+import 'package:provider/provider.dart';
 
 import 'button_install.dart';
 
 class CardProductListItem extends StatelessWidget {
-  const CardProductListItem(
-      {Key? key, this.isInstalled = false, this.hasUpdate = false})
+  const CardProductListItem({Key? key, this.hasUpdate = false})
       : super(key: key);
-  final bool? isInstalled;
+
   final bool? hasUpdate;
 
   @override
   Widget build(BuildContext context) {
+    var productProvider = Provider.of<ProductProvider>(context);
+
     return ProductCardNavigation(
       child: Card(
         child: Container(
@@ -45,28 +48,37 @@ class CardProductListItem extends StatelessWidget {
               ),
               Expanded(
                 flex: 3,
-                child: Row(
-                  mainAxisAlignment: isInstalled!
-                      ? MainAxisAlignment.spaceBetween
-                      : MainAxisAlignment.spaceAround,
-                  children: const [
-                    ProductPriceTag(),
-                    SizedBox(width: 100, child: RatingView()),
-                    ButtonShare(),
-                  ],
-                ),
+                child: ValueListenableBuilder<bool>(
+                    valueListenable: productProvider.isInstalled,
+                    builder: (context, isInstalled, _) {
+                      return Row(
+                        mainAxisAlignment: isInstalled
+                            ? MainAxisAlignment.spaceBetween
+                            : MainAxisAlignment.spaceAround,
+                        children: const [
+                          ProductPriceTag(),
+                          SizedBox(width: 100, child: RatingView()),
+                          ButtonShare(),
+                        ],
+                      );
+                    }),
               ),
-              Expanded(
-                flex: (isInstalled == true) ? 2 : 1,
-                child: (isInstalled == true)
-                    ? ButtonUpdateDelete(
-                        hasUpdate: hasUpdate,
-                        onDelete: () {},
-                        onUpdate: () {},
-                      )
-                    : const ButtonInstall(
-                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
-              ),
+              ValueListenableBuilder<bool>(
+                  valueListenable: productProvider.isInstalled,
+                  builder: (context, isInstalled, _) {
+                    return Expanded(
+                      flex: (isInstalled == true) ? 2 : 1,
+                      child: (isInstalled == true)
+                          ? ButtonUpdateDelete(
+                              hasUpdate: hasUpdate,
+                              onDelete: () {},
+                              onUpdate: () {},
+                            )
+                          : const ButtonInstall(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0))),
+                    );
+                  }),
             ],
           ),
         ),
