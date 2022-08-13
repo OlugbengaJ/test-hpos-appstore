@@ -23,9 +23,7 @@ class InteractorFetchApps {
 
     return await Future(() async {
       final appMetadata = getTopAppsForCategory(category, pageSize);
-      final apps = appMetadata.map(
-        (app) => productMapper.productFromDto(app),
-      );
+      final apps = appMetadata.map((app) => productMapper.productFromDto(app));
 
       return [...apps];
     });
