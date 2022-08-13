@@ -37,6 +37,46 @@ class Product {
     this.parentalGuidanceAge = 12,
     this.applicationInfo,
   });
+
+  /// Returns a new instance from based on values supplied.
+  /// Where the parameter is null, a value from this instance is used.
+  Product copyWith({
+    BigInt? id,
+    String? description,
+    String? longDescription,
+    List<String>? screenShots,
+    List<String>? tags,
+    String? logo,
+    String? name,
+    String? category,
+    String? price,
+    double? avgRatings,
+    int? numRatings,
+    int? minAge,
+    String? developer,
+    List<String>? languages,
+    int? parentalGuidanceAge,
+    ApplicationInfo? applicationInfo,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      description: description ?? this.description,
+      longDescription: longDescription ?? this.longDescription,
+      screenShots: screenShots ?? this.screenShots,
+      tags: tags ?? this.tags,
+      logo: logo ?? this.logo,
+      name: name ?? this.name,
+      category: category ?? this.category,
+      price: price ?? this.price,
+      avgRatings: avgRatings ?? this.avgRatings,
+      numRatings: numRatings ?? this.numRatings,
+      minAge: minAge ?? this.minAge,
+      developer: developer ?? this.developer,
+      languages: languages ?? this.languages,
+      parentalGuidanceAge: parentalGuidanceAge ?? this.parentalGuidanceAge,
+      applicationInfo: applicationInfo ?? this.applicationInfo,
+    );
+  }
 }
 
 class SuggestedApps {

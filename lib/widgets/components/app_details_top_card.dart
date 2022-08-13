@@ -2,6 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hpos_app_store/hpos_app_store.dart';
+import 'package:hpos_appstore/mappers/product_mapper.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/app_provider/app_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/assets.dart';
@@ -262,10 +265,18 @@ class AppDetailsTopCard extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              content: ShareLink(
-                                key: GlobalKey(),
-                                link: 'my-app-link ${Random().nextDouble()}',
-                              ).build(context),
+                              content: ValueListenableBuilder<Product?>(
+                                valueListenable:
+                                    productProvider.productValueNotifier,
+                                builder: (context, product, child) {
+                                  return ShareLink(
+                                    key: GlobalKey(),
+                                    productName: product?.name,
+                                    link: ProductMapper.getAppId(product)
+                                        ?.getSharingWebUrl(),
+                                  ).build(context);
+                                },
+                              ),
                             );
                           },
                           size: 48.0,

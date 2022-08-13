@@ -27,10 +27,16 @@ class ProductProvider extends ChangeNotifier {
   var minRating = 1;
   var maxRating = 5;
 
+  /// Holds a copy of the original value from the product
+  final productValueNotifier = ValueNotifier<Product?>(null);
+
   ProductProvider(BuildContext context)
       : deviceConfig = PhysicalDeviceConfig(context);
 
   ProductProvider.fromModel(Product product) {
+    // need to persist for later use e.g. to generate shared links.
+    productValueNotifier.value = product.copyWith();
+
     productId = product.id;
     name = product.name;
     category = product.category;

@@ -67,7 +67,7 @@ class LibraryProvider extends ChangeNotifier {
       throw MissingAppInfoException();
     }
 
-    await ProductMapper.getAppId(app).install();
+    await ProductMapper.getAppId(app)?.install();
     app.applicationInfo!.installationStatus = InstallationStatus.installed;
   }
 
@@ -77,7 +77,7 @@ class LibraryProvider extends ChangeNotifier {
       throw MissingAppInfoException();
     }
 
-    await ProductMapper.getAppId(app).remove();
+    await ProductMapper.getAppId(app)?.remove();
     app.applicationInfo!.installationStatus = InstallationStatus.notInstalled;
   }
 }

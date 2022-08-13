@@ -3,13 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:hpos_appstore/utils/constraints.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
+import 'package:hpos_appstore/widgets/components/spacer.dart' as appspacer;
 import 'package:hpos_appstore/widgets/components/texts/textfield_box.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ShareLink extends StatelessWidget {
-  const ShareLink({Key? key, required this.link}) : super(key: key);
+  const ShareLink({Key? key, this.productName, this.link}) : super(key: key);
 
-  final String link;
+  final String? productName;
+  final String? link;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +22,7 @@ class ShareLink extends StatelessWidget {
       child: Builder(
         builder: (context) => Container(
           margin: EdgeInsets.zero,
-          constraints: BoxConstraints(
-            maxWidth: screenSize.width * 0.4,
-            maxHeight: screenSize.height * 0.4,
-          ),
-          width: screenSize.width * 0.25,
+          width: screenSize.width * 0.2,
           height: screenSize.height * 0.3,
           child: Scaffold(
             body: SizedBox.expand(
@@ -34,15 +32,22 @@ class ShareLink extends StatelessWidget {
                     constraints: BoxConstraints(minHeight: screenSize.height),
                     child: SingleChildScrollView(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // row for the available apps
+                          // row for the available app
+                          Text(
+                            productName ?? '',
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          appspacer.Spacer.bottomMedium,
                           TextFieldBox(
                             textController: TextEditingController(text: link),
                             onChanged: null,
                             enabled: false,
                             textAlign: TextAlign.center,
+                            maxLines: 1,
                           ),
                         ],
                       ),
@@ -67,47 +72,54 @@ class ShareLink extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             _ShareLinkOption(
-                              link: link,
                               text: AppTexts.copyLink,
                               icon: Icons.link,
-                              tapHandler: () {
-                                Clipboard.setData(ClipboardData(text: link));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    backgroundColor: themeData.primaryColor,
-                                    content: Text(
-                                      '"$link", ${AppTexts.notifyCopyToClipboard}',
-                                      textAlign: TextAlign.center,
-                                      style: themeData
-                                          .snackBarTheme.contentTextStyle
-                                          ?.copyWith(color: Colors.white),
-                                    ),
-                                  ),
-                                );
-                              },
+                              tapHandler: (link == null)
+                                  ? null
+                                  : () {
+                                      Clipboard.setData(
+                                          ClipboardData(text: link));
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          backgroundColor:
+                                              themeData.primaryColor,
+                                          content: Text(
+                                            AppTexts.notifyCopyToClipboard,
+                                            textAlign: TextAlign.center,
+                                            style: themeData
+                                                .snackBarTheme.contentTextStyle
+                                                ?.copyWith(color: Colors.white),
+                                          ),
+                                        ),
+                                      );
+                                    },
                             ),
                             const Divider(height: 100),
                             _ShareLinkOption(
-                              link: link,
                               text: AppTexts.email,
                               icon: Icons.mail,
                               iconSize: 36.0,
-                              tapHandler: () {
-                                final emailUri = Uri(
-                                  scheme: 'mailto',
-                                  // path: 'adeleke.adelaja@andela.com',
-                                  query: {
-                                    'subject': 'hpos App Link',
-                                    'body': 'Here is your hpos App Link:'
-                                        '\r\n\r\n $link \r\n',
-                                  }
-                                      .entries
-                                      .map((e) =>
-                                          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                      .join('&'),
-                                );
-                                launchUrl(emailUri);
-                              },
+                              tapHandler: link == null
+                                  ? null
+                                  : () {
+                                      final emailUri = Uri(
+                                        scheme: 'mailto',
+                                        // path: 'adeleke.adelaja@andela.com',
+                                        query: {
+                                          'subject': '$productName App Link',
+                                          'body': 'Amaka thinks you would like the app'
+                                              ' $productName, and we agree.'
+                                              '\r\n\r\nHere is a link to try the app:'
+                                              '\r\n\r\n$link\r\n\r\n',
+                                        }
+                                            .entries
+                                            .map((e) =>
+                                                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                            .join('&'),
+                                      );
+                                      launchUrl(emailUri);
+                                    },
                             ),
                           ],
                         ),
@@ -127,14 +139,12 @@ class ShareLink extends StatelessWidget {
 class _ShareLinkOption extends StatelessWidget {
   const _ShareLinkOption({
     Key? key,
-    required this.link,
     required this.text,
     this.icon,
     this.iconSize,
     this.tapHandler,
   }) : super(key: key);
 
-  final String link;
   final String text;
   final IconData? icon;
   final double? iconSize;

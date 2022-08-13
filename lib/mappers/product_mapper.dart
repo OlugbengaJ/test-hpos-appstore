@@ -51,7 +51,9 @@ class ProductMapper {
     );
   }
 
-  static lib.AppId getAppId(Product product) {
+  static lib.AppId? getAppId(Product? product) {
+    if (product == null) return null;
+
     final lib.AppMetadata appMetadata = ProductMapper().productToDto(product);
     return lib.AppId.fromMetadata(appMetadata);
   }
