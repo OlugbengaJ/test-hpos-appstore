@@ -9,7 +9,6 @@ import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:provider/provider.dart';
 
 /// A stateful widget used to render a product suggestion section.
-// cardType: CardType.vertical,
 class SuggestionTagState extends StatefulWidget {
   const SuggestionTagState({
     Key? key,
