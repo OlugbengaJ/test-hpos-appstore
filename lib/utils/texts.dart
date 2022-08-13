@@ -58,7 +58,6 @@ class AppTexts {
   static const String showLess = 'Show less';
   static const String similarAppSuggestions = 'Similar App Suggestions';
   static const String size = 'Size';
-  static const String sizeUnitMB = 'MB';
   static const String submit = 'Submit';
   static const String suggestedGames = 'Top paid games';
   static const String suggestedNew = 'Top new apps';
@@ -69,11 +68,13 @@ class AppTexts {
   static const String systemRequirements = 'System requirements';
   static const String systemRequirementsMessage =
       'This application should work on your device. Items with a tick meets the developer’s system requirments';
-  static const String systemRequirementsOsVersion = 'Required Operating System Version:';
+  static const String systemRequirementsOsVersion =
+      'Required Operating System Version:';
   static const String systemRequirementsMemory = 'Required Memory (RAM):';
   static const String systemRequirementsDisk = 'Required Disk Space:';
   static const String systemRequirementsProcessor = 'Required Processor MHz:';
-  static const String systemRequirementsScreenDimension = 'Required Screen Dimension:';
+  static const String systemRequirementsScreenDimension =
+      'Required Screen Dimension:';
   static const String termsOfSale = 'Terms of Sale';
   static const String uninstall = 'Uninstall';
   static const String uninstallApp = 'Uninstall Application';

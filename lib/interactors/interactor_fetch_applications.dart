@@ -7,6 +7,7 @@ import 'package:hpos_appstore/providers/library_providers/library_provider.dart'
 
 class InteractorFetchApps {
   static final productMapper = ProductMapper();
+  static Iterable<AppMetadata>? availableApps;
 
   Future requestAllApps(LibraryProvider provider) async {
     final apps = await listAvailableApplications().then((applications) =>
@@ -18,8 +19,9 @@ class InteractorFetchApps {
   /// Returns a [Future] of [Product]s in a category.
   static Future<List<Product>> appsInCategory(String category,
       [int pageSize = 20]) async {
-    // call this to load all apps else getTopAppsForCategory() does not work
-    await listAvailableApplications();
+    // call this if availableApps is null
+    // this loads all apps else getTopAppsForCategory() does not work.
+    availableApps ??= await listAvailableApplications();
 
     return await Future(() async {
       final appMetadata = getTopAppsForCategory(category, pageSize);
