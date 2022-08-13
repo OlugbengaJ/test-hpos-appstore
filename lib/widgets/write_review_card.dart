@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hpos_appstore/utils/constraints.dart';
-import 'package:hpos_appstore/utils/utils_import.dart';
+import 'package:hpos_appstore/utils/utilities.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_rect.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
 import 'package:hpos_appstore/widgets/components/texts/textfield_box.dart';

@@ -10,12 +10,14 @@ class LibraryProvider extends ChangeNotifier {
   ValueNotifier<String> filterTagNotifier = ValueNotifier('All');
   ValueNotifier<List<Product>> productsNotifier = ValueNotifier([]);
   ValueNotifier<List<String>> categories = ValueNotifier([]);
+  ValueNotifier<List<String>> homeCategories = ValueNotifier([]);
   ValueNotifier<List<Product>> filteredProductsNotifier = ValueNotifier([]);
   ValueNotifier<bool> loadingNotifier = ValueNotifier(false);
   InteractorFetchApps appsInteractor = InteractorFetchApps();
   InteractorFetchCategories categoriesInteractor = InteractorFetchCategories();
 
   LibraryProvider() {
+    categoriesInteractor.setHomeCategories(this);
     categoriesInteractor.requestAllCategories(this);
     appsInteractor.requestAllApps(this);
   }

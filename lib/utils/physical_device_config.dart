@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:disk_space/disk_space.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:linux_system_info/linux_system_info.dart';
 
 class PhysicalDeviceConfig {
@@ -29,7 +29,10 @@ class PhysicalDeviceConfig {
   /// [systemDisk] return free storage on device
   double? get systemDisk {
     double? diskSpace = 0.0;
-    if (Platform.isLinux) DiskSpace.getFreeDiskSpace.then((value) => diskSpace = value);
+    if (Platform.isLinux) {
+      DiskSpace.getFreeDiskSpace.then((value) => diskSpace = value);
+    }
+
     return diskSpace;
   }
 
@@ -52,5 +55,5 @@ class ScreenDimension {
 
   double get width => _width;
 
-  double get height => height;
+  double get height => _height;
 }

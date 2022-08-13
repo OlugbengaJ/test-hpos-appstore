@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
-import 'package:hpos_appstore/utils/utils_import.dart';
+import 'package:hpos_appstore/utils/utilities.dart';
 import 'package:provider/provider.dart';
 
 class ButtonInstall extends StatelessWidget {
@@ -25,7 +25,8 @@ class ButtonInstall extends StatelessWidget {
           ),
         ),
         onPressed: () => {
-          Provider.of<LibraryProvider>(context, listen: false).install(productProvider.productId)
+          Provider.of<LibraryProvider>(context, listen: false)
+              .install(productProvider.productId)
         },
         child: Row(
           mainAxisSize: MainAxisSize.max,
