@@ -85,8 +85,7 @@ class LibraryProvider extends ChangeNotifier {
     // return data from previously loaded
     final apps = products
         .where((product) => product.category == category)
-        .take(pageSize)
-        .toList();
+        .take(pageSize);
 
     return [...apps];
   }
