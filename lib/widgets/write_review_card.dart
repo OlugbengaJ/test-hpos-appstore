@@ -7,9 +7,12 @@ import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
 import 'package:hpos_appstore/widgets/components/texts/textfield_box.dart';
 
 class WriteReviewScreen extends StatelessWidget {
-  const WriteReviewScreen({Key? key, this.productName}) : super(key: key);
+  const WriteReviewScreen({
+    Key? key,
+    required this.productName,
+  }) : super(key: key);
 
-  final String? productName;
+  final String productName;
 
   @override
   Widget build(BuildContext context) {
