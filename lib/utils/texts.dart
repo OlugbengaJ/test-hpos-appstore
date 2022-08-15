@@ -38,8 +38,9 @@ class AppTexts {
   static const String provider = 'Provider';
   static const String rating = 'Ratings';
   static const String ratingsReviews = 'Ratings and Reviews';
-  static const String releasedDate = 'Released date';
   static const String recommended = 'Recommended';
+  static const String releasedDate = 'Released date';
+  static const String review = 'Review';
   static const String reviewDescription =
       'Describe your experience using this app (Optional)';
   static const String reviewDescriptionHint = 'Describe experience';

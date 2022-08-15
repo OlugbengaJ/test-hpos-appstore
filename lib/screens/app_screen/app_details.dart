@@ -244,9 +244,12 @@ class AppDetailsView extends StatelessWidget {
   }
 }
 
-void showReview(BuildContext context) {
+void showReview(BuildContext context, String productName) {
   ContentDialog.open(context,
-      content: WriteReviewScreen(key: GlobalKey()).build(context));
+      content: WriteReviewScreen(
+        key: GlobalKey(),
+        productName: productName,
+      ).build(context));
 }
 
 class SectionHeader extends StatelessWidget {
@@ -368,36 +371,40 @@ class CardWriteReview extends StatelessWidget {
             const Padding(padding: EdgeInsets.only(left: 48)),
 
             // write review section
-            TextButton(
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(AppColors.primaryW25),
-                padding: MaterialStateProperty.all(
-                  const EdgeInsets.fromLTRB(18.0, 14.0, 18.0, 14.0),
-                ),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
+            ValueListenableBuilder<String>(
+              valueListenable: productProvider.nameNotifier,
+              builder: (context, productName, child) => TextButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(AppColors.primaryW25),
+                  padding: MaterialStateProperty.all(
+                    const EdgeInsets.fromLTRB(18.0, 14.0, 18.0, 14.0),
+                  ),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
                   ),
                 ),
-              ),
-              onPressed: () => showReview(context),
-              child: Row(
-                children: [
-                  const ImageIcon(
-                    AssetImage(AppAssets.edit),
-                    size: 22.0,
-                    color: AppColors.primary,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: Numericals.double8),
-                  ),
-                  Text(
-                    AppTexts.writeReview,
-                    style: themeData.textTheme.bodyText2?.copyWith(
-                        color: AppColors.primary, fontWeight: FontWeight.w500),
-                  ),
-                ],
+                onPressed: () => showReview(context, productName),
+                child: Row(
+                  children: [
+                    const ImageIcon(
+                      AssetImage(AppAssets.edit),
+                      size: 22.0,
+                      color: AppColors.primary,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: Numericals.double8),
+                    ),
+                    Text(
+                      AppTexts.writeReview,
+                      style: themeData.textTheme.bodyText2?.copyWith(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
