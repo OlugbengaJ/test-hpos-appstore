@@ -33,9 +33,7 @@ pubspec.lock
 .pub/
 /build/
 **/.dccache
-linux
 macos
-windows
 
 # Web related
 lib/generated_plugin_registrant.dart
