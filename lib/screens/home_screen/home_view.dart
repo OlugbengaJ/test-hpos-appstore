@@ -3,7 +3,7 @@ import 'package:hpos_appstore/providers/library_providers/library_provider.dart'
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/widgets/components/home_banner.dart';
 import 'package:hpos_appstore/widgets/components/spacer.dart' as app_spacer;
-import 'package:hpos_appstore/widgets/components/suggestion_tag_state.dart';
+import 'package:hpos_appstore/widgets/components/suggestion_tag_listenable.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -46,7 +46,7 @@ class HomeView extends StatelessWidget {
   }
 
   Widget getSuggestionCategory(String tag, BuildContext context) {
-    return SuggestionTagState(
+    return SuggestionTagListenable(
       tag: tag,
       index: ++count,
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hpos_appstore/interactors/interactor_fetch_applications.dart';
 import 'package:hpos_appstore/models/product_model.dart';
+import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/utilities.dart';
 import 'package:hpos_appstore/widgets/components/product_card/card_product_horizontal.dart';
@@ -8,9 +8,8 @@ import 'package:hpos_appstore/widgets/components/product_card/card_product_verti
 import 'package:hpos_appstore/widgets/components/scrolls/scrollable_stack.dart';
 import 'package:provider/provider.dart';
 
-/// A stateful widget used to render a product suggestion section.
-class SuggestionTagState extends StatefulWidget {
-  const SuggestionTagState({
+class SuggestionTagListenable extends StatelessWidget {
+  const SuggestionTagListenable({
     Key? key,
     required this.tag,
     required this.index,
@@ -27,25 +26,9 @@ class SuggestionTagState extends StatefulWidget {
   final int index;
 
   @override
-  State<SuggestionTagState> createState() => _SuggestionTagStateState();
-}
-
-class _SuggestionTagStateState extends State<SuggestionTagState> {
-  late Future<List<Product>> _productFuture;
-
-  @override
-  void initState() {
-    super.initState();
-    _productFuture = _getProduct();
-  }
-
-  Future<List<Product>> _getProduct() async {
-    return await InteractorFetchApps.appsInCategory(widget.tag);
-  }
-
-  @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+    final libraryProvider = Provider.of<LibraryProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.only(top: 24.0, left: Numericals.double40),
@@ -62,7 +45,7 @@ class _SuggestionTagStateState extends State<SuggestionTagState> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Top ${widget.tag} apps',
+                  'Top $tag apps',
                   style: const TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w600,
@@ -96,48 +79,30 @@ class _SuggestionTagStateState extends State<SuggestionTagState> {
           ),
 
           // build the products in category
-          FutureBuilder<List<Product>>(
-            future: _productFuture,
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                  return const Text(':(');
-                case ConnectionState.waiting:
-                  return const LinearProgressIndicator();
-                case ConnectionState.done:
-                  // products returned
-                  if (snapshot.hasData) {
-                    final products = snapshot.data!;
-
-                    return ScrollableStack(
-                      groupIcons: true,
-                      border: Border.all(
-                        color: themeData.primaryColorLight,
-                        width: 2.0,
+          ValueListenableBuilder<List<Product>>(
+            valueListenable: libraryProvider.productsNotifier,
+            builder: (context, products, child) => ScrollableStack(
+              groupIcons: true,
+              border: Border.all(
+                color: themeData.primaryColorLight,
+                width: 2.0,
+              ),
+              size: 34,
+              children: [
+                ...libraryProvider.appsInCategory(tag).map(
+                      (product) => Padding(
+                        padding: const EdgeInsets.only(
+                          right: Numericals.double40,
+                        ),
+                        child: ListenableProvider(
+                          create: (context) =>
+                              ProductProvider.fromModel(product),
+                          child: _getCardProduct,
+                        ),
                       ),
-                      size: 34,
-                      children: [
-                        ...products.map(
-                          (product) => Padding(
-                            padding: const EdgeInsets.only(
-                              right: Numericals.double40,
-                            ),
-                            child: ListenableProvider(
-                              create: (context) =>
-                                  ProductProvider.fromModel(product),
-                              child: _getCardProduct,
-                            ),
-                          ),
-                        )
-                      ],
-                    );
-                  }
-
-                  return Container();
-                default:
-                  return Container();
-              }
-            },
+                    )
+              ],
+            ),
           ),
         ],
       ),
@@ -146,12 +111,12 @@ class _SuggestionTagStateState extends State<SuggestionTagState> {
 
   Widget get _getCardProduct {
     bool isVerticalCard;
-    if (widget.cardType == null) {
+    if (cardType == null) {
       // get vertical card if index is not multiple of 3.
-      isVerticalCard = widget.index % 3 > 0;
+      isVerticalCard = index % 3 > 0;
     } else {
       // get vertical card based on card type
-      isVerticalCard = widget.cardType == CardType.vertical;
+      isVerticalCard = cardType == CardType.vertical;
     }
 
     return isVerticalCard

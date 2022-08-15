@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:hpos_app_store/hpos_app_store.dart';
 import 'package:hpos_appstore/mappers/product_mapper.dart';
-import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 
 class InteractorFetchApps {
@@ -14,31 +13,5 @@ class InteractorFetchApps {
         applications.map((app) => productMapper.productFromDto(app)));
 
     provider.products = apps.toList();
-  }
-
-  /// Returns a [Future] of [Product]s in a category.
-  static Future<List<Product>> appsInCategory(String category,
-      [int pageSize = 10]) async {
-    // call this if availableApps is null
-    // this loads all apps else getTopAppsForCategory() does not work.
-    availableApps ??= await listAvailableApplications();
-
-    return await Future(() async {
-      List<AppMetadata> appMetadata;
-
-      if (availableApps != null) {
-        // return data from previously loaded
-        appMetadata = availableApps!
-            .where((metadata) => metadata.category == category)
-            .take(pageSize)
-            .toList();
-      } else {
-        appMetadata = getTopAppsForCategory(category, pageSize);
-      }
-
-      final apps = appMetadata.map((app) => productMapper.productFromDto(app));
-
-      return [...apps];
-    });
   }
 }

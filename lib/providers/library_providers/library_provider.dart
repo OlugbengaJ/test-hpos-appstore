@@ -17,7 +17,6 @@ class LibraryProvider extends ChangeNotifier {
   InteractorFetchCategories categoriesInteractor = InteractorFetchCategories();
 
   LibraryProvider() {
-    categoriesInteractor.setHomeCategories(this);
     categoriesInteractor.requestAllCategories(this);
     appsInteractor.requestAllApps(this);
   }
@@ -79,6 +78,17 @@ class LibraryProvider extends ChangeNotifier {
 
     await ProductMapper.getAppId(app)?.remove();
     app.applicationInfo!.installationStatus = InstallationStatus.notInstalled;
+  }
+
+  /// Returns list of [Product]s in a category.
+  List<Product> appsInCategory(String category, [int pageSize = 10]) {
+    // return data from previously loaded
+    final apps = products
+        .where((product) => product.category == category)
+        .take(pageSize)
+        .toList();
+
+    return [...apps];
   }
 }
 
