@@ -69,16 +69,15 @@ class AppDetailsTopCard extends StatelessWidget {
                           children: [
                             SizedBox(
                               child: ValueListenableBuilder<String>(
-                                  valueListenable:
-                                      productProvider.categoryNotifier,
-                                  builder: (context, category, _) {
-                                    return Text(
-                                      category,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.greyW400),
-                                    );
-                                  }),
+                                valueListenable:
+                                    productProvider.categoryNotifier,
+                                builder: (context, category, _) => Text(
+                                  category,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.greyW400),
+                                ),
+                              ),
                             ),
                             const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 8),
@@ -101,7 +100,7 @@ class AppDetailsTopCard extends StatelessWidget {
                       margin: const EdgeInsets.only(top: 10),
                       width: 600,
                       child: const Text(
-                        "Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere.",
+                        'Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere.',
                         style: TextStyle(
                           height: 1.5,
                           fontWeight: FontWeight.w400,

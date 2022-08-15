@@ -106,7 +106,9 @@ class AppInfoBar extends StatelessWidget {
                     );
                   },
                 ),
-                bottom: '+ ${supportedLanguages.length - 1} More',
+                bottom: supportedLanguages.length > 1
+                    ? '+ ${supportedLanguages.length - 1} More'
+                    : '',
               );
             },
           ),
