@@ -5,10 +5,8 @@ import 'package:hpos_appstore/mappers/product_mapper.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 
 class InteractorFetchApps {
-  static final productMapper = ProductMapper();
-  static Iterable<AppMetadata>? availableApps;
-
   Future requestAllApps(LibraryProvider provider) async {
+    final productMapper = ProductMapper();
     final apps = await listAvailableApplications().then((applications) =>
         applications.map((app) => productMapper.productFromDto(app)));
 
