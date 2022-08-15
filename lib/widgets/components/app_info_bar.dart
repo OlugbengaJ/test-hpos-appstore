@@ -106,6 +106,7 @@ class AppInfoBar extends StatelessWidget {
                     );
                   },
                 ),
+                // show +n More only if languages is more than 1
                 bottom: supportedLanguages.length > 1
                     ? '+ ${supportedLanguages.length - 1} More'
                     : '',
