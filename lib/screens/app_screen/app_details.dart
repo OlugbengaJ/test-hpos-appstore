@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/screens/screen_config.dart';
@@ -45,7 +46,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
         name: 'Microsoft Teams',
         description: '',
         category: 'Productivity',
@@ -62,7 +63,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg',
         name: 'Google Meet',
         description: '',
         category: 'Productivity',
@@ -79,7 +80,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg',
         name: 'Zoom',
         description: '',
         category: 'Productivity',
@@ -96,7 +97,7 @@ class AppDetailsView extends StatelessWidget {
       Product(
         id: BigInt.zero,
         logo:
-            'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
         name: 'Google Suite',
         description: '',
         category: 'Productivity',
@@ -114,7 +115,7 @@ class AppDetailsView extends StatelessWidget {
     ];
 
     var suggestedProd =
-        SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
+    SuggestedApps(AppTexts.suggestedProductivity, productivityApps);
 
     return Column(
       children: [
@@ -303,6 +304,7 @@ class CardWriteReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+    final productProvider = Provider.of<ProductProvider>(context);
 
     return Card(
       margin: const EdgeInsets.only(top: Numericals.double40),
@@ -327,39 +329,40 @@ class CardWriteReview extends StatelessWidget {
 
             const Padding(padding: EdgeInsets.only(left: 48)),
 
-            // TODO: Refactor clickable stars here
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.star_border_outlined,
-                    color: AppColors.primary,
+            ValueListenableBuilder<double>(
+              valueListenable: productProvider.ratingNotifier,
+              builder: (context, rating, _) {
+                return RatingBar(
+                  initialRating: rating,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: false,
+                  itemSize: Numericals.double40,
+                  itemCount: 5,
+                  updateOnDrag: true,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  onRatingUpdate: (rating) {
+                    productProvider.rating = rating;
+                  },
+                  ratingWidget: RatingWidget(
+                    full: const Icon(
+                      Icons.star,
+                      color: AppColors.primary,
+                      size: 40,
+                    ),
+                    half: const Icon(
+                      Icons.star_half,
+                      color: AppColors.primary,
+                      size: 40,
+                    ),
+                    empty: const Icon(
+                      Icons.star_border,
+                      color: AppColors.primary,
+                      size: 40,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.star_border_outlined,
-                    color: AppColors.primary,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.star_border_outlined,
-                    color: AppColors.primary,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.star_border_outlined,
-                    color: AppColors.primary,
-                  ),
-                ),
-              ],
+                );
+              },
             ),
 
             const Padding(padding: EdgeInsets.only(left: 48)),

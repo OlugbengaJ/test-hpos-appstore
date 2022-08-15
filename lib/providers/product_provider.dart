@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/utils/languages.dart';
+import 'package:hpos_appstore/utils/physical_device_config.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 
 class ProductProvider extends ChangeNotifier {
+  PhysicalDeviceConfig? deviceConfig;
+
+  var productId = BigInt.zero;
   final nameNotifier = ValueNotifier('Microsoft Teams');
   final categoryNotifier = ValueNotifier('Productivity');
   final ratingNotifier = ValueNotifier(3.0);
@@ -15,15 +19,19 @@ class ProductProvider extends ChangeNotifier {
   final minAgeNotifier = ValueNotifier(4);
   final developerNotifier = ValueNotifier('Microsoft Inc');
   final languageNotifier = ValueNotifier(Languages.locales.first);
-
+  final appRequirementsNotifier = ValueNotifier<ApplicationRequirements?>(
+      ApplicationRequirements(requiredOSVersion: '3.0.1'));
   final supportedLanguagesNotifier = ValueNotifier(Languages.locales);
   final parentalGuidanceAgeNotifier = ValueNotifier(12);
+  final isInstalled = ValueNotifier(false);
   var minRating = 1;
   var maxRating = 5;
 
-  ProductProvider();
+  ProductProvider(BuildContext context)
+      : deviceConfig = PhysicalDeviceConfig(context);
 
   ProductProvider.fromModel(Product product) {
+    productId = product.id;
     name = product.name;
     category = product.category;
     rating = product.avgRatings;
@@ -35,6 +43,14 @@ class ProductProvider extends ChangeNotifier {
     developer = product.developer;
     supportedLanguages = product.languages;
     parentalGuidanceAge = product.parentalGuidanceAge;
+    appRequirements = product.applicationInfo?.appRequirements;
+    isInstalled.value = product.applicationInfo?.installationStatus ==
+        InstallationStatus.installed;
+
+    if (product.applicationInfo != null) {
+      product.applicationInfo?.subscribeForInstallationStatus((status) =>
+          isInstalled.value = status == InstallationStatus.installed);
+    }
   }
 
   String get name => nameNotifier.value;
@@ -49,6 +65,7 @@ class ProductProvider extends ChangeNotifier {
 
   set rating(double rating) {
     if (rating < minRating || rating > maxRating) return;
+    // TODO: Call dart library here to update ratings
     ratingNotifier.value = rating;
   }
 
@@ -91,4 +108,31 @@ class ProductProvider extends ChangeNotifier {
 
   set supportedLanguages(List<String> languages) =>
       supportedLanguagesNotifier.value = languages;
+
+  ApplicationRequirements? get appRequirements => appRequirementsNotifier.value;
+
+  set appRequirements(ApplicationRequirements? applicationRequirements) =>
+      appRequirementsNotifier.value = applicationRequirements;
+
+  bool get osVersionMatches =>
+      deviceConfig?.osVersion ==
+      appRequirementsNotifier.value?.requiredOSVersion;
+
+  bool get memoryCapacityMatches =>
+      deviceConfig?.systemMem ==
+      appRequirementsNotifier.value?.requiredRam?.toInt();
+
+  bool get diskSpaceMatches =>
+      deviceConfig?.systemDisk ==
+      appRequirementsNotifier.value?.requiredDisk?.toInt();
+
+  bool get processorMatches =>
+      deviceConfig?.systemProcessorMHz ==
+      appRequirementsNotifier.value?.requiredProcessorMHz?.toInt();
+
+  bool get screenDimensionMatches =>
+      deviceConfig?.screenDimension?.width ==
+          appRequirementsNotifier.value?.requiredScreenSize?.width &&
+      deviceConfig?.screenDimension?.height ==
+          appRequirementsNotifier.value?.requiredScreenSize?.height;
 }

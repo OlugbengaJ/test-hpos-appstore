@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Product {
   final BigInt id;
   final String description;
@@ -21,7 +23,7 @@ class Product {
     required this.id,
     required this.description,
     this.longDescription = '',
-    this.screenShots = const [] ,
+    this.screenShots = const [],
     this.tags = const [],
     this.logo = '',
     required this.name,
@@ -54,9 +56,10 @@ class ApplicationInfo extends ProductInfo {
   final List<String>? supportedVersions;
   final DateTime? creationDate;
   final DateTime? lastUpdatedDate;
-  final InstallationStatus installationStatus;
+  InstallationStatus _installationStatus;
   final String installedVersion;
   final ApplicationRequirements? appRequirements;
+  final List<Function> installationListeners = [];
 
   ApplicationInfo({
     this.packageFormat = 'deb',
@@ -66,22 +69,40 @@ class ApplicationInfo extends ProductInfo {
     this.supportedVersions,
     this.creationDate,
     this.lastUpdatedDate,
-    this.installationStatus = InstallationStatus.notInstalled,
+    InstallationStatus installationStatus = InstallationStatus.notInstalled,
     this.installedVersion = '',
     this.appRequirements,
-  });
+  }) : _installationStatus = installationStatus;
+
+  InstallationStatus get installationStatus => _installationStatus;
+
+  set installationStatus(InstallationStatus status) {
+    if (_installationStatus != status) {
+      _installationStatus = status;
+      for (var listener in installationListeners) {
+        listener(_installationStatus);
+      }
+    }
+  }
+
+  void subscribeForInstallationStatus(Function(InstallationStatus) listener) {
+    installationListeners.add(listener);
+  }
 }
 
 class ApplicationRequirements {
-  final BigInt requiredRam;
-  final BigInt requiredDisk;
-  final BigInt requiredBandwidth;
+  final String requiredOSVersion;
+  final BigInt? requiredRam;
+  final BigInt? requiredDisk;
+  final BigInt? requiredProcessorMHz;
+  final Size? requiredScreenSize;
 
   ApplicationRequirements(
-    this.requiredRam,
-    this.requiredDisk,
-    this.requiredBandwidth,
-  );
+      {required this.requiredOSVersion,
+      this.requiredRam,
+      this.requiredDisk,
+      this.requiredProcessorMHz,
+      this.requiredScreenSize});
 }
 
 abstract class ProductInfo {}

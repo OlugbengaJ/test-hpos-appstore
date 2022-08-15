@@ -71,7 +71,7 @@ class NavigationManager extends StatelessWidget {
         valueListenable: navigationProvider.product,
         builder: (context, productProvider, _) {
           return ListenableProvider(
-            create: (context) => productProvider ?? ProductProvider(),
+            create: (context) => productProvider ?? ProductProvider(context),
             child: const AppDetailsView(),
           );
         },
