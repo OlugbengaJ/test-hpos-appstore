@@ -106,30 +106,34 @@ class _SuggestionTagStateState extends State<SuggestionTagState> {
                   return const LinearProgressIndicator();
                 case ConnectionState.done:
                   // products returned
-                  final products = snapshot.data!;
+                  if (snapshot.hasData) {
+                    final products = snapshot.data!;
 
-                  return ScrollableStack(
-                    groupIcons: true,
-                    border: Border.all(
-                      color: themeData.primaryColorLight,
-                      width: 2.0,
-                    ),
-                    size: 34,
-                    children: [
-                      ...products.map(
-                        (product) => Padding(
-                          padding: const EdgeInsets.only(
-                            right: Numericals.double40,
+                    return ScrollableStack(
+                      groupIcons: true,
+                      border: Border.all(
+                        color: themeData.primaryColorLight,
+                        width: 2.0,
+                      ),
+                      size: 34,
+                      children: [
+                        ...products.map(
+                          (product) => Padding(
+                            padding: const EdgeInsets.only(
+                              right: Numericals.double40,
+                            ),
+                            child: ListenableProvider(
+                              create: (context) =>
+                                  ProductProvider.fromModel(product),
+                              child: _getCardProduct,
+                            ),
                           ),
-                          child: ListenableProvider(
-                            create: (context) =>
-                                ProductProvider.fromModel(product),
-                            child: _getCardProduct,
-                          ),
-                        ),
-                      )
-                    ],
-                  );
+                        )
+                      ],
+                    );
+                  }
+
+                  return Container();
                 default:
                   return Container();
               }
