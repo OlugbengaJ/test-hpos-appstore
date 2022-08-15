@@ -18,13 +18,24 @@ class InteractorFetchApps {
 
   /// Returns a [Future] of [Product]s in a category.
   static Future<List<Product>> appsInCategory(String category,
-      [int pageSize = 20]) async {
+      [int pageSize = 10]) async {
     // call this if availableApps is null
     // this loads all apps else getTopAppsForCategory() does not work.
     availableApps ??= await listAvailableApplications();
 
     return await Future(() async {
-      final appMetadata = getTopAppsForCategory(category, pageSize);
+      List<AppMetadata> appMetadata;
+
+      if (availableApps != null) {
+        // return data from previously loaded
+        appMetadata = availableApps!
+            .where((metadata) => metadata.category == category)
+            .take(pageSize)
+            .toList();
+      } else {
+        appMetadata = getTopAppsForCategory(category, pageSize);
+      }
+
       final apps = appMetadata.map((app) => productMapper.productFromDto(app));
 
       return [...apps];
