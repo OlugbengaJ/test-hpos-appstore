@@ -149,7 +149,7 @@ class WriteReviewScreen extends StatelessWidget {
                           tapHandler: () => Navigator.pop(context),
                           radius: BorderRadius.circular(8.0),
                           child: const Text(
-                            'Cancel',
+                            AppTexts.cancel,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: AppColors.primary,
