@@ -6,6 +6,15 @@ import 'package:hpos_appstore/screens/screen_config.dart';
 /// [NavigationProvider] handles navigation between screens
 /// while notifying other components of a change in route.
 class NavigationProvider extends ChangeNotifier {
+  NavigationProvider() {
+    scrollController = ScrollController();
+
+    // scrolling to top.
+    scrollToTop(0);
+  }
+
+  late ScrollController scrollController;
+
   final selectedPane = ValueNotifier(HomeScreen.screenConfig);
 
   /// Notifies a change to the header visibility.
@@ -63,6 +72,21 @@ class NavigationProvider extends ChangeNotifier {
     if (selectedPane.value != newRoute) {
       // route has changed
       childVisibility.value = child;
+    }
+  }
+
+  /// Animates the [controller] position from its current value to the given value.
+  void scrollToTop([double? scrollExtent]) async {
+    if (scrollExtent != null) await Future.delayed(const Duration(seconds: 3));
+
+    if (scrollController.hasClients) {
+      scrollController
+          .animateTo(
+            0.0,
+            duration: const Duration(seconds: 1),
+            curve: Curves.ease,
+          )
+          .then((value) => value);
     }
   }
 }
