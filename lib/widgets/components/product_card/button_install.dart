@@ -7,16 +7,22 @@ import 'package:hpos_appstore/utils/utilities.dart';
 import 'package:provider/provider.dart';
 
 class ButtonInstall extends StatelessWidget {
-  const ButtonInstall({Key? key, this.borderRadius = BorderRadius.zero})
-      : super(key: key);
+  const ButtonInstall({
+    Key? key,
+    this.borderRadius = BorderRadius.zero,
+    this.height = 40.0,
+    this.withText = true,
+  }) : super(key: key);
 
   final BorderRadius borderRadius;
+  final double height;
+  final bool withText;
 
   @override
   Widget build(BuildContext context) {
     var productProvider = Provider.of<ProductProvider>(context);
     return SizedBox(
-      height: 40.0,
+      height: height,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: AppColors.primaryW500,
@@ -42,17 +48,18 @@ class ButtonInstall extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.only(right: 10.0),
-                          child: Text(
-                            AppTexts.install,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
+                        if (withText)
+                          const Padding(
+                            padding: EdgeInsets.only(right: 10.0),
+                            child: Text(
+                              AppTexts.install,
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
                         SvgPicture.asset(
                           AppAssets.installSVG,
                           width: 12,

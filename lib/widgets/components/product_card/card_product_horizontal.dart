@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpos_appstore/utils/utilities.dart';
+import 'package:hpos_appstore/widgets/components/product_card/button_install.dart';
 import 'package:hpos_appstore/widgets/components/product_card/column_product_info.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
 import 'package:hpos_appstore/widgets/components/product_card/product_card_navigation.dart';
@@ -48,8 +49,10 @@ class HorizontalCardButtons extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: const [
-        Image(
-          image: AssetImage('assets/icons/download_icon.png'),
+        ButtonInstall(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          height: 36,
+          withText: false,
         ),
         Padding(padding: EdgeInsets.only(left: 17)),
         Image(
