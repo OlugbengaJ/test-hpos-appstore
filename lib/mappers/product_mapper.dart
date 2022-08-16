@@ -14,15 +14,6 @@ class ProductMapper {
       price: '0',
       avgRatings: appMetadata.rating.toDouble(),
       numRatings: 34,
-      // applicationInfo: ApplicationInfo(
-      //   appRequirements: ApplicationRequirements(
-      //     requiredDisk: appMetadata.requiredDisk,
-      //     requiredOSVersion: '3.0.1',
-      //     requiredProcessorMHz: appMetadata.requiredBandwidth,
-      //     requiredRam: appMetadata.requiredRam,
-      //     requiredScreenSize: const Size(10, 20)
-      //   )
-      // ),
       applicationInfo: infoFromDto(appMetadata),
     );
   }
@@ -75,7 +66,7 @@ class ProductMapper {
       product.applicationInfo?.installedVersion ?? '',
       product.applicationInfo?.updateAvailable ?? false,
       product.developer,
-      product.avgRatings.ceil(),
+      product.avgRatings,
       BigInt.from(product.applicationInfo?.size ?? 0),
       product.longDescription,
       product.languages,
@@ -85,6 +76,9 @@ class ProductMapper {
       product.applicationInfo?.appRequirements?.requiredProcessorMHz ??
           BigInt.zero,
       product.tags,
+      [product.applicationInfo?.appRequirements?.requiredOSVersion ?? ''],
+      product.applicationInfo?.appRequirements?.requiredScreenSize?.height.ceil() ?? 0,
+      product.applicationInfo?.appRequirements?.requiredScreenSize?.width.ceil() ?? 0,
     );
   }
 

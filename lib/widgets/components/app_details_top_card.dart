@@ -99,13 +99,19 @@ class AppDetailsTopCard extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       width: 600,
-                      child: const Text(
-                        'Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere.',
-                        style: TextStyle(
-                          height: 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.greyW600,
-                        ),
+                      child: ValueListenableBuilder<String>(
+                        valueListenable: productProvider.descriptionNotifier,
+                        builder: (context, description, _) {
+                          return Text(
+                            description,
+                            // 'Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere.',
+                            style: const TextStyle(
+                              height: 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.greyW600,
+                            ),
+                          );
+                        }
                       ),
                     ),
                   ],
