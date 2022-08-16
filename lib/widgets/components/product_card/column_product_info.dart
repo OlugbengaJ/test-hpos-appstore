@@ -46,10 +46,10 @@ class ColumnProductInfo extends StatelessWidget {
                   ),
                 );
               }),
+          const Padding(padding: EdgeInsets.only(bottom: 8)),
           if (!headerOnly)
             Row(
               children: [
-                const Padding(padding: EdgeInsets.only(bottom: 12)),
                 const RatingView(),
                 const Padding(padding: EdgeInsets.only(right: 8)),
                 ValueListenableBuilder<int>(
