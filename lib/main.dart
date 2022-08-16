@@ -59,7 +59,9 @@ class NavigationManager extends StatelessWidget {
 
   Widget selectScreen(
       ScreenConfig screenConfig, NavigationProvider navigationProvider) {
+    // scroll to top on navigation
     navigationProvider.scrollToTop();
+
     if (screenConfig == HomeScreen.screenConfig) {
       return const HomeScreen();
     } else if (screenConfig == LibraryScreen.screenConfig) {
