@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
@@ -11,8 +12,7 @@ import 'button_install.dart';
 import 'logo_product_banner.dart';
 
 class CardProductVertical extends StatelessWidget {
-  const CardProductVertical({Key? key, this.hasUpdate})
-      : super(key: key);
+  const CardProductVertical({Key? key, this.hasUpdate}) : super(key: key);
   final bool? hasUpdate;
 
   @override
@@ -32,19 +32,20 @@ class CardProductVertical extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(bottom: 11.0)),
               const CardDetails(),
               const Padding(padding: EdgeInsets.only(bottom: 17)),
-              ValueListenableBuilder<bool>(
-                valueListenable: productProvider.isInstalled,
-                builder: (context, isInstalled, _) => isInstalled
-                    ? ButtonUpdateDelete(
-                        hasUpdate: hasUpdate,
-                        onDelete: () {},
-                        onUpdate: () {},
-                      )
-                    : const ButtonInstall(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(Numericals.double8),
-                        ),
-                      ),
+              ValueListenableBuilder<InstallationStatus>(
+                valueListenable: productProvider.installationStatus,
+                builder: (context, status, _) =>
+                    status == InstallationStatus.installed
+                        ? ButtonUpdateDelete(
+                            hasUpdate: hasUpdate,
+                            onDelete: () {},
+                            onUpdate: () {},
+                          )
+                        : const ButtonInstall(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(Numericals.double8),
+                            ),
+                          ),
               ),
             ],
           ),

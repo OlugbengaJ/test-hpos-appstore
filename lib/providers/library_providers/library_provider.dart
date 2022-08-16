@@ -65,9 +65,14 @@ class LibraryProvider extends ChangeNotifier {
     if (app.applicationInfo == null) {
       throw MissingAppInfoException();
     }
+    app.applicationInfo!.installationStatus = InstallationStatus.inProgress;
 
-    await ProductMapper.getAppId(app)?.install();
-    app.applicationInfo!.installationStatus = InstallationStatus.installed;
+    await ProductMapper.getAppId(app)?.install().then((output) {
+      app.applicationInfo!.installationStatus = InstallationStatus.installed;
+      debugPrint('Then:\noutput: ${output.stdout}\nerror: ${output.stderr}');
+    }).catchError((err) {
+      app.applicationInfo!.installationStatus = InstallationStatus.notInstalled;
+    });
   }
 
   Future uninstall(BigInt applicationId) async {
@@ -75,9 +80,14 @@ class LibraryProvider extends ChangeNotifier {
     if (app.applicationInfo == null) {
       throw MissingAppInfoException();
     }
+    app.applicationInfo!.installationStatus = InstallationStatus.inProgress;
 
-    await ProductMapper.getAppId(app)?.remove();
-    app.applicationInfo!.installationStatus = InstallationStatus.notInstalled;
+    await ProductMapper.getAppId(app)
+        ?.remove()
+        .then((value) => app.applicationInfo!.installationStatus =
+            InstallationStatus.notInstalled)
+        .catchError((err) => app.applicationInfo!.installationStatus =
+            InstallationStatus.installed);
   }
 
   /// Returns list of [Product]s in a category.

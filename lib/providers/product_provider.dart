@@ -23,7 +23,7 @@ class ProductProvider extends ChangeNotifier {
       ApplicationRequirements(requiredOSVersion: '3.0.1'));
   final supportedLanguagesNotifier = ValueNotifier(Languages.locales);
   final parentalGuidanceAgeNotifier = ValueNotifier(12);
-  final isInstalled = ValueNotifier(false);
+  final installationStatus = ValueNotifier(InstallationStatus.notInstalled);
   var minRating = 1;
   var maxRating = 5;
 
@@ -50,12 +50,12 @@ class ProductProvider extends ChangeNotifier {
     supportedLanguages = product.languages;
     parentalGuidanceAge = product.parentalGuidanceAge;
     appRequirements = product.applicationInfo?.appRequirements;
-    isInstalled.value = product.applicationInfo?.installationStatus ==
-        InstallationStatus.installed;
+    installationStatus.value = product.applicationInfo?.installationStatus ??
+        InstallationStatus.notInstalled;
 
     if (product.applicationInfo != null) {
-      product.applicationInfo?.subscribeForInstallationStatus((status) =>
-          isInstalled.value = status == InstallationStatus.installed);
+      product.applicationInfo?.subscribeForInstallationStatus(
+          (status) => installationStatus.value = status);
     }
   }
 

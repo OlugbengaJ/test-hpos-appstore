@@ -86,7 +86,7 @@ class SuggestedApps {
   SuggestedApps(this.tag, this.products);
 }
 
-enum InstallationStatus { notInstalled, installed }
+enum InstallationStatus { notInstalled, installed, inProgress }
 
 class ApplicationInfo extends ProductInfo {
   final String packageFormat;

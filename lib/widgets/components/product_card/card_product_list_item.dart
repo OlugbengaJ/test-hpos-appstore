@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/texts.dart';
@@ -48,13 +49,14 @@ class CardProductListItem extends StatelessWidget {
               ),
               Expanded(
                 flex: 3,
-                child: ValueListenableBuilder<bool>(
-                    valueListenable: productProvider.isInstalled,
-                    builder: (context, isInstalled, _) {
+                child: ValueListenableBuilder<InstallationStatus>(
+                    valueListenable: productProvider.installationStatus,
+                    builder: (context, status, _) {
                       return Row(
-                        mainAxisAlignment: isInstalled
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.spaceAround,
+                        mainAxisAlignment:
+                            status == InstallationStatus.installed
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.spaceAround,
                         children: const [
                           ProductPriceTag(),
                           SizedBox(width: 100, child: RatingView()),
@@ -63,20 +65,22 @@ class CardProductListItem extends StatelessWidget {
                       );
                     }),
               ),
-              ValueListenableBuilder<bool>(
-                  valueListenable: productProvider.isInstalled,
-                  builder: (context, isInstalled, _) {
+              ValueListenableBuilder<InstallationStatus>(
+                  valueListenable: productProvider.installationStatus,
+                  builder: (context, status, _) {
                     return Expanded(
-                      flex: (isInstalled == true) ? 2 : 1,
-                      child: (isInstalled == true)
+                      flex: (status == InstallationStatus.installed) ? 2 : 1,
+                      child: (status == InstallationStatus.installed)
                           ? ButtonUpdateDelete(
                               hasUpdate: hasUpdate,
                               onDelete: () {},
                               onUpdate: () {},
                             )
                           : const ButtonInstall(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8.0))),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8.0),
+                              ),
+                            ),
                     );
                   }),
             ],
