@@ -77,8 +77,12 @@ class ProductMapper {
           BigInt.zero,
       product.tags,
       [product.applicationInfo?.appRequirements?.requiredOSVersion ?? ''],
-      product.applicationInfo?.appRequirements?.requiredScreenSize?.height.ceil() ?? 0,
-      product.applicationInfo?.appRequirements?.requiredScreenSize?.width.ceil() ?? 0,
+      product.applicationInfo?.appRequirements?.requiredScreenSize?.height
+              .ceil() ??
+          0,
+      product.applicationInfo?.appRequirements?.requiredScreenSize?.width
+              .ceil() ??
+          0,
     );
   }
 

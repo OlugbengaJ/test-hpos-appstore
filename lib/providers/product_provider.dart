@@ -71,7 +71,8 @@ class ProductProvider extends ChangeNotifier {
 
   String get description => descriptionNotifier.value;
 
-  set description(String description) => descriptionNotifier.value = description;
+  set description(String description) =>
+      descriptionNotifier.value = description;
 
   double get rating => ratingNotifier.value;
 
