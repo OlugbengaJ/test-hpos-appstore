@@ -3,11 +3,8 @@ import 'package:hpos_appstore/providers/app_provider/app_provider.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 import 'package:hpos_appstore/providers/navigation_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
-import 'package:hpos_appstore/screens/app_screen/app_details.dart';
-import 'package:hpos_appstore/screens/home_screen/homes_screen.dart';
-import 'package:hpos_appstore/screens/library_screens/library_screen.dart';
-import 'package:hpos_appstore/screens/screen_config.dart';
-import 'package:hpos_appstore/utils/utils_import.dart';
+import 'package:hpos_appstore/screens/screens.dart';
+import 'package:hpos_appstore/utils/utilities.dart';
 import 'package:hpos_appstore/widgets/components/texts/search_bar_import.dart';
 import 'package:hpos_appstore/widgets/layouts/app_layout.dart';
 import 'package:hpos_appstore/widgets/themes.dart';
@@ -62,6 +59,9 @@ class NavigationManager extends StatelessWidget {
 
   Widget selectScreen(
       ScreenConfig screenConfig, NavigationProvider navigationProvider) {
+    // scroll to top on navigation
+    navigationProvider.scrollToTop();
+
     if (screenConfig == HomeScreen.screenConfig) {
       return const HomeScreen();
     } else if (screenConfig == LibraryScreen.screenConfig) {

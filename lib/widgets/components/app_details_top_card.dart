@@ -1,12 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hpos_appstore/mappers/product_mapper.dart';
+import 'package:hpos_appstore/models/product_model.dart';
 import 'package:hpos_appstore/providers/app_provider/app_provider.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
-import 'package:hpos_appstore/utils/assets.dart';
-import 'package:hpos_appstore/utils/colors.dart';
-import 'package:hpos_appstore/utils/texts.dart';
+import 'package:hpos_appstore/utils/utilities.dart';
 import 'package:hpos_appstore/widgets/components/buttons/button_round.dart';
 import 'package:hpos_appstore/widgets/components/dialogs/content_dialog.dart';
 import 'package:hpos_appstore/widgets/components/product_card/logo_product_rectangle.dart';
@@ -71,16 +69,15 @@ class AppDetailsTopCard extends StatelessWidget {
                           children: [
                             SizedBox(
                               child: ValueListenableBuilder<String>(
-                                  valueListenable:
-                                      productProvider.categoryNotifier,
-                                  builder: (context, category, _) {
-                                    return Text(
-                                      category,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.greyW400),
-                                    );
-                                  }),
+                                valueListenable:
+                                    productProvider.categoryNotifier,
+                                builder: (context, category, _) => Text(
+                                  category,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.greyW400),
+                                ),
+                              ),
                             ),
                             const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 8),
@@ -102,13 +99,19 @@ class AppDetailsTopCard extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       width: 600,
-                      child: const Text(
-                        "Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere.",
-                        style: TextStyle(
-                          height: 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.greyW600,
-                        ),
+                      child: ValueListenableBuilder<String>(
+                        valueListenable: productProvider.descriptionNotifier,
+                        builder: (context, description, _) {
+                          return Text(
+                            description,
+                            // 'Make amazing things happen together at home, work and school by connecting and collaborating with anyone from anywhere.',
+                            style: const TextStyle(
+                              height: 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.greyW600,
+                            ),
+                          );
+                        }
                       ),
                     ),
                   ],
@@ -262,10 +265,18 @@ class AppDetailsTopCard extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              content: ShareLink(
-                                key: GlobalKey(),
-                                link: 'my-app-link ${Random().nextDouble()}',
-                              ).build(context),
+                              content: ValueListenableBuilder<Product?>(
+                                valueListenable:
+                                    productProvider.productValueNotifier,
+                                builder: (context, product, child) {
+                                  return ShareLink(
+                                    key: GlobalKey(),
+                                    productName: product?.name,
+                                    link: ProductMapper.getAppId(product)
+                                        ?.getSharingWebUrl(),
+                                  ).build(context);
+                                },
+                              ),
                             );
                           },
                           size: 48.0,

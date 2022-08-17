@@ -10,6 +10,7 @@ class LibraryProvider extends ChangeNotifier {
   ValueNotifier<String> filterTagNotifier = ValueNotifier('All');
   ValueNotifier<List<Product>> productsNotifier = ValueNotifier([]);
   ValueNotifier<List<String>> categories = ValueNotifier([]);
+  ValueNotifier<List<String>> homeCategories = ValueNotifier([]);
   ValueNotifier<List<Product>> filteredProductsNotifier = ValueNotifier([]);
   ValueNotifier<bool> loadingNotifier = ValueNotifier(false);
   InteractorFetchApps appsInteractor = InteractorFetchApps();
@@ -64,9 +65,14 @@ class LibraryProvider extends ChangeNotifier {
     if (app.applicationInfo == null) {
       throw MissingAppInfoException();
     }
+    app.applicationInfo!.installationStatus = InstallationStatus.inProgress;
 
-    await ProductMapper.getAppId(app).install();
-    app.applicationInfo!.installationStatus = InstallationStatus.installed;
+    await ProductMapper.getAppId(app)?.install().then((output) {
+      app.applicationInfo!.installationStatus = InstallationStatus.installed;
+      debugPrint('Then:\noutput: ${output.stdout}\nerror: ${output.stderr}');
+    }).catchError((err) {
+      app.applicationInfo!.installationStatus = InstallationStatus.notInstalled;
+    });
   }
 
   Future uninstall(BigInt applicationId) async {
@@ -74,9 +80,24 @@ class LibraryProvider extends ChangeNotifier {
     if (app.applicationInfo == null) {
       throw MissingAppInfoException();
     }
+    app.applicationInfo!.installationStatus = InstallationStatus.inProgress;
 
-    await ProductMapper.getAppId(app).remove();
-    app.applicationInfo!.installationStatus = InstallationStatus.notInstalled;
+    await ProductMapper.getAppId(app)
+        ?.remove()
+        .then((value) => app.applicationInfo!.installationStatus =
+            InstallationStatus.notInstalled)
+        .catchError((err) => app.applicationInfo!.installationStatus =
+            InstallationStatus.installed);
+  }
+
+  /// Returns list of [Product]s in a category.
+  List<Product> appsInCategory(String category, [int pageSize = 10]) {
+    // return data from previously loaded
+    final apps = products
+        .where((product) => product.category == category)
+        .take(pageSize);
+
+    return [...apps];
   }
 }
 

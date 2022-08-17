@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hpos_appstore/providers/navigation_provider.dart';
 import 'package:hpos_appstore/utils/colors.dart';
 import 'package:hpos_appstore/utils/numericals.dart';
 import 'package:hpos_appstore/widgets/layouts/header_layout.dart';
 import 'package:hpos_appstore/widgets/layouts/sidebar_layout.dart';
+import 'package:provider/provider.dart';
 
 class AppLayout extends StatelessWidget {
   const AppLayout(
@@ -13,6 +15,7 @@ class AppLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<NavigationProvider>(context);
     return Scaffold(
       backgroundColor: AppColors.primaryW500,
       body: Row(
@@ -40,9 +43,9 @@ class AppLayout extends StatelessWidget {
                   header,
                   Expanded(
                     child: SingleChildScrollView(
+                      controller: provider.scrollController,
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(
-                            0, 0, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child: Row(
                           children: [
                             Expanded(

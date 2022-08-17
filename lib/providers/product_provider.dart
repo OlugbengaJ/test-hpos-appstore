@@ -10,6 +10,7 @@ class ProductProvider extends ChangeNotifier {
   var productId = BigInt.zero;
   final nameNotifier = ValueNotifier('Microsoft Teams');
   final categoryNotifier = ValueNotifier('Productivity');
+  final descriptionNotifier = ValueNotifier('');
   final ratingNotifier = ValueNotifier(3.0);
   final reviewerCountNotifier = ValueNotifier(70);
   final priceNotifier = ValueNotifier('\$48.99');
@@ -23,17 +24,24 @@ class ProductProvider extends ChangeNotifier {
       ApplicationRequirements(requiredOSVersion: '3.0.1'));
   final supportedLanguagesNotifier = ValueNotifier(Languages.locales);
   final parentalGuidanceAgeNotifier = ValueNotifier(12);
-  final isInstalled = ValueNotifier(false);
+  final installationStatus = ValueNotifier(InstallationStatus.notInstalled);
   var minRating = 1;
   var maxRating = 5;
+
+  /// Holds a copy of the original value from the product
+  final productValueNotifier = ValueNotifier<Product?>(null);
 
   ProductProvider(BuildContext context)
       : deviceConfig = PhysicalDeviceConfig(context);
 
   ProductProvider.fromModel(Product product) {
+    // need to persist for later use e.g. to generate shared links.
+    productValueNotifier.value = product.copyWith();
+
     productId = product.id;
     name = product.name;
     category = product.category;
+    description = product.description;
     rating = product.avgRatings;
     reviewerCount = product.numRatings;
     price = double.tryParse(product.price) ?? 0;
@@ -44,12 +52,12 @@ class ProductProvider extends ChangeNotifier {
     supportedLanguages = product.languages;
     parentalGuidanceAge = product.parentalGuidanceAge;
     appRequirements = product.applicationInfo?.appRequirements;
-    isInstalled.value = product.applicationInfo?.installationStatus ==
-        InstallationStatus.installed;
+    installationStatus.value = product.applicationInfo?.installationStatus ??
+        InstallationStatus.notInstalled;
 
     if (product.applicationInfo != null) {
-      product.applicationInfo?.subscribeForInstallationStatus((status) =>
-          isInstalled.value = status == InstallationStatus.installed);
+      product.applicationInfo?.subscribeForInstallationStatus(
+          (status) => installationStatus.value = status);
     }
   }
 
@@ -60,6 +68,11 @@ class ProductProvider extends ChangeNotifier {
   String get category => categoryNotifier.value;
 
   set category(String category) => categoryNotifier.value = category;
+
+  String get description => descriptionNotifier.value;
+
+  set description(String description) =>
+      descriptionNotifier.value = description;
 
   double get rating => ratingNotifier.value;
 

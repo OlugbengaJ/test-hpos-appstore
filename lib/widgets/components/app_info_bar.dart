@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hpos_appstore/providers/product_provider.dart';
 import 'package:hpos_appstore/utils/assets.dart';
 import 'package:hpos_appstore/utils/colors.dart';
+import 'package:hpos_appstore/utils/size_helper.dart';
 import 'package:hpos_appstore/utils/styles.dart';
 import 'package:hpos_appstore/utils/texts.dart';
 import 'package:hpos_appstore/widgets/components/app_info_card.dart';
 import 'package:provider/provider.dart';
 
-
 class AppInfoBar extends StatelessWidget {
   const AppInfoBar({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-    var productProvider = Provider.of<ProductProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
+
     const cardDivider = VerticalDivider(
       color: AppColors.greyW600,
       width: 2,
@@ -50,19 +50,19 @@ class AppInfoBar extends StatelessWidget {
             bottom: AppTexts.average,
           ),
           cardDivider,
-          AppInfoCard(
-            top: AppTexts.size,
-            center: ValueListenableBuilder<int>(
+          ValueListenableBuilder<int>(
               valueListenable: productProvider.sizeNotifier,
               builder: (context, size, _) {
-                return Text(
-                  '$size',
-                  style: AppStyles.appInfoCardStyle,
+                final sizeInfo = SizeHelper.getSize(size);
+                return AppInfoCard(
+                  top: AppTexts.size,
+                  center: Text(
+                    '${sizeInfo.value}',
+                    style: AppStyles.appInfoCardStyle,
+                  ),
+                  bottom: sizeInfo.unit,
                 );
-              },
-            ),
-            bottom: AppTexts.sizeUnitMB,
-          ),
+              }),
           cardDivider,
           AppInfoCard(
             top: AppTexts.age,
@@ -106,7 +106,10 @@ class AppInfoBar extends StatelessWidget {
                     );
                   },
                 ),
-                bottom: '+ ${supportedLanguages.length - 1} More',
+                // show +n More only if languages is more than 1
+                bottom: supportedLanguages.length > 1
+                    ? '+ ${supportedLanguages.length - 1} More'
+                    : '',
               );
             },
           ),
@@ -114,8 +117,7 @@ class AppInfoBar extends StatelessWidget {
           AppInfoCard(
             top: AppTexts.parentalGuidance,
             center: ValueListenableBuilder<int>(
-                valueListenable:
-                productProvider.parentalGuidanceAgeNotifier,
+                valueListenable: productProvider.parentalGuidanceAgeNotifier,
                 builder: (context, age, _) {
                   return Text(
                     "$age +",

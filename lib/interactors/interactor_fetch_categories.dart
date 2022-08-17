@@ -2,11 +2,13 @@ import 'package:hpos_app_store/hpos_app_store.dart';
 import 'package:hpos_appstore/providers/library_providers/library_provider.dart';
 
 class InteractorFetchCategories {
-   Future requestAllCategories(LibraryProvider provider) async {
+  Future requestAllCategories(LibraryProvider provider) async {
+    final categories = ['All'];
+    final cats = await getHomeCategories();
 
-     final categories = ['All'];
-     categories.addAll(await getHomeCategories().then((categories) => categories));
+    categories.addAll(cats);
 
-     provider.categories.value = categories;
+    provider.homeCategories.value = [...cats];
+    provider.categories.value = categories;
   }
 }
