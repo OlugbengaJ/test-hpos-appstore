@@ -1,0 +1,135 @@
+name: hpos-appstore-pipeline
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  push:
+    branches:
+      - main
+
+jobs:
+  Andriod:
+    name: Build Andriod
+    if: | 
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: checkout
+        uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
+      
+      - uses: actions/setup-java@f0bb91606209742fe3ea40199be2f3ef195ecabf
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - uses: subosito/flutter-action@a93e024dfea2add254640576989cf8e6507ee7f9
+        with:
+          channel: 'stable'
+      
+      # Andriod app signing
+      - name: Decode andriod/key.properties
+        run:  echo "${{ secrets.KEY_PROPERTIES_ANDROID }}" | base64 --decode > android/key.properties
+      - name: Decode andriod/upload_key.jks
+        run: echo "${{ secrets.KEYSTORE_JKS_ANDROID }}" | base64 --decode > android/app/key.jks
+
+      # Set-up SSH keys on Andriod runner
+      -   name: Setup SSH Keys and known_hosts
+          env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: |
+              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+              ssh-add - <<< "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
+      - run: flutter pub get
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
+      #- run: flutter test
+
+      - name: Build APK
+        run: flutter build apk --obfuscate --split-debug-info=./debug/debug --split-per-abi --release
+      
+      - name: Build APPBUNDLE
+        run: flutter build appbundle --obfuscate --split-debug-info=./debug/debug --release
+
+      - name: Publish Andriod Build
+        if: |
+          contains('
+            refs/heads/main
+          ', github.ref)
+        uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535
+        with:
+          name: APK_${{github.run_id}}
+          path: |
+            build/app/outputs/apk/release/*.apk
+            build/app/outputs/bundle/release/*.aab
+            
+  Linux:
+    name: Build Linux
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@248ae51c2e8cc9622ecf50685c8bf7150c6e8813
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - name: checkout
+        uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
+
+      - uses: subosito/flutter-action@a93e024dfea2add254640576989cf8e6507ee7f9
+        with:
+          channel: 'stable'
+      - run: |
+          sudo apt-get update -y
+          sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+          
+        # flutter config --enable-linux-desktop
+        # crazy way of hardcoding PAT, as we can't authenticate with SSH.
+        # sed -i 's|git@github.com:ext-andela|https://dammyabioye:${{ secrets.MULTIPLE_REPO_PAT }}@github.com/ext-andela|' pubspec.yaml
+        # flutter build linux
+          
+         # Set-up SSH keys on Linux runner
+
+      -   name: Setup SSH Keys and known_hosts
+          env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: |
+              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+              ssh-add - <<< "${{ secrets.GIT_SSH_PRIVATE_KEY }}"
+      - run: flutter pub get
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
+      - run: flutter config --enable-linux-desktop
+      - run: flutter build linux
+      - name: Generate .deb
+        run: |
+          dart pub global activate flutter_to_debian
+          flutter_to_debian
+      - name: cache .deb build
+        uses: actions/cache@661fd3eb7f2f20d8c7c84bc2b0509efd7a826628
+        id: restore-generate-hpos-appstore-package 
+        with:
+          path: debian/packages/hpos*.deb
+          key: ${{ github.sha }}
+
+      - name: Publish Linux Build
+        if: |
+          contains('
+            refs/heads/main
+          ', github.ref)
+        uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535
+        with:
+          name: Linux_${{github.run_id}}
+          path: |
+            build/linux/x64/release/bundle
+            linux-dependencies/
+ 
